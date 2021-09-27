@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_frame_progress_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/app_frame_result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/light_gray">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/app_frame_result_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/frame_edge_distance"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/default_null"/>
+        <TextView
+            android:id="@+id/app_frame_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/text_gray_color"
+            android:textSize="@dimen/frame_text_big_size" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- <allen.frame.widget.AllenProgressView
+            android:layout_width="@dimen/progress_length"
+            android:layout_height="@dimen/progress_length"
+            app:dot_color="@color/frame_default_title_bar_color"
+		    app:dot_count="7"
+		    app:dot_anim_duration="1680" /> -->
+        <ProgressBar 
+            android:layout_width="@dimen/frame_photo_icon_size"
+            android:layout_height="@dimen/frame_photo_icon_size"
+            android:indeterminateDrawable="@drawable/dialog_bar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/frame_edge_distance"
+            android:text="@string/frameprogress"
+            android:textColor="@color/text_gray_color"
+            android:textSize="@dimen/frame_text_middle_size" />
+    </LinearLayout>
+
+</LinearLayout>

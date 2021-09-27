@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/black_semi_transparent"/>
+    <padding
+        android:left="@dimen/frame_edge_distance"
+        android:top="@dimen/frame_four_distance"
+        android:right="@dimen/frame_edge_distance"
+        android:bottom="@dimen/frame_four_distance"/>
+    <corners
+        android:radius="@dimen/frame_two_distance"/>
+</shape>

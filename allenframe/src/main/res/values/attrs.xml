@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SwipeBackLayout">
+        <attr name="swipeBackFactor" format="float"></attr>
+        <attr name="maskAlpha" format="integer"></attr>
+        <attr name="isSwipeFromEdge" format="boolean"></attr>
+        <attr name="directionMode">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="top" value="4" />
+            <enum name="bottom" value="8" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ContrlScrollViewPager">
+        <attr name="iscanscroll" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="Image3DSwitchView">
+        <attr name="image3d_width_precent" format="float"/>
+        <attr name="image3d_padding" format="dimension"/>
+    </declare-styleable>
+    
+    <declare-styleable name="BGABanner">
+        <!-- 指示点容器背景 -->
+        <attr name="banner_pointContainerBackground" format="reference|color"/>
+        <!-- 指示点背景 -->
+        <attr name="banner_pointDrawable" format="reference"/>
+        <!-- 指示点容器左右内间距 -->
+        <attr name="banner_pointContainerLeftRightPadding" format="dimension"/>
+        <!-- 指示点上下外间距 -->
+        <attr name="banner_pointTopBottomMargin" format="dimension"/>
+        <!-- 指示点左右外间距 -->
+        <attr name="banner_pointLeftRightMargin" format="dimension"/>
+        <!-- 指示器的位置 -->
+        <attr name="banner_indicatorGravity">
+            <flag name="top" value="0x30"/>
+            <flag name="bottom" value="0x50"/>
+            <flag name="left" value="0x03"/>
+            <flag name="right" value="0x05"/>
+            <flag name="center_horizontal" value="0x01"/>
+        </attr>
+        <!-- 是否开启自动轮播 -->
+        <attr name="banner_pointAutoPlayAble" format="boolean"/>
+        <!-- 自动轮播的时间间隔 -->
+        <attr name="banner_pointAutoPlayInterval" format="integer"/>
+        <!-- 页码切换过程的时间长度 -->
+        <attr name="banner_pageChangeDuration" format="integer"/>
+        <!-- 页面切换的动画效果 -->
+        <attr name="banner_transitionEffect" format="enum">
+            <enum name="defaultEffect" value="0"/>
+            <enum name="alpha" value="1"/>
+            <enum name="rotate" value="2"/>
+            <enum name="cube" value="3"/>
+            <enum name="flip" value="4"/>
+            <enum name="accordion" value="5"/>
+            <enum name="zoomFade" value="6"/>
+            <enum name="fade" value="7"/>
+            <enum name="zoomCenter" value="8"/>
+            <enum name="zoomStack" value="9"/>
+            <enum name="stack" value="10"/>
+            <enum name="depth" value="11"/>
+            <enum name="zoom" value="12"/>
+        </attr>
+        <!-- 提示文案的文字颜色 -->
+        <attr name="banner_tipTextColor" format="reference|color"/>
+        <!-- 提示文案的文字大小 -->
+        <attr name="banner_tipTextSize" format="dimension"/>
+        <!-- 加载网络数据时覆盖在 BGABanner 最上层的占位图 -->
+        <attr name="banner_placeholderDrawable" format="reference"/>
+        <!-- 是否是数字指示器 -->
+        <attr name="banner_isNumberIndicator" format="boolean"/>
+        <!-- 数字指示器文字颜色 -->
+        <attr name="banner_numberIndicatorTextColor" format="reference|color"/>
+        <!-- 数字指示器文字大小 -->
+        <attr name="banner_numberIndicatorTextSize" format="dimension"/>
+        <!-- 数字指示器背景 -->
+        <attr name="banner_numberIndicatorBackground" format="reference"/>
+        <!-- 当只有一页数据时是否显示指示器，默认值为 false -->
+        <attr name="banner_isNeedShowIndicatorOnOnlyOnePage" format="boolean"/>
+        <!-- 自动轮播区域距离 BGABanner 底部的距离 -->
+        <attr name="banner_contentBottomMargin" format="dimension"/>
+        <!-- 宽高比例，如果大于 0，则会根据宽度来计算高度，否则使用 android:layout_height 指定的高度 -->
+        <attr name="banner_aspectRatio" format="float"/>
+        <!-- 占位图和资源图片缩放模式 -->
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+    <declare-styleable name="BGASwipeItemLayout">
+        <attr name="bga_sil_swipeDirection" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="bga_sil_bottomMode" format="enum">
+            <enum name="pullOut" value="0" />
+            <enum name="layDown" value="1" />
+        </attr>
+        <attr name="bga_sil_springDistance" format="dimension" />
+        <attr name="bga_sil_swipeAble" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="AllenProgressView">
+        <attr name="dot_color" format="color"/>
+        <attr name="dot_count" format="integer"/>
+        <attr name="dot_anim_duration" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="FluidLayout">
+        <attr name="gravity" >
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="center" value="0x11" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FluidLayout_Layout">
+        <attr name="layout_gravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="center" value="0x11" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="NineGridImageView">
+        <attr format="dimension" name="singleImgSize"/>
+        <attr format="dimension" name="imgGap"/>
+        <attr format="integer" name="maxSize"/>
+        <attr format="enum" name="showStyle">
+            <enum name="grid" value="0"/>
+            <enum name="fill" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="RatingBar">
+        <!--星星间距-->
+        <attr format="dimension" name="starDistance"/>
+        <!--星星大小-->
+        <attr format="dimension" name="starSize"/>
+        <!--星星个数-->
+        <attr format="integer" name="starCount"/>
+        <!--星星空图-->
+        <attr format="reference" name="starEmpty"/>
+        <!--星星满图-->
+        <attr format="reference" name="starFill"/>
+        <!-- 是否可以改变 -->
+        <attr format="boolean" name="clickAble"/>
+        <!-- 设置整型评星 -->
+        <attr format="boolean" name="integerMark"/>
+    </declare-styleable>
+    <declare-styleable name="BadgeView">
+        <!--显示文本-->
+        <attr name="badgeText" format="string" />
+        <!--文本字体大小-->
+        <attr name="badgeTextSize" format="dimension" />
+        <!--文本颜色-->
+        <attr name="badgeTextColor" format="color" />
+        <!--边框宽度-->
+        <attr name="badgeBorderWidth" format="dimension" />
+        <!--边框颜色-->
+        <attr name="badgeBorderColor" format="color" />
+        <!--气泡背景色-->
+        <attr name="badgeBgColor" format="color" />
+        <!--徽章显示的位置-->
+        <attr name="badgeAnchorPosition">
+            <enum name="AnchorLeftTop" value="0" />
+            <enum name="AnchorLeftBottom" value="1" />
+            <enum name="AnchorRightTop" value="2" />
+            <enum name="AnchorRightBottom" value="3" />
+        </attr>
+        <!--徽章在水平方向的margin-->
+        <attr name="badgeMarginHorizon" format="dimension" />
+        <!--徽章在垂直方向的margin-->
+        <attr name="badgeMarginVertical" format="dimension" />
+        <!--徽章内部水平padding-->
+        <attr name="badgePaddingHorizon" format="dimension" />
+        <!--徽章内部垂直padding-->
+        <attr name="badgePaddingVertical" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ScaleLinearLayout">
+        <!--高宽比例-->
+        <attr name="scale" format="float" />
+    </declare-styleable>
+    <declare-styleable name="SearchView">
+        <attr name="inputTextSize" format="dimension" />
+        <attr name="inputHint" format="string" />
+        <attr name="inputTextColor" format="reference|color" />
+        <attr name="inputPadding" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ShadowLayout">
+        <attr name="sl_cornerRadius" format="dimension"/>
+        <attr name="sl_shadowRadius" format="dimension"/>
+        <attr name="sl_shadowColor" format="color"/>
+        <attr name="sl_oval" format="boolean"/>
+        <attr name="sl_dx" format="dimension"/>
+        <attr name="sl_dy" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="BGAProgressBar">
+        <!-- 进度条样式，默认值为 system -->
+        <attr name="bga_pb_mode" format="enum">
+            <!-- 系统自带样式 -->
+            <enum name="system" value="0"/>
+            <!-- 水平进度条 -->
+            <enum name="horizontal" value="1"/>
+            <!-- 圆形进度条 -->
+            <enum name="circle" value="2"/>
+            <!-- 彗星进度条 -->
+            <enum name="comet" value="3"/>
+            <!-- 水波纹进度条 -->
+            <enum name="wave" value="4"/>
+        </attr>
+        <!-- 文字颜色，默认值为 #70A800 -->
+        <attr name="bga_pb_textColor" format="reference|color"/>
+        <!-- 文字大小，默认值为 10sp -->
+        <attr name="bga_pb_textSize" format="dimension"/>
+        <!-- 文字和进度条之间的间距，默认值为 4dp -->
+        <attr name="bga_pb_textMargin" format="dimension"/>
+        <!-- 已完成进度的颜色，默认值为 #70A800 -->
+        <attr name="bga_pb_reachedColor" format="reference|color"/>
+        <!-- 已完成进度的高度，默认值为 2dp -->
+        <attr name="bga_pb_reachedHeight" format="dimension"/>
+        <!-- 未完成进度的颜色，默认值为 #CCCCCC -->
+        <attr name="bga_pb_unReachedColor" format="reference|color"/>
+        <!-- 未完成进度的高度，默认值为 1dp -->
+        <attr name="bga_pb_unReachedHeight" format="dimension"/>
+        <!-- 是否为圆角，默认值为 false -->
+        <attr name="bga_pb_isCapRounded" format="boolean"/>
+        <!-- 是否隐藏文字，默认值为 false -->
+        <attr name="bga_pb_isHiddenText" format="boolean"/>
+        <!-- 圆形进度条半径，默认值为 16dp -->
+        <attr name="bga_pb_radius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="filled_text">
+        <attr name="filledText" format="string"></attr>
+        <attr name="fillTextSize" format="dimension"></attr>
+        <attr name="normalColor" format="color"></attr>
+        <attr name="fillColor" format="color"></attr>
+        <attr name="rowSpace" format="dimension"></attr>
+    </declare-styleable>
+</resources>

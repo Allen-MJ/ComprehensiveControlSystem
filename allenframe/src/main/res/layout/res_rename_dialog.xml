@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/dialog_custom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="文件夹重命名"
+        android:textColor="@color/text_white_color"
+        android:textSize="16sp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/frame_two_distance"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="@dimen/frame_one_distance" >
+
+        <EditText
+            android:id="@+id/et_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@android:color/transparent"
+            android:gravity="top"
+            android:hint="请输入文件名"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/frame_eight_distance"
+            android:singleLine="false"
+            android:textColor="@color/text_normal_color"
+            android:textSize="14sp" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/frame_5_distance"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue2yellow_selector"
+            android:text="取消"
+            android:textColor="@color/text_white_color"
+            android:textSize="@dimen/frame_text_normal_size" />
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/frame_5_distance"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue2yellow_selector"
+            android:text="确定"
+            android:textColor="@color/text_white_color"
+            android:textSize="@dimen/frame_text_normal_size" />
+    </LinearLayout>
+
+</LinearLayout>

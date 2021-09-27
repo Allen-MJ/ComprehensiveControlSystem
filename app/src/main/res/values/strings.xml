@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">综治理平台</string>
+    <!--引导页-->
+    <string name="guild_skip_bt">跳过</string>
+</resources>

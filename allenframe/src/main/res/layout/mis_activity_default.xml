@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray_white">
+
+    <androidx.appcompat.widget.Toolbar
+	    android:id="@+id/toolbar"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="?attr/colorPrimary"
+	    android:minHeight="?attr/actionBarSize"
+	    app:titleTextColor="@android:color/black"
+	    app:titleTextAppearance="@style/Toolbar.TitleText"
+	    >
+        <TextView
+            android:id="@+id/commit"
+            android:background="@drawable/mis_action_btn"
+            android:layout_marginRight="@dimen/frame_edge_distance"
+            android:padding="@dimen/frame_eight_distance"
+            android:textColor="@color/mis_default_text_color"
+            android:textSize="@dimen/frame_text_small_size"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.Toolbar>
+	<include layout="@layout/alen_progress_layout"/>
+    <FrameLayout
+        android:id="@+id/image_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

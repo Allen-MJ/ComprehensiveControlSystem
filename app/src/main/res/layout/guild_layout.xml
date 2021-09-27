@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <allen.frame.widget.BGABanner
+        android:id="@+id/guild"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </allen.frame.widget.BGABanner>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_guide_skip"
+        android:textSize="@dimen/frame_text_smaller_size"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        android:text="@string/guild_skip_bt"
+        android:padding="@dimen/frame_eight_distance"
+        android:background="@color/black_overlay"
+        android:layout_marginTop="@dimen/frame_32_distance"
+        android:layout_marginEnd="@dimen/frame_32_distance"
+        android:layout_alignParentEnd="true"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_guide_enter"
+        android:background="@drawable/frame_btn_selector"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/frame_text_big_size"
+        android:textColor="@android:color/white"
+        android:text="进入APP"
+        android:padding="8dp"
+        android:layout_marginBottom="@dimen/frame_photo_icon_size"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

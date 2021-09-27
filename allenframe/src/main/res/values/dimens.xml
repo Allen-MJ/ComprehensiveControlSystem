@@ -1,0 +1,116 @@
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="frame_text_max_size">48sp</dimen>
+    <dimen name="frame_text_biggest_size">32sp</dimen>
+    <dimen name="frame_text_biger_size">24sp</dimen>
+    <dimen name="frame_text_big_size">20sp</dimen>
+    <dimen name="frame_text_middle_size">18sp</dimen>
+    <dimen name="frame_text_normal_size">16sp</dimen>
+    <dimen name="frame_text_small_size">14sp</dimen>
+    <dimen name="frame_text_smaller_size">12sp</dimen>
+    <dimen name="frame_text_smallst_size">10sp</dimen>
+
+    <!-- 杈硅窛 -->
+    <dimen name="frame_half_distance">0.5dp</dimen>
+    <dimen name="frame_one_distance">1dp</dimen>
+    <dimen name="frame_two_distance">2dp</dimen>
+    <dimen name="frame_3_distance">3dp</dimen>
+    <dimen name="frame_four_distance">4dp</dimen>
+    <dimen name="frame_5_distance">5dp</dimen>
+    <dimen name="frame_6_distance">6dp</dimen>
+    <dimen name="frame_eight_distance">8dp</dimen>
+    <dimen name="frame_10_distance">10dp</dimen>
+    <dimen name="frame_12_distance">12dp</dimen>
+    <dimen name="frame_edge_distance">16dp</dimen>
+    <dimen name="frame_15_distance">15dp</dimen>
+    <dimen name="frame_14_distance">14dp</dimen>
+    <dimen name="frame_20_distance">20dp</dimen>
+    <dimen name="frame_30_distance">30dp</dimen>
+    <dimen name="frame_32_distance">32dp</dimen>
+    <dimen name="frame_40_distance">40dp</dimen>
+    <dimen name="frame_43_distance">43dp</dimen>
+    <dimen name="frame_45_distance">45dp</dimen>
+    <dimen name="frame_48_distance">48dp</dimen>
+    <dimen name="frame_50_distance">50dp</dimen>
+    <dimen name="frame_53_distance">53dp</dimen>
+    <dimen name="frame_58_distance">58dp</dimen>
+    <dimen name="frame_60_distance">60dp</dimen>
+    <dimen name="frame_65_distance">65dp</dimen>
+    <dimen name="frame_70_distance">70dp</dimen>
+    <dimen name="frame_80_distance">80dp</dimen>
+    <dimen name="frame_88_distance">88dp</dimen>
+    <dimen name="frame_90_distance">90dp</dimen>
+    <dimen name="frame_100_distance">100dp</dimen>
+    <dimen name="frame_110_distance">110dp</dimen>
+    <dimen name="frame_125_distance">125dp</dimen>
+    <dimen name="frame_171_distance">171dp</dimen>
+
+    <dimen name="frame_400_distance">400dp</dimen>
+    <dimen name="frame_550_distance">550dp</dimen>
+    <dimen name="frame_320_distance">320dp</dimen>
+    <dimen name="frame_360_distance">360dp</dimen>
+    <dimen name="frame_300_distance">300dp</dimen>
+    <dimen name="frame_35_distance">35dp</dimen>
+    <dimen name="frame_195_distance">195dp</dimen>
+    <dimen name="frame_405_distance">405dp</dimen>
+    <dimen name="frame_210_distance">210dp</dimen>
+    <dimen name="frame_200_distance">200dp</dimen>
+    <dimen name="frame_205_distance">205dp</dimen>
+    <dimen name="frame_220_distance">220dp</dimen>
+    <dimen name="frame_225_distance">225dp</dimen>
+    <dimen name="frame_230_distance">230dp</dimen>
+    <dimen name="frame_244_distance">244dp</dimen>
+    <dimen name="frame_294_distance">294dp</dimen>
+    <dimen name="frame_588_distance">588dp</dimen>
+    <dimen name="frame_130_distance">130dp</dimen>
+    <dimen name="frame_132_distance">132dp</dimen>
+    <dimen name="frame_140_distance">140dp</dimen>
+    <dimen name="frame_143_distance">143dp</dimen>
+    <dimen name="frame_150_distance">150dp</dimen>
+    <dimen name="frame_104_distance">104dp</dimen>
+    <dimen name="frame_105_distance">105dp</dimen>
+    <dimen name="frame_160_distance">160dp</dimen>
+    <dimen name="frame_175_distance">175dp</dimen>
+    <dimen name="frame_180_distance">180dp</dimen>
+    <dimen name="frame_372_distance">372dp</dimen>
+    <dimen name="frame_120_distance">120dp</dimen>
+    <dimen name="frame_123_distance">123dp</dimen>
+    <dimen name="frame_47_distance">47dp</dimen>
+    <dimen name="frame_42_distance">42dp</dimen>
+    <dimen name="frame_259_distance">259dp</dimen>
+
+    <dimen name="frame_minus_10_distance">-10dp</dimen>
+    <dimen name="frame_minus_20_distance">-20dp</dimen>
+    <dimen name="frame_minus_30_distance">-30dp</dimen>
+    <dimen name="frame_minus_40_distance">-40dp</dimen>
+    <dimen name="frame_minus_50_distance">-50dp</dimen>
+    <dimen name="frame_minus_60_distance">-60dp</dimen>
+    <dimen name="frame_minus_70_distance">-70dp</dimen>
+
+    <dimen name="frame_title_height">66dp</dimen>
+    <dimen name="frame_title_icon_height">64dp</dimen>
+    <dimen name="frame_photo_icon_size">48dp</dimen>
+    <dimen name="frame_minus_24_distance">-24dp</dimen>
+    <dimen name="frame_photo_icon_big_size">96dp</dimen>
+    <dimen name="frame_photo_icon_big_height">134dp</dimen>
+    <dimen name="frame_photo_icon_biger_height">269dp</dimen>
+    <dimen name="frame_photo_icon_biger_weight">193dp</dimen>
+    <dimen name="frame_photo_small_icon_size">32dp</dimen>
+    <dimen name="frame_photo_big_size">88dp</dimen>
+
+    <dimen name="frame_photo_25_size">25dp</dimen>
+    <dimen name="frame_photo_35_size">35dp</dimen>
+
+
+
+    <dimen name="btn_radius">4dp</dimen>
+
+    <dimen name="progress_length">96dp</dimen>
+    <dimen name="mis_image_size">120dp</dimen>
+    <dimen name="mis_space_size">@dimen/frame_two_distance</dimen>
+    <dimen name="mis_folder_cover_size">@dimen/frame_photo_big_size</dimen>
+    <dimen name="frame_edit_min_size">100dp</dimen>
+
+    <dimen name="design_bottom_navigation_margin" tools:override="true">@dimen/frame_eight_distance</dimen>//icon与文本之间的间距
+    <dimen name="design_bottom_navigation_height" tools:override="true">@dimen/frame_photo_icon_size</dimen>//高度
+
+</resources>

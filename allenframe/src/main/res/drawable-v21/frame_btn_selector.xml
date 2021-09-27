@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+        android:color="@color/text_white_color">
+    <item>
+		<selector>
+    		<item android:state_checked="true" android:drawable="@drawable/frame_btn_select"></item>
+		    <item android:state_pressed="true" android:drawable="@drawable/frame_btn_select"></item>
+		    <item android:state_selected="true" android:drawable="@drawable/frame_btn_select"></item>
+		    <item android:drawable="@drawable/frame_btn_normal"></item>
+		</selector>
+	</item>
+</ripple>

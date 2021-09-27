@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+	android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        >
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </androidx.viewpager.widget.ViewPager>
+        <androidx.appcompat.widget.Toolbar
+		    android:id="@+id/toolbar"
+		    android:layout_width="match_parent"
+		    android:layout_height="?attr/actionBarSize"
+		    android:background="@color/balck_transparent"
+		    android:minHeight="?attr/actionBarSize"
+		    app:titleTextColor="@android:color/white"
+		    app:popupTheme="@style/OverflowMenuStyle"
+		    />
+        <androidx.core.widget.NestedScrollView
+			android:id="@+id/scrollView"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/frame_photo_big_size"
+            android:scrollbars="none"
+            android:background="@color/balck_transparent"
+            >
+            <LinearLayout 
+               	android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical"
+                >
+		        <TextView 
+		            android:id="@+id/dec"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:textColor="@color/text_white_color"
+		            android:textSize="@dimen/frame_text_small_size"
+		            android:padding="@dimen/frame_eight_distance"
+		            android:lineSpacingExtra="@dimen/frame_eight_distance"
+		            />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
