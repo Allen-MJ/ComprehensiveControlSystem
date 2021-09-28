@@ -1,5 +1,6 @@
 package cn.lyj.ccs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,19 +47,10 @@ public class GuildActivity extends AllenIMBaseActivity {
         guild.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide_skip, new BGABanner.GuideDelegate() {
             @Override
             public void onClickEnterOrSkip() {
-
+                startActivity(new Intent(context,TestActivity.class));
+                finish();
             }
         });
-    }
-
-    @OnClick({R.id.tv_guide_skip, R.id.btn_guide_enter})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_guide_skip:
-                break;
-            case R.id.btn_guide_enter:
-                break;
-        }
     }
 
     private void processLogic() {

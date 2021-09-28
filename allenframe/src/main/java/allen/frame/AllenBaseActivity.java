@@ -57,11 +57,16 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 
 	protected abstract void addEvent();
 
+	@Deprecated
 	protected void setToolbarTitle(Toolbar bar,CharSequence title){
-		setToolbarTitle(bar,title,null);
+		setToolbarTitle(bar,title, true,null);
 	}
 
-	protected void setToolbarTitle(Toolbar bar, CharSequence title, View.OnClickListener onClickListener){
+	protected void setToolbarTitle(Toolbar bar,CharSequence title, boolean displayHomeAsUpEnabled){
+		setToolbarTitle(bar,title, displayHomeAsUpEnabled,null);
+	}
+
+	protected void setToolbarTitle(Toolbar bar, CharSequence title, boolean displayHomeAsUpEnabled, View.OnClickListener onClickListener){
 		titleat = findViewById(R.id.title);
 		if(onClickListener!=null){
 			titleat.setOnClickListener(onClickListener);
@@ -70,6 +75,8 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 			bar.setTitle("");
 			titleat.setText(title);
 		}
+		setSupportActionBar(bar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);
 	}
 
 	@Override
@@ -112,5 +119,9 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 			dialog.dismiss();
 		}
 	}
-	
+
+	public void exitApp(){
+		AllenManager.getInstance().exitApp();
+	}
+
 }

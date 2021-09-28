@@ -32,9 +32,7 @@ public class WebActivity extends AllenBaseActivity {
     protected void initBar() {
         title = getIntent().getStringExtra(Constants.Key_1);
         bar = findViewById(R.id.toolbar);
-        setToolbarTitle(bar, title);
-        setSupportActionBar(bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(bar, title,true);
 
     }
 

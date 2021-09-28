@@ -72,9 +72,7 @@ public class AllenPlayerActivity extends AllenIMBaseActivity implements PLOnPrep
     protected void initBar() {
         video = (Video) getIntent().getSerializableExtra(Constants.Key_1);
         bar = findViewById(R.id.toolbar);
-        setToolbarTitle(bar,video.getTitle());
-        setSupportActionBar(bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(bar,video.getTitle(),true);
     }
 
     @Override
