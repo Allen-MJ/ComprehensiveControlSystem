@@ -2,18 +2,25 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <allen.frame.widget.BGABanner
         android:id="@+id/guild"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:banner_indicatorGravity="bottom"
+        app:banner_pointAutoPlayAble="false"
+        app:banner_pointContainerLeftRightPadding="@dimen/frame_four_distance"
+        app:banner_pointTopBottomMargin="@dimen/frame_60_distance"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point_solid"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_transitionEffect="fade">
     </allen.frame.widget.BGABanner>
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/tv_guide_skip"
         android:textSize="@dimen/frame_text_smaller_size"
-        android:textColor="@android:color/white"
+        android:textColor="@color/text_color_white2orange_selector"
         android:visibility="visible"
         android:text="@string/guild_skip_bt"
         android:padding="@dimen/frame_eight_distance"
@@ -23,14 +30,17 @@
         android:layout_alignParentEnd="true"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_guide_enter"
-        android:background="@drawable/frame_btn_selector"
+        android:background="@drawable/shape_black_tran_btn_bg"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="@dimen/frame_text_big_size"
-        android:textColor="@android:color/white"
+        android:textSize="@dimen/frame_text_middle_size"
+        android:textColor="@color/text_color_white2orange_selector"
         android:text="进入APP"
-        android:padding="8dp"
-        android:layout_marginBottom="@dimen/frame_photo_icon_size"
+        android:paddingStart="@dimen/frame_edge_distance"
+        android:paddingEnd="@dimen/frame_edge_distance"
+        android:paddingTop="@dimen/frame_eight_distance"
+        android:paddingBottom="@dimen/frame_eight_distance"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/frame_eight_distance"/>
 </RelativeLayout>
