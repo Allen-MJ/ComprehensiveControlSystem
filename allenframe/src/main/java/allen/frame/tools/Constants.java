@@ -113,6 +113,16 @@ public class Constants {
 	public static final String Key_3 = "_Key_3";//传递参数3
 	public static final String Key_4 = "_Key_4";//传递参数4
 
+	public static final int PERMISSION_REQUEST_ONE = 0X01;
+	public static final int PERMISSION_REQUEST_TWO = 0X02;
+	public static final int PERMISSION_REQUEST_THREE = 0X03;
+
+	public static final int REQUEST_CODE_SCAN = 0X101;
+	public static final int REQUEST_CODE_IMAGE = 0X102;
+	public static final int REQUEST_CODE_OTHRE_ONE = 0X103;
+	public static final int REQUEST_CODE_OTHRE_TWO = 0X104;
+	public static final int REQUEST_CODE_OTHRE_THREE = 0X105;
+
 	public static String getFullUrl(String url) {
 		 Logger.e("debug", "url:" + url);
 		if (StringUtils.empty(url)) {

@@ -145,7 +145,6 @@ public class HttpUtils {
 				data = response.body().string();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return decry(data);

@@ -2,7 +2,6 @@ package cn.lyj.ccs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import allen.frame.AllenIMBaseActivity;
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class GuildActivity extends AllenIMBaseActivity {
     @BindView(R.id.guild)
