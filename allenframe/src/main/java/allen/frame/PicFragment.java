@@ -37,7 +37,7 @@ public class PicFragment extends BaseFragment {
         pic.setScaleType(ScaleType.FIT_CENTER);
         pic.enable();
         pic.enableRotate();
-        Glide.with(this).load(Constants.getFullUrl(url)).thumbnail(Glide.with(this).load(R
+        Glide.with(this).load(url).thumbnail(Glide.with(this).load(R
                 .drawable.load))
                 .fitCenter().dontAnimate().error(R.drawable.mis_default_error).into(pic);
     }
