@@ -3,6 +3,7 @@ package cn.lyj.thepublic;
 import android.os.Bundle;
 
 import allen.frame.AllenIMBaseActivity;
+import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.DataHttp;
 import androidx.annotation.Nullable;
@@ -33,7 +34,7 @@ public class LoginActivity extends AllenIMBaseActivity {
             }
 
             @Override
-            protected void fail(Class<?> data) {
+            protected void fail(Response response) {
 
             }
         });

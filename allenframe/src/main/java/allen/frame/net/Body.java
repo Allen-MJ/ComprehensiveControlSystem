@@ -3,7 +3,7 @@ package allen.frame.net;
 import allen.frame.tools.Logger;
 import allen.frame.tools.StringUtils;
 
-public class DataBody {
+public class Body {
 
     public String jsonBody(Object[] arrays){
         if(arrays!=null){

@@ -19,12 +19,12 @@ public class DataHttp {
     private static final long TIME_OUT = 120;//单位秒S
     private String token;
     private Gson gson;
-    private DataBody mbody;
+    private Body mbody;
 
     public DataHttp() {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         gson = new Gson();
-        mbody = new DataBody();
+        mbody = new Body();
     }
 
     public <T> void add(String mothed, Object[] arrays,Callback<T> callback){
@@ -39,7 +39,7 @@ public class DataHttp {
     public <T> void update(String mothed, Object[] arrays,Callback<T> callback){
         all(mothed,arrays,callback);
     }
-    private <T> void all(String mothed, Object[] arrays,Callback<T> callback){
+    private <T> void all(String mothed, Object[] arrays, final Callback<T> callback){
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();// 创建OkHttpClient对象。
@@ -47,7 +47,7 @@ public class DataHttp {
         RequestBody body = RequestBody.create(JSON, mbody.jsonBody(arrays));
         Request request = new Request.Builder().url(Constants.url + mothed)
                 .addHeader("keep-alive", "false")
-                .addHeader("Authorization", "Bearer " + token).post(body)
+                .addHeader("Authorization", token).post(body)
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
@@ -58,13 +58,26 @@ public class DataHttp {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
+                /*int code = response.code();
+                Logger.http("code", ">>" + code);
+                String data = response.body().string();
+                Logger.http("data", ">>" + data);*/
                 if (response.isSuccessful()) {
-                    String data = response.body().string();
-                    Logger.http("data", ">>" + data);
+
                 } else {
+                    callback.fail(new allen.frame.entry.Response("501","请求失败!",""));
                     Logger.http("data", "Not isSuccessful");
                 }
             }
         });
+    }
+
+    public DataHttp post(String mothed, Object[] arrays){
+
+        return this;
+    }
+
+    public <T> void enqueue(Callback<T> callback){
+
     }
 }

@@ -3,6 +3,8 @@ package allen.frame.net;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import allen.frame.entry.Response;
+
 /**
  * 数据回调接口
  * @param <T>
@@ -33,7 +35,7 @@ public abstract class Callback<T> {
 
     protected void token() {}
 
-    protected abstract void fail(Class<?> data);
+    protected abstract void fail(Response response);
     public Type getGenericityType() {
         return genType;
     }
