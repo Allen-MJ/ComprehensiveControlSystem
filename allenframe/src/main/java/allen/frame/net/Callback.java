@@ -32,6 +32,7 @@ public abstract class Callback<T> {
     }
 
     public abstract void success(T data);
+    public void success(Response response){};
 
     public void success() {}
     public void token() {}

@@ -103,6 +103,7 @@ public class Http<T> {
                             @Override
                             public void run() {
                                 callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                callback.success(result);
                             }
                         });
                     }else if(result.equals("401")){
