@@ -29,12 +29,12 @@ public class LoginActivity extends AllenIMBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         new DataHttp().add(API._1, new Object[]{"phone", "18580617183", "password", "123456"}, new Callback<String>() {
             @Override
-            protected void success(String data) {
+            public void success(String data) {
 
             }
 
             @Override
-            protected void fail(Response response) {
+            public void fail(Response response) {
 
             }
         });

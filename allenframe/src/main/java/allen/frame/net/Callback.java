@@ -31,12 +31,14 @@ public abstract class Callback<T> {
         this.key = key;
     }
 
-    protected abstract void success(T data);
+    public abstract void success(T data);
 
-    protected void token() {}
+    public void success() {}
+    public void token() {}
 
-    protected abstract void fail(Response response);
+    public abstract void fail(Response response);
     public Type getGenericityType() {
         return genType;
     }
+
 }

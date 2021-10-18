@@ -44,7 +44,7 @@ public class DataHttp {
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();// 创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");// 数据类型为json格式，
-        RequestBody body = RequestBody.create(JSON, mbody.jsonBody(arrays));
+        RequestBody body = RequestBody.create(JSON, mbody.postJson(arrays));
         Request request = new Request.Builder().url(Constants.url + mothed)
                 .addHeader("keep-alive", "false")
                 .addHeader("Authorization", token).post(body)
