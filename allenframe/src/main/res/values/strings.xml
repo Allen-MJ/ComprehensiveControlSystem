@@ -19,4 +19,12 @@
     <string name="mis_permission_rationale_write_storage">保存拍照图片需要您提供写存储权限</string>
     <!--播放器-->
     <string name="buffering">缓存中</string>
+
+    <!--login start-->
+    <string name="login_phone_hint">请输入手机号</string>
+    <string name="login_psw_hint">请输入密码</string>
+    <string name="login_bt">立即登录</string>
+    <string name="login_regist"><![CDATA[<font color="#999999">还没有账号？</font>立即注册&nbsp;>]]></string>
+    <!--login end-->
+
 </resources>

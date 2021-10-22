@@ -37,5 +37,8 @@ public class Constants {
 	/*权限申请code,跳转返回code end*/
 
 	public static final String UserToken = "_User_Token";
+	public static final String UserPhone = "_User_Phone";
+	public static final String UserPsw = "_User_Psw";
+	public static final String UserId = "_User_Id";
 
 }
