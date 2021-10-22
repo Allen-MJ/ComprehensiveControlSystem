@@ -88,7 +88,7 @@ public class Http<T> {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(final Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
                 if(act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".masswork.SthDbDetailActivity">
+    <include layout="@layout/alen_toolbar_layout"/>
+    <include layout="@layout/alen_progress_layout"/>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/sth_detail_layout"/>
+            <include layout="@layout/sth_bllc_layout"/>
+            <include layout="@layout/sth_hf_layout"/>
+            <include layout="@layout/sth_fkxx_layout"/>
+            <include layout="@layout/sth_pjbz_layout"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/gd_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/frame_btn_selector"
+                android:text="归档"
+                android:textColor="@color/text_white_color"
+                android:textSize="@dimen/frame_text_normal_size"
+                android:padding="@dimen/frame_eight_distance"
+                android:layout_margin="@dimen/frame_edge_distance"
+                android:visibility="invisible"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

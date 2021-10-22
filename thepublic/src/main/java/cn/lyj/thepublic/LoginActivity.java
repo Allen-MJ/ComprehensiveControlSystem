@@ -7,6 +7,8 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.DataHttp;
 import androidx.annotation.Nullable;
+
+import allen.frame.net.Http;
 import cn.lyj.thepublic.data.API;
 
 public class LoginActivity extends AllenIMBaseActivity {
@@ -38,6 +40,18 @@ public class LoginActivity extends AllenIMBaseActivity {
 
             }
         });
+
+        Http.with(this).url(API._1).parameters(new Object[]{}).enqueue(new Callback<String>() {
+            @Override
+            public void success(String data) {
+
+            }
+
+            @Override
+            public void fail(Response response) {
+
+            }
+        }).post();
     }
 
     @Override

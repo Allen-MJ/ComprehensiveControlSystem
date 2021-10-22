@@ -29,6 +29,19 @@ public class Constants {
 	public static final int PERMISSION_REQUEST_TWO = 0X02;
 	public static final int PERMISSION_REQUEST_THREE = 0X03;
 
+	public static final String UserName = "User_Name";//用户名
+	public static final String UserIsPeaceman = "UserIsPeaceman";
+	public static final String UserIsAdmin = "UserIsAdmin";
+	public static final String UserPhoto = "UserPhoto";
+
+
+	public static final String USER_ID = "User_ID";//用户ID
+	public static final String USER_UNITCODE = "User_UnitCode";//用户单位ID
+	public static final String USER_UNITNAME = "User_UnitName";//用户单位名
+	public static final String USER_UNITTYPE = "User_UnitType";//用户单位类型(1,街道2科室3社区)
+
+	public static final String STH_ID = "sth_id";//事项ID传递标识
+
 	public static final int REQUEST_CODE_SCAN = 0X101;
 	public static final int REQUEST_CODE_IMAGE = 0X102;
 	public static final int REQUEST_CODE_OTHRE_ONE = 0X103;

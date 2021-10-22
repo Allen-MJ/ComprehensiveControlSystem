@@ -1,3 +1,113 @@
 <resources>
+    <!--首页 start-->
+    <style name="bottomActiveTextStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="itemIconSize">@dimen/frame_edge_distance</item>
+    </style>
+    <style name="bottomInActiveTextStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="itemIconSize">@dimen/frame_edge_distance</item>
+    </style>
+    <!--首页 end-->
+    <style name="ownPhotoBigWhite">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_big_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+    <style name="ownPhotoSmallWhite">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
 
+    <style name="ownItemBlackSmall">
+        <item name="android:textColor">@color/text_color_black2red_selector</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+        <item name="android:paddingStart">@dimen/frame_eight_distance</item>
+        <item name="android:paddingEnd">@dimen/frame_eight_distance</item>
+        <item name="android:paddingTop">@dimen/frame_edge_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_edge_distance</item>
+    </style>
+    <style name="ownOneGrayLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gray_line_color</item>
+        <item name="android:layout_marginStart">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginEnd">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="exitBt">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_big_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:background">@drawable/afs_light_blue_bt_bg</item>
+        <item name="android:layout_marginStart">@dimen/frame_edge_distance</item>
+        <item name="android:layout_marginEnd">@dimen/frame_edge_distance</item>
+        <item name="android:layout_marginTop">@dimen/frame_edge_distance</item>
+        <item name="android:layout_marginBottom">@dimen/frame_edge_distance</item>
+    </style>
+    <style name="blueNumberWhiteCircle">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_two_distance</item>
+        <item name="android:background">@drawable/blue_circle_16dp</item>
+    </style>
+    <style name="userTitleStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start</item>
+    </style>
+    <style name="HalfGrayLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/frame_half_distance</item>
+        <item name="android:background">@color/gray_line_color</item>
+    </style>
+    <style name="userConGrayStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">end</item>
+    </style>
+    <style name="userEditStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start|top</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+    <style name="BigGrayLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/frame_eight_distance</item>
+        <item name="android:background">#F2F2F2</item>
+    </style>
+    <style name="userConYellowStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+        <item name="android:textColor">@color/color_f79016</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">end|center_vertical</item>
+    </style>
+
+    <style name="hmzcChoiceTypeStyle">
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+        <item name="android:hint">类别</item>
+        <item name="android:drawableEnd">@mipmap/ic_logo_down</item>
+        <item name="android:background">@drawable/default_input_bg</item>
+        <item name="android:textColorHint">@color/text_gray_color</item>
+    </style>
 </resources>

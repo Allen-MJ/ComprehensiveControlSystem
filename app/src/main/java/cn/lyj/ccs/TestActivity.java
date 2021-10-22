@@ -14,10 +14,12 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.AllenMapActivity;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -45,7 +47,7 @@ public class TestActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar,"测试界面",false);
+        setToolbarTitle(toolbar, "测试界面", false);
     }
 
     @Override

@@ -1,3 +1,29 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--main start-->
+    <string name="menu_main">首页</string>
+    <string name="menu_xx">信息</string>
+    <string name="menu_gc">广场</string>
+    <string name="menu_wd">我的</string>
+    <string name="menu_action_notice">通知</string>
+    <!--main end-->
 
+    <!--我的 start-->
+    <string name="public_user_gz">我的关注</string>
+    <string name="public_user_zan">我的点赞</string>
+    <string name="public_user_pl">我的评论</string>
+    <string name="public_user_fk">意见反馈</string>
+    <string name="public_user_update">检查更新</string>
+
+
+    <string name="user_photo">头像</string>
+    <string name="user_name">昵称</string>
+    <string name="user_phone">手机号</string>
+    <string name="user_sex">性别</string>
+    <string name="user_email">邮箱</string>
+    <string name="user_level">等级</string>
+    <string name="user_address">常住地址</string>
+
+    <string name="message_type">类别</string>
+
+    <string name="exit_bt_hint">退出登录</string>
 </resources>
