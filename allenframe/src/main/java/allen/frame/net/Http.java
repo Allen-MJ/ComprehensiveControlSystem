@@ -4,7 +4,12 @@ import android.app.Activity;
 
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import allen.frame.AllenManager;
@@ -88,14 +93,16 @@ public class Http<T> {
             }
 
             @Override
-            public void onResponse(final Call call, Response response) throws IOException {
-                Logger.http("data", "onResponse");
+            public void onResponse(Call call, Response response) throws IOException {
                 if(act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
+                final int code = response.code();
+                Logger.http("code", ">>" + code);
+                final String data = response.body().string();
+                Logger.http("data", ">>" + data);
                 if (response.isSuccessful()) {
-                    String data = response.body().toString();
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.equals("200")){
 
@@ -128,12 +135,27 @@ public class Http<T> {
                             }
                         });
                     }
-                } else {
+                } else if(code==401){
                     act.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Logger.http("data", "Not isSuccessful");
-                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                            Logger.http("data", "->Not isSuccessful");
+                            callback.token();
+                        }
+                    });
+                }else{
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String msg = "请求失败!";
+                            Logger.http("data", data);
+                            try {
+                                JSONObject obj = new JSONObject(data);
+                                msg = obj.getString("message");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -150,7 +172,7 @@ public class Http<T> {
         Logger.http("url", "url>>" + url + (StringUtils.empty(txt) ? "" : "?" + txt));
         final Request request = new Request.Builder().url(url + (StringUtils.empty(txt) ? "" : "?" + txt))
                 .addHeader("keep-alive", "false")
-                .addHeader("Authorization", "Bearer " + token)
+                .addHeader("Authorization", token)
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
@@ -176,8 +198,15 @@ public class Http<T> {
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
+                if(act.isFinishing()){
+                    Logger.http("data", "Activity is on isFinishing!");
+                    return;
+                }
+                final int code = response.code();
+                Logger.http("code", ">>" + code);
+                final String data = response.body().string();
+                Logger.http("data", ">>" + data);
                 if (response.isSuccessful()) {
-                    String data = response.body().toString();
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.equals("200")){
 
@@ -185,6 +214,7 @@ public class Http<T> {
                             @Override
                             public void run() {
                                 callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                callback.success(result);
                             }
                         });
                     }else if(result.equals("401")){
@@ -209,12 +239,27 @@ public class Http<T> {
                             }
                         });
                     }
-                } else {
+                } else if(code==401){
                     act.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Logger.http("data", "Not isSuccessful");
-                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                            Logger.http("data", "->Not isSuccessful");
+                            callback.token();
+                        }
+                    });
+                }else{
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String msg = "请求失败!";
+                            Logger.http("data", data);
+                            try {
+                                JSONObject obj = new JSONObject(data);
+                                msg = obj.getString("message");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }

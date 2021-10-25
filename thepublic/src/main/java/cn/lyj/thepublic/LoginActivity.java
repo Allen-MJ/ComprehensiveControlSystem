@@ -1,17 +1,42 @@
 package cn.lyj.thepublic;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 
 import allen.frame.AllenIMBaseActivity;
 import allen.frame.entry.Response;
+import allen.frame.entry.LoginInfo;
 import allen.frame.net.Callback;
-import allen.frame.net.DataHttp;
-import androidx.annotation.Nullable;
-
 import allen.frame.net.Http;
+import allen.frame.tools.CheckUtils;
+import allen.frame.tools.Constants;
+import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
+import allen.frame.widget.ClickDrawEditText;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.lyj.thepublic.data.API;
 
 public class LoginActivity extends AllenIMBaseActivity {
+    @BindView(R2.id.login_phone)
+    AppCompatEditText loginPhone;
+    @BindView(R2.id.login_psw)
+    ClickDrawEditText loginPsw;
+    @BindView(R2.id.login_bt)
+    AppCompatButton loginBt;
+    @BindView(R2.id.login_regist)
+    AppCompatTextView loginRegist;
+    private SharedPreferences shared;
+
     @Override
     protected boolean isStatusBarColorWhite() {
         return false;
@@ -29,33 +54,71 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        new DataHttp().add(API._1, new Object[]{"phone", "18580617183", "password", "123456"}, new Callback<String>() {
-            @Override
-            public void success(String data) {
-
-            }
-
-            @Override
-            public void fail(Response response) {
-
-            }
-        });
-
-        Http.with(this).url(API._1).parameters(new Object[]{}).enqueue(new Callback<String>() {
-            @Override
-            public void success(String data) {
-
-            }
-
-            @Override
-            public void fail(Response response) {
-
-            }
-        }).post();
+        shared = actHelper.getSharedPreferences();
+        loginRegist.setText(Html.fromHtml(getString(R.string.login_regist)));
+        loginPhone.setText(shared.getString(Constants.UserPhone,""));
+        loginPsw.setText(shared.getString(Constants.UserPsw,""));
     }
 
     @Override
     protected void addEvent() {
+        loginPsw.setOnClickDrawListenner(new ClickDrawEditText.onClickDrawListenner() {
+            @Override
+            public void onHide(ClickDrawEditText view) {
+                view.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
 
+            @Override
+            public void onShow(ClickDrawEditText view) {
+                view.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        });
+    }
+
+    @OnClick({R2.id.login_bt, R2.id.login_regist})
+    public void onViewClicked(View view) {
+        view.setEnabled(false);
+        int id = view.getId();
+        if(id==R.id.login_bt){
+            login();
+        }else if(id==R.id.login_regist){
+            startActivity(new Intent(context,RegistActivity.class));
+        }
+        view.setEnabled(true);
+    }
+
+    private void login(){
+        showProgressDialog("正在验证,请稍等...");
+        String phone = loginPhone.getText().toString().trim();
+        String psw = loginPsw.getText().toString().trim();
+        if(StringUtils.empty(phone)){
+            MsgUtils.showMDMessage(this,"请输入手机号!");
+            dismissProgressDialog();
+            return;
+        }
+        if(!CheckUtils.phoneIsOk(phone)){
+            MsgUtils.showMDMessage(this,"请输入正确的手机号!");
+            dismissProgressDialog();
+            return;
+        }
+        if(StringUtils.empty(psw)){
+            MsgUtils.showMDMessage(this,"请输入密码!");
+            dismissProgressDialog();
+            return;
+        }
+        Http.with(this).url(API._2).parameters(new Object[]{"phone",phone,"password",psw}).enqueue(new Callback<LoginInfo>() {
+            @Override
+            public void success(LoginInfo data) {
+                dismissProgressDialog();
+                shared.edit().putString(Constants.UserToken,data.getToken()).apply();
+                startActivity(new Intent(context,HomeActivity.class));
+            }
+
+            @Override
+            public void fail(Response response) {
+                dismissProgressDialog();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        }).post();
     }
 }
