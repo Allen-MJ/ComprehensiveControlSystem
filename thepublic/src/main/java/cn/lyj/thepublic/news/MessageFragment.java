@@ -1,9 +1,7 @@
-package cn.lyj.thepublic.user;
+package cn.lyj.thepublic.news;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.scwang.smart.refresh.footer.ClassicsFooter;
-import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
@@ -25,9 +21,6 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
-import allen.frame.adapter.CommonAdapter;
-import allen.frame.adapter.ViewHolder;
-import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Logger;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
@@ -35,18 +28,20 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.lyj.thepublic.R;
+import cn.lyj.thepublic.R2;
+import cn.lyj.thepublic.entry.MessageEntity;
 
 public class MessageFragment extends Fragment {
 
     Unbinder unbinder;
-    @BindView(R.id.rv)
-    RecyclerView rv;
-    @BindView(R.id.refresh)
+    @BindView(R2.id.message_type)
+    AppCompatTextView messageType;
+    @BindView(R2.id.message_search)
+    SearchView messageSearch;
+    @BindView(R2.id.recyclerview)
+    RecyclerView recyclerview;
+    @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    @BindView(R.id.rdwt_type)
-    AppCompatTextView rdwtType;
-    @BindView(R.id.rdwt_search)
-    SearchView rdwtSearch;
     private ActivityHelper helper;
     private SharedPreferences shared;
     private List<MessageEntity> list, sublist;
@@ -99,7 +94,7 @@ public class MessageFragment extends Fragment {
     private void initUI(View view) {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
-        rv.setLayoutManager(manager);
+        recyclerview.setLayoutManager(manager);
 //        adapter = new RdwtAdapter();
 //        rv.setAdapter(adapter);
 //        refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
@@ -131,12 +126,11 @@ public class MessageFragment extends Fragment {
 
     }
 
-    @OnClick({R.id.rdwt_type})
+    @OnClick({R2.id.message_type, R2.id.message_search})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rdwt_type:
-                loadGroup();
-                break;
+        int id = view.getId();
+        if (id == R.id.message_type) {
+        } else if (id == R.id.message_search) {
         }
     }
 }

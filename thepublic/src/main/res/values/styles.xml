@@ -105,9 +105,72 @@
         <item name="android:textSize">@dimen/frame_text_small_size</item>
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
-        <item name="android:hint">类别</item>
+        <item name="android:hint">@string/message_type</item>
         <item name="android:drawableEnd">@mipmap/ic_logo_down</item>
         <item name="android:background">@drawable/default_input_bg</item>
         <item name="android:textColorHint">@color/text_gray_color</item>
+    </style>
+    <style name="hmzcSearchStyle">
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+        <item name="android:hint">@string/search_key_hint</item>
+        <item name="android:drawableEnd">@mipmap/ic_logo_search</item>
+        <item name="android:background">@drawable/default_input_bg</item>
+        <item name="android:textColorHint">@color/text_gray_color</item>
+    </style>
+    <style name="SearchViewStyle">
+        <item name="inputTextSize">@dimen/frame_text_small_size</item>
+        <item name="inputPadding">@dimen/frame_eight_distance</item>
+        <item name="inputTextColor">@color/text_black_color</item>
+        <item name="inputHint">@string/search_key_hint</item>
+        <item name="android:background">@drawable/default_input_bg</item>
+    </style>
+    <style name="messageItemBlackSmall">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="messageItemBlackNormal">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="newsItemGraySmaller">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">end</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+    </style>
+    <style name="mainItemGraySmallStyle">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="mainModelBlackStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="mainMoreBlueSmall">
+        <item name="android:textColor">@color/main_text_blue_more</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
     </style>
 </resources>

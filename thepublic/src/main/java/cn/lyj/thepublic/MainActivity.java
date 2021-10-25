@@ -28,6 +28,8 @@ import allen.frame.tools.MsgUtils;
 import allen.frame.widget.ContrlScrollViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.lyj.thepublic.news.MessageFragment;
+import cn.lyj.thepublic.square.SquareFragment;
 import cn.lyj.thepublic.user.OwnFragment;
 
 public class MainActivity extends AllenBaseActivity {
@@ -91,8 +93,8 @@ public class MainActivity extends AllenBaseActivity {
         shared = actHelper.getSharedPreferences();
         list = new ArrayList<>();
         list.add(OwnFragment.init());
-        list.add(OwnFragment.init());
-        list.add(OwnFragment.init());
+        list.add(SquareFragment.init());
+        list.add(MessageFragment.init());
         list.add(OwnFragment.init());
         adapter = new FragmentAdapter(getSupportFragmentManager(),list);
         pager.setAdapter(adapter);

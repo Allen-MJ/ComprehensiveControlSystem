@@ -12,17 +12,18 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/frame_eight_distance">
+        android:padding="@dimen/frame_eight_distance"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/rdwt_type"
+            android:id="@+id/message_type"
             style="@style/hmzcChoiceTypeStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minEms="6" />
 
         <allen.frame.widget.SearchView
-            android:id="@+id/rdwt_search"
+            android:id="@+id/message_search"
             style="@style/SearchViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
         app:srlPrimaryColor="@color/colorPrimary">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_background"
