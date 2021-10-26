@@ -31,29 +31,36 @@
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/sys_icon" />
+                    android:src="@mipmap/main_notice_icon" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_title"
-                    style="@style/messageItemBlackNormal"
+                    android:id="@+id/item_source"
+                    style="@style/messageItemBlackSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_date"
-                    style="@style/newsItemGraySmaller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_message"
-                style="@style/messageItemBlackSmall"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/frame_20_distance"/>
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_message"
+                    style="@style/messageItemBlueSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/frame_20_distance" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_date"
+                    style="@style/mainItemGraySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <View

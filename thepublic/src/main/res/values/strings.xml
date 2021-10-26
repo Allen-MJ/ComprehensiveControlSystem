@@ -34,5 +34,14 @@
     <string name="main_notice">公告</string>
     <string name="more_hint">查看更多>></string>
 
+    <string name="square_guan_zu">+ 关注</string>
+    <string name="square_dis_guan_zu">取消关注</string>
+    <string name="square_discuss">评论</string>
+    <string name="square_gz">关注</string>
+    <string name="square_zan">点赞</string>
+
+    <string name="square_discuss_waring_hint">最多可写200字哦</string>
+    <string name="commit_hint">提交</string>
+
     <string name="exit_bt_hint">退出登录</string>
 </resources>

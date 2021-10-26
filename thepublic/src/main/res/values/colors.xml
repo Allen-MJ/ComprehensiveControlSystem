@@ -18,4 +18,6 @@
     <color name="edittext_bg">#F2F2F2</color>
     <color name="grid_text_gray">#C8DFFF</color>
     <color name="main_text_blue_more">#1452EB</color>
+    <color name="main_text_blue">#0B6FEC</color>
+    <color name="square_text_blue">#2F84FB</color>
 </resources>

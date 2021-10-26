@@ -137,6 +137,14 @@
         <item name="android:padding">@dimen/frame_four_distance</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
+    <style name="messageItemBlueSmall">
+        <item name="android:textColor">@color/main_text_blue_more</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
     <style name="messageItemBlackNormal">
         <item name="android:textColor">@color/text_black_color</item>
         <item name="android:textSize">@dimen/frame_text_normal_size</item>
@@ -172,5 +180,149 @@
         <item name="android:singleLine">true</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/frame_eight_distance</item>
+    </style>
+
+    <style name="newsDetailTitleStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="newsDetailDateStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="newsDetailConStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="disYellowSmallerDrawableStyle">
+        <item name="android:textColor">#FF7700</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="disWhiteSmallerStyle">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/frame_eight_distance</item>
+        <item name="android:paddingEnd">@dimen/frame_eight_distance</item>
+        <item name="android:paddingTop">@dimen/frame_four_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_four_distance</item>
+    </style>
+    <style name="disWhiteBigStyle">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_big_size</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_edge_distance</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="disBlackSmallStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+    <style name="disBlueNormalStyle">
+        <item name="android:textColor">@color/text_blue_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:gravity">start</item>
+    </style>
+    <style name="disItemNameStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+    <style name="disItemContentStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start|top</item>
+        <item name="android:minLines">2</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="disItemDateStyle">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:gravity">start</item>
+    </style>
+    <style name="disItemZanStyle">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+    </style>
+
+    <style name="newsItemWhiteSmall">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="newsItemBlackSmall">
+        <item name="android:textColor">@color/text_normal_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
+    <style name="squareBlueNormal">
+        <item name="android:textColor">@color/square_text_blue</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="squareBlackSmall">
+        <item name="android:textColor">@color/text_normal_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/frame_four_distance</item>
+        <item name="android:paddingStart">@dimen/frame_32_distance</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="squareWhiteSmall">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/frame_four_distance</item>
+        <item name="android:paddingStart">@dimen/frame_32_distance</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
+    <style name="discussTextWhiteStyle">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_big_size</item>
+        <item name="android:maxLength">200</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginStart">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginEnd">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginTop">@dimen/frame_edge_distance</item>
+        <item name="android:layout_marginBottom">@dimen/frame_edge_distance</item>
     </style>
 </resources>

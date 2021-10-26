@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
@@ -21,6 +23,8 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.ViewHolder;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
 import allen.frame.widget.SearchView;
@@ -46,6 +50,7 @@ public class SquareNewsFragment extends Fragment {
     private ActivityHelper helper;
     private SharedPreferences shared;
     private List<MessageEntity> list, sublist;
+    private CommonAdapter<MessageEntity> adapter;
     private boolean isRefresh = false;
     private int page = 1;
     private int pageSize = 20;
@@ -100,11 +105,16 @@ public class SquareNewsFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
-//        adapter = new RdwtAdapter();
-//        rv.setAdapter(adapter);
-//        refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
-//        refresh.setRefreshFooter(new ClassicsFooter(getActivity()));
-//        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
+        adapter=new CommonAdapter<MessageEntity>(getContext(),R.layout.item_square_news) {
+            @Override
+            public void convert(ViewHolder holder, MessageEntity entity, int position) {
+
+            }
+        };
+        recyclerview.setAdapter(adapter);
+        refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
+        refresh.setRefreshFooter(new ClassicsFooter(getActivity()));
+        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
     }
 
     private void addEvent(View view) {
