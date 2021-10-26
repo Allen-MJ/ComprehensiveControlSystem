@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:hint="@string/login_phone_hint"
+        android:hint="@string/login_psw_hint"
         android:padding="@dimen/frame_edge_distance"
         android:gravity="center_vertical"
         android:singleLine="true"

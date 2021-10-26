@@ -65,12 +65,12 @@ public class LoginActivity extends AllenIMBaseActivity {
         loginPsw.setOnClickDrawListenner(new ClickDrawEditText.onClickDrawListenner() {
             @Override
             public void onHide(ClickDrawEditText view) {
-                view.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                view.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
 
             @Override
             public void onShow(ClickDrawEditText view) {
-                view.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                view.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
         });
     }
