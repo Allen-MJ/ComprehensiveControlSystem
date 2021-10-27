@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import allen.frame.tools.DateUtils;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.entry.WjdcEntity;
 
@@ -31,7 +32,7 @@ public class WjdcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_ycys, parent, false);
+                .inflate(R.layout.item_wjdc, parent, false);
         v.setLayoutParams(new ViewGroup
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -65,12 +66,13 @@ public class WjdcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             line = itemView.findViewById(R.id.item_line);
         }
 
-        public void bind(WjdcEntity entry, boolean isLast) {
+        public void bind(final WjdcEntity entry, boolean isLast) {
             if (entry != null) {
-                title.setText("[问卷]" + entry.getBt());
-                date.setText(entry.getSumCount() + "人参加");
-                status.setText(getStatusName(entry.getEndday()));
-                status.setBackgroundResource(getStatusResId(entry.getEndday()));
+                title.setText("[问卷]" + entry.getPollTitle());
+//                date.setText(entry.getSumCount() + "人参加");
+                date.setVisibility(View.GONE);
+                status.setText(getStatusName(DateUtils.days(entry.getPollEndtime())));
+                status.setBackgroundResource(getStatusResId(DateUtils.days(entry.getPollEndtime())));
                 icon.setImageResource(R.mipmap.ic_news_vote);
                 line.setVisibility(isLast ? View.INVISIBLE : View.VISIBLE);
                 view.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +89,7 @@ public class WjdcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    private String getStatusName(int status) {
+    private String getStatusName(double status) {
         String name = "";
         if (status < 0) {
             name = "已结束";
@@ -97,7 +99,7 @@ public class WjdcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return name;
     }
 
-    private int getStatusResId(int status) {
+    private int getStatusResId(double status) {
         int resId = 0;
         if (status < 0) {
             resId = R.mipmap.ic_news_vote_status_finish;

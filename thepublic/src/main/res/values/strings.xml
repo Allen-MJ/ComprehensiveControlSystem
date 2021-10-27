@@ -40,6 +40,9 @@
     <string name="square_gz">关注</string>
     <string name="square_zan">点赞</string>
 
+    <string name="discuss_title">#社区治理#\n请您提出宝贵意见</string>
+    <string name="vote_title">#环保调查问卷#</string>
+
     <string name="square_discuss_waring_hint">最多可写200字哦</string>
     <string name="commit_hint">提交</string>
 

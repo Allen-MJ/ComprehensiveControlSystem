@@ -24,28 +24,32 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.tools.Constants;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.lyj.thepublic.R;
+import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.WjdcAdapter;
+import cn.lyj.thepublic.entry.WjdcEntity;
 
 public class WjdcActivity extends AllenBaseActivity {
-    @BindView(R.id.toolbar)
+    @BindView(R2.id.toolbar)
     Toolbar bar;
-    @BindView(R.id.recyclerview)
+    @BindView(R2.id.recyclerview)
     RecyclerView recyclerview;
-    @BindView(R.id.refresh)
+    @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    @BindView(R.id.search)
+    @BindView(R2.id.search)
     SearchView search;
-    @BindView(R.id.layout_search)
+    @BindView(R2.id.layout_search)
     LinearLayoutCompat layoutSearch;
 
     private ActivityHelper helper;
     private SharedPreferences shared;
     private WjdcAdapter adapter;
-    private List<YsjdEntity.WjListBean> sublist;
-    private List<YsjdEntity.WjListBean> list;
+    private List<WjdcEntity> sublist;
+    private List<WjdcEntity> list;
     private boolean isRefresh=false;
     private int uid, gid;
     private int page = 1, pageSize = 20;
@@ -73,7 +77,6 @@ public class WjdcActivity extends AllenBaseActivity {
         layoutSearch.setVisibility(View.VISIBLE);
         shared = actHelper.getSharedPreferences();
         uid=shared.getInt(Constants.UserId,0);
-        gid=shared.getInt(Constants.UserRelateGridId,0);
         refresh.setRefreshHeader(new BezierRadarHeader(context).setEnableHorizontalDrag(true));
         refresh.setRefreshFooter(new ClassicsFooter(context));
         initAdapter();
@@ -91,28 +94,6 @@ public class WjdcActivity extends AllenBaseActivity {
     }
 
     private void loadData() {
-        WebHelper.init().getWjdc(uid, gid, search.getText().toString(),page++, pageSize, new HttpCallBack<List<YsjdEntity.WjListBean>>() {
-            @Override
-            public void onSuccess(List<YsjdEntity.WjListBean> respone) {
-                sublist = respone;
-                loadShow();
-            }
-
-            @Override
-            public void onTodo(Respone respone) {
-            }
-
-            @Override
-            public void tokenErro(Respone respone) {
-                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, respone.getMessage());
-            }
-
-            @Override
-            public void onFailed(Respone respone) {
-                sublist = new ArrayList<>();
-                loadShow();
-            }
-        });
     }
 
 
@@ -126,7 +107,7 @@ public class WjdcActivity extends AllenBaseActivity {
         });
         adapter.setOnItemClickListener(new WjdcAdapter.OnItemClickListener() {
             @Override
-            public void itemClick(View v, YsjdEntity.WjListBean wjListBean) {
+            public void itemClick(View v, WjdcEntity wjListBean) {
                 Intent intent = new Intent(context, VoteActivity.class);
                 intent.putExtra("Wjdc",wjListBean);
                 startActivity(intent);

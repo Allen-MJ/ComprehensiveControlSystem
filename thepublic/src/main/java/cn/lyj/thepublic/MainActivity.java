@@ -28,6 +28,7 @@ import allen.frame.tools.MsgUtils;
 import allen.frame.widget.ContrlScrollViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.lyj.thepublic.main.ServeFragment;
 import cn.lyj.thepublic.news.MessageFragment;
 import cn.lyj.thepublic.square.SquareFragment;
 import cn.lyj.thepublic.user.OwnFragment;
@@ -92,7 +93,7 @@ public class MainActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         shared = actHelper.getSharedPreferences();
         list = new ArrayList<>();
-        list.add(OwnFragment.init());
+        list.add(ServeFragment.init());
         list.add(SquareFragment.init());
         list.add(MessageFragment.init());
         list.add(OwnFragment.init());

@@ -248,12 +248,46 @@ public class DateUtils {
 
     }
 
+    /**
+     * 两个日期间相差天数
+     * @param startDate
+     * @param endDate
+     * @return
+     */
     public static double days(String startDate, String endDate) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");// 输入日期的格式
         Date date1 = null;
         try {
             date1 = simpleDateFormat.parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date date2 = null;
+        try {
+            date2 = simpleDateFormat.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        GregorianCalendar cal1 = new GregorianCalendar();
+        GregorianCalendar cal2 = new GregorianCalendar();
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        double dayCount = (cal2.getTimeInMillis() - cal1.getTimeInMillis()) / (1000 * 3600 * 24);// 从间隔毫秒变成间隔天数
+        return dayCount;
+    }
+
+    /**
+     * 某个日期距离当前时间的天数
+     * @param endDate
+     * @return
+     */
+    public static double days( String endDate) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");// 输入日期的格式
+        Date date1 = null;
+        try {
+            date1 = simpleDateFormat.parse(String.valueOf(new Date()));
         } catch (ParseException e) {
             e.printStackTrace();
         }

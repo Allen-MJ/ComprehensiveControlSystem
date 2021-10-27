@@ -1,6 +1,7 @@
 package cn.lyj.thepublic.entry;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VoteEntity implements Serializable {
@@ -79,6 +80,30 @@ public class VoteEntity implements Serializable {
         private String pollId;
         private String itemValue;
         private List<String> valueList;
+        private List<VoteOption> options;
+
+        public List<VoteOption> getOptions() {
+            return options;
+        }
+
+        public void setChoice(int index, boolean isCheck) {
+            for (int i = 0; i < options.size(); i++) {
+                options.get(i).setChecked(i == index);
+            }
+            options.get(index).setChecked(isCheck);
+        }
+
+        public List<VoteOption> getChoice() {
+            List<VoteOption> chooseList = new ArrayList<>();
+            if (options != null) {
+                for (VoteOption op : options) {
+                    if (op.isChecked()) {
+                        chooseList.add(op);
+                    }
+                }
+            }
+            return chooseList;
+        }
 
         public String getItemId() {
             return itemId;
@@ -142,6 +167,16 @@ public class VoteEntity implements Serializable {
 
         public void setValueList(List<String> valueList) {
             this.valueList = valueList;
+            options=new ArrayList<>();
+            if (valueList!=null){
+                for (String s:valueList
+                     ) {
+                    VoteOption option=new VoteOption();
+                    option.setValue(s);
+                    option.setChecked(false);
+                    options.add(option);
+                }
+            }
         }
     }
 }

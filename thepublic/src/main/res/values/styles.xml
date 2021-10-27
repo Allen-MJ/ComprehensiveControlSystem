@@ -212,6 +212,11 @@
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
     </style>
+    <style name="voteYellowNormalStyle">
+        <item name="android:textColor">@color/text_yellow_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:gravity">start</item>
+    </style>
     <style name="disWhiteSmallerStyle">
         <item name="android:textColor">@color/text_white_color</item>
         <item name="android:textSize">@dimen/frame_text_smaller_size</item>
@@ -324,5 +329,52 @@
         <item name="android:layout_marginEnd">@dimen/frame_eight_distance</item>
         <item name="android:layout_marginTop">@dimen/frame_edge_distance</item>
         <item name="android:layout_marginBottom">@dimen/frame_edge_distance</item>
+    </style>
+
+    <style name="wjdcBlackSmallTitleStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="wjdcGraySmallDateStyle">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="wjdcWhiteSmallerStatusStyle">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="voteItemOptionSmallStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:drawablePadding">@dimen/frame_eight_distance</item>
+        <item name="android:gravity">top|start</item>
+    </style>
+    <style name="voteItemTitleSmallStyle">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ATBlackNomallTitleStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start|center_vertical</item>
     </style>
 </resources>

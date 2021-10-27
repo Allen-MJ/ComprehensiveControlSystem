@@ -16,29 +16,24 @@ import java.util.Map;
 
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.entry.VoteEntity;
+import cn.lyj.thepublic.entry.VoteOption;
 
 
 public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<String> list;
+    private List<VoteOption> list;
     private int count;
     private String type;
     private int status;
-    private Map<String, Boolean> map;
 
     public OptionAdapter(String type, int status) {
         this.type = type;
         this.status = status;
     }
 
-    public void setList(VoteEntity.ItemListBean list, int count) {
-        this.list = list.getValueList();
+    public void setList(List<VoteOption> list, int count) {
+        this.list = list;
         this.count = (count == 0 ? 100 : count);
-        map = new HashMap<>();
-        for (String s : this.list
-        ) {
-            map.put(s, false);
-        }
         notifyDataSetChanged();
     }
 
@@ -77,10 +72,10 @@ public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             bar = itemView.findViewById(R.id.item_percent);
         }
 
-        public void bind(final String entry, final int position) {
+        public void bind(final VoteOption entry, final int position) {
             if (entry != null) {
                 sort.setText((char) (position + 65) + "、");
-                title.setText(entry);
+                title.setText(entry.getValue());
                 bar.setMax(count);
 //                itemcount.setText(entry.getDaCount()+"");
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -93,10 +88,10 @@ public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     itemcount.setVisibility(View.GONE);
                     if (type .equals("1")) {
                         title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
-                                map.get(entry) ? R.mipmap.ic_vote_single_check : R.mipmap.ic_vote_single_uncheck, 0);
+                                entry.isChecked() ? R.mipmap.ic_vote_single_check : R.mipmap.ic_vote_single_uncheck, 0);
                     } else {
                         title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
-                                map.get(entry) ? R.mipmap.ic_vote_multiple_check : R.mipmap.ic_vote_multiple_uncheck, 0);
+                                entry.isChecked() ? R.mipmap.ic_vote_multiple_check : R.mipmap.ic_vote_multiple_uncheck, 0);
                     }
                 } else {
                     title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
@@ -109,7 +104,7 @@ public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         view.setEnabled(false);
                         if (status == 0) {
                             if (listener != null) {
-                                listener.itemChoiceClick(position, !map.get(entry));
+                                listener.itemChoiceClick(position, !entry.isChecked());
                             }
                         }
                         view.setEnabled(true);

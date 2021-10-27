@@ -15,43 +15,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
+import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.VoteAdapter;
+import cn.lyj.thepublic.entry.VoteEntity;
+import cn.lyj.thepublic.entry.WjdcEntity;
 
 public class VoteActivity extends AllenBaseActivity {
-    @BindView(R.id.toolbar)
+    @BindView(R2.id.toolbar)
     Toolbar bar;
-    @BindView(R.id.vote_end)
+    @BindView(R2.id.vote_end)
     AppCompatTextView voteEnd;
-    @BindView(R.id.vote_status)
+    @BindView(R2.id.vote_status)
     AppCompatTextView voteStatus;
-    @BindView(R.id.vote_info)
+    @BindView(R2.id.vote_info)
     AppCompatTextView voteInfo;
-    @BindView(R.id.rv)
+    @BindView(R2.id.rv)
     RecyclerView rv;
-    @BindView(R.id.vote_result)
+    @BindView(R2.id.vote_result)
     AppCompatTextView voteResult;
-    @BindView(R.id.scroll)
+    @BindView(R2.id.scroll)
     NestedScrollView scroll;
-    @BindView(R.id.ok_bt)
+    @BindView(R2.id.ok_bt)
     AppCompatButton okBt;
-    @BindView(R.id.title)
+    @BindView(R2.id.title)
     AppCompatTextView title;
-    @BindView(R.id.tv_vote_title)
+    @BindView(R2.id.tv_vote_title)
     AppCompatTextView tvVoteTitle;
 
     private VoteAdapter adapter;
-    private List<Vote.TgListBean> list;
-    private Vote entry;
+    private List<VoteEntity> list;
+    private VoteEntity.ItemListBean entry;
     private String id;
     private int statu;
     private int uid;
-    private YsjdEntity.WjListBean wjListBean;
+    private WjdcEntity wjListBean;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -74,22 +78,22 @@ public class VoteActivity extends AllenBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         uid = actHelper.getSharedPreferences().getInt(Constants.UserId, 0);
-        wjListBean = (YsjdEntity.WjListBean) getIntent().getSerializableExtra("Wjdc");
-        id = wjListBean.getID();
-        tvVoteTitle.setText("#"+wjListBean.getBt()+"#");
+        wjListBean = (WjdcEntity) getIntent().getSerializableExtra("Wjdc");
+        id = wjListBean.getPollId();
+        tvVoteTitle.setText("#"+wjListBean.getPollTitle()+"#");
         boolean isManager = getIntent().getBooleanExtra(Constants.Key_1, false);
         if (isManager) {
             statu = 1;
             okBt.setVisibility(View.GONE);
         } else {
             statu = 0;
-            if (wjListBean.getDtcount() > 0) {
-                statu = 1;
-            }
-            if (wjListBean.getEndday() < 0) {
-                statu = 1;
-                voteStatus.setText("已结束");
-            }
+//            if (wjListBean.getDtcount() > 0) {
+//                statu = 1;
+//            }
+//            if (wjListBean.getEndday() < 0) {
+//                statu = 1;
+//                voteStatus.setText("已结束");
+//            }
             if (statu == 0) {
                 okBt.setVisibility(View.VISIBLE);
             } else {
@@ -102,8 +106,8 @@ public class VoteActivity extends AllenBaseActivity {
         rv.setLayoutManager(manager);
         adapter = new VoteAdapter(statu);
         rv.setAdapter(adapter);
-        voteInfo.setText(wjListBean.getBt());
-        voteEnd.setText("结束时间:"+wjListBean.getEndTime());
+        voteInfo.setText(entry.getItemName());
+        voteEnd.setText("结束时间:"+wjListBean.getPollEndtime());
     }
 
     @Override
@@ -117,78 +121,36 @@ public class VoteActivity extends AllenBaseActivity {
     }
 
     private void loadData() {
-        WebHelper.init().getWjdcInfo(id, new HttpCallBack<List<Vote>>() {
-            @Override
-            public void onSuccess(List<Vote> respone) {
-                entry = respone.get(0);
-                list = entry.getTgList();
-                adapter.setList(list, wjListBean.getDtcount());
-            }
-
-            @Override
-            public void onTodo(Respone respone) {
-
-            }
-
-            @Override
-            public void tokenErro(Respone respone) {
-
-            }
-
-            @Override
-            public void onFailed(Respone respone) {
-                MsgUtils.showLongToast(context, respone.getMessage());
-            }
-        });
+//        WebHelper.init().getWjdcInfo(id, new HttpCallBack<List<Vote>>() {
+//            @Override
+//            public void onSuccess(List<Vote> respone) {
+//                entry = respone.get(0);
+//                list = entry.getTgList();
+//                adapter.setList(list, wjListBean.getDtcount());
+//            }
+//
+//            @Override
+//            public void onTodo(Respone respone) {
+//
+//            }
+//
+//            @Override
+//            public void tokenErro(Respone respone) {
+//
+//            }
+//
+//            @Override
+//            public void onFailed(Respone respone) {
+//                MsgUtils.showLongToast(context, respone.getMessage());
+//            }
+//        });
     }
 
-    @OnClick(R.id.ok_bt)
+    @OnClick(R2.id.ok_bt)
     public void onViewClicked() {
-        List<Vote.TgListBean> chooseBean = adapter.getList();
-        List<Vote.TgListBean.XxListBean> chooseOption = new ArrayList<>();
-        for (Vote.TgListBean tg : chooseBean) {
-            chooseOption.addAll(tg.getChoice());
-        }
-        if (chooseOption.isEmpty()) {
-            MsgUtils.showMDMessage(context, "您还没有进行投票,请选择后再提交!");
-            return;
-        }
-        StringBuffer stringBuffer = new StringBuffer();
-        for (Vote.TgListBean.XxListBean xx : chooseOption
-        ) {
-            stringBuffer.append(xx.getXxZm() + "_" + xx.getTgID() + ",");
-        }
-        stringBuffer.deleteCharAt(stringBuffer.length() - 1);
-        Logger.e("choose:------", stringBuffer.toString());
-        showProgressDialog("正在提交，请稍候...");
-        submit(stringBuffer.toString());
     }
 
     private void submit(String wjdc) {
-        WebHelper.init().submitVote(wjdc, entry.getBtID(), uid, new HttpCallBack() {
-            @Override
-            public void onSuccess(Object respone) {
-
-            }
-
-            @Override
-            public void onTodo(Respone respone) {
-                dismissProgressDialog();
-                MsgUtils.showLongToast(context, "提交成功！");
-                finish();
-            }
-
-            @Override
-            public void tokenErro(Respone respone) {
-
-            }
-
-            @Override
-            public void onFailed(Respone respone) {
-                dismissProgressDialog();
-                MsgUtils.showMDMessage(context, respone.getMessage());
-            }
-        });
     }
 
 }

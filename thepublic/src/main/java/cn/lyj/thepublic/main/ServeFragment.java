@@ -150,6 +150,7 @@ public class ServeFragment extends Fragment {
         int id = view.getId();
         if (id == R.id.layout_baoliao) {
         } else if (id == R.id.layout_wenjuan) {
+            startActivity(new Intent(getContext(),WjdcActivity.class));
         } else if (id == R.id.layout_jindu) {
         } else if (id == R.id.notice_more) {
         }

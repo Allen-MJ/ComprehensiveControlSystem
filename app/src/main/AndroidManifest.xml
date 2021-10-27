@@ -46,6 +46,18 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.RegistActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.main.VoteActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.square.DiscussActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.main.WjdcActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.square.NewsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.user.UserInfoActivity"
+            android:screenOrientation="portrait"/>
         <!--基础通用界面start-->
         <activity
             android:name="allen.frame.MultiImageSelectorActivity"
@@ -62,6 +74,7 @@
             android:screenOrientation="sensor" />
         <activity android:name="com.huawei.hms.hmsscankit.ScanKitActivity" />
         <activity android:name="allen.frame.AllenMapActivity"/>
+
         <activity android:name="allen.frame.AllenPicsActivity"
             android:screenOrientation="portrait"/>
         <!--基础通用界面end-->

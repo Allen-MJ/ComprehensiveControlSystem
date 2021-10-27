@@ -9,10 +9,12 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.entry.VoteEntity;
+import cn.lyj.thepublic.entry.VoteOption;
 
 
 public class VoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -22,18 +24,20 @@ public class VoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int status;
     private int maxcount;
 
-    public VoteAdapter(int status){
+    public VoteAdapter(int status) {
         this.status = status;
     }
-    public VoteAdapter(){
+
+    public VoteAdapter() {
     }
-    public void setList(List<VoteEntity.ItemListBean> list, int maxcount){
+
+    public void setList(List<VoteEntity.ItemListBean> list, int maxcount) {
         this.list = list;
-        this.maxcount=maxcount;
+        this.maxcount = maxcount;
         notifyDataSetChanged();
     }
 
-    public List<VoteEntity.ItemListBean> getList(){
+    public List<VoteEntity.ItemListBean> getList() {
         return list;
     }
 
@@ -50,20 +54,21 @@ public class VoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return list==null?0:list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ObjectHolder objectHolder = (ObjectHolder) holder;
-        objectHolder.bind(list.get(position),position);
+        objectHolder.bind(list.get(position), position);
     }
 
-    public class ObjectHolder extends RecyclerView.ViewHolder{
+    public class ObjectHolder extends RecyclerView.ViewHolder {
 
-        private AppCompatTextView sort,title;
+        private AppCompatTextView sort, title;
         private RecyclerView option;
         private OptionAdapter adapter;
+
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
             sort = itemView.findViewById(R.id.item_sort);
@@ -73,18 +78,19 @@ public class VoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             manager.setOrientation(LinearLayoutManager.VERTICAL);
             option.setLayoutManager(manager);
         }
-        public void bind(VoteEntity.ItemListBean entry, final int position){
-            if(entry!=null){
-                adapter = new OptionAdapter(entry.getItemType(),status);
-                adapter.setList(entry,maxcount);
+
+        public void bind(final VoteEntity.ItemListBean entry, final int position) {
+            if (entry != null) {
+                adapter = new OptionAdapter(entry.getItemType(), status);
+                adapter.setList(entry.getOptions(), maxcount);
                 option.setAdapter(adapter);
-                sort.setText((position+1)+"、");
-                title.setText((entry.getItemType().equals("2")?"(单选)":"(多选)")+entry.getItemName());
+                sort.setText((position + 1) + "、");
+                title.setText((entry.getItemType().equals("2") ? "(单选)" : "(多选)") + entry.getItemName());
                 adapter.setOnItemClickListener(new OptionAdapter.OnItemClickListener() {
                     @Override
                     public void itemChoiceClick(int index, boolean isCheck) {
-//                        list.get(position).setChoice(index,isCheck);
-//                        notifyItemChanged(position);
+                        list.get(position).setChoice(index,isCheck);
+                        notifyItemChanged(position);
                     }
                 });
             }
