@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/squre_bg">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/news_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable"
+        app:tabIndicatorHeight="@dimen/frame_two_distance"
+        app:tabSelectedTextColor="#0B6FEC"
+        app:tabTextColor="@color/text_black_color"
+        app:tabTextAppearance="@style/TabLayout.Text.Style"
+        app:tabPadding="@dimen/frame_eight_distance"
+        android:layout_marginTop="@dimen/frame_eight_distance"
+        android:layout_marginStart="@dimen/frame_eight_distance"
+        android:layout_marginEnd="@dimen/frame_eight_distance"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_line_color"
+        android:layout_marginStart="@dimen/frame_eight_distance"
+        android:layout_marginEnd="@dimen/frame_eight_distance"/>
+    <allen.frame.widget.ContrlScrollViewPager
+        android:id="@+id/news_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:iscanscroll="true"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

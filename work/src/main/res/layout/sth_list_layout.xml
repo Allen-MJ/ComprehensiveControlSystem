@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/alen_toolbar_layout"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="1dp"
+        android:layout_marginBottom="@dimen/frame_two_distance">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/key_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/frame_eight_distance"
+                android:hint="请输入关键字"
+                android:singleLine="true"
+                android:textColor="@color/text_gray_color"
+                android:textSize="@dimen/frame_text_normal_size"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/key_bt"
+                android:layout_width="@dimen/frame_32_distance"
+                android:layout_height="@dimen/frame_32_distance"
+                android:src="@drawable/ic_search_icon"
+                android:scaleType="fitCenter"
+                android:layout_margin="@dimen/frame_eight_distance"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+    <include layout="@layout/alen_progress_layout"/>
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/mater"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>

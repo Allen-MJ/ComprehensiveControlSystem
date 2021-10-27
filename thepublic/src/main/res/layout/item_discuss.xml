@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="top">
+    <allen.frame.widget.CircleImageView
+        android:id="@+id/item_icon"
+        android:layout_width="@dimen/frame_32_distance"
+        android:layout_height="@dimen/frame_32_distance"
+        app:border_width="0dp"
+        app:border_color="@android:color/transparent"
+        android:src="@mipmap/ic_degault_photo"
+        android:layout_marginTop="@dimen/frame_eight_distance"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/frame_eight_distance"
+        android:paddingEnd="@dimen/frame_eight_distance">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/frame_eight_distance">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/frame_32_distance"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/frame_eight_distance"
+                style="@style/disItemNameStyle"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/disItemDateStyle"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/disItemContentStyle"/>
+        <View style="@style/HalfGrayLine"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
