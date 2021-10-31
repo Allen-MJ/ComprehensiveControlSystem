@@ -9,7 +9,7 @@ public class Response implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String code;
 	private String msg;
-	private String obj;
+	private Object obj;
 	public Response() {
 		super();
 	}
@@ -37,10 +37,10 @@ public class Response implements Serializable {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	public String getObj() {
+	public Object getObj() {
 		return obj;
 	}
-	public void setObj(String obj) {
+	public void setObj(Object obj) {
 		this.obj = obj;
 	}
 	public boolean equals(String ... codes){
