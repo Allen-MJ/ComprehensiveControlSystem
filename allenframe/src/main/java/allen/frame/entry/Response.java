@@ -43,7 +43,7 @@ public class Response implements Serializable {
 	public void setObj(Object obj) {
 		this.obj = obj;
 	}
-	public boolean equals(String ... codes){
+	public boolean xequals(String ... codes){
 		boolean isok = false;
 		if(codes==null){
 			throw new NullPointerException("code is empty");

@@ -104,7 +104,7 @@ public class Http<T> {
                 Logger.http("data", ">>" + data);
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
-                    if(result.equals("200")){
+                    if(result.xequals("200")){
 
                         act.runOnUiThread(new Runnable() {
                             @Override
@@ -113,7 +113,7 @@ public class Http<T> {
                                 callback.success(result);
                             }
                         });
-                    }else if(result.equals("401")){
+                    }else if(result.xequals("401")){
                         act.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
