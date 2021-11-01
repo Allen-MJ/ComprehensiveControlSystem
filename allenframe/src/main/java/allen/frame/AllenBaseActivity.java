@@ -3,6 +3,7 @@ package allen.frame;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 	public Context context = this;
 	private AppCompatTextView titleat;
 	private Unbinder unbinder;
+	public SharedPreferences shared;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 			}
 		}
 		setContentView(getLayoutResID());
+		shared = actHelper.getSharedPreferences();
 		unbinder = ButterKnife.bind(this);
 		initBar();
 		initUI(savedInstanceState);
