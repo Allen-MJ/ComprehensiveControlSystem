@@ -377,4 +377,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">start|center_vertical</item>
     </style>
+
+    <style name="contentNormal8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+    </style>
 </resources>

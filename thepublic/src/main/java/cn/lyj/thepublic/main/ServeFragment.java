@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import allen.frame.BaseFragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -36,7 +37,7 @@ import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.FyAdapter;
 import cn.lyj.thepublic.entry.Notice;
 
-public class ServeFragment extends Fragment {
+public class ServeFragment extends BaseFragment {
 
     Unbinder unbinder;
     @BindView(R2.id.main_bg)
@@ -55,7 +56,6 @@ public class ServeFragment extends Fragment {
     RecyclerView rvNotice;
     @BindView(R2.id.scroll)
     NestedScrollView scroll;
-    private ActivityHelper helper;
     private SharedPreferences shared;
 
     private FyAdapter fyAdapter;
@@ -67,25 +67,15 @@ public class ServeFragment extends Fragment {
         return fragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_serve, container, false);
-        helper = new ActivityHelper(getActivity(), view);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected int getLayoutResID() {
+        return R.layout.fragment_serve;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        shared = helper.getSharedPreferences();
+        shared = actHelper.getSharedPreferences();
         initUI(view);
         addEvent(view);
     }

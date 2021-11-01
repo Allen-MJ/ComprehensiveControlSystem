@@ -3,12 +3,11 @@ package cn.lyj.thepublic;
 import android.os.Bundle;
 import android.view.View;
 
-import allen.frame.AllenBaseActivity;
 import allen.frame.AllenIMBaseActivity;
 import allen.frame.entry.LoginInfo;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
-import allen.frame.net.Http;
+import allen.frame.net.Https;
 import allen.frame.tools.CheckUtils;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
@@ -17,7 +16,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.data.API;
 
@@ -98,20 +96,23 @@ public class RegistActivity extends AllenIMBaseActivity {
             return;
         }
         showProgressDialog("正在验证,请稍等...");
-        Http.with(this).url(API._1)
-                .parameters(new String[]{"phone",phone,"password",psw}).enqueue(new Callback<LoginInfo>() {
-            @Override
-            public void success(LoginInfo data) {
-                dismissProgressDialog();
-                MsgUtils.showShortToast(context,"注册成功!");
-                finish();
-            }
+        Https.with(this).url(API._1)
+            .addParam("phone",phone)
+            .addParam("password",psw)
+            .post()
+            .enqueue(new Callback<LoginInfo>() {
+                @Override
+                public void success(LoginInfo data) {
+                    dismissProgressDialog();
+                    MsgUtils.showShortToast(context,"注册成功!");
+                    finish();
+                }
 
-            @Override
-            public void fail(Response response) {
-                dismissProgressDialog();
-                MsgUtils.showMDMessage(context,response.getMsg());
-            }
-        }).post();
+                @Override
+                public void fail(Response response) {
+                    dismissProgressDialog();
+                    MsgUtils.showMDMessage(context,response.getMsg());
+                }
+            });
     }
 }

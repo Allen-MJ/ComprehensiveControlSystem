@@ -57,8 +57,12 @@ public class LoginActivity extends AllenIMBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         shared = actHelper.getSharedPreferences();
         loginRegist.setText(Html.fromHtml(getString(R.string.login_regist)));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         loginPhone.setText(shared.getString(Constants.UserPhone,""));
-        loginPsw.setText(shared.getString(Constants.UserPsw,""));
     }
 
     @Override

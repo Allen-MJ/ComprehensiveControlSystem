@@ -6,7 +6,18 @@
     <string name="menu_wd">我的</string>
     <string name="menu_action_notice">通知</string>
     <!--main end-->
-
+    <!--首页start-->
+    <string name="tip_dw">受理单位</string>
+    <string name="tip_fyr">反映人</string>
+    <string name="tip_phone">联系电话</string>
+    <string name="tip_sfz">身份证号</string>
+    <string name="tip_sex">性别</string>
+    <string name="tip_grid">所在网格</string>
+    <string name="tip_address">地址</string>
+    <string name="tip_gps">定位</string>
+    <string name="tip_content">写下自己要爆料的内容</string>
+    <string name="tip_add_file">添加附件</string>
+    <!--首页end-->
     <!--我的 start-->
     <string name="public_user_gz">我的关注</string>
     <string name="public_user_zan">我的点赞</string>
