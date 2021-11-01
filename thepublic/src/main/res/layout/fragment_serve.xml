@@ -4,7 +4,7 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/white"
     android:scrollbars="none">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,13 +14,15 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/frame_20_distance">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/main_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/serve_bg"
+                android:layout_marginBottom="@dimen/frame_30_distance"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -148,9 +150,7 @@
             style="@style/mainModelBlackStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/frame_four_distance"
-            android:layout_marginTop="@dimen/frame_30_distance"
-            android:layout_marginBottom="@dimen/frame_four_distance"
+            android:padding="@dimen/frame_four_distance"
             android:text="@string/main_life_service" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -167,11 +167,12 @@
                 style="@style/mainModelBlackStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/frame_four_distance"
                 android:layout_marginTop="@dimen/frame_four_distance"
                 android:layout_marginBottom="@dimen/frame_four_distance"
+                android:layout_weight="1"
                 android:text="@string/main_notice" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/notice_more"
                 style="@style/mainMoreBlueSmall"

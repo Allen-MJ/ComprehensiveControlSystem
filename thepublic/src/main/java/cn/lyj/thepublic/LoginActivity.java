@@ -120,7 +120,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                             .putString(Constants.UserToken,data.getToken())
                             .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                             .apply();
-                    startActivity(new Intent(context,HomeActivity.class));
+                    startActivity(new Intent(context,MainActivity.class));
                 }
 
                 @Override

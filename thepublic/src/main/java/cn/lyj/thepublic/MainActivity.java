@@ -82,11 +82,11 @@ public class MainActivity extends AllenBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(shared.getBoolean(Constants.UserIsPeaceman,false)||shared.getBoolean(Constants.UserIsAdmin,false)){
-            bottom.getMenu().getItem(2).setVisible(true);
-        }else{
-            bottom.getMenu().getItem(2).setVisible(false);
-        }
+//        if(shared.getBoolean(Constants.UserIsPeaceman,false)||shared.getBoolean(Constants.UserIsAdmin,false)){
+//            bottom.getMenu().getItem(2).setVisible(true);
+//        }else{
+//            bottom.getMenu().getItem(2).setVisible(false);
+//        }
     }
 
     @Override
@@ -113,11 +113,11 @@ public class MainActivity extends AllenBaseActivity {
         });
         bottom.setOnNavigationItemSelectedListener(listener);
         bottom.setSelectedItemId(R.id.item_serve);
-        if(shared.getBoolean(Constants.UserIsPeaceman,false)||shared.getBoolean(Constants.UserIsAdmin,false)){
-            bottom.getMenu().getItem(2).setVisible(true);
-        }else{
-            bottom.getMenu().getItem(2).setVisible(false);
-        }
+//        if(shared.getBoolean(Constants.UserIsPeaceman,false)||shared.getBoolean(Constants.UserIsAdmin,false)){
+//            bottom.getMenu().getItem(2).setVisible(true);
+//        }else{
+//            bottom.getMenu().getItem(2).setVisible(false);
+//        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
