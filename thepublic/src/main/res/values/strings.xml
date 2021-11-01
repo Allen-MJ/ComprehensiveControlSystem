@@ -12,6 +12,8 @@
     <string name="tip_phone">联系电话</string>
     <string name="tip_sfz">身份证号</string>
     <string name="tip_sex">性别</string>
+    <string name="tip_sex_male">男</string>
+    <string name="tip_sex_female">女</string>
     <string name="tip_grid">所在网格</string>
     <string name="tip_address">地址</string>
     <string name="tip_gps">定位</string>
