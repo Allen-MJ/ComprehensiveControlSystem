@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.AllenIMBaseActivity;
 import allen.frame.entry.LoginInfo;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.data.API;
 
-public class RegistActivity extends AllenBaseActivity {
+public class RegistActivity extends AllenIMBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.regist_phone)
@@ -34,7 +35,7 @@ public class RegistActivity extends AllenBaseActivity {
 
     @Override
     protected boolean isStatusBarColorWhite() {
-        return false;
+        return true;
     }
 
     @Override
@@ -103,6 +104,7 @@ public class RegistActivity extends AllenBaseActivity {
             public void success(LoginInfo data) {
                 dismissProgressDialog();
                 MsgUtils.showShortToast(context,"注册成功!");
+                finish();
             }
 
             @Override

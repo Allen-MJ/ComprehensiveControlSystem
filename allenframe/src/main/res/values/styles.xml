@@ -77,7 +77,12 @@
     	<item name="android:textSize">@dimen/frame_text_big_size</item>
     	<item name="android:textColor">@color/text_white_color</item>
 	</style>
-	
+
+    <style name="Light.Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    	<item name="android:textSize">@dimen/frame_text_big_size</item>
+    	<item name="android:textColor">@color/text_black_color</item>
+	</style>
+
 	<style name="TabLayout.Style" parent="@style/Widget.Design.TabLayout">
 	    <item name="tabTextAppearance">@style/TabLayout.Text.Style</item>
 	    <item name="tabSelectedTextColor">?attr/colorAccent</item>

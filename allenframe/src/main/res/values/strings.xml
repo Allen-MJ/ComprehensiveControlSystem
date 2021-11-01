@@ -26,7 +26,7 @@
     <string name="login_apsw_hint">请再次输入密码</string>
     <string name="login_bt">立即登录</string>
     <string name="login_regist"><![CDATA[<font color="#999999">还没有账号？</font>立即注册&nbsp;>]]></string>
-    <string name="regist_bt">立即登录</string>
+    <string name="regist_bt">注册</string>
     <!--login end-->
 
 </resources>

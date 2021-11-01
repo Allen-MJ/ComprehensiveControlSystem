@@ -13,6 +13,7 @@ import allen.frame.entry.Response;
 import allen.frame.entry.LoginInfo;
 import allen.frame.net.Callback;
 import allen.frame.net.Http;
+import allen.frame.net.Https;
 import allen.frame.tools.CheckUtils;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
@@ -106,19 +107,27 @@ public class LoginActivity extends AllenIMBaseActivity {
             dismissProgressDialog();
             return;
         }
-        Http.with(this).url(API._2).parameters(new Object[]{"phone",phone,"password",psw}).enqueue(new Callback<LoginInfo>() {
-            @Override
-            public void success(LoginInfo data) {
-                dismissProgressDialog();
-                shared.edit().putString(Constants.UserToken,data.getToken()).apply();
-                startActivity(new Intent(context,HomeActivity.class));
-            }
+        Https.with(this).url(API._2)
+            .addParam("phone",phone)
+            .addParam("password",psw)
+            .post()
+            .enqueue(new Callback<LoginInfo>() {
 
-            @Override
-            public void fail(Response response) {
-                dismissProgressDialog();
-                MsgUtils.showMDMessage(context,response.getMsg());
-            }
-        }).post();
+                @Override
+                public void success(LoginInfo data) {
+                    dismissProgressDialog();
+                    shared.edit()
+                            .putString(Constants.UserToken,data.getToken())
+                            .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
+                            .apply();
+                    startActivity(new Intent(context,HomeActivity.class));
+                }
+
+                @Override
+                public void fail(Response response) {
+                    dismissProgressDialog();
+                    MsgUtils.showMDMessage(context,response.getMsg());
+                }
+            });
     }
 }
