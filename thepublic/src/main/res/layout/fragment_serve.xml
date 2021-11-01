@@ -4,6 +4,7 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:scrollbars="none">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/serve_bg"
+                android:layout_marginBottom="@dimen/frame_20_distance"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:scale="0.637"
@@ -25,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/main_bg"
-                android:layout_marginBottom="@dimen/frame_minus_30_distance"
+                android:layout_marginBottom="@dimen/frame_minus_20_distance"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView

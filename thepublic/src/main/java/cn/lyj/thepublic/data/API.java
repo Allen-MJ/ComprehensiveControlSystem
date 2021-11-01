@@ -16,5 +16,13 @@ public class API {
     /**
      * 5.  获取便民服务类别
      */
-    public static final String _getType = "/api/dictDetail?dictName=handy_service_type&page=0&size=9999";
+    public static final String _getType = "/api/dictDetail/queryOfApp?dictName=handy_service_type&page=0&size=9999";
+    /**
+     * 6. 分页查询便民服务信息
+     */
+    public static final String _getSquare = "/api/HandyService/queryOfApp";
+    /**
+     * 分页查询通知公告
+     */
+    public static final String _getNotice = "/api/Notice/queryOfApp";
 }

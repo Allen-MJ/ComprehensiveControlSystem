@@ -37,6 +37,7 @@ public class OkHttpEngine implements HttpEngine {
 
     @Override
     public <T> void post(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+        token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();// 创建OkHttpClient对象。
@@ -136,6 +137,7 @@ public class OkHttpEngine implements HttpEngine {
 
     @Override
     public <T> void get(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+        token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         Logger.http("token", ">>" + token);
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)

@@ -2,6 +2,7 @@ package cn.lyj.thepublic.square;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,15 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
 import allen.frame.widget.SearchView;
@@ -34,7 +39,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.entry.MessageEntity;
+import cn.lyj.thepublic.data.API;
+import cn.lyj.thepublic.entry.SquareMessage;
 
 public class SquareNewsFragment extends Fragment {
 
@@ -49,19 +55,19 @@ public class SquareNewsFragment extends Fragment {
     SmartRefreshLayout refresh;
     private ActivityHelper helper;
     private SharedPreferences shared;
-    private List<MessageEntity> list, sublist;
-    private CommonAdapter<MessageEntity> adapter;
+    private List<SquareMessage.ContentBean> list=new ArrayList<>(), sublist;
+    private CommonAdapter<SquareMessage.ContentBean> adapter;
     private boolean isRefresh = false;
-    private int page = 1;
+    private int page = 0;
     private int pageSize = 20;
     private String lmID, groupID;
-//    private CommonTypeDialog<GroupEntity> dialog;
-    private int  type;
+    //    private CommonTypeDialog<GroupEntity> dialog;
+    private String type;
 
-    public static SquareNewsFragment init(int type) {
+    public static SquareNewsFragment init(String type) {
         SquareNewsFragment fragment = new SquareNewsFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(Constants.Key_1, type);
+        bundle.putString(Constants.Key_1, type);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -85,29 +91,23 @@ public class SquareNewsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         shared = helper.getSharedPreferences();
-        type=  getArguments().getInt(Constants.Key_1);
+        type = getArguments().getString(Constants.Key_1);
         initUI(view);
         addEvent(view);
-//        loadGroup();
-        if (type==0){//关注
-
-        }else {//推荐
-            loadData();
-        }
+        loadData();
     }
 
-    private void loadGroup() {
-        helper.showProgressDialog("");
-
-    }
 
     private void initUI(View view) {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
-        adapter=new CommonAdapter<MessageEntity>(getContext(),R.layout.item_square_news) {
+        adapter = new CommonAdapter<SquareMessage.ContentBean>(getContext(), R.layout.item_square_news) {
             @Override
-            public void convert(ViewHolder holder, MessageEntity entity, int position) {
+            public void convert(ViewHolder holder, SquareMessage.ContentBean entity, int position) {
+                holder.setText(R.id.item_source,entity.getServiceTitle());
+                holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceContent()));
+                holder.setText(R.id.item_date,entity.getCreateTime());
 
             }
         };
@@ -137,7 +137,42 @@ public class SquareNewsFragment extends Fragment {
         });
     }
 
+    /**
+     * serviceType：信息类别，便民服务类别字典值value
+     * page：当前页码，从0开始， 0为第一页
+     * size：每页显示条目数
+     */
     private void loadData() {
+        Https.with(getActivity()).url(API._getSquare)
+                .addParam("serviceType",type)
+                .addParam("page",page++)
+                .addParam("size",pageSize)
+                .get()
+                .enqueue(new Callback<SquareMessage>() {
+                    @Override
+                    public void success(SquareMessage data) {
+                        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        sublist=data.getContent();
+                        if (isRefresh) {
+                            list = sublist;
+                            refresh.finishRefresh();
+                        } else {
+                            if (page == 2) {
+                                list = sublist;
+                            } else {
+                                list.addAll(sublist);
+                            }
+                            refresh.finishLoadMore();
+                        }
+                        adapter.setDatas(list);
+                        refresh.setNoMoreData(helper.isNoMoreData(sublist, pageSize));
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                    }
+                });
 
     }
 

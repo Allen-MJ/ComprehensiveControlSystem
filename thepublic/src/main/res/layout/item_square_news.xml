@@ -27,9 +27,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_source"
-                    style="@style/messageItemBlueSmall"
+                    style="@style/messageItemNormalSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
                     android:layout_weight="1" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -41,6 +43,7 @@
                     android:text="@string/square_guan_zu"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:paddingStart="@dimen/frame_edge_distance"
                     android:paddingEnd="@dimen/frame_edge_distance"
                      />
@@ -61,7 +64,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_message"
-                style="@style/messageItemBlueSmall"
+                style="@style/messageItemNormalSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                  />
@@ -77,6 +80,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:maxLength="10"
                     style="@style/disItemDateStyle"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_zan"
