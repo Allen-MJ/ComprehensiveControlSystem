@@ -22,7 +22,9 @@ import allen.frame.entry.LoginInfo;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Http;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.ContrlScrollViewPager;
 import butterknife.BindView;
@@ -47,7 +49,8 @@ public class SquareFragment extends Fragment {
     private FragmentAdapter adapter;
     private List<Fragment> fragments;
 
-    private String[] tabs ;
+    private String[] tabs;
+    private List<SquareType.ContentBean> lmList;
 
     public static SquareFragment init() {
         SquareFragment fragment = new SquareFragment();
@@ -75,34 +78,39 @@ public class SquareFragment extends Fragment {
         shared = helper.getSharedPreferences();
         fragments = new ArrayList<>();
         loadType();
-        setTab();
-        adapter = new FragmentAdapter(getChildFragmentManager(), fragments, tabs);
-        newsPager.setAdapter(adapter);
-        newsTab.setupWithViewPager(newsPager);
-
         addEvent(view);
     }
 
-    private void setTab() {
-        for (int i = 0; i < tabs.length; i++) {
-            newsTab.addTab(newsTab.newTab().setText(tabs[i]));
-//            newsTab.getTabAt(i).setText(tabs[i]);
-            fragments.add(SquareNewsFragment.init(i));
-        }
-    }
-
-    private void loadType(){
-        Http.with(getActivity()).url(API._getType).parameters(new Object[]{}).enqueue(new Callback<List<SquareType>>() {
+    private void loadType() {
+        Https.with(getActivity())
+                .url(API._getType)
+                .get()
+                .enqueue(new Callback<SquareType>() {
             @Override
-            public void success(List<SquareType> data) {
+            public void success(SquareType data) {
                 helper.dismissProgressDialog();
+
+                lmList=data.getContent();
+                tabs=new String[lmList.size()];
+                for (int i = 0; i <lmList.size() ; i++) {
+                    tabs[i]=lmList.get(i).getLabel();
+                }
+                fragments = new ArrayList<>();
+                for(int i=0;i<lmList.size();i++){
+                    String s=tabs[i];
+                    newsTab.addTab(newsTab.newTab().setText(s));
+                    fragments.add(SquareNewsFragment.init(lmList.get(i).getValue()));
+                }
+                adapter = new FragmentAdapter(getChildFragmentManager(), fragments, tabs);
+                newsPager.setAdapter(adapter);
+                newsTab.setupWithViewPager(newsPager);
             }
 
             @Override
             public void fail(Response response) {
                 helper.dismissProgressDialog();
             }
-        }).get();
+        });
     }
 
     private void addEvent(View view) {

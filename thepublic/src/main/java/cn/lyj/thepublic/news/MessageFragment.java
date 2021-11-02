@@ -13,14 +13,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Logger;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
@@ -29,7 +37,9 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.entry.MessageEntity;
+import cn.lyj.thepublic.data.API;
+import cn.lyj.thepublic.entry.Notice;
+import cn.lyj.thepublic.entry.SquareMessage;
 
 public class MessageFragment extends Fragment {
 
@@ -44,19 +54,15 @@ public class MessageFragment extends Fragment {
     SmartRefreshLayout refresh;
     private ActivityHelper helper;
     private SharedPreferences shared;
-    private List<MessageEntity> list, sublist;
+    private List<Notice.ContentBean> list=new ArrayList<>(), sublist;
+    private CommonAdapter<Notice.ContentBean> adapter;
     private boolean isRefresh = false;
-    private int page = 1;
+    private int page = 0;
     private int pageSize = 20;
     private String lmID, groupID;
-//    private CommonTypeDialog<GroupEntity> dialog;
-//    private MessageLmEntity messageLmEntity;
 
     public static MessageFragment init() {
         MessageFragment fragment = new MessageFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable(Constants.Key_1, lmEntity);
-//        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -79,27 +85,28 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         shared = helper.getSharedPreferences();
-//        messageLmEntity= (MessageLmEntity) getArguments().getSerializable(Constants.Key_1);
         initUI(view);
         addEvent(view);
-//        loadGroup();
         loadData();
     }
 
-    private void loadGroup() {
-        helper.showProgressDialog("");
-
-    }
 
     private void initUI(View view) {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
-//        adapter = new RdwtAdapter();
-//        rv.setAdapter(adapter);
-//        refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
-//        refresh.setRefreshFooter(new ClassicsFooter(getActivity()));
-//        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
+        adapter = new CommonAdapter<Notice.ContentBean>(getContext(),R.layout.item_notice) {
+            @Override
+            public void convert(ViewHolder holder, Notice.ContentBean entity, int position) {
+                holder.setText(R.id.item_source,entity.getNoticeTitle());
+                holder.setText(R.id.item_message,entity.getNoticeSubtitle());
+                holder.setText(R.id.item_date,entity.getUpdateTime());
+            }
+        };
+        recyclerview.setAdapter(adapter);
+        refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
+        refresh.setRefreshFooter(new ClassicsFooter(getActivity()));
+
     }
 
     private void addEvent(View view) {
@@ -123,6 +130,36 @@ public class MessageFragment extends Fragment {
     }
 
     private void loadData() {
+        Https.with(getActivity()).url(API._getNotice)
+                .addParam("page",page++)
+                .addParam("size",pageSize)
+                .get()
+                .enqueue(new Callback<Notice>() {
+
+            @Override
+            public void success(Notice data) {
+                helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                sublist=data.getContent();
+                if (isRefresh) {
+                    list = sublist;
+                    refresh.finishRefresh();
+                } else {
+                    if (page == 2) {
+                        list = sublist;
+                    } else {
+                        list.addAll(sublist);
+                    }
+                    refresh.finishLoadMore();
+                }
+                adapter.setDatas(list);
+                refresh.setNoMoreData(helper.isNoMoreData(sublist, pageSize));
+            }
+
+            @Override
+            public void fail(Response response) {
+                helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+            }
+        });
 
     }
 
