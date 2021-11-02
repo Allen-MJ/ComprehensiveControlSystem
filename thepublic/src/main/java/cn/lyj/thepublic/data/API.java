@@ -16,5 +16,5 @@ public class API {
     /**
      * 5.  获取便民服务类别
      */
-    public static final String _getType = "/api/dictDetail?dictName=handy_service_type&page=0&size=9999";
+    public static final String _getType = "/api/dictDetail/queryOfApp";
 }

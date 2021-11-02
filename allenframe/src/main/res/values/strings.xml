@@ -30,5 +30,6 @@
     <string name="login_regist"><![CDATA[<font color="#999999">还没有账号？</font>立即注册&nbsp;>]]></string>
     <string name="regist_bt">注册</string>
     <!--login end-->
+    <string name="add_bt">添加</string>
 
 </resources>

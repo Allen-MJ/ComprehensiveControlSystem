@@ -139,6 +139,7 @@ public class ServeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.layout_baoliao) {
+            startActivity(new Intent(getActivity(),TipoffActivity.class));
         } else if (id == R.id.layout_wenjuan) {
             startActivity(new Intent(getContext(),WjdcActivity.class));
         } else if (id == R.id.layout_jindu) {

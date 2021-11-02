@@ -104,6 +104,12 @@ public class StringUtils {
 			}
 		}
 		return result;
+	}
 
+	public static String getFileNameByPath(String path){
+		if(notEmpty(path)){
+			return path.substring(path.lastIndexOf("/"));
+		}
+		return "";
 	}
 }
