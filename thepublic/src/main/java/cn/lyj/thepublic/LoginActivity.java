@@ -37,6 +37,7 @@ public class LoginActivity extends AllenIMBaseActivity {
     @BindView(R2.id.login_regist)
     AppCompatTextView loginRegist;
     private SharedPreferences shared;
+    private boolean isToken = false;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -50,7 +51,7 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initBar() {
-
+        isToken = getIntent().getBooleanExtra(Constants.Key_Token,false);
     }
 
     @Override
@@ -124,7 +125,12 @@ public class LoginActivity extends AllenIMBaseActivity {
                             .putString(Constants.UserToken,data.getToken())
                             .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                             .apply();
-                    startActivity(new Intent(context,HomeActivity.class));
+                    if(isToken){
+                        setResult(RESULT_OK,getIntent());
+                        finish();
+                    }else{
+                        startActivity(new Intent(context,HomeActivity.class));
+                    }
                 }
 
                 @Override

@@ -22,6 +22,7 @@ public class Constants {
 	public static final String Key_2 = "_Key_2";//传递参数2
 	public static final String Key_3 = "_Key_3";//传递参数3
 	public static final String Key_4 = "_Key_4";//传递参数4
+	public static final String Key_Token = "_Key_Token";//token过期标识
 	/*传递常用参数 end*/
 
 	/*权限申请code,跳转返回code start*/
