@@ -11,6 +11,7 @@ import java.util.List;
 
 import allen.frame.R;
 import allen.frame.entry.File;
+import allen.frame.widget.MarqueeView;
 import allen.frame.widget.SquareView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -35,6 +36,14 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void delete(File file){
         files.remove(file);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<String> getPaths(){
+        ArrayList<String> paths = new ArrayList<>();
+        for(File file:files){
+            paths.add(file.getPath());
+        }
+        return paths;
     }
 
     @NonNull
@@ -106,7 +115,7 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     class ObjectHolder extends RecyclerView.ViewHolder{
         private AppCompatImageView delete;
-        private AppCompatTextView name;
+        private MarqueeView name;
         private SquareView icon;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);

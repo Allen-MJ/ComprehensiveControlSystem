@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
+@Deprecated
 public class DataHttp {
     private static final long TIME_OUT = 120;//单位秒S
     private String token;

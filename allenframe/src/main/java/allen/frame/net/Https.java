@@ -5,6 +5,7 @@ import android.app.Activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import allen.frame.entry.File;
 import allen.frame.tools.Constants;
 import allen.frame.tools.StringUtils;
 
@@ -12,10 +13,12 @@ public class Https {
     private static HttpEngine mEngine = new OkHttpEngine();
     private Activity activity;
     private String mUrl;
+    private File mFile;
     private Map<String,Object> mParams;
     private int method = Type_Post;
     public static int Type_Post = 0;
     public static int Type_Get = 1;
+    public static int Type_Upload = 2;
     public Https(Activity activity) {
         this.activity = activity;
         mParams = new HashMap<>();
@@ -54,6 +57,15 @@ public class Https {
         method = Type_Get;
         return this;
     }
+    public Https upload(){
+        method = Type_Upload;
+        return this;
+    }
+
+    public Https file(File file){
+        mFile = file;
+        return this;
+    }
 
     public Https addParam(String key,Object value){
         if(mParams==null){
@@ -78,11 +90,20 @@ public class Https {
         mEngine.get(activity,mUrl,mParams,callback);
     }
 
+    private <T> void upload(Callback<T> callback){
+        mEngine.upload(activity,mUrl,mFile,mParams,callback);
+    }
+
     public <T> void enqueue(Callback<T> callback){
         if(method==Type_Post){
             post(callback);
         }else if(method==Type_Get){
             get(callback);
+        }else if(method==Type_Upload){
+            if(mFile==null){
+                throw new NullPointerException("文件不能为空!");
+            }
+            upload(callback);
         }
     }
 }

@@ -37,6 +37,8 @@ public abstract class Callback<T> {
     public void success() {}
     public void token() {}
 
+    public void onProgress(long total,long current){};
+
     public abstract void fail(Response response);
     public Type getGenericityType() {
         return genType;

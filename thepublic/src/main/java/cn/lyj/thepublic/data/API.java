@@ -12,7 +12,7 @@ public class API {
     /**
      * 公众爆料添加
      */
-    public static final String _3 = "/api/expose";
+    public static final String _3 = "/api/appeal/publicapp";
     /**
      * 5.  获取便民服务类别
      */
@@ -26,4 +26,8 @@ public class API {
      */
     public static final String _getNotice = "/api/Notice/queryOfApp";
     public static final String _getType = "/api/dictDetail/queryOfApp";
+    /**
+     * 附件上传
+     */
+    public static final String upload = "/api/localStorage/app";
 }

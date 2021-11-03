@@ -12,8 +12,14 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.MultiImageSelector;
 import allen.frame.adapter.AllenFileChoiceAdapter;
 import allen.frame.entry.File;
+import allen.frame.entry.Response;
+import allen.frame.entry.UploadFile;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.FileIntent;
 import allen.frame.tools.FileUtils;
+import allen.frame.tools.Logger;
 import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -26,6 +32,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
+import cn.lyj.thepublic.data.API;
 
 public class TipoffActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
@@ -36,10 +43,6 @@ public class TipoffActivity extends AllenBaseActivity {
     AppCompatEditText tipFyr;
     @BindView(R2.id.tip_phone)
     AppCompatEditText tipPhone;
-    @BindView(R2.id.sex_male)
-    RadioButton sexMale;
-    @BindView(R2.id.sex_female)
-    RadioButton sexFemale;
     @BindView(R2.id.tip_sex)
     RadioGroup tipSex;
     @BindView(R2.id.tip_grid)
@@ -75,6 +78,7 @@ public class TipoffActivity extends AllenBaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
             if(requestCode==2){
+                files = new ArrayList<>();
                 assert data != null;
                 ArrayList<String> paths = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
                 for(String path:paths){
@@ -82,7 +86,9 @@ public class TipoffActivity extends AllenBaseActivity {
                     file.setName(StringUtils.getFileNameByPath(path));
                     file.setPath(path);
                     file.setType(0);//图片
+                    file.setSuffix(FileIntent.getMIMEType(file.getFile()));
                     files.add(file);
+                    upload(file);
                 }
                 adapter.setData(files);
             }
@@ -115,8 +121,18 @@ public class TipoffActivity extends AllenBaseActivity {
             @Override
             public void onAddClick() {
                 MultiImageSelector.create()
-                        .multi().showCamera(true).count(6)
+                        .multi().showCamera(true).count(6).origin(adapter.getPaths())
                         .start(TipoffActivity.this,2);
+            }
+        });
+        tipSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.sex_male){
+
+                }else{
+
+                }
             }
         });
     }
@@ -133,5 +149,49 @@ public class TipoffActivity extends AllenBaseActivity {
 
         }
         view.setEnabled(true);
+    }
+
+    private void addTipOff(){
+        Https.with(this).addParam("appealOrgId","").addParam("name","").addParam("phone","").addParam("idNumber","")
+                .addParam("sex","").addParam("point","").addParam("address","").addParam("gid","").addParam("content","")
+                .addParam("fileIds","")
+                .post()
+                .enqueue(new Callback<String>() {
+
+                    @Override
+                    public void success(String data) {
+
+                    }
+
+                    @Override
+                    public void token() {
+
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+
+                    }
+                });
+    }
+
+    private void upload(File file){
+        Https.with(this).url(API.upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+
+            @Override
+            public void success(UploadFile data) {
+                Logger.e("success","success");
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                Logger.e("progress",total+":"+current);
+            }
+
+            @Override
+            public void fail(Response response) {
+                Logger.e("fail","fail");
+            }
+        });
     }
 }

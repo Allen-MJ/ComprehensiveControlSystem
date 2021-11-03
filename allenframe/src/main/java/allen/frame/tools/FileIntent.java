@@ -253,7 +253,7 @@ public class FileIntent {
 		 * 根据文件后缀名获得对应的MIME类型。
 		 * @param file
 		 */ 
-		private static String getMIMEType(File file) { 
+		public static String getMIMEType(File file) {
 		    String type="*/*"; 
 		    String fName = file.getName(); 
 		    //获取后缀名前的分隔符"."在fName中的位置。 

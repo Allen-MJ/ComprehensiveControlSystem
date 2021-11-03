@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<allen.frame.widget.SquareFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/icon_bg_selecor">
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_bt"
-        android:textColor="@color/text_black_color"
-        android:textSize="@dimen/frame_text_normal_size"
-        android:padding="@dimen/frame_four_distance"
-        android:drawableTop="@mipmap/ic_small_add"
-        android:layout_gravity="center"/>
+<allen.frame.widget.SquareFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <allen.frame.widget.ScaleLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_line_color"
+        android:layout_margin="@dimen/frame_eight_distance"
+        android:gravity="center"
+        app:scale="1"
+        android:layout_gravity="center">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_bt"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/frame_text_smaller_size"
+            android:padding="@dimen/frame_four_distance"
+            android:drawableTop="@mipmap/ic_small_add"
+            android:layout_gravity="center"/>
+    </allen.frame.widget.ScaleLinearLayout>
 </allen.frame.widget.SquareFrameLayout>

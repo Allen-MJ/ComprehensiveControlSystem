@@ -126,14 +126,17 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tip_sex_male"
                         android:textColor="@color/text_black_color"
-                        style="@style/contentNormal8Style"/>
+                        style="@style/contentNormal8Style"
+                        android:button="@drawable/frame_radiobutton_selector"/>
                     <RadioButton
                         android:id="@+id/sex_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tip_sex_female"
                         android:textColor="@color/text_black_color"
-                        style="@style/contentNormal8Style"/>
+                        android:layout_marginStart="@dimen/frame_edge_distance"
+                        style="@style/contentNormal8Style"
+                        android:button="@drawable/frame_radiobutton_selector"/>
                 </RadioGroup>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View

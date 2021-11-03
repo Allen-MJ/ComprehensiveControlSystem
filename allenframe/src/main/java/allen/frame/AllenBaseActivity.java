@@ -30,6 +30,7 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		AllenManager.init(getApplication());
+//		Aria.init(getApplicationContext());
 		actHelper = new ActivityHelper(this);
 		AllenManager.getInstance().addActivity(this);
 		super.onCreate(savedInstanceState);
