@@ -28,6 +28,8 @@ public class SearchView extends LinearLayoutCompat {
     private int padding = 10;
     private int textColor = Color.BLACK;
     private String hint;
+    private int resId = 0;
+    private int bgId = 0;
     public SearchView(@NonNull Context context) {
         this(context,null,0);
     }
@@ -45,9 +47,14 @@ public class SearchView extends LinearLayoutCompat {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SearchView, defStyleAttr, 0);
         textSize = a.getDimensionPixelSize(R.styleable.SearchView_inputTextSize, MaterialUtil.dip2px(context,16));
         textColor = a.getColor(R.styleable.SearchView_inputTextColor,Color.BLACK);
+        resId = a.getResourceId(R.styleable.SearchView_searchIcon,R.mipmap.ic_logo_search);
+        bgId = a.getResourceId(R.styleable.SearchView_searchBackground,0);
         hint = a.getString(R.styleable.SearchView_inputHint);
         padding = a.getDimensionPixelOffset(R.styleable.SearchView_inputPadding,MaterialUtil.dip2px(context,8));
         setOrientation(HORIZONTAL);
+        if(bgId!=0){
+            setBackgroundResource(bgId);
+        }
         setGravity(Gravity.CENTER);
         input = new AppCompatEditText(context);
         input.setBackgroundColor(Color.TRANSPARENT);
@@ -58,7 +65,7 @@ public class SearchView extends LinearLayoutCompat {
         input.setHint(hint);
         bt = new AppCompatImageView(context);
         bt.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        bt.setImageResource(R.mipmap.ic_logo_search);
+        bt.setImageResource(resId);
         LinearLayoutCompat.LayoutParams inputParams = new LinearLayoutCompat.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT,1.0f);
         LinearLayoutCompat.LayoutParams btParams = new LinearLayoutCompat.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
         btParams.setMarginEnd(padding);

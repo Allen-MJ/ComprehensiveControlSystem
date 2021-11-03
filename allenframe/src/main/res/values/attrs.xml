@@ -183,6 +183,8 @@
         <attr name="inputHint" format="string" />
         <attr name="inputTextColor" format="reference|color" />
         <attr name="inputPadding" format="dimension" />
+        <attr name="searchIcon" format="reference"/>
+        <attr name="searchBackground" format="reference"/>
     </declare-styleable>
     <declare-styleable name="ShadowLayout">
         <attr name="sl_cornerRadius" format="dimension"/>

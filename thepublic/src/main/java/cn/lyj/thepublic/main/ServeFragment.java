@@ -143,6 +143,7 @@ public class ServeFragment extends BaseFragment {
         } else if (id == R.id.layout_wenjuan) {
             startActivity(new Intent(getContext(),WjdcActivity.class));
         } else if (id == R.id.layout_jindu) {
+            startActivity(new Intent(getContext(),TipOffListActivity.class));
         } else if (id == R.id.notice_more) {
         }
     }

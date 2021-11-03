@@ -382,4 +382,13 @@
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:textSize">@dimen/frame_text_normal_size</item>
     </style>
+    <style name="Small8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+    </style>
+    <style name="Middle8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+    </style>
+
 </resources>
