@@ -10,6 +10,7 @@ public class Response implements Serializable {
 	private String code;
 	private String msg;
 	private Object obj;
+	private int count;
 	public Response() {
 		super();
 	}
@@ -43,6 +44,15 @@ public class Response implements Serializable {
 	public void setObj(Object obj) {
 		this.obj = obj;
 	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public boolean xequals(String ... codes){
 		boolean isok = false;
 		if(codes==null){

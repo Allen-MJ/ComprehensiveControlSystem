@@ -3,33 +3,7 @@ package cn.lyj.thepublic.entry;
 import java.io.Serializable;
 import java.util.List;
 
-public class Notice implements Serializable {
-
-    /**
-     * content : [{"createBy":"admin","createTime":"2021-10-31 16:26:06","deleted":0,"noticeContent":"<p>123213123123<img src=\"http://150.158.184.184:30050\\file\\图片\\tp1-20211031060844209.jpeg\" alt=\"\" width=\"500\" height=\"245\" /><\/p>","noticeId":"c39114e927e546bb89c94834be9adeff","noticeIssuer":"E301D82C-6A40-4FAC-985E-39B4B5F55A1F","noticeSubtitle":"副标题1111111111111111111","noticeTitle":"测试通知1","noticeType":"大足要闻","noticeUp":true,"updateBy":"admin","updateTime":"2021-10-31 18:08:52"}]
-     * totalElements : 1
-     */
-
-    private int totalElements;
-    private List<ContentBean> content;
-
-    public int getTotalElements() {
-        return totalElements;
-    }
-
-    public void setTotalElements(int totalElements) {
-        this.totalElements = totalElements;
-    }
-
-    public List<ContentBean> getContent() {
-        return content;
-    }
-
-    public void setContent(List<ContentBean> content) {
-        this.content = content;
-    }
-
-    public static class ContentBean {
+public class Notice implements Serializable  {
         /**
          * createBy : admin
          * createTime : 2021-10-31 16:26:06
@@ -153,5 +127,4 @@ public class Notice implements Serializable {
         public void setUpdateTime(String updateTime) {
             this.updateTime = updateTime;
         }
-    }
 }

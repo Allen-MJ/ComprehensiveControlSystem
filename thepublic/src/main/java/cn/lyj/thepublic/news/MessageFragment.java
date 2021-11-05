@@ -54,8 +54,8 @@ public class MessageFragment extends Fragment {
     SmartRefreshLayout refresh;
     private ActivityHelper helper;
     private SharedPreferences shared;
-    private List<Notice.ContentBean> list=new ArrayList<>(), sublist;
-    private CommonAdapter<Notice.ContentBean> adapter;
+    private List<Notice> list=new ArrayList<>(), sublist;
+    private CommonAdapter<Notice> adapter;
     private boolean isRefresh = false;
     private int page = 0;
     private int pageSize = 20;
@@ -95,9 +95,9 @@ public class MessageFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
-        adapter = new CommonAdapter<Notice.ContentBean>(getContext(),R.layout.item_notice) {
+        adapter = new CommonAdapter<Notice>(getContext(),R.layout.item_notice) {
             @Override
-            public void convert(ViewHolder holder, Notice.ContentBean entity, int position) {
+            public void convert(ViewHolder holder, Notice entity, int position) {
                 holder.setText(R.id.item_source,entity.getNoticeTitle());
                 holder.setText(R.id.item_message,entity.getNoticeSubtitle());
                 holder.setText(R.id.item_date,entity.getUpdateTime());
@@ -134,12 +134,12 @@ public class MessageFragment extends Fragment {
                 .addParam("page",page++)
                 .addParam("size",pageSize)
                 .get()
-                .enqueue(new Callback<Notice>() {
+                .enqueue(new Callback<List<Notice>>() {
 
             @Override
-            public void success(Notice data) {
+            public void success(List<Notice> data) {
                 helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
-                sublist=data.getContent();
+                sublist=data;
                 if (isRefresh) {
                     list = sublist;
                     refresh.finishRefresh();

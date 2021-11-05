@@ -1,15 +1,10 @@
 package cn.lyj.thepublic.square;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -18,24 +13,20 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.adapter.FragmentAdapter;
-import allen.frame.entry.LoginInfo;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
-import allen.frame.net.Http;
 import allen.frame.net.Https;
-import allen.frame.tools.Constants;
-import allen.frame.tools.Logger;
-import allen.frame.tools.MsgUtils;
 import allen.frame.widget.ContrlScrollViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.lyj.thepublic.MainActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.SquareType;
-import cn.lyj.thepublic.news.MessageFragment;
 
 public class SquareFragment extends Fragment {
 

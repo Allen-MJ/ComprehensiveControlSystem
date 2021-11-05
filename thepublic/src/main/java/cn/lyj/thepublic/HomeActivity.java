@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import cn.lyj.thepublic.main.ServeFragment;
 import cn.lyj.thepublic.news.MessageFragment;
+import cn.lyj.thepublic.square.SquareFragment;
 import cn.lyj.thepublic.user.OwnFragment;
 
 public class HomeActivity extends AllenIMBaseActivity {
@@ -45,8 +46,8 @@ public class HomeActivity extends AllenIMBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         List<Fragment> list = new ArrayList<>();
         list.add(ServeFragment.init());
-        list.add(ServeFragment.init());
 //        list.add(SquareFragment.init());
+        list.add(MessageFragment.init());
         list.add(MessageFragment.init());
         list.add(OwnFragment.init());
         adapter = new FragmentAdapter(getSupportFragmentManager(),list);

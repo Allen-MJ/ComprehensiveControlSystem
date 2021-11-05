@@ -1,13 +1,17 @@
 package cn.lyj.thepublic.main;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.AllenChoiceUnitsActivity;
 import allen.frame.MultiImageSelector;
 import allen.frame.adapter.AllenFileChoiceAdapter;
 import allen.frame.adapter.AllenFileChoiceAdapter.OnItemClickListener;
@@ -21,6 +25,7 @@ import allen.frame.tools.FileIntent;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
+import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -60,6 +65,9 @@ public class TipoffActivity extends AllenBaseActivity {
     AppCompatButton tipBt;
     private AllenFileChoiceAdapter adapter;
     private ArrayList<File> files;
+    private UploadProgressDialog dialog;
+    private Map<String,UploadFile> map;
+    private Map<String,Boolean> keys;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -83,7 +91,9 @@ public class TipoffActivity extends AllenBaseActivity {
             if(requestCode==2){
                 files = new ArrayList<>();
                 assert data != null;
+                keys = new HashMap<>();
                 ArrayList<String> paths = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+                dialog.init(context);
                 for(String path:paths){
                     File file = new File();
                     file.setName(StringUtils.getFileNameByPath(path));
@@ -91,9 +101,13 @@ public class TipoffActivity extends AllenBaseActivity {
                     file.setType(0);//图片
                     file.setSuffix(FileIntent.getMIMEType(file.getFile()));
                     files.add(file);
+                    keys.put(file.getName(),true);
                     upload(file);
                 }
                 adapter.setData(files);
+            }else if(requestCode==3){
+                orgId = data.getStringExtra(Constants.Key_1);
+                tipDw.setText(data.getStringExtra(Constants.Key_2));
             }
         }
     }
@@ -101,11 +115,14 @@ public class TipoffActivity extends AllenBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         files = new ArrayList<>();
+        map = new HashMap<>();
+        keys = new HashMap<>();
         tipPhone.setText(shared.getString(Constants.UserPhone,""));
         GridLayoutManager manager = new GridLayoutManager(context,4);
         tipFile.setLayoutManager(manager);
         adapter = new AllenFileChoiceAdapter();
         tipFile.setAdapter(adapter);
+        dialog = new UploadProgressDialog();
     }
 
     @Override
@@ -132,16 +149,24 @@ public class TipoffActivity extends AllenBaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.sex_male){
-
+                    sex="1";
                 }else{
-
+                    sex="0";
                 }
             }
         });
+        tipSex.check(R.id.sex_female);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
+            @Override
+            public void onComplet(ProgressDialog dialog) {
+                dialog.dismiss();
+                MsgUtils.showShortToast(context,"上传成功!");
             }
         });
     }
@@ -151,7 +176,7 @@ public class TipoffActivity extends AllenBaseActivity {
         view.setEnabled(false);
         int id = view.getId();
         if(id==R.id.tip_dw){
-
+            startActivityForResult(new Intent(context, AllenChoiceUnitsActivity.class),3);
         }else if(id==R.id.tip_grid){
 
         }else if(id==R.id.tip_bt){
@@ -160,7 +185,7 @@ public class TipoffActivity extends AllenBaseActivity {
         view.setEnabled(true);
     }
 
-    private String orgId,name,phone,idNumber,sex,address,gid,content;
+    private String orgId,name,phone,idNumber,sex="0",address,gid,content;
     private void addTipOff(){
         orgId = "";
         name = tipFyr.getText().toString().trim();
@@ -189,10 +214,19 @@ public class TipoffActivity extends AllenBaseActivity {
             MsgUtils.showMDMessage(context,"请输入爆料内容!");
             return;
         }
+        StringBuilder sb = new StringBuilder();
+        if(map.size()>0){
+            for(Map.Entry<String,UploadFile> entry:map.entrySet()){
+                if(keys.get(entry.getKey())){
+                    sb.append(","+entry.getValue().getId());
+                }
+            }
+            sb.delete(0,1);
+        }
         showProgressDialog("正在提交爆料,请稍等...");
         Https.with(this).addParam("appealOrgId",orgId).addParam("name",name).addParam("phone",phone).addParam("idNumber",idNumber)
                 .addParam("sex",sex).addParam("point","").addParam("address",address).addParam("gid",gid).addParam("content",content)
-                .addParam("fileIds","")
+                .addParam("fileIds",sb.toString())
                 .post()
                 .enqueue(new Callback<Object>() {
 
@@ -218,17 +252,19 @@ public class TipoffActivity extends AllenBaseActivity {
                 });
     }
 
-    private void upload(File file){
+    private void upload(final File file){
         Https.with(this).url(API.upload).file(file).upload().enqueue(new Callback<UploadFile>() {
 
             @Override
             public void success(UploadFile data) {
+                map.put(file.getName(),data);
                 Logger.e("success","success");
             }
 
             @Override
             public void onProgress(long total, long current) {
                 Logger.e("progress",total+":"+current);
+                dialog.changeProgress(file.getName(),total,current);
             }
 
             @Override

@@ -81,6 +81,8 @@
 
         <activity android:name="allen.frame.AllenPicsActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="allen.frame.AllenChoiceUnitsActivity"
+            android:screenOrientation="portrait"/>
         <!--基础通用界面end-->
         <!--文件夹权限start-->
         <provider

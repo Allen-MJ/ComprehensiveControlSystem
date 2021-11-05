@@ -34,4 +34,5 @@ public class API {
      * 获取当前人爆料
      */
     public static final String _4 = "/api/appeal/my";
+
 }
