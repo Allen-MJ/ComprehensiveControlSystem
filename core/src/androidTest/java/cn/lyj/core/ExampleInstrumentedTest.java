@@ -1,4 +1,4 @@
-package cn.maoj.core;
+package cn.lyj.core;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("cn.maoj.core.test", appContext.getPackageName());
+        assertEquals("cn.lyj.core.test", appContext.getPackageName());
     }
 }

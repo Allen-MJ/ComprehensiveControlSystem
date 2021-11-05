@@ -1,4 +1,4 @@
-package cn.maoj.core;
+package cn.lyj.core;
 
 import org.junit.Test;
 
