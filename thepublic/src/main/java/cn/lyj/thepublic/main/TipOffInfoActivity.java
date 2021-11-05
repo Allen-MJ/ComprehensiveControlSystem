@@ -3,9 +3,11 @@ package cn.lyj.thepublic.main;
 import android.os.Bundle;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.adapter.AllenFileChoiceAdapter;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.thepublic.R;
@@ -32,6 +34,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
     AppCompatTextView tipInfoContent;
     @BindView(R2.id.tip_info_file)
     RecyclerView tipInfoFile;
+    private AllenFileChoiceAdapter fileChoiceAdapter;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -50,12 +53,14 @@ public class TipOffInfoActivity extends AllenBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-
+        GridLayoutManager manager = new GridLayoutManager(context,4);
+        tipInfoFile.setLayoutManager(manager);
+        fileChoiceAdapter = new AllenFileChoiceAdapter(true);
+        tipInfoFile.setAdapter(fileChoiceAdapter);
     }
 
     @Override
     protected void addEvent() {
-
     }
 
 }

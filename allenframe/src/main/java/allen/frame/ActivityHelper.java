@@ -261,6 +261,8 @@ public class ActivityHelper {
 		return isNoMoreData(size,pageSize);
 	}
 
+	
+
 	public void startActivity(Class<?> cls){
 		Intent intent = new Intent(context, cls);
 		context.startActivity(intent);

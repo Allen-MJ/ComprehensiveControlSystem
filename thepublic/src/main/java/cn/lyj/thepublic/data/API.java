@@ -30,4 +30,8 @@ public class API {
      * 附件上传
      */
     public static final String upload = "/api/localStorage/app";
+    /**
+     * 获取当前人爆料
+     */
+    public static final String _4 = "/api/appeal/my";
 }

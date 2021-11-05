@@ -3,7 +3,6 @@ package cn.lyj.thepublic.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import allen.frame.AllenBaseActivity;
 import allen.frame.MultiImageSelector;
 import allen.frame.adapter.AllenFileChoiceAdapter;
+import allen.frame.adapter.AllenFileChoiceAdapter.OnItemClickListener;
 import allen.frame.entry.File;
 import allen.frame.entry.Response;
 import allen.frame.entry.UploadFile;
@@ -18,7 +18,6 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
-import allen.frame.tools.FileUtils;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
@@ -111,7 +110,7 @@ public class TipoffActivity extends AllenBaseActivity {
 
     @Override
     protected void addEvent() {
-        adapter.setOnItemClickListener(new AllenFileChoiceAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener(){
             @Override
             public void onItemClick(View v, int position, File file) {
 

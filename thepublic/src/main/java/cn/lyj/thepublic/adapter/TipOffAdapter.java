@@ -106,6 +106,6 @@ public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener {
-        void itemClick(View v, SthEntry wjdc, int position);
+        void itemClick(View v, SthEntry entry, int position);
     }
 }

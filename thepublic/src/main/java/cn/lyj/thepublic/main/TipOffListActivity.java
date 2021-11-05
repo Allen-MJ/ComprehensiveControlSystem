@@ -1,5 +1,6 @@
 package cn.lyj.thepublic.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,8 +14,13 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
+import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,9 +28,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import cn.lyj.thepublic.LoginActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.TipOffAdapter;
+import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.SthEntry;
 
 public class TipOffListActivity extends AllenBaseActivity {
@@ -37,6 +45,10 @@ public class TipOffListActivity extends AllenBaseActivity {
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
     private TipOffAdapter adapter;
+    private int page = 0,size = 10;
+    private boolean isRefresh = false;
+    private List<SthEntry> list,sublist;
+    private String mKey = "";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -62,6 +74,7 @@ public class TipOffListActivity extends AllenBaseActivity {
         rv.setLayoutManager(manager);
         adapter = new TipOffAdapter();
         rv.setAdapter(adapter);
+        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
     }
 
@@ -76,29 +89,82 @@ public class TipOffListActivity extends AllenBaseActivity {
         refresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-
+                isRefresh = true;
+                page = 0;
+                loadData();
             }
         });
         refresh.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-
+                isRefresh = false;
+                loadData();
+            }
+        });
+        search.setOnSerchListenner(new SearchView.onSerchListenner() {
+            @Override
+            public void onSerchEvent(String key) {
+                mKey = key;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                isRefresh = false;
+                page = 0;
+                loadData();
+            }
+        });
+        adapter.setOnItemClickListener(new TipOffAdapter.OnItemClickListener() {
+            @Override
+            public void itemClick(View v, SthEntry entry, int position) {
+                startActivity(new Intent(context,TipOffInfoActivity.class));
             }
         });
     }
 
     private void loadData(){
-//        Https.with(this).addParam()
-        List<SthEntry> list = new ArrayList<>();
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        list.add(new SthEntry());
-        adapter.setList(list);
+        Https.with(this).url(API._4).addParam("name",mKey)
+                .addParam("phone",mKey).addParam("idNumber",mKey).addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<SthEntry>>() {
+
+                    @Override
+                    public void success(List<SthEntry> data) {
+                        sublist = data;
+                        showData();
+                    }
+
+                    @Override
+                    public void token() {
+                        sublist = new ArrayList<>();
+                        showData();
+                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        startActivityForResult(new Intent(context, LoginActivity.class)
+                                .putExtra(Constants.Key_Token,true),11);
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        sublist = new ArrayList<>();
+                        showData();
+                    }
+                });
     }
+
+    private void showData() {
+        if (isRefresh) {
+            list = sublist;
+            adapter.setList(list);
+            refresh.finishRefresh();
+        } else if (page == 1) {
+            list = sublist;
+            adapter.setList(list);
+            refresh.finishLoadMore();
+        } else {
+            list.addAll(sublist);
+            adapter.setList(list);
+            refresh.finishLoadMore();
+        }
+        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
+        refresh.setEnableFooterFollowWhenNoMoreData(true);
+        refresh.setNoMoreData(actHelper.isNoMoreData(sublist, size));
+    }
+
 
 }

@@ -16,6 +16,7 @@
         app:searchIcon="@mipmap/ic_search"
         app:searchBackground="@drawable/frame_gray_bg"
         android:layout_margin="@dimen/frame_edge_distance"/>
+    <include layout="@layout/alen_progress_layout"/>
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
