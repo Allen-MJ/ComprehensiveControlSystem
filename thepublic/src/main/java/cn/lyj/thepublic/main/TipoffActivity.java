@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.AllenChoiceGridActivity;
 import allen.frame.AllenChoiceUnitsActivity;
 import allen.frame.MultiImageSelector;
 import allen.frame.adapter.AllenFileChoiceAdapter;
@@ -108,6 +109,9 @@ public class TipoffActivity extends AllenBaseActivity {
             }else if(requestCode==3){
                 orgId = data.getStringExtra(Constants.Key_1);
                 tipDw.setText(data.getStringExtra(Constants.Key_2));
+            }else if(requestCode==4){
+                gid = data.getStringExtra(Constants.Key_1);
+                tipGrid.setText(data.getStringExtra(Constants.Key_2));
             }
         }
     }
@@ -178,7 +182,7 @@ public class TipoffActivity extends AllenBaseActivity {
         if(id==R.id.tip_dw){
             startActivityForResult(new Intent(context, AllenChoiceUnitsActivity.class),3);
         }else if(id==R.id.tip_grid){
-
+            startActivityForResult(new Intent(context, AllenChoiceGridActivity.class),4);
         }else if(id==R.id.tip_bt){
             addTipOff();
         }
@@ -187,12 +191,10 @@ public class TipoffActivity extends AllenBaseActivity {
 
     private String orgId,name,phone,idNumber,sex="0",address,gid,content;
     private void addTipOff(){
-        orgId = "";
         name = tipFyr.getText().toString().trim();
         phone = tipPhone.getText().toString().trim();
         idNumber = tipSfz.getText().toString().trim();
         address = tipAddress.getText().toString().trim();
-        gid = "";
         content = tipContent.getText().toString().trim();
         if(StringUtils.empty(orgId)){
             MsgUtils.showMDMessage(context,"请选择受理单位!");
@@ -224,7 +226,7 @@ public class TipoffActivity extends AllenBaseActivity {
             sb.delete(0,1);
         }
         showProgressDialog("正在提交爆料,请稍等...");
-        Https.with(this).addParam("appealOrgId",orgId).addParam("name",name).addParam("phone",phone).addParam("idNumber",idNumber)
+        Https.with(this).url(API._3).addParam("appealOrgId",orgId).addParam("name",name).addParam("phone",phone).addParam("idNumber",idNumber)
                 .addParam("sex",sex).addParam("point","").addParam("address",address).addParam("gid",gid).addParam("content",content)
                 .addParam("fileIds",sb.toString())
                 .post()
