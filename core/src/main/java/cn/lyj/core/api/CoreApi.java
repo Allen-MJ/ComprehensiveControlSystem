@@ -1,4 +1,4 @@
-package cn.lyj.core.data;
+package cn.lyj.core.api;
 
 public class CoreApi {
     /**
