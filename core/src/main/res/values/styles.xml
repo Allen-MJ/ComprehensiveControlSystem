@@ -1,3 +1,10 @@
 <resources>
-
+    <style name="CoreSmall8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+    </style>
+    <style name="CoreMiddle8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+    </style>
 </resources>

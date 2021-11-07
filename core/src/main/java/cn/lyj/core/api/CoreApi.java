@@ -32,5 +32,13 @@ public class CoreApi {
     /**
      * 流动人口查询
      */
-    public static final String _core_5 = "/api/tb13/appQuery";
+    public static final String _core_8 = "/api/tb13/appQuery";
+    /**
+     * 实有房屋查询
+     */
+    public static final String _core_9 = "/api/houseinfo/appQuery";
+    /**
+     * 出租房查询
+     */
+    public static final String _core_10 = "/api/tb16/appQuery";
 }

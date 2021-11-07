@@ -130,4 +130,30 @@ public class StringUtils {
 		return fileSizeString;
 	}
 
+	/**
+	 * 替换字符
+	 * @param param
+	 * @param start 1开始
+	 * @param end
+	 * @param s 字符
+	 * @return
+	 */
+	public static String hideStr(String param,int start,int end,CharSequence s){
+		if(empty(param)){
+			return "";
+		}
+		int len = param.length();
+		if(len<start||len<end){
+			throw new IndexOutOfBoundsException("起始位置设置错位！");
+		}
+		StringBuffer sb = new StringBuffer();
+		for(int i=0;i<len;i++){
+			if(i<start-1||i>=end){
+				sb.append(param.charAt(i));
+			}else{
+				sb.append(s)
+			}
+		}
+	}
+
 }

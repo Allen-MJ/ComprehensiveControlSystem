@@ -1,6 +1,5 @@
-package cn.lyj.core.person;
+package cn.lyj.core.house;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -34,9 +33,9 @@ import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.Person;
 
 /**
- * 实有人口管理列表
+ * 房屋管理列表
  */
-public class PersonListActivity extends AllenBaseActivity {
+public class HouseListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
