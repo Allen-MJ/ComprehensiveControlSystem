@@ -1,5 +1,6 @@
 package cn.lyj.thepublic.main;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import allen.frame.AllenBaseActivity;
@@ -25,6 +27,7 @@ import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
 import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
@@ -144,9 +147,20 @@ public class TipoffActivity extends AllenBaseActivity {
 
             @Override
             public void onAddClick() {
-                MultiImageSelector.create()
-                        .multi().showCamera(true).count(6).origin(adapter.getPaths())
-                        .start(TipoffActivity.this,2);
+                requestRunPermisssion(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                ,10,new PermissionListener(){
+                            @Override
+                            public void onGranted(int requestCode) {
+                                MultiImageSelector.create()
+                                        .multi().showCamera(true).count(6).origin(adapter.getPaths())
+                                        .start(TipoffActivity.this,2);
+                            }
+
+                            @Override
+                            public void onDenied(List<String> deniedPermission) {
+                                MsgUtils.showShortToast(context,"上传需要开通权限!");
+                            }
+                        });
             }
         });
         tipSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

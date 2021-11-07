@@ -4,17 +4,23 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StatusBarUtil;
 import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -26,6 +32,7 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 	private AppCompatTextView titleat;
 	private Unbinder unbinder;
 	public SharedPreferences shared;
+	private PermissionListener mListener;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,4 +135,42 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 		AllenManager.getInstance().exitApp();
 	}
 
+	public void requestRunPermisssion(String[] permissions, int requestCode, PermissionListener listener){
+		mListener = listener;
+		List<String> permissionLists = new ArrayList<>();
+		for(String permission : permissions){
+			if(ActivityCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED){
+				permissionLists.add(permission);
+			}
+		}
+
+		if(!permissionLists.isEmpty()){
+			ActivityCompat.requestPermissions(this, permissionLists.toArray(new String[permissionLists.size()]), requestCode);
+		}else{
+			//表示全都授权了
+			mListener.onGranted(requestCode);
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @Nullable String[] permissions, @Nullable int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if(grantResults.length > 0){
+			//存放没授权的权限
+			List<String> deniedPermissions = new ArrayList<>();
+			for(int i = 0; i < grantResults.length; i++){
+				int grantResult = grantResults[i];
+				String permission = permissions[i];
+				if(grantResult != PackageManager.PERMISSION_GRANTED){
+					deniedPermissions.add(permission);
+				}
+			}
+			if(deniedPermissions.isEmpty()){
+				//说明都授权了
+				mListener.onGranted(requestCode);
+			}else{
+				mListener.onDenied(deniedPermissions);
+			}
+		}
+	}
 }
