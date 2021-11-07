@@ -123,7 +123,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
         });
     }
     private void loadProgress(){
-        Https.with(this).url(API._6).addParam("id",id).get().enqueue(new Callback<List<SthProgress>>() {
+        Https.with(this).url(API._6).addParam("appealId",id).get().enqueue(new Callback<List<SthProgress>>() {
             @Override
             public void success(List<SthProgress> data) {
                 progressAdapter.setList(data);

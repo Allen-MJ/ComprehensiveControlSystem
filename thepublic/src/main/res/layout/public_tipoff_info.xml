@@ -154,12 +154,13 @@
                 android:layout_margin="@dimen/frame_eight_distance"/>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_four_distance"
+                android:layout_height="@dimen/frame_eight_distance"
                 android:background="@color/gray_line_color"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/tip_info_progress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/frame_eight_distance"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
