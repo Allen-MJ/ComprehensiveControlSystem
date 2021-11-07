@@ -151,9 +151,10 @@ public class StringUtils {
 			if(i<start-1||i>=end){
 				sb.append(param.charAt(i));
 			}else{
-				sb.append(s)
+				sb.append(s);
 			}
 		}
+		return sb.toString();
 	}
 
 }

@@ -31,8 +31,20 @@ public class API {
      */
     public static final String upload = "/api/localStorage/app";
     /**
-     * 获取当前人爆料
+     * 获取当前人爆料列表
      */
     public static final String _4 = "/api/appeal/my";
+    /**
+     * 获取爆料详情
+     */
+    public static final String _5 = "/api/appeal/publicdetail";
+    /**
+     * 办理记录
+     */
+    public static final String _6 = "/api/appealProcess/getlist";
+    /**
+     * 评价详情
+     */
+    public static final String _7 = "/api/appealEvaluate/get";
 
 }

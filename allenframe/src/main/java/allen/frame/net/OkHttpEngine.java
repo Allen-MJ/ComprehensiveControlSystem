@@ -142,6 +142,106 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
+    public <T> void post(final Activity act, String url, String params, final Callback<T> callback) {
+        token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .build();// 创建OkHttpClient对象。
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");// 数据类型为json格式，
+        RequestBody body = RequestBody.create(JSON, params);
+        Request request = new Request.Builder().url(url)
+                .addHeader("keep-alive", "false")
+                .addHeader("Authorization", token).post(body)
+                .build();
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Logger.http("data", "onFailure");
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(act.isFinishing()){
+                            Logger.http("data", "Activity is on isFinishing!");
+                            return;
+                        }
+                        Logger.http("data", "onFailure");
+                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(act.isFinishing()){
+                    Logger.http("data", "Activity is on isFinishing!");
+                    return;
+                }
+                final int code = response.code();
+                Logger.http("code", ">>" + code);
+                final String data = response.body().string();
+                Logger.http("data", ">>" + data);
+                if (response.isSuccessful()) {
+                    final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
+                    if(result.xequals("200")){
+
+                        act.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                callback.success(result);
+                            }
+                        });
+                    }else if(result.xequals("401")){
+                        act.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Logger.http("data", "token is erro!");
+                                act.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        callback.token();
+                                    }
+                                });
+                            }
+                        });
+                    }else{
+                        Logger.http("data", "code is not 200!");
+                        act.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.fail(result);
+                            }
+                        });
+                    }
+                } else if(code==401){
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Logger.http("data", "->Not isSuccessful");
+                            callback.token();
+                        }
+                    });
+                }else{
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String msg = "请求失败!";
+                            Logger.http("data", data);
+                            try {
+                                JSONObject obj = new JSONObject(data);
+                                msg = obj.getString("message");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    @Override
     public <T> void get(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         Logger.http("token", ">>" + token);

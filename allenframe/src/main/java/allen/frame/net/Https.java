@@ -15,6 +15,7 @@ public class Https {
     private String mUrl;
     private File mFile;
     private Map<String,Object> mParams;
+    private String jsons;
     private int method = Type_Post;
     public static int Type_Post = 0;
     public static int Type_Get = 1;
@@ -82,8 +83,17 @@ public class Https {
         return this;
     }
 
+    public Https addJsons(String jsons){
+        this.jsons = jsons;
+        return this;
+    }
+
     private <T> void post(Callback<T> callback){
-        mEngine.post(activity,mUrl,mParams,callback);
+        if(StringUtils.notEmpty(jsons)){
+            mEngine.post(activity,mUrl,jsons,callback);
+        }else{
+            mEngine.post(activity,mUrl,mParams,callback);
+        }
     }
 
     private <T> void get(Callback<T> callback){

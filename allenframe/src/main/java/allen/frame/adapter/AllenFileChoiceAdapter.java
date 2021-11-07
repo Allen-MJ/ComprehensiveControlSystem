@@ -11,6 +11,8 @@ import java.util.List;
 
 import allen.frame.R;
 import allen.frame.entry.File;
+import allen.frame.entry.UploadFile;
+import allen.frame.tools.Constants;
 import allen.frame.widget.MarqueeView;
 import allen.frame.widget.SquareView;
 import androidx.annotation.NonNull;
@@ -23,15 +25,9 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private ArrayList<File> files;
     private final int TypeAdd = 0;
     private final int TypeFile = 1;
-    private boolean isShow = false;
 
     public AllenFileChoiceAdapter(){
         files = new ArrayList<>();
-    }
-
-    public AllenFileChoiceAdapter(boolean isShow){
-        files = new ArrayList<>();
-        this.isShow = isShow;
     }
 
     public void setData(ArrayList<File> files){
@@ -56,14 +52,7 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        if(isShow){
-            v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.alen_choice_file_item, parent, false);
-            v.setLayoutParams(new ViewGroup
-                    .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            return new ShowHolder(v);
-        }else if(viewType==TypeAdd){
+        if(viewType==TypeAdd){
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.alen_choice_file_item_add, parent, false);
             v.setLayoutParams(new ViewGroup
@@ -82,10 +71,7 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(isShow){
-            ShowHolder showHolder = (ShowHolder) holder;
-            showHolder.bind(files.get(position));
-        }else if(getItemViewType(position)==TypeAdd){
+        if(getItemViewType(position)==TypeAdd){
             AddHolder addHolder = (AddHolder) holder;
             addHolder.bind();
         }else{
@@ -96,7 +82,7 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        return (files==null?0:files.size())+(isShow?0:1);
+        return (files==null?0:files.size())+1;
     }
 
     @Override
@@ -152,33 +138,6 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         v.setEnabled(true);
                     }
                 });
-                name.setText(file.getName());
-                Glide.with(icon.getContext()).load(file.getPath()).into(icon);
-                icon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        v.setEnabled(false);
-                        if(listener!=null){
-                            listener.onItemClick(v,getAdapterPosition(),file);
-                        }
-                        v.setEnabled(true);
-                    }
-                });
-            }
-        }
-    }
-
-    class ShowHolder extends RecyclerView.ViewHolder{
-        private MarqueeView name;
-        private SquareView icon;
-        public ShowHolder(@NonNull View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.item_name);
-            icon = itemView.findViewById(R.id.item_file);
-        }
-
-        public void bind(final File file){
-            if(file!=null){
                 name.setText(file.getName());
                 Glide.with(icon.getContext()).load(file.getPath()).into(icon);
                 icon.setOnClickListener(new View.OnClickListener() {

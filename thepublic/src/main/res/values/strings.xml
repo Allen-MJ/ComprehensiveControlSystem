@@ -65,12 +65,12 @@
     <!--爆料start-->
     <string name="tip_info_dw">受理单位：</string>
     <string name="tip_info_grid">网格选择：</string>
-    <string name="tip_info_name">反&#160;映&#160;人：</string>
-    <string name="tip_info_sex">性&#160;&#160;别：</string>
+    <string name="tip_info_name">反&#160;&#160;映&#160;&#160;人：</string>
+    <string name="tip_info_sex">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别：</string>
     <string name="tip_info_phone">联系电话：</string>
     <string name="tip_info_idno">身份证号：</string>
-    <string name="tip_info_address">地&#160;&#160;址：</string>
-    <string name="tip_info_content">内&#160;&#160;容:</string>
+    <string name="tip_info_address">地&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;址：</string>
+    <string name="tip_info_content">内&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;容：</string>
     <string name="tip_info_file">附件：</string>
     <!--爆料end-->
 </resources>

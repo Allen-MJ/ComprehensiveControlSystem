@@ -2,4 +2,8 @@
     package="cn.lyj.thepublic">
 
 
+    <application>
+        <activity android:name=".main.TipOffInfoActivity"
+            android:screenOrientation="portrait"/>
+    </application>
 </manifest>

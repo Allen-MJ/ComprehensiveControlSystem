@@ -35,7 +35,7 @@ import cn.lyj.core.entry.Person;
 /**
  * 房屋管理列表
  */
-public class HouseListActivity extends AllenBaseActivity {
+public class RentHouseListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
@@ -64,7 +64,7 @@ public class HouseListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"实有房屋",true);
+        setToolbarTitle(toolbar,"出租房",true);
     }
 
     @Override

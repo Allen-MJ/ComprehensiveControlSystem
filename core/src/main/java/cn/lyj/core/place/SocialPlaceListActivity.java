@@ -1,4 +1,4 @@
-package cn.lyj.core.house;
+package cn.lyj.core.place;
 
 import android.os.Bundle;
 import android.view.View;
@@ -33,9 +33,9 @@ import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.Person;
 
 /**
- * 房屋管理列表
+ * 社会公有场所列表
  */
-public class HouseListActivity extends AllenBaseActivity {
+public class SocialPlaceListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)

@@ -114,7 +114,7 @@ public class TipOffListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new TipOffAdapter.OnItemClickListener() {
             @Override
             public void itemClick(View v, SthEntry entry, int position) {
-                startActivity(new Intent(context,TipOffInfoActivity.class));
+                startActivity(new Intent(context,TipOffInfoActivity.class).putExtra(Constants.Key_1,entry.getAppealId()));
             }
         });
     }

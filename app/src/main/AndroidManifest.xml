@@ -62,6 +62,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.main.TipOffListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.thepublic.main.TipOffInfoActivity"
+            android:screenOrientation="portrait"/>
         <!--基础通用界面start-->
         <activity
             android:name="allen.frame.MultiImageSelectorActivity"

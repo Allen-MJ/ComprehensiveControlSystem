@@ -69,12 +69,12 @@ public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public void bind(final SthEntry entry) {
             if (entry != null) {
-                name.setText("测试人");
-                date.setText("2021-11-01");
-                content.setText(Html.fromHtml("<font color=\"gray\">反映事项：</font>"+"描述反映事项武汉市洪山区徐东大街利园街道鹏程社区利园街道的事项描述"));
-                dw.setText("测试单位");
-                status.setText("已受理");
-                sldate.setText("2021-11-01");
+                name.setText(entry.getName());
+                date.setText(entry.getAddTime());
+                content.setText(Html.fromHtml("<font color=\"gray\">反映事项：</font>"+entry.getContent()));
+                dw.setText(entry.getOrg().getOrgName());
+                status.setText(entry.getState());
+                sldate.setText(entry.getSeizedTime());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
