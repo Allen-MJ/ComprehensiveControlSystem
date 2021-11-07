@@ -41,7 +41,7 @@ public class SquareFragment extends Fragment {
     private List<Fragment> fragments;
 
     private String[] tabs;
-    private List<SquareType.ContentBean> lmList;
+    private List<SquareType> lmList;
 
     public static SquareFragment init() {
         SquareFragment fragment = new SquareFragment();
@@ -76,12 +76,12 @@ public class SquareFragment extends Fragment {
         Https.with(getActivity())
                 .url(API._getType)
                 .get()
-                .enqueue(new Callback<SquareType>() {
+                .enqueue(new Callback<List<SquareType>>() {
             @Override
-            public void success(SquareType data) {
+            public void success(List<SquareType> data) {
                 helper.dismissProgressDialog();
 
-                lmList=data.getContent();
+                lmList=data;
                 tabs=new String[lmList.size()];
                 for (int i = 0; i <lmList.size() ; i++) {
                     tabs[i]=lmList.get(i).getLabel();

@@ -1,5 +1,6 @@
 package cn.lyj.thepublic.news;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -125,6 +126,17 @@ public class MessageFragment extends Fragment {
                 Logger.e("debug", "onLoadMore");
                 isRefresh = false;
                 loadData();
+            }
+        });
+        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, ViewHolder holder, int position) {
+                startActivity(new Intent(getContext(),MessageDetailActivity.class).putExtra("id",list.get(position).getNoticeId()));
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                return false;
             }
         });
     }

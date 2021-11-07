@@ -11,19 +11,27 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.VoteAdapter;
+import cn.lyj.thepublic.data.API;
+import cn.lyj.thepublic.entry.VoteAnswerEntity;
 import cn.lyj.thepublic.entry.VoteEntity;
 import cn.lyj.thepublic.entry.WjdcEntity;
 
@@ -50,10 +58,9 @@ public class VoteActivity extends AllenBaseActivity {
     AppCompatTextView tvVoteTitle;
 
     private VoteAdapter adapter;
-    private List<VoteEntity> list;
+    private List<VoteEntity.ItemListBean> list;
     private VoteEntity.ItemListBean entry;
     private String id;
-    private int statu;
     private int uid;
     private WjdcEntity wjListBean;
 
@@ -80,34 +87,15 @@ public class VoteActivity extends AllenBaseActivity {
         uid = actHelper.getSharedPreferences().getInt(Constants.UserId, 0);
         wjListBean = (WjdcEntity) getIntent().getSerializableExtra("Wjdc");
         id = wjListBean.getPollId();
-        tvVoteTitle.setText("#"+wjListBean.getPollTitle()+"#");
-        boolean isManager = getIntent().getBooleanExtra(Constants.Key_1, false);
-        if (isManager) {
-            statu = 1;
-            okBt.setVisibility(View.GONE);
-        } else {
-            statu = 0;
-//            if (wjListBean.getDtcount() > 0) {
-//                statu = 1;
-//            }
-//            if (wjListBean.getEndday() < 0) {
-//                statu = 1;
-//                voteStatus.setText("已结束");
-//            }
-            if (statu == 0) {
-                okBt.setVisibility(View.VISIBLE);
-            } else {
-                okBt.setVisibility(View.GONE);
-            }
-        }
+        tvVoteTitle.setText("#" + wjListBean.getPollTitle() + "#");
         loadData();
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new VoteAdapter(statu);
+        adapter = new VoteAdapter();
         rv.setAdapter(adapter);
-        voteInfo.setText(entry.getItemName());
-        voteEnd.setText("结束时间:"+wjListBean.getPollEndtime());
+        voteInfo.setText(wjListBean.getTextInfo().getTextContent());
+        voteEnd.setText("结束时间:" + wjListBean.getPollEndtime());
     }
 
     @Override
@@ -121,36 +109,72 @@ public class VoteActivity extends AllenBaseActivity {
     }
 
     private void loadData() {
-//        WebHelper.init().getWjdcInfo(id, new HttpCallBack<List<Vote>>() {
-//            @Override
-//            public void onSuccess(List<Vote> respone) {
-//                entry = respone.get(0);
-//                list = entry.getTgList();
-//                adapter.setList(list, wjListBean.getDtcount());
-//            }
-//
-//            @Override
-//            public void onTodo(Respone respone) {
-//
-//            }
-//
-//            @Override
-//            public void tokenErro(Respone respone) {
-//
-//            }
-//
-//            @Override
-//            public void onFailed(Respone respone) {
-//                MsgUtils.showLongToast(context, respone.getMessage());
-//            }
-//        });
+        Https.with(this).url(API._getWjdcInfo).addParam("pollId", wjListBean.getPollId()).get().enqueue(new Callback<VoteEntity>() {
+
+            @Override
+            public void success(VoteEntity data) {
+                list=data.getItemList();
+                adapter.setList(list);
+            }
+
+            @Override
+            public void fail(Response response) {
+
+            }
+        });
     }
+
+
 
     @OnClick(R2.id.ok_bt)
     public void onViewClicked() {
+        List<VoteAnswerEntity> answerEntities=new ArrayList<>();
+        for (VoteEntity.ItemListBean vote:list
+             ) {
+            VoteAnswerEntity answerEntity=new VoteAnswerEntity();
+            answerEntity.setPollId(vote.getPollId());
+            answerEntity.setItemId(vote.getItemId());
+            if (vote.getItemType().equals("2")||vote.getItemType().equals("3")){
+                if (vote.getChoiceID()==null|| StringUtils.empty(vote.getChoiceID())){
+                    MsgUtils.showMDMessage(context,"您有未作答的题，请作答后提交！");
+                    return;
+                }else {
+                    answerEntity.setItemValue(vote.getChoiceID());
+                }
+            }else {
+                if (vote.getAnswer()==null||StringUtils.empty(vote.getAnswer())){
+                    MsgUtils.showMDMessage(context,"您有未作答的题，请作答后提交！");
+                    return;
+                }else {
+                    answerEntity.setItemValue(vote.getAnswer());
+                }
+            }
+            answerEntities.add(answerEntity);
+            Gson gson=new Gson();
+            String json=gson.toJson(answerEntities);
+
+            submit(json);
+        }
+
     }
 
-    private void submit(String wjdc) {
+    private void submit( String  json) {
+        showProgressDialog("");
+        Https.with(this).url(API._submitAnswer).addJsons(json).post().enqueue(new Callback() {
+            @Override
+            public void success(Object data) {
+                dismissProgressDialog();
+                MsgUtils.showLongToast(context,"提交成功!");
+                setResult(RESULT_OK);
+                finish();
+            }
+
+            @Override
+            public void fail(Response response) {
+                dismissProgressDialog();
+                MsgUtils.showLongToast(context,response.getMsg());
+            }
+        });
     }
 
 }

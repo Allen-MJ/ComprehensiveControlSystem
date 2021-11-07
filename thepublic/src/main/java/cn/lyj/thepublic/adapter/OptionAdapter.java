@@ -22,18 +22,16 @@ import cn.lyj.thepublic.entry.VoteOption;
 public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<VoteOption> list;
-    private int count;
+//    private int count;
     private String type;
-    private int status;
 
-    public OptionAdapter(String type, int status) {
+    public OptionAdapter(String type) {
         this.type = type;
-        this.status = status;
     }
 
-    public void setList(List<VoteOption> list, int count) {
+    public void setList(List<VoteOption> list) {
         this.list = list;
-        this.count = (count == 0 ? 100 : count);
+//        this.count = (count == 0 ? 100 : count);
         notifyDataSetChanged();
     }
 
@@ -75,37 +73,30 @@ public class OptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void bind(final VoteOption entry, final int position) {
             if (entry != null) {
                 sort.setText((char) (position + 65) + "、");
-                title.setText(entry.getValue());
-                bar.setMax(count);
+//                bar.setMax(count);
 //                itemcount.setText(entry.getDaCount()+"");
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //                    bar.setProgress(entry.getDaCount(),true);
 //                }else{
 //                    bar.setProgress(entry.getDaCount());
 //                }
-                if (status == 0) {
-                    bar.setVisibility(View.GONE);
-                    itemcount.setVisibility(View.GONE);
-                    if (type .equals("1")) {
-                        title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
-                                entry.isChecked() ? R.mipmap.ic_vote_single_check : R.mipmap.ic_vote_single_uncheck, 0);
-                    } else {
-                        title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
-                                entry.isChecked() ? R.mipmap.ic_vote_multiple_check : R.mipmap.ic_vote_multiple_uncheck, 0);
-                    }
-                } else {
-                    title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
-                    bar.setVisibility(View.VISIBLE);
-                    itemcount.setVisibility(View.VISIBLE);
+                bar.setVisibility(View.GONE);
+                itemcount.setVisibility(View.GONE);
+                 if (type.equals("2")) {
+                    title.setText(entry.getValue());
+                    title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
+                            entry.isChecked() ? R.mipmap.ic_vote_single_check : R.mipmap.ic_vote_single_uncheck, 0);
+                } else if (type.equals("3")) {
+                    title.setText(entry.getValue());
+                    title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0,
+                            entry.isChecked() ? R.mipmap.ic_vote_multiple_check : R.mipmap.ic_vote_multiple_uncheck, 0);
                 }
                 title.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         view.setEnabled(false);
-                        if (status == 0) {
-                            if (listener != null) {
-                                listener.itemChoiceClick(position, !entry.isChecked());
-                            }
+                        if (listener != null) {
+                            listener.itemChoiceClick(position, !entry.isChecked());
                         }
                         view.setEnabled(true);
                     }

@@ -24,6 +24,9 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
@@ -31,6 +34,7 @@ import butterknife.ButterKnife;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.WjdcAdapter;
+import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.WjdcEntity;
 
 public class WjdcActivity extends AllenBaseActivity {
@@ -94,8 +98,34 @@ public class WjdcActivity extends AllenBaseActivity {
     }
 
     private void loadData() {
+        Https.with(this).url(API._getWjdcList).get().enqueue(new Callback<List<WjdcEntity>>() {
+
+            @Override
+            public void success(List<WjdcEntity> data) {
+                list=data;
+                adapter.setList(list);
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+
+            }
+
+            @Override
+            public void fail(Response response) {
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+            }
+        });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case 100:
+                if (resultCode==RESULT_OK){
+                    loadData();
+                }
+                break;
+        }
+    }
 
     @Override
     protected void addEvent() {
@@ -110,7 +140,7 @@ public class WjdcActivity extends AllenBaseActivity {
             public void itemClick(View v, WjdcEntity wjListBean) {
                 Intent intent = new Intent(context, VoteActivity.class);
                 intent.putExtra("Wjdc",wjListBean);
-                startActivity(intent);
+                startActivityForResult(intent,100);
             }
         });
         refresh.setOnRefreshListener(new OnRefreshListener() {

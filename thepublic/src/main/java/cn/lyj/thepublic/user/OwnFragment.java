@@ -1,6 +1,7 @@
 package cn.lyj.thepublic.user;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -106,6 +107,7 @@ public class OwnFragment extends Fragment {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.user_name) {
+            startActivity(new Intent(getContext(),UserInfoActivity.class));
         } else if (id == R.id.user_dw) {
         } else if (id == R.id.user_photo) {
         } else if (id == R.id.info_layout) {

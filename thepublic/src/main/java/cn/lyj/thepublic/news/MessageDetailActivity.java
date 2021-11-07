@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.square;
+package cn.lyj.thepublic.news;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import allen.frame.AllenBaseActivity;
 import allen.frame.HtmlImageUtil.GlideImageGetter;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.StringUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,9 +21,10 @@ import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.DiscussAdapter;
-import cn.lyj.thepublic.entry.SquareMessage;
+import cn.lyj.thepublic.data.API;
+import cn.lyj.thepublic.entry.Notice;
 
-public class NewsDetailActivity extends AllenBaseActivity {
+public class MessageDetailActivity extends AllenBaseActivity {
 
     @BindView(R2.id.title)
     AppCompatTextView title;
@@ -34,17 +38,7 @@ public class NewsDetailActivity extends AllenBaseActivity {
     AppCompatTextView detailSourse;
     @BindView(R2.id.detail_con)
     AppCompatTextView detailCon;
-    @BindView(R2.id.rv_discuss)
-    RecyclerView rvDiscuss;
-    @BindView(R2.id.tv_gz)
-    AppCompatTextView tvGz;
-    @BindView(R2.id.tv_discuss)
-    AppCompatTextView tvDiscuss;
-    @BindView(R2.id.tv_zan)
-    AppCompatTextView tvZan;
     private String id;
-    private DiscussAdapter discussAdapter;
-    private SquareMessage squareMessage;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -53,7 +47,7 @@ public class NewsDetailActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.activity_news_detail;
+        return R.layout.activity_message_detail;
     }
 
     @Override
@@ -65,41 +59,26 @@ public class NewsDetailActivity extends AllenBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        squareMessage= (SquareMessage) getIntent().getSerializableExtra("square");
-        detailTitle.setText(squareMessage.getServiceTitle());
-        detailDate.setText(StringUtils.empty(squareMessage.getCreateTime())?squareMessage.getCreateTime():squareMessage.getCreateTime().substring(0,10));
-        detailSourse.setText("来源:"+squareMessage.getServiceType());
-        detailCon.setText(Html.fromHtml(StringUtils.null2Empty(squareMessage.getServiceContent()),
-                new GlideImageGetter(context, detailCon), null));
+        id = getIntent().getStringExtra("id");
         loadData();
     }
 
     private void loadData() {
-//        WebHelper.init().getMessageDetails(id, new HttpCallBack<MessageEntity>() {
-//            @Override
-//            public void onSuccess(MessageEntity respone) {
-//                detailTitle.setText(respone.getTitle());
-//                detailDate.setText(StringUtils.empty(respone.getPublishTime())?respone.getPublishTime():respone.getPublishTime().substring(0,10));
-//                detailSourse.setText("来源:"+respone.getOrgName());
-//                detailCon.setText(Html.fromHtml(StringUtils.null2Empty(respone.getContent()),
-//                        new GlideImageGetter(context, detailCon), null));
-//            }
-//
-//            @Override
-//            public void onTodo(Respone respone) {
-//
-//            }
-//
-//            @Override
-//            public void tokenErro(Respone respone) {
-//
-//            }
-//
-//            @Override
-//            public void onFailed(Respone respone) {
-//
-//            }
-//        });
+        Https.with(this).url(API._getNoticeInfo).addParam("noticeId",id).get().enqueue(new Callback<Notice>() {
+            @Override
+            public void success(Notice data) {
+                detailTitle.setText(data.getNoticeTitle());
+                detailDate.setText(StringUtils.empty(data.getUpdateTime())?data.getUpdateTime():data.getUpdateTime().substring(0,10));
+                detailSourse.setText("来源:"+data.getCreateBy());
+                detailCon.setText(Html.fromHtml(StringUtils.null2Empty(data.getNoticeContent()),
+                        new GlideImageGetter(context, detailCon), null));
+            }
+
+            @Override
+            public void fail(Response response) {
+
+            }
+        });
     }
 
     @Override

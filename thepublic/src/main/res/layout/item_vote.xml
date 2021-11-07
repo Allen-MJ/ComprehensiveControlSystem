@@ -19,6 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/voteItemTitleSmallStyle"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_Edit"
+            style="@style/voteItemOptionSmallStyle"
+            android:paddingStart="@dimen/frame_four_distance"
+            android:paddingEnd="@dimen/frame_four_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gray_rectangle_8dp"
+            android:visibility="gone"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_option_layout"
             android:layout_width="match_parent"

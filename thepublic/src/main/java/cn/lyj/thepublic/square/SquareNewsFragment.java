@@ -1,5 +1,6 @@
 package cn.lyj.thepublic.square;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
@@ -55,8 +56,8 @@ public class SquareNewsFragment extends Fragment {
     SmartRefreshLayout refresh;
     private ActivityHelper helper;
     private SharedPreferences shared;
-    private List<SquareMessage.ContentBean> list=new ArrayList<>(), sublist;
-    private CommonAdapter<SquareMessage.ContentBean> adapter;
+    private List<SquareMessage> list=new ArrayList<>(), sublist;
+    private CommonAdapter<SquareMessage> adapter;
     private boolean isRefresh = false;
     private int page = 0;
     private int pageSize = 20;
@@ -102,9 +103,9 @@ public class SquareNewsFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
-        adapter = new CommonAdapter<SquareMessage.ContentBean>(getContext(), R.layout.item_square_news) {
+        adapter = new CommonAdapter<SquareMessage>(getContext(), R.layout.item_square_news) {
             @Override
-            public void convert(ViewHolder holder, SquareMessage.ContentBean entity, int position) {
+            public void convert(ViewHolder holder, SquareMessage entity, int position) {
                 holder.setText(R.id.item_source,entity.getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
@@ -135,6 +136,19 @@ public class SquareNewsFragment extends Fragment {
                 loadData();
             }
         });
+        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, ViewHolder holder, int position) {
+                Intent intent=new Intent(getContext(),NewsDetailActivity.class);
+                intent.putExtra("square",list.get(position));
+                startActivity(intent);
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                return false;
+            }
+        });
     }
 
     /**
@@ -148,11 +162,11 @@ public class SquareNewsFragment extends Fragment {
                 .addParam("page",page++)
                 .addParam("size",pageSize)
                 .get()
-                .enqueue(new Callback<SquareMessage>() {
+                .enqueue(new Callback<List<SquareMessage>>() {
                     @Override
-                    public void success(SquareMessage data) {
+                    public void success(List<SquareMessage> data) {
                         helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
-                        sublist=data.getContent();
+                        sublist=data;
                         if (isRefresh) {
                             list = sublist;
                             refresh.finishRefresh();

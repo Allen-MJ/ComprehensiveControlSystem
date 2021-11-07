@@ -124,6 +124,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                     shared.edit()
                             .putString(Constants.UserToken,data.getToken())
                             .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
+                            .putString(Constants.UserName,data.getUser().getUser().getUsername())
                             .apply();
                     if(isToken){
                         setResult(RESULT_OK,getIntent());

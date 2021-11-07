@@ -71,8 +71,8 @@ public class WjdcAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 title.setText("[问卷]" + entry.getPollTitle());
 //                date.setText(entry.getSumCount() + "人参加");
                 date.setVisibility(View.GONE);
-                status.setText(getStatusName(DateUtils.days(entry.getPollEndtime())));
-                status.setBackgroundResource(getStatusResId(DateUtils.days(entry.getPollEndtime())));
+//                status.setText("结束时间:"+entry.getPollEndtime());
+//                status.setBackgroundResource( R.mipmap.ic_news_vote_status_start);
                 icon.setImageResource(R.mipmap.ic_news_vote);
                 line.setVisibility(isLast ? View.INVISIBLE : View.VISIBLE);
                 view.setOnClickListener(new View.OnClickListener() {

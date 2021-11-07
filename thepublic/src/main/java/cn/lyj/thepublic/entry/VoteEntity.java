@@ -60,7 +60,7 @@ public class VoteEntity implements Serializable {
         this.itemList = itemList;
     }
 
-    public static class ItemListBean {
+    public static class ItemListBean implements Serializable{
         /**
          * itemId : d98b3922eced401685b5d3234a7c849c
          * itemName : 1.最近常玩的游戏？
@@ -79,16 +79,34 @@ public class VoteEntity implements Serializable {
         private String itemType;
         private String pollId;
         private String itemValue;
+        private String answer;
         private List<String> valueList;
         private List<VoteOption> options;
+
+        public void setOptions(List<String> valueList) {
+            options=new ArrayList<>();
+            if (valueList!=null){
+                for (String s:valueList
+                ) {
+                    VoteOption option=new VoteOption();
+                    option.setValue(s);
+                    option.setChecked(false);
+                    options.add(option);
+                }
+            }
+        }
+
+
 
         public List<VoteOption> getOptions() {
             return options;
         }
 
         public void setChoice(int index, boolean isCheck) {
-            for (int i = 0; i < options.size(); i++) {
-                options.get(i).setChecked(i == index);
+            if (itemType.equals("2")) {
+                for (int i = 0; i < options.size(); i++) {
+                    options.get(i).setChecked(i == index);
+                }
             }
             options.get(index).setChecked(isCheck);
         }
@@ -103,6 +121,30 @@ public class VoteEntity implements Serializable {
                 }
             }
             return chooseList;
+        }
+        public String getChoiceID() {
+            StringBuffer choose = new StringBuffer();
+            if (options != null) {
+
+                for (VoteOption op : options) {
+                    if (op.isChecked()) {
+                        if (itemType.equals("2")){
+                            return op.getValue();
+                        }else {
+                            choose.append(op.getValue()+",");
+                        }
+                    }
+                }
+            }
+            return choose.length()==0?"":choose.substring(0,choose.lastIndexOf(","));
+        }
+
+        public String getAnswer() {
+            return answer;
+        }
+
+        public void setAnswer(String answer) {
+            this.answer = answer;
         }
 
         public String getItemId() {
@@ -167,16 +209,23 @@ public class VoteEntity implements Serializable {
 
         public void setValueList(List<String> valueList) {
             this.valueList = valueList;
-            options=new ArrayList<>();
-            if (valueList!=null){
-                for (String s:valueList
-                     ) {
-                    VoteOption option=new VoteOption();
-                    option.setValue(s);
-                    option.setChecked(false);
-                    options.add(option);
-                }
-            }
+
+        }
+
+        @Override
+        public String toString() {
+            return "ItemListBean{" +
+                    "itemId='" + itemId + '\'' +
+                    ", itemName='" + itemName + '\'' +
+                    ", itemNotnull='" + itemNotnull + '\'' +
+                    ", itemSortid=" + itemSortid +
+                    ", itemType='" + itemType + '\'' +
+                    ", pollId='" + pollId + '\'' +
+                    ", itemValue='" + itemValue + '\'' +
+                    ", valueList=" + valueList +
+                    '}';
         }
     }
+
+
 }

@@ -25,7 +25,10 @@ import allen.frame.ActivityHelper;
 import allen.frame.WebActivity;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.Response;
 import allen.frame.entry.Type;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.CheckUtils;
 import allen.frame.tools.MsgUtils;
 import butterknife.BindView;
@@ -35,7 +38,9 @@ import butterknife.Unbinder;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.FyAdapter;
+import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.Notice;
+import cn.lyj.thepublic.news.MessageDetailActivity;
 
 public class ServeFragment extends BaseFragment {
 
@@ -60,6 +65,7 @@ public class ServeFragment extends BaseFragment {
 
     private FyAdapter fyAdapter;
     private CommonAdapter<Notice> noticeAdapter;
+    private List<Notice> notices;
 //    private ServeSzszAdapter szszAdapter;
 
     public static ServeFragment init() {
@@ -88,6 +94,7 @@ public class ServeFragment extends BaseFragment {
     private void initUI(View view) {
         initFy();
         initNotice();
+        loadData();
     }
 
     private void initFy() {
@@ -108,18 +115,50 @@ public class ServeFragment extends BaseFragment {
         noticeAdapter=new CommonAdapter<Notice>(getContext(),R.layout.item_notice) {
             @Override
             public void convert(ViewHolder holder, Notice entity, int position) {
-
+                holder.setText(R.id.item_source,entity.getNoticeTitle());
+                holder.setText(R.id.item_message,entity.getNoticeSubtitle());
+                holder.setText(R.id.item_date,entity.getUpdateTime());
             }
         };
         rvNotice.setAdapter(noticeAdapter);
     }
 
 
+    private void loadData() {
+        Https.with(getActivity()).url(API._getNotice)
+                .addParam("page",0)
+                .addParam("size",10)
+                .get()
+                .enqueue(new Callback<List<Notice>>() {
+
+                    @Override
+                    public void success(List<Notice> data) {
+                        notices=data;
+                        noticeAdapter.setDatas(notices);
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                    }
+                });
+
+    }
     private void addEvent(View view) {
         fyAdapter.setOnItemClickListener(new FyAdapter.OnItemClickListener() {
             @Override
             public void itemClick(View v, Type type) {
                 go2Url(type);
+            }
+        });
+        noticeAdapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, ViewHolder holder, int position) {
+                startActivity(new Intent(getContext(), MessageDetailActivity.class).putExtra("id",notices.get(position).getNoticeId()));
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                return false;
             }
         });
     }

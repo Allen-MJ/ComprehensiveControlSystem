@@ -26,6 +26,7 @@ public class HomeActivity extends AllenIMBaseActivity {
     @BindView(R2.id.bottom)
     BottomNavigationView bottom;
     private FragmentAdapter adapter;
+    private List<Fragment> list;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -44,12 +45,13 @@ public class HomeActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        List<Fragment> list = new ArrayList<>();
+        shared = actHelper.getSharedPreferences();
+         list = new ArrayList<>();
         list.add(ServeFragment.init());
-//        list.add(SquareFragment.init());
-        list.add(MessageFragment.init());
+        list.add(SquareFragment.init());
         list.add(MessageFragment.init());
         list.add(OwnFragment.init());
+
         adapter = new FragmentAdapter(getSupportFragmentManager(),list);
         pager.setAdapter(adapter);
     }
@@ -59,14 +61,14 @@ public class HomeActivity extends AllenIMBaseActivity {
         bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id==R.id.item_serve){
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.item_serve) {
                     pager.setCurrentItem(0);
-                }else if(id==R.id.item_serve){
+                } else if (itemId == R.id.item_news) {
                     pager.setCurrentItem(1);
-                }else if(id==R.id.item_serve){
+                } else if (itemId == R.id.item_work) {
                     pager.setCurrentItem(2);
-                }else{
+                } else if (itemId == R.id.item_own) {
                     pager.setCurrentItem(3);
                 }
                 return true;
