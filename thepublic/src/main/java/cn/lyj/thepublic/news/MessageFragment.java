@@ -116,7 +116,7 @@ public class MessageFragment extends Fragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 Logger.e("debug", "onRefresh");
                 isRefresh = true;
-                page = 1;
+                page = 0;
                 loadData();
             }
         });

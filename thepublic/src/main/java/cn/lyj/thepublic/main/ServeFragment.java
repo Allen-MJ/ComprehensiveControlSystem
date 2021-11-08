@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import allen.frame.BaseFragment;
+import allen.frame.tools.Constants;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -182,7 +183,7 @@ public class ServeFragment extends BaseFragment {
         } else if (id == R.id.layout_wenjuan) {
             startActivity(new Intent(getContext(),WjdcActivity.class));
         } else if (id == R.id.layout_jindu) {
-            startActivity(new Intent(getContext(),TipOffListActivity.class));
+            startActivity(new Intent(getContext(),TipOffListActivity.class).putExtra(Constants.Key_1,"进度查询"));
         } else if (id == R.id.notice_more) {
         }
     }

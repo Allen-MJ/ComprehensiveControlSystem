@@ -4,7 +4,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/squre_bg">
+    android:background="@color/white">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/frame_text_middle_size"
+            android:gravity="center"
+            android:text="@string/menu_gc"/>
+    </FrameLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/news_tab"
         android:layout_width="match_parent"

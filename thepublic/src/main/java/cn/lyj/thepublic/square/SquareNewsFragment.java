@@ -76,7 +76,7 @@ public class SquareNewsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_message, container, false);
+        View view = inflater.inflate(R.layout.fragment_square_child, container, false);
         helper = new ActivityHelper(getActivity(), view);
         unbinder = ButterKnife.bind(this, view);
         return view;
@@ -124,7 +124,7 @@ public class SquareNewsFragment extends Fragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 Logger.e("debug", "onRefresh");
                 isRefresh = true;
-                page = 1;
+                page = 0;
                 loadData();
             }
         });

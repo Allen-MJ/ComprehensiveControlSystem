@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import allen.frame.AllenBaseActivity;
 import allen.frame.AllenIMBaseActivity;
 import allen.frame.adapter.FragmentAdapter;
 import allen.frame.widget.ContrlScrollViewPager;
@@ -20,7 +21,7 @@ import cn.lyj.thepublic.news.MessageFragment;
 import cn.lyj.thepublic.square.SquareFragment;
 import cn.lyj.thepublic.user.OwnFragment;
 
-public class HomeActivity extends AllenIMBaseActivity {
+public class HomeActivity extends AllenBaseActivity {
     @BindView(R2.id.pager)
     ContrlScrollViewPager pager;
     @BindView(R2.id.bottom)
@@ -51,7 +52,6 @@ public class HomeActivity extends AllenIMBaseActivity {
         list.add(SquareFragment.init());
         list.add(MessageFragment.init());
         list.add(OwnFragment.init());
-
         adapter = new FragmentAdapter(getSupportFragmentManager(),list);
         pager.setAdapter(adapter);
     }

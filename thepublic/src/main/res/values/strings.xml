@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--main start-->
     <string name="menu_main">首页</string>
-    <string name="menu_xx">信息</string>
+    <string name="menu_xx">消息</string>
     <string name="menu_gc">广场</string>
     <string name="menu_wd">我的</string>
     <string name="menu_action_notice">通知</string>

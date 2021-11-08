@@ -21,6 +21,7 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +63,8 @@ public class TipOffListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar,"我的爆料",true);
+        String title = getIntent().getStringExtra(Constants.Key_1);
+        setToolbarTitle(toolbar, StringUtils.empty(title)?"我的爆料":title,true);
     }
 
     @Override

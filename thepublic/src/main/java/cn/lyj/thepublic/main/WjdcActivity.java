@@ -56,7 +56,7 @@ public class WjdcActivity extends AllenBaseActivity {
     private List<WjdcEntity> list;
     private boolean isRefresh=false;
     private int uid, gid;
-    private int page = 1, pageSize = 20;
+    private int page = 0, pageSize = 20;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -147,7 +147,7 @@ public class WjdcActivity extends AllenBaseActivity {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 isRefresh = true;
-                page=1;
+                page=0;
                 loadData();
             }
         });
@@ -163,7 +163,7 @@ public class WjdcActivity extends AllenBaseActivity {
             public void onSerchEvent(String key) {
                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
                 isRefresh = true;
-                page=1;
+                page=0;
                 loadData();
             }
         });
@@ -174,7 +174,7 @@ public class WjdcActivity extends AllenBaseActivity {
             list = sublist;
             adapter.setList(list);
             refresh.finishRefresh();
-        }else if(page==2){
+        }else if(page==1){
             list = sublist;
             adapter.setList(list);
             refresh.finishLoadMore();

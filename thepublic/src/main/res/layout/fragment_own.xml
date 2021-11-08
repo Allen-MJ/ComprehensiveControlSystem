@@ -5,6 +5,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white_background">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/frame_text_middle_size"
+            android:gravity="center"
+            android:text="@string/menu_wd"/>
+    </FrameLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

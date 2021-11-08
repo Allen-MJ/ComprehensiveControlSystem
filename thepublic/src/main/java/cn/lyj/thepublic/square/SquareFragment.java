@@ -74,7 +74,7 @@ public class SquareFragment extends Fragment {
 
     private void loadType() {
         Https.with(getActivity())
-                .url(API._getType)
+                .url(API._getType).addParam("dictName","handy_service_type").addParam("page",0).addParam("size",9999)
                 .get()
                 .enqueue(new Callback<List<SquareType>>() {
             @Override
