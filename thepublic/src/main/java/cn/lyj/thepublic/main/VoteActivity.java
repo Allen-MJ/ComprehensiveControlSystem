@@ -82,7 +82,6 @@ public class VoteActivity extends AllenBaseActivity {
         uid = actHelper.getSharedPreferences().getInt(Constants.UserId, 0);
         id = wjListBean.getPollId();
         tvVoteTitle.setText("#" + wjListBean.getPollTitle() + "#");
-        loadData();
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
@@ -90,6 +89,7 @@ public class VoteActivity extends AllenBaseActivity {
         rv.setAdapter(adapter);
         voteInfo.setText(wjListBean.getTextInfo().getTextContent());
         voteEnd.setText("结束时间:" + wjListBean.getPollEndtime());
+        loadData();
     }
 
     @Override

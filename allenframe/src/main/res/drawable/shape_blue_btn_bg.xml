@@ -2,8 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" >
     
-    <corners android:radius="@dimen/frame_four_distance"/>
+    <corners android:radius="@dimen/frame_32_distance"/>
 
     <solid android:color="#009dda"/>
+    <size android:height="@dimen/frame_32_distance"/>
     
 </shape>

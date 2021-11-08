@@ -2,6 +2,7 @@ package allen.frame.tools;
 
 import android.annotation.SuppressLint;
 import android.util.Base64;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,8 +10,14 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -246,4 +253,55 @@ public class EncryptUtils {
 			return src;
 		}
 	}
+
+	/**RSA算法*/
+	private static final String RSA = "RSA";
+	/**加密方式，android的*/
+//  public static final String TRANSFORMATION = "RSA/None/NoPadding";
+	/**加密方式，标准jdk的*/
+	private static final String TRANSFORMATION = "RSA/ECB/PKCS1Padding";
+
+	/** 使用公钥加密 */
+	private static byte[] encryptByPublicKey(byte[] data, byte[] publicKey) throws Exception {
+		// 得到公钥对象
+		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKey);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		PublicKey pubKey = keyFactory.generatePublic(keySpec);
+		// 加密数据
+		Cipher cp = Cipher.getInstance(TRANSFORMATION);
+		cp.init(Cipher.ENCRYPT_MODE, pubKey);
+		return cp.doFinal(data);
+	}
+
+	/** 使用私钥解密 */
+	private static byte[] decryptByPrivateKey(byte[] encrypted, byte[] privateKey) throws Exception {
+		// 得到私钥对象
+		PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKey);
+		KeyFactory kf = KeyFactory.getInstance(RSA);
+		PrivateKey keyPrivate = kf.generatePrivate(keySpec);
+		// 解密数据
+		Cipher cp = Cipher.getInstance(TRANSFORMATION);
+		cp.init(Cipher.DECRYPT_MODE, keyPrivate);
+		byte[] arr = cp.doFinal(encrypted);
+		return arr;
+	}
+
+	/**
+	 * RSA加密
+	 * @param message
+	 * @param key
+	 * @return
+	 */
+	public static String rsaEncrypt(String message,String key){
+		try {
+			byte[] str3 = encryptByPublicKey(message.getBytes("UTF-8"),Base64.decode(key, Base64.DEFAULT));
+			String strstring = new String(Base64.encode(str3, Base64.DEFAULT),
+					"UTF-8");
+			return strstring.trim();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return message;
+		}
+	}
+
 }

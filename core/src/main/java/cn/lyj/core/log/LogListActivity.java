@@ -1,5 +1,6 @@
 package cn.lyj.core.log;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,25 +16,29 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.Constants;
+import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.adapter.LogAdapter;
-import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
+import cn.lyj.core.entry.CoreType;
 import cn.lyj.core.entry.Log;
-import cn.lyj.core.entry.Person;
 
 /**
  * 实有人口管理列表
@@ -41,17 +46,19 @@ import cn.lyj.core.entry.Person;
 public class LogListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
-    @BindView(R2.id.search)
-    SearchView search;
     @BindView(R2.id.rv)
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
+    @BindView(R2.id.choice_work)
+    AppCompatTextView choiceWork;
+    @BindView(R2.id.choice_status)
+    AppCompatTextView choiceStatus;
     private LogAdapter adapter;
-    private int page = 0,size = 10;
+    private int page = 0, size = 20;
     private boolean isRefresh = false;
-    private List<Log> list,sublist;
-    private String mKey = "";
+    private List<Log> list, sublist;
+    private String workItem="",progress="";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -60,12 +67,12 @@ public class LogListActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_person_list;
+        return R.layout.core_log_list;
     }
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar,"工作日志",true);
+        setToolbarTitle(toolbar, "工作日志", true);
     }
 
     @Override
@@ -77,7 +84,7 @@ public class LogListActivity extends AllenBaseActivity {
         rv.setLayoutManager(manager);
         adapter = new LogAdapter();
         rv.setAdapter(adapter);
-        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
         loadData();
     }
 
@@ -104,16 +111,6 @@ public class LogListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        search.setOnSerchListenner(new SearchView.onSerchListenner() {
-            @Override
-            public void onSerchEvent(String key) {
-                mKey = key;
-                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
-                isRefresh = false;
-                page = 0;
-                loadData();
-            }
-        });
         adapter.setOnItemClickListener(new LogAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, Log entry, int position) {
@@ -127,9 +124,9 @@ public class LogListActivity extends AllenBaseActivity {
         });
     }
 
-    private void loadData(){
-        Https.with(this).url(CoreApi._core_1)
-                .addParam("b1202",mKey).get()
+    private void loadData() {
+        Https.with(this).url(CoreApi._core_11)
+                .addParam("workItem",workItem).addParam("progress",progress).get()
                 .enqueue(new Callback<List<Log>>() {
                     @Override
                     public void success(List<Log> data) {
@@ -141,7 +138,7 @@ public class LogListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        MsgUtils.showShortToast(context, "账号登录过期,请重新登录!");
                     }
 
                     @Override
@@ -151,6 +148,7 @@ public class LogListActivity extends AllenBaseActivity {
                     }
                 });
     }
+
     private void showData() {
         if (isRefresh) {
             list = sublist;
@@ -165,8 +163,102 @@ public class LogListActivity extends AllenBaseActivity {
             adapter.setList(list);
             refresh.finishLoadMore();
         }
-        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
+        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
         refresh.setEnableFooterFollowWhenNoMoreData(true);
         refresh.setNoMoreData(actHelper.isNoMoreData(sublist, size));
     }
+
+    @OnClick({R2.id.choice_work, R2.id.choice_status})
+    public void onViewClicked(View view) {
+        view.setEnabled(false);
+        int id = view.getId();
+        if(id==R.id.choice_work){
+            loadWork();
+        }else if(id==R.id.choice_status){
+            loadStatus();
+        }
+        view.setEnabled(true);
+    }
+
+    private void loadWork(){
+        showProgressDialog("");
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","").addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择工作事项", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                workItem = data.get(position).getId();
+                                choiceWork.setText(data.get(position).getLabel());
+                                page = 0;
+                                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                                isRefresh = true;
+                                loadData();
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void loadStatus(){
+        showProgressDialog("");
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","").addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择状态", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                progress = data.get(position).getId();
+                                choiceStatus.setText(data.get(position).getLabel());
+                                page = 0;
+                                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                                isRefresh = true;
+                                loadData();
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
 }

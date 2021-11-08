@@ -1,6 +1,17 @@
 package cn.lyj.core.api;
 
 public class CoreApi {
+
+
+    public static final String core_Type = "/api/dictDetail/queryOfApp";
+    /**
+     * 登录验证码
+     */
+    public static final String authCode = "/auth/code";
+    /**
+     * 登录
+     */
+    public static final String authLogin = "/auth/login";
     /**
      * 户籍人口查询
      */

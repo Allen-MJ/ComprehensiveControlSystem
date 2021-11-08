@@ -6,6 +6,9 @@ import android.widget.ImageView;
 
 import allen.frame.AllenIMBaseActivity;
 import allen.frame.entry.BGALocalImageSize;
+import allen.frame.tools.Constants;
+import allen.frame.tools.EncryptUtils;
+import allen.frame.tools.Logger;
 import allen.frame.widget.BGABanner;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -38,6 +41,7 @@ public class GuildActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        Logger.e("ceshi", EncryptUtils.rsaEncrypt("123456", Constants.publicKey));
         processLogic();
     }
 
