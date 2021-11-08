@@ -155,6 +155,15 @@ public class GzFragment extends BaseFragment {
                 return false;
             }
         });
+        actHelper.setProgressClickListener(new ActivityHelper.OnProgressClickListener() {
+            @Override
+            public void onAgainClick(View v) {
+                isRefresh = true;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                page = 0;
+                loadData();
+            }
+        });
     }
 
 

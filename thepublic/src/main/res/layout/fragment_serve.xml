@@ -56,7 +56,7 @@
                             android:scaleType="fitCenter"
                             android:src="@mipmap/main_baoliao" />
                         <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/mainItemGraySmallStyle"
+                            style="@style/mainItemGraySmall4Style"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/main_baoliao" />
@@ -89,7 +89,7 @@
                             android:scaleType="fitCenter"
                             android:src="@mipmap/main_wenjuan" />
                         <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/mainItemGraySmallStyle"
+                            style="@style/mainItemGraySmall4Style"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/main_wenjuan" />
@@ -121,7 +121,7 @@
                             android:scaleType="fitCenter"
                             android:src="@mipmap/main_jindu" />
                         <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/mainItemGraySmallStyle"
+                            style="@style/mainItemGraySmall4Style"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/main_jindu" />

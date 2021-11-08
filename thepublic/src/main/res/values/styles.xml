@@ -190,6 +190,14 @@
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
     </style>
+    <style name="mainItemGraySmall4Style">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingTop">@dimen/frame_four_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_four_distance</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
     <style name="mainModelBlackStyle">
         <item name="android:textColor">@color/text_black_color</item>
         <item name="android:textSize">@dimen/frame_text_middle_size</item>

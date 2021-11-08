@@ -18,6 +18,7 @@ import java.util.List;
 
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
+import androidx.appcompat.widget.AppCompatImageView;
 
 public class ActivityHelper {
 	
@@ -25,6 +26,7 @@ public class ActivityHelper {
 	private TextView result;
 	private View resultLay;
 	private View parent;
+	private AppCompatImageView resultImg;
 	private Context context;
 	private SharedPreferences shared;
 	
@@ -71,10 +73,12 @@ public class ActivityHelper {
 		if(parent!=null){
 			progress = parent.findViewById(R.id.app_frame_progress_layout);
 			result = parent.findViewById(R.id.app_frame_result_tv);
+			resultImg = parent.findViewById(R.id.app_frame_result_img);
 			resultLay = parent.findViewById(R.id.app_frame_result_layout);
 		}else{
 			progress = findLinearLayoutById(R.id.app_frame_progress_layout);
 			result = findTextViewById(R.id.app_frame_result_tv);
+			resultImg = findAllViewById(R.id.app_frame_result_img);
 			resultLay = findViewById(R.id.app_frame_result_layout);
 		}
 		switch (code) {
@@ -90,6 +94,7 @@ public class ActivityHelper {
 			resultLay.setVisibility(View.VISIBLE);
 			result.setText(StringUtils.empty(msg)?context.getText(R.string.app_frame_result_null):msg);
 			result.setOnClickListener(l);
+			resultImg.setOnClickListener(l);
 			break;
 		default:
 			progress.setVisibility(View.GONE);
@@ -100,6 +105,11 @@ public class ActivityHelper {
 	private TextView findTextViewById(int resid) {
 		return (TextView) ((Activity) context).findViewById(resid);
 	}
+
+	private <T extends View> T findAllViewById(int resid) {
+		return ((Activity) context).findViewById(resid);
+	}
+
 	private LinearLayout findLinearLayoutById(int resid) {
 		return (LinearLayout) ((Activity) context).findViewById(resid);
 	}
@@ -112,7 +122,7 @@ public class ActivityHelper {
 		
 		@Override
 		public void onClick(View v) {
-			if(v.getId()==R.id.app_frame_result_tv){
+			if(v.getId()==R.id.app_frame_result_tv||v.getId()==R.id.app_frame_result_img){
 				if(clickListener!=null){
 					clickListener.onAgainClick(v);
 				}
