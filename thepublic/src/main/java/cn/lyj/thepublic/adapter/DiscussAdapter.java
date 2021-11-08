@@ -21,8 +21,10 @@ import cn.lyj.thepublic.entry.Discuss;
 public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Discuss> list;
+    private String userID;
 
-    public DiscussAdapter(){
+    public DiscussAdapter(String userID){
+        this.userID=userID;
     }
 
     public void setList(List<Discuss> list){
@@ -54,7 +56,7 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class ObjectHolder extends RecyclerView.ViewHolder{
 
-        private AppCompatTextView name,content,date;
+        private AppCompatTextView name,content,date,del;
         private CircleImageView icon;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,17 +64,33 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             name = itemView.findViewById(R.id.item_name);
             date = itemView.findViewById(R.id.item_date);
             content = itemView.findViewById(R.id.item_content);
+            del = itemView.findViewById(R.id.item_delete);
         }
-        public void bind(Discuss entry,int position){
+        public void bind(final Discuss entry, int position){
             if(entry!=null){
-//                name.setText(new String2Replace().replace(1,entry.getUName().length(),entry.getUName(),"*"));
-//                date.setText(entry.getAddTime());
-//                content.setText(entry.getCommentContent());
-//                Glide.with(icon.getContext())
-//                        .load(entry.getPhotoUrl())
-//                        .placeholder(R.mipmap.ic_degault_photo)
-//                        .error(R.mipmap.ic_degault_photo)
-//                        .into(icon);
+                name.setText(entry.getCreateBy());
+                date.setText(entry.getCreateTime());
+                content.setText(entry.getCommentContent());
+                Glide.with(icon.getContext())
+                        .load(entry.getPublicUserId())
+                        .placeholder(R.mipmap.ic_degault_photo)
+                        .error(R.mipmap.ic_degault_photo)
+                        .into(icon);
+                if (userID.equals(entry.getPublicUserId())) {
+                    del.setVisibility(View.VISIBLE);
+                }else {
+                    del.setVisibility(View.GONE);
+                }
+                del.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        view.setEnabled(false);
+                        if(listener!=null){
+                            listener.itemDelClick(view,entry);
+                        }
+                        view.setEnabled(true);
+                    }
+                });
             }
         }
     }
@@ -81,6 +99,6 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.listener = listener;
     }
     public interface OnItemClickListener{
-        void itemZanClick(View v, Discuss Discuss);
+        void itemDelClick(View v, Discuss Discuss);
     }
 }

@@ -19,6 +19,15 @@ public class SquareMessage implements Serializable {
     private String serviceTitle;
     private String serviceType;
     private boolean serviceUp;
+    /**
+     * isConcern :  0 是否关注 0否1是
+     * likeCnt :  2 点赞数
+     * isLike :  0 是否点赞 0否1是
+     */
+
+    private int isConcern;
+    private int likeCnt;
+    private int isLike;
 
     public String getCreateTime() {
         return createTime;
@@ -66,5 +75,29 @@ public class SquareMessage implements Serializable {
 
     public void setServiceUp(boolean serviceUp) {
         this.serviceUp = serviceUp;
+    }
+
+    public int getIsConcern() {
+        return isConcern;
+    }
+
+    public void setIsConcern(int isConcern) {
+        this.isConcern = isConcern;
+    }
+
+    public int getLikeCnt() {
+        return likeCnt;
+    }
+
+    public void setLikeCnt(int likeCnt) {
+        this.likeCnt = likeCnt;
+    }
+
+    public int getIsLike() {
+        return isLike;
+    }
+
+    public void setIsLike(int isLike) {
+        this.isLike = isLike;
     }
 }

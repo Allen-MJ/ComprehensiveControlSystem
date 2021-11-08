@@ -36,7 +36,9 @@
                 android:id="@+id/item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/disItemDateStyle"/>
+                style="@style/disItemDateStyle"
+                android:maxLength="10"/>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -44,6 +46,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/disItemContentStyle"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|end"
+            android:visibility="visible"
+            android:layout_marginBottom="@dimen/frame_eight_distance">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/disDelBlueSmall"
+                android:text="@string/delete"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_zan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/user_zan"
+                android:visibility="gone"
+                style="@style/disItemZanStyle"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
         <View style="@style/HalfGrayLine"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -188,6 +188,15 @@ public class UserArt implements Serializable {
         private String serviceTitle;
         private String serviceType;
         private boolean serviceUp;
+        /**
+         * likeCnt : 3
+         * isLike : 1
+         * isConcern : 1
+         */
+
+        private int likeCnt;
+        private int isLike;
+        private int isConcern;
 
         public String getCreateTime() {
             return createTime;
@@ -243,6 +252,30 @@ public class UserArt implements Serializable {
 
         public void setServiceUp(boolean serviceUp) {
             this.serviceUp = serviceUp;
+        }
+
+        public int getLikeCnt() {
+            return likeCnt;
+        }
+
+        public void setLikeCnt(int likeCnt) {
+            this.likeCnt = likeCnt;
+        }
+
+        public int getIsLike() {
+            return isLike;
+        }
+
+        public void setIsLike(int isLike) {
+            this.isLike = isLike;
+        }
+
+        public int getIsConcern() {
+            return isConcern;
+        }
+
+        public void setIsConcern(int isConcern) {
+            this.isConcern = isConcern;
         }
     }
 }

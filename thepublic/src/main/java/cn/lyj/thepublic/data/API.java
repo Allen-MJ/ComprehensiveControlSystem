@@ -59,6 +59,34 @@ public class API {
      *17. 分页查询当前登录人评论过的文章
      */
     public static final String _getPinglunList= "/api/HandyService/queryUserCommentByLoginUser";
+    /**
+     * 19. 根据文章id分页查询文章评论详情
+     */
+    public static final String _getDiscussList= "/api/UserComment";
+    /**
+     *11. 文章关注添加
+     */
+    public static final String _addGuanZhu= "/api/HandyService/addFocused";
+    /**
+     * 12. 取消文章关注
+     */
+    public static final String _cancelGuanZhu= "/api/HandyService/delFocused";
+    /**
+     * 13. 文章评论添加
+     */
+    public static final String _addDiscuss= "/api/HandyService/addServiceComment";
+    /**
+     * 14. 文章评论删除
+     */
+    public static final String _delDiscuss= "/api/HandyService/delServiceComment";
+    /**
+     * 文章点赞记录添加
+     */
+    public static final String _addZan= "/api/HandyService/addUserLike";
+    /**
+     * 删除公众app文章点赞记录
+     */
+    public static final String _delZan= "/api/HandyService/delUserLike";
 
     /**
      * 附件上传

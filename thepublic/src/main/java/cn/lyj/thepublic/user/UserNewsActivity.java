@@ -100,7 +100,12 @@ public class UserNewsActivity extends AllenBaseActivity {
                 holder.setText(R.id.item_source,entity.getServiceInfo().getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceInfo().getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
-
+                holder.setText(R.id.item_zan,entity.getServiceInfo().getLikeCnt()+"");
+                if (entity.getServiceInfo().getIsLike()==1){
+                    holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_blue));
+                }else {
+                    holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_gray));
+                }
             }
         };
         recyclerview.setAdapter(adapter);
@@ -143,6 +148,9 @@ public class UserNewsActivity extends AllenBaseActivity {
                 squareMessage.setServiceTitle(serviceInfoBean.getServiceTitle());
                 squareMessage.setServiceUp(serviceInfoBean.isServiceUp());
                 squareMessage.setServiceType(serviceInfoBean.getServiceType());
+                squareMessage.setIsConcern(serviceInfoBean.getIsConcern());
+                squareMessage.setIsLike(serviceInfoBean.getIsLike());
+                squareMessage.setLikeCnt(serviceInfoBean.getLikeCnt());
                 intent.putExtra("square",squareMessage);
                 startActivity(intent);
             }

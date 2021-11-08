@@ -259,10 +259,18 @@
         <item name="android:paddingTop">@dimen/frame_eight_distance</item>
         <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
     </style>
+    <style name="disDelBlueSmall">
+        <item name="android:textColor">@color/main_text_blue_more</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+    </style>
     <style name="disItemDateStyle">
         <item name="android:textColor">@color/text_gray_color</item>
         <item name="android:textSize">@dimen/frame_text_smaller_size</item>
-        <item name="android:gravity">start</item>
+        <item name="android:gravity">end</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
     </style>
     <style name="disItemZanStyle">
         <item name="android:textColor">@color/text_gray_color</item>
@@ -394,5 +402,19 @@
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:textSize">@dimen/frame_text_middle_size</item>
     </style>
-
+    <style name="robotButtonStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:background">@drawable/btn_accent2primary_selector</item>
+    </style>
+    <style name="robotEditTextStyle">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginStart">@dimen/frame_eight_distance</item>
+        <item name="android:layout_marginEnd">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:background">@drawable/default_input_bg</item>
+        <item name="android:gravity">start|top</item>
+    </style>
 </resources>

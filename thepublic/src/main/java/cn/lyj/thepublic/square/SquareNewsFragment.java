@@ -109,6 +109,12 @@ public class SquareNewsFragment extends Fragment {
                 holder.setText(R.id.item_source,entity.getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
+                holder.setText(R.id.item_zan,entity.getLikeCnt()+"");
+                if (entity.getIsLike()==1){
+                    holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_blue));
+                }else {
+                    holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_gray));
+                }
 
             }
         };
