@@ -140,7 +140,17 @@ public class UserNewsActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ViewHolder holder, int position) {
-
+                Intent intent=new Intent(context,NewsDetailActivity.class);
+                SquareMessage squareMessage=new SquareMessage();
+                UserArt.ServiceInfoBean serviceInfoBean=list.get(position).getServiceInfo();
+                squareMessage.setCreateTime(serviceInfoBean.getCreateTime());
+                squareMessage.setServiceContent(serviceInfoBean.getServiceContent());
+                squareMessage.setServiceId(serviceInfoBean.getServiceId());
+                squareMessage.setServiceTitle(serviceInfoBean.getServiceTitle());
+                squareMessage.setServiceUp(serviceInfoBean.isServiceUp());
+                squareMessage.setServiceType(serviceInfoBean.getServiceType());
+                intent.putExtra("square",squareMessage);
+                startActivity(intent);
             }
 
             @Override
