@@ -118,13 +118,13 @@ public class UserNewsActivity extends AllenBaseActivity {
                 holder.setOnClickListener(R.id.item_gz, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        addGz(entity.getServiceId());
+                        addGz(entity.getServiceInfo().getServiceId());
                     }
                 });
                 holder.setOnClickListener(R.id.item_dis_gz, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        delGz(entity.getServiceId());
+                        delGz(entity.getServiceInfo().getServiceId());
                     }
                 });
             }

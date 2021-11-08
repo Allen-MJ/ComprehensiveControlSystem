@@ -137,6 +137,7 @@ public class MainActivity extends AllenBaseActivity {
         }
     };
 
+
     private boolean isBuildVersionGreaterM() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
     }

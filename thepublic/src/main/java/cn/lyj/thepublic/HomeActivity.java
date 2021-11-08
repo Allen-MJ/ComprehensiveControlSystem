@@ -76,5 +76,18 @@ public class HomeActivity extends AllenBaseActivity {
         });
         bottom.setSelectedItemId(R.id.item_serve);
     }
+    public void goOtherFragment(int i){
+        pager.setCurrentItem(i);
+        if (i==0) {
+            bottom.setSelectedItemId(R.id.item_serve);
+        } else if (i == 1) {
+            bottom.setSelectedItemId(R.id.item_news);
+        } else if (i == 2) {
+            bottom.setSelectedItemId(R.id.item_work);
+        } else if (i == 3) {
+            bottom.setSelectedItemId(R.id.item_own);
+        }
+
+    }
 
 }

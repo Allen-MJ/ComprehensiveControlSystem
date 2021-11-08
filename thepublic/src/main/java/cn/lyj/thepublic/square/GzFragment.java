@@ -67,6 +67,7 @@ public class GzFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initAdapter();
+        addEvent(view);
         refresh.setRefreshHeader(new BezierRadarHeader(getActivity()).setEnableHorizontalDrag(true));
         refresh.setRefreshFooter(new ClassicsFooter(getActivity()));
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
@@ -98,13 +99,13 @@ public class GzFragment extends BaseFragment {
                 holder.setOnClickListener(R.id.item_gz, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        addGz(entity.getServiceId());
+                        addGz(entity.getServiceInfo().getServiceId());
                     }
                 });
                 holder.setOnClickListener(R.id.item_dis_gz, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        delGz(entity.getServiceId());
+                        delGz(entity.getServiceInfo().getServiceId());
                     }
                 });
             }
@@ -112,7 +113,7 @@ public class GzFragment extends BaseFragment {
         recyclerview.setAdapter(adapter);
     }
 
-    private void addEvent() {
+    private void addEvent(View view) {
         refresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {

@@ -36,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.lyj.thepublic.HomeActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.FyAdapter;
@@ -186,6 +187,7 @@ public class ServeFragment extends BaseFragment {
         } else if (id == R.id.layout_jindu) {
             startActivity(new Intent(getContext(),TipOffListActivity.class).putExtra(Constants.Key_1,"进度查询"));
         } else if (id == R.id.notice_more) {
+            ((HomeActivity)getActivity()).goOtherFragment(2);
         }
     }
 }
