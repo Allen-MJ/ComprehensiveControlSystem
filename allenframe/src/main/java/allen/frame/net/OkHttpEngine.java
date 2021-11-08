@@ -53,6 +53,7 @@ public class OkHttpEngine implements HttpEngine {
                 .addHeader("keep-alive", "false")
                 .addHeader("Authorization", token).post(body)
                 .build();
+        Logger.e("body",mbody.post(params));
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -366,17 +367,12 @@ public class OkHttpEngine implements HttpEngine {
                 RequestBody.create(MediaType.parse(guessMimeType(file.getPath())), file.getFile()));
         MyMultipartBody myMultipartBody = new MyMultipartBody(builder.build(), new ProgressListener() {
             @Override
-            public void onProgress(final long total, final long current) {
+            public void onProgress(long total, long current) {
                 //回调接口打印总进度和当前进度
                 Logger.e("upload", total + " : " + current);
-                act.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(callback!=null){
-                            callback.onProgress(total,current);
-                        }
-                    }
-                });
+                if(callback!=null){
+                    callback.onProgress(total,current);
+                }
             }
         });
         Request request = new Request.Builder().addHeader("keep-alive", "false")

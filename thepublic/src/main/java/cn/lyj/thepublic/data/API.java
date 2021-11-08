@@ -47,6 +47,18 @@ public class API {
      * 23.  根据公告id查询公告详情
      */
     public static final String _getNoticeInfo = "/api/Notice/findById";
+    /**
+     * 15. 分页查询当前登录人点赞的文章
+     */
+    public static final String _getZanList= "/api/HandyService/queryUserLikeByLoginUser";
+    /**
+     * 16. 分页查询当前登录人关注的文章
+     */
+    public static final String _getGuanzhuList= "/api/HandyService/queryUserConcernByLoginUser";
+    /**
+     *17. 分页查询当前登录人评论过的文章
+     */
+    public static final String _getPinglunList= "/api/HandyService/queryUserCommentByLoginUser";
 
     /**
      * 附件上传

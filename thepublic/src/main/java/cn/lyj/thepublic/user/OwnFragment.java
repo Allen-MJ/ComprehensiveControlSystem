@@ -16,6 +16,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
 import allen.frame.ActivityHelper;
+import allen.frame.AllenManager;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
@@ -24,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.lyj.thepublic.LoginActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 
@@ -112,9 +114,12 @@ public class OwnFragment extends Fragment {
         } else if (id == R.id.user_photo) {
         } else if (id == R.id.info_layout) {
         } else if (id == R.id.user_gz) {
+            startActivity(new Intent(getContext(),UserNewsActivity.class).putExtra("type",2));
         } else if (id == R.id.user_zan) {
+            startActivity(new Intent(getContext(),UserNewsActivity.class).putExtra("type",0));
         } else if (id == R.id.user_notice_number) {
         } else if (id == R.id.user_pl) {
+            startActivity(new Intent(getContext(),UserNewsActivity.class).putExtra("type",1));
         } else if (id == R.id.user_fk) {
         } else if (id == R.id.user_update) {
         } else if (id == R.id.exit_btn) {
@@ -124,7 +129,7 @@ public class OwnFragment extends Fragment {
                     dialog.dismiss();
 //                    shared.edit().putBoolean(Constants.UserIsLogin, false).putString(Constants.UserToken, "").apply();
 //                    WebHelper.init().refush();
-//                    AllenManager.getInstance().back2Activity(LoginActivity.class);
+                    AllenManager.getInstance().back2Activity(LoginActivity.class);
                 }
             }, "取消", new DialogInterface.OnClickListener() {
                 @Override
