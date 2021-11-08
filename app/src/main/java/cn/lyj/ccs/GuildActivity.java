@@ -55,9 +55,6 @@ public class GuildActivity extends AllenIMBaseActivity {
     private void processLogic() {
         BGALocalImageSize localImageSize = new BGALocalImageSize(720, 1280, 320, 640);
         guild.setData(localImageSize, ImageView.ScaleType.CENTER_CROP,
-                R.mipmap.guild_1,
-                R.mipmap.guild_2,
-                R.mipmap.guild_3,
-                R.mipmap.guild_4);
+                R.mipmap.guild_1);
     }
 }
