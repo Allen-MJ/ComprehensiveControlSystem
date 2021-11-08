@@ -3,7 +3,7 @@ package cn.lyj.thepublic;
 import android.os.Bundle;
 import android.view.View;
 
-import allen.frame.AllenIMBaseActivity;
+import allen.frame.AllenBaseActivity;
 import allen.frame.entry.LoginInfo;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.lyj.thepublic.data.API;
 
-public class RegistActivity extends AllenIMBaseActivity {
+public class RegistActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.regist_phone)

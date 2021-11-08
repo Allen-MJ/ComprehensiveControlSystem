@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/serve_bg"
-                android:layout_marginBottom="@dimen/frame_20_distance"
+                android:layout_marginBottom="@dimen/frame_30_distance"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:scale="0.637"
@@ -27,15 +27,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/main_bg"
-                android:layout_marginBottom="@dimen/frame_minus_20_distance"
+                android:layout_marginBottom="@dimen/frame_minus_30_distance"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/frame_100_distance"
                     android:layout_height="@dimen/frame_100_distance"
-                    android:layout_margin="@dimen/frame_12_distance"
+                    android:layout_margin="@dimen/frame_eight_distance"
                     app:cardBackgroundColor="@color/white_background"
-                    app:cardCornerRadius="@dimen/frame_eight_distance"
+                    app:cardCornerRadius="@dimen/frame_edge_distance"
                     app:cardElevation="@dimen/frame_two_distance"
                     app:contentPadding="@dimen/frame_eight_distance">
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -65,9 +65,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/frame_100_distance"
                     android:layout_height="@dimen/frame_100_distance"
-                    android:layout_margin="@dimen/frame_12_distance"
+                    android:layout_margin="@dimen/frame_eight_distance"
                     app:cardBackgroundColor="@color/white_background"
-                    app:cardCornerRadius="@dimen/frame_eight_distance"
+                    app:cardCornerRadius="@dimen/frame_edge_distance"
                     app:cardElevation="@dimen/frame_two_distance"
                     app:contentPadding="@dimen/frame_eight_distance">
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -98,9 +98,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/frame_100_distance"
                     android:layout_height="@dimen/frame_100_distance"
-                    android:layout_margin="@dimen/frame_12_distance"
+                    android:layout_margin="@dimen/frame_eight_distance"
                     app:cardBackgroundColor="@color/white_background"
-                    app:cardCornerRadius="@dimen/frame_eight_distance"
+                    app:cardCornerRadius="@dimen/frame_edge_distance"
                     app:cardElevation="@dimen/frame_two_distance"
                     app:contentPadding="@dimen/frame_eight_distance">
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -133,27 +133,34 @@
             style="@style/mainModelBlackStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/frame_four_distance"
-            android:layout_marginTop="@dimen/frame_30_distance"
+            android:layout_marginStart="@dimen/frame_edge_distance"
+            android:layout_marginEnd="@dimen/frame_edge_distance"
+            android:layout_marginTop="@dimen/frame_20_distance"
             android:layout_marginBottom="@dimen/frame_four_distance"
-            android:text="@string/main_life_service" />
+            android:text="@string/main_life_service"
+            android:textStyle="bold"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_life_service"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/frame_edge_distance"
+            android:layout_marginEnd="@dimen/frame_edge_distance"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/frame_edge_distance"
+            android:layout_marginEnd="@dimen/frame_edge_distance">
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/mainModelBlackStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="@dimen/frame_four_distance"
                 android:layout_marginTop="@dimen/frame_four_distance"
                 android:layout_marginBottom="@dimen/frame_four_distance"
-                android:text="@string/main_notice" />
+                android:text="@string/main_notice"
+                android:textStyle="bold"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/notice_more"
                 style="@style/mainMoreBlueSmall"
@@ -165,6 +172,8 @@
             android:id="@+id/rv_notice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/frame_four_distance" />
+            android:layout_marginTop="@dimen/frame_four_distance"
+            android:layout_marginStart="@dimen/frame_edge_distance"
+            android:layout_marginEnd="@dimen/frame_edge_distance"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>
