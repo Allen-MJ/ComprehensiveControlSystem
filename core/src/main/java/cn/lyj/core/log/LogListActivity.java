@@ -1,4 +1,4 @@
-package cn.lyj.core.place;
+package cn.lyj.core.log;
 
 import android.os.Bundle;
 import android.view.View;
@@ -29,14 +29,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
+import cn.lyj.core.adapter.LogAdapter;
 import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
+import cn.lyj.core.entry.Log;
 import cn.lyj.core.entry.Person;
 
 /**
- * 非公有社会场所
+ * 实有人口管理列表
  */
-public class UnSocialPlaceListActivity extends AllenBaseActivity {
+public class LogListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
@@ -45,12 +47,11 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private PersonAdapter adapter;
+    private LogAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<Person> list,sublist;
+    private List<Log> list,sublist;
     private String mKey = "";
-    private String type = "0";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -64,8 +65,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"实有房屋",true);
+        setToolbarTitle(toolbar,"工作日志",true);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new PersonAdapter();
+        adapter = new LogAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -114,25 +114,25 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new LogAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, Person entry, int position) {
+            public void onItemClick(View v, Log entry, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, Person entry, int position) {
+            public void onItemDelete(View v, Log entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
+        Https.with(this).url(CoreApi._core_1)
                 .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<Person>>() {
+                .enqueue(new Callback<List<Log>>() {
                     @Override
-                    public void success(List<Person> data) {
+                    public void success(List<Log> data) {
                         sublist = data;
                         showData();
                     }

@@ -8,15 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +22,6 @@ import allen.frame.entry.Response;
 import allen.frame.entry.UploadFile;
 import allen.frame.net.Body;
 import allen.frame.net.Callback;
-import allen.frame.net.DataHttp;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
@@ -40,13 +31,17 @@ import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
 import allen.frame.tools.UploadProgressDialog;
 import allen.frame.widget.CircleImageView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.data.API;
-import cn.lyj.thepublic.main.TipoffActivity;
 
 public class UserInfoActivity extends AllenBaseActivity {
     @BindView(R2.id.title)
@@ -87,10 +82,7 @@ public class UserInfoActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setToolbarTitle(toolbar, getTitle());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(toolbar, "个人信息",true);
         shared = actHelper.getSharedPreferences();
     }
 

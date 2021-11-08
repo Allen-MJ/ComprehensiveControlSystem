@@ -4,23 +4,19 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-
 import allen.frame.AllenBaseActivity;
 import allen.frame.HtmlImageUtil.GlideImageGetter;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.StringUtils;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.adapter.DiscussAdapter;
 import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.Notice;
 
@@ -52,9 +48,7 @@ public class MessageDetailActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(toolbar,"消息详情",true);
     }
 
     @Override

@@ -9,5 +9,6 @@
         <activity android:name=".house.RentHouseListActivity" />
         <activity android:name=".place.UnSocialPlaceListActivity" />
         <activity android:name=".place.SocialPlaceListActivity" />
+        <activity android:name=".log.LogListActivity" />
     </application>
 </manifest>

@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
+import cn.lyj.core.R2;
 import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.Person;

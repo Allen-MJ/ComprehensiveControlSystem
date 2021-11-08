@@ -5,16 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import allen.frame.AllenBaseActivity;
+import allen.frame.tools.MsgUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
-
-import allen.frame.AllenBaseActivity;
-import allen.frame.tools.MsgUtils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
@@ -43,10 +41,7 @@ public class DiscussActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setToolbarTitle(toolbar, getTitle());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(toolbar, "评论",true);
     }
 
 

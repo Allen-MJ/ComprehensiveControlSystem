@@ -1,6 +1,5 @@
 package cn.lyj.core.adapter;
 
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.lyj.core.R;
+import cn.lyj.core.entry.Log;
 import cn.lyj.core.entry.Person;
 
 
-public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Person> list;
+    private List<Log> list;
 
-    public PersonAdapter() {
+    public LogAdapter() {
     }
 
-    public void setList(List<Person> list) {
+    public void setList(List<Log> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -62,7 +62,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             delete = itemView.findViewById(R.id.item_delete);
             view = itemView.findViewById(R.id.item_layout);
         }
-        public void bind(final Person entry) {
+        public void bind(final Log entry) {
             if (entry != null) {
                 name.setText("测试人");
                 sort.setText(String.valueOf(getAdapterPosition()));
@@ -99,7 +99,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View v, Person entry, int position);
-        void onItemDelete(View v, Person entry, int position);
+        void onItemClick(View v, Log entry, int position);
+        void onItemDelete(View v, Log entry, int position);
     }
 }

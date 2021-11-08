@@ -5,13 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -19,7 +12,6 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
@@ -29,8 +21,13 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.widget.SearchView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.WjdcAdapter;
@@ -70,10 +67,7 @@ public class WjdcActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setToolbarTitle(bar, getTitle());
-        setSupportActionBar(bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(bar, "问卷调查",true);
     }
 
     @Override

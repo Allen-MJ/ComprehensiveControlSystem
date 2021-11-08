@@ -4,16 +4,14 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
+import allen.frame.AllenBaseActivity;
+import allen.frame.HtmlImageUtil.GlideImageGetter;
+import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
-
-import allen.frame.AllenBaseActivity;
-import allen.frame.HtmlImageUtil.GlideImageGetter;
-import allen.frame.tools.StringUtils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
@@ -58,9 +56,7 @@ public class NewsDetailActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(toolbar,"广场",true);
     }
 
     @Override

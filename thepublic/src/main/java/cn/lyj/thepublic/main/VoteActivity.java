@@ -3,14 +3,6 @@ package cn.lyj.thepublic.main;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -21,11 +13,16 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
-import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
@@ -76,16 +73,13 @@ public class VoteActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
-        setToolbarTitle(bar, getTitle());
-        setSupportActionBar(bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(bar, "问卷调查",true);
     }
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        uid = actHelper.getSharedPreferences().getInt(Constants.UserId, 0);
         wjListBean = (WjdcEntity) getIntent().getSerializableExtra("Wjdc");
+        uid = actHelper.getSharedPreferences().getInt(Constants.UserId, 0);
         id = wjListBean.getPollId();
         tvVoteTitle.setText("#" + wjListBean.getPollTitle() + "#");
         loadData();

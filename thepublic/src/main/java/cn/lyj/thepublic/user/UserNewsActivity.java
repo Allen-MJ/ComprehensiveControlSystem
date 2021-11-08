@@ -6,12 +6,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -30,12 +24,15 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Logger;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.data.API;
-import cn.lyj.thepublic.entry.Notice;
 import cn.lyj.thepublic.entry.SquareMessage;
 import cn.lyj.thepublic.entry.UserArt;
 import cn.lyj.thepublic.square.NewsDetailActivity;
@@ -71,20 +68,17 @@ public class UserNewsActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ButterKnife.bind(this);
         type=getIntent().getIntExtra("type",0);
         if (type==ZAN_TYPE){
             url=API._getZanList;
-            setToolbarTitle(toolbar, "我的点赞");
+            setToolbarTitle(toolbar, "我的点赞",true);
         }else if (type==PING_LUN_TYPE){
             url=API._getPinglunList;
-            setToolbarTitle(toolbar, "我的评论");
+            setToolbarTitle(toolbar, "我的评论",true);
         }else if (type==GUAN_ZHU_TYPE){
             url=API._getGuanzhuList;
-            setToolbarTitle(toolbar, "我的关注");
+            setToolbarTitle(toolbar, "我的关注",true);
         }
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

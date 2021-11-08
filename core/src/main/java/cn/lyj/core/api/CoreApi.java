@@ -41,4 +41,7 @@ public class CoreApi {
      * 出租房查询
      */
     public static final String _core_10 = "/api/tb16/appQuery";
+    /*工作日志start*/
+    public static final String _core_11 = "/api/gridWorkLog/gridmember";
+    /*工作日志end*/
 }
