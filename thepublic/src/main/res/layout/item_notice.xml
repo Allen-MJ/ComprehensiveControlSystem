@@ -42,7 +42,12 @@
                     android:gravity="center_vertical"
                     android:lines="1"/>
 
-
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_date"
+                    style="@style/mainItemGraySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLength="10"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -52,24 +57,20 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_message"
-                    style="@style/messageItemNormalSmall"
+                    style="@style/messageItemNormalSmaller"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:lines="1"
                     android:layout_marginStart="@dimen/frame_20_distance" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_date"
-                    style="@style/mainItemGraySmallStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLength="10"/>
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <View
-            android:id="@+id/item_line"
-            style="@style/HalfGrayLine" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:id="@+id/item_line"
+        style="@style/HalfGrayLine" />
 </androidx.appcompat.widget.LinearLayoutCompat>

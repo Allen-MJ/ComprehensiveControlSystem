@@ -150,7 +150,6 @@ public class MessageFragment extends Fragment {
 
             @Override
             public void success(List<Notice> data) {
-                helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
                 sublist=data;
                 if (isRefresh) {
                     list = sublist;
@@ -165,11 +164,20 @@ public class MessageFragment extends Fragment {
                 }
                 adapter.setDatas(list);
                 refresh.setNoMoreData(helper.isNoMoreData(sublist, pageSize));
+                if(list==null||list.size()==0){
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, "暂无数据");
+                }else{
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                }
             }
 
             @Override
             public void fail(Response response) {
-                helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                if(list==null||list.size()==0){
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+                }else{
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                }
             }
         });
 

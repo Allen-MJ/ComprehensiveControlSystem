@@ -24,6 +24,7 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Logger;
+import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -77,7 +78,7 @@ public class GzFragment extends BaseFragment {
         recyclerview.setLayoutManager(manager);
         adapter = new CommonAdapter<UserArt>(getActivity(), R.layout.item_square_news) {
             @Override
-            public void convert(ViewHolder holder, UserArt entity, int position) {
+            public void convert(ViewHolder holder, final UserArt entity, int position) {
                 holder.setText(R.id.item_source,entity.getServiceInfo().getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceInfo().getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
@@ -87,6 +88,25 @@ public class GzFragment extends BaseFragment {
                 }else {
                     holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_gray));
                 }
+                if (entity.getServiceInfo().getIsConcern()==0){
+                    holder.setVisible(R.id.item_gz,true);
+                    holder.setVisible(R.id.item_dis_gz,false);
+                }else {
+                    holder.setVisible(R.id.item_gz,false);
+                    holder.setVisible(R.id.item_dis_gz,true);
+                }
+                holder.setOnClickListener(R.id.item_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addGz(entity.getServiceId());
+                    }
+                });
+                holder.setOnClickListener(R.id.item_dis_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delGz(entity.getServiceId());
+                    }
+                });
             }
         };
         recyclerview.setAdapter(adapter);
@@ -135,6 +155,48 @@ public class GzFragment extends BaseFragment {
             }
         });
     }
+
+
+    private void addGz(String id) {
+        Https.with(getActivity()).url(API._addGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(getContext(), "关注成功!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(getContext(), response.getMsg());
+                    }
+                });
+    }
+
+    private void delGz(String id) {
+        Https.with(getActivity()).url(API._cancelGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(getContext(), "已取消关注!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(getContext(), response.getMsg());
+                    }
+                });
+    }
+
     private void loadData() {
         Https.with(getActivity()).url(API._getGuanzhuList)
                 .addParam("page",page++)

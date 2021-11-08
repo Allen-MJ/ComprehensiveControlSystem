@@ -113,12 +113,13 @@ public class ServeFragment extends BaseFragment {
     private void initNotice() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         rvNotice.setLayoutManager(manager);
-        noticeAdapter=new CommonAdapter<Notice>(getContext(),R.layout.item_notice) {
+        noticeAdapter=new CommonAdapter<Notice>(getContext(),R.layout.item_main_notice) {
             @Override
             public void convert(ViewHolder holder, Notice entity, int position) {
                 holder.setText(R.id.item_source,entity.getNoticeTitle());
                 holder.setText(R.id.item_message,entity.getNoticeSubtitle());
                 holder.setText(R.id.item_date,entity.getUpdateTime());
+                holder.setVisible(R.id.item_zd,entity.isNoticeUp());
             }
         };
         rvNotice.setAdapter(noticeAdapter);

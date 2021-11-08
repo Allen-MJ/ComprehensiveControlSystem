@@ -3,7 +3,8 @@
     package="cn.lyj.thepublic">
 
     <application>
-        <activity android:name=".user.UserNewsActivity"></activity>
+        <activity android:name=".user.UserNewsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.TipOffInfoActivity"
             android:screenOrientation="portrait" />

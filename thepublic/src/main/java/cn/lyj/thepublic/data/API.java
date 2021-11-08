@@ -22,9 +22,16 @@ public class API {
      */
     public static final String _getSquare = "/api/HandyService/queryOfApp";
     /**
+     * 退出登录
+     */
+    public static final String _logout = "/auth/logoutOfApp";
+    /**
      * 分页查询通知公告
      */
     public static final String _getNotice = "/api/Notice/queryOfApp";
+    /**
+     *
+     */
     public static final String _getType = "/api/dictDetail/queryOfApp";
     /**
      * 问卷调查列表

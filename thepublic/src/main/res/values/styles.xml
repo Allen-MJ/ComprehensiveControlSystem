@@ -134,15 +134,38 @@
         <item name="android:textSize">@dimen/frame_text_small_size</item>
         <item name="android:lines">2</item>
         <item name="android:gravity">start</item>
-        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="messageItemBlueSmaller">
+        <item name="android:textColor">@color/main_text_blue_more</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="mainNewsItemWhiteSmaller">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">1</item>
     </style>
     <style name="messageItemNormalSmall">
         <item name="android:textColor">@color/text_normal_color</item>
         <item name="android:textSize">@dimen/frame_text_small_size</item>
         <item name="android:lines">2</item>
         <item name="android:gravity">start</item>
-        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="messageItemNormalSmaller">
+        <item name="android:textColor">@color/text_normal_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
     <style name="messageItemBlackNormal">
@@ -163,7 +186,7 @@
     <style name="mainItemGraySmallStyle">
         <item name="android:textColor">@color/text_gray_color</item>
         <item name="android:textSize">@dimen/frame_text_small_size</item>
-        <item name="android:padding">@dimen/frame_four_distance</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -269,7 +292,7 @@
     <style name="disItemDateStyle">
         <item name="android:textColor">@color/text_gray_color</item>
         <item name="android:textSize">@dimen/frame_text_smaller_size</item>
-        <item name="android:gravity">end</item>
+        <item name="android:gravity">start</item>
         <item name="android:padding">@dimen/frame_four_distance</item>
     </style>
     <style name="disItemZanStyle">
@@ -291,9 +314,22 @@
         <item name="android:textSize">@dimen/frame_text_small_size</item>
         <item name="android:lines">2</item>
         <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+    </style>
+    <style name="newsItemBlackSmaller">
+        <item name="android:textColor">@color/text_normal_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">start</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
-
+    <style name="newsItemWhiteSmaller">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+    </style>
     <style name="squareBlueNormal">
         <item name="android:textColor">@color/square_text_blue</item>
         <item name="android:textSize">@dimen/frame_text_normal_size</item>

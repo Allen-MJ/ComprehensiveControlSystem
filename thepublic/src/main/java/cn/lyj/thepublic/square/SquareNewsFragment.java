@@ -2,6 +2,7 @@ package cn.lyj.thepublic.square;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
+import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -105,7 +107,7 @@ public class SquareNewsFragment extends Fragment {
         recyclerview.setLayoutManager(manager);
         adapter = new CommonAdapter<SquareMessage>(getContext(), R.layout.item_square_news) {
             @Override
-            public void convert(ViewHolder holder, SquareMessage entity, int position) {
+            public void convert(ViewHolder holder, final SquareMessage entity, int position) {
                 holder.setText(R.id.item_source,entity.getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
@@ -115,6 +117,25 @@ public class SquareNewsFragment extends Fragment {
                 }else {
                     holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_gray));
                 }
+                if (entity.getIsConcern()==0){
+                    holder.setVisible(R.id.item_gz,true);
+                    holder.setVisible(R.id.item_dis_gz,false);
+                }else {
+                    holder.setVisible(R.id.item_gz,false);
+                    holder.setVisible(R.id.item_dis_gz,true);
+                }
+                holder.setOnClickListener(R.id.item_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addGz(entity.getServiceId());
+                    }
+                });
+                holder.setOnClickListener(R.id.item_dis_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delGz(entity.getServiceId());
+                    }
+                });
 
             }
         };
@@ -171,7 +192,6 @@ public class SquareNewsFragment extends Fragment {
                 .enqueue(new Callback<List<SquareMessage>>() {
                     @Override
                     public void success(List<SquareMessage> data) {
-                        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
                         sublist=data;
                         if (isRefresh) {
                             list = sublist;
@@ -186,14 +206,63 @@ public class SquareNewsFragment extends Fragment {
                         }
                         adapter.setDatas(list);
                         refresh.setNoMoreData(helper.isNoMoreData(sublist, pageSize));
+                        if(list==null||list.size()==0){
+                            helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, "暂无数据");
+                        }else{
+                            helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        }
                     }
 
                     @Override
                     public void fail(Response response) {
-                        helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        if(list==null||list.size()==0){
+                            helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+                        }else{
+                            helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        }
                     }
                 });
 
+    }
+
+    private void addGz(String id) {
+        Https.with(getActivity()).url(API._addGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(getContext(), "关注成功!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(getContext(), response.getMsg());
+                    }
+                });
+    }
+
+    private void delGz(String id) {
+        Https.with(getActivity()).url(API._cancelGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(getContext(), "已取消关注!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(getContext(), response.getMsg());
+                    }
+                });
     }
 
     @OnClick({R2.id.message_type, R2.id.message_search})
