@@ -139,6 +139,15 @@ public class MessageFragment extends Fragment {
                 return false;
             }
         });
+        helper.setProgressClickListener(new ActivityHelper.OnProgressClickListener() {
+            @Override
+            public void onAgainClick(View v) {
+                isRefresh = true;
+                helper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                page = 0;
+                loadData();
+            }
+        });
     }
 
     private void loadData() {

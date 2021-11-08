@@ -164,6 +164,12 @@ public class ServeFragment extends BaseFragment {
                 return false;
             }
         });
+        actHelper.setProgressClickListener(new ActivityHelper.OnProgressClickListener() {
+            @Override
+            public void onAgainClick(View v) {
+                loadData();
+            }
+        });
     }
 
     private void go2Url(Type type) {
