@@ -1,4 +1,19 @@
 <resources>
     <string name="core_delete">删除</string>
     <string name="core_wg">所在网格:</string>
+    <string name="update_time">更新时间:</string>
+    <string name="create_time">发布时间:</string>
+    <string name="to_object">指派对象:</string>
+
+    <string name="shouli">受理</string>
+    <string name="fankui">反馈</string>
+    <string name="commit">提交</string>
+
+    <string name="fankuiren">反馈人</string>
+
+    <string name="task_title">任务标题:</string>
+    <string name="task_info">任务描述:</string>
+    <string name="task_type">指派类型:</string>
+    <string name="task_type_1">个人</string>
+    <string name="task_type_2">部门</string>
 </resources>

@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.lyj.core">
 
-    /
     <application>
-        <activity android:name=".person.PersonListActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".person.PersonListActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".house.HouseListActivity" />
         <activity android:name=".house.RentHouseListActivity" />
         <activity android:name=".place.UnSocialPlaceListActivity" />
@@ -12,4 +13,5 @@
         <activity android:name=".log.LogListActivity" />
         <activity android:name="cn.lyj.work.LoginActivity" />
     </application>
+
 </manifest>

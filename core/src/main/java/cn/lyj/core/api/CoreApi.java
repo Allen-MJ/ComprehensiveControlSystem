@@ -56,6 +56,22 @@ public class CoreApi {
     public static final String _core_11 = "/api/gridWorkLog/gridmember";
     /*工作日志end*/
     /**
+     * 我的任务列表
+     */
+    public static final String _get_task_list = "/api/gridTask/gridmember";
+    /**
+     * 任务受理
+     */
+    public static final String _task_accept = "/api/gridTask/gridmember/accepttask";
+    /**
+     * 任务反馈
+     */
+    public static final String _task_feed = "/api/gridTask/gridmember/feedback";
+    /**
+     * 查看任务反馈详情进度
+     */
+    public static final String _get_feed_list = "/api/gridTask/gridmember/feedbackdetail";
+    /**
      * 统计图数据
      * decisionType 必填 查询统计类型 字符串
      * time 选填 查询截止时间 YYYY-MM-DD字符串 （出租房统计不支持此参数）

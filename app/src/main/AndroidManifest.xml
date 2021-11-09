@@ -81,6 +81,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.work.LoginActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.task.MyTaskListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.task.FeedActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.task.TaskDeailActivity"
+            android:screenOrientation="portrait"/>
         <!--core end-->
         <!--leader start-->
         <activity android:name="cn.lyj.leader.HomeActivity"

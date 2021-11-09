@@ -7,4 +7,17 @@
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:textSize">@dimen/frame_text_middle_size</item>
     </style>
+    <style name="CoreSmaller8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+    </style>
+    <style name="reflect_sxfy_submit">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:background">@drawable/afs_light_blue_bt_bg</item>
+        <item name="android:layout_margin">@dimen/frame_eight_distance</item>
+    </style>
 </resources>
