@@ -19,6 +19,8 @@ public class Https {
     private int method = Type_Post;
     public static int Type_Post = 0;
     public static int Type_Get = 1;
+    public static int Type_Put = 3;
+    public static int Type_Delete = 4;
     public static int Type_Upload = 2;
     public Https(Activity activity) {
         this.activity = activity;
@@ -56,6 +58,14 @@ public class Https {
 
     public Https get(){
         method = Type_Get;
+        return this;
+    }
+    public Https put(){
+        method = Type_Put;
+        return this;
+    }
+    public Https delete(){
+        method = Type_Delete;
         return this;
     }
     public Https upload(){
@@ -100,6 +110,14 @@ public class Https {
         mEngine.get(activity,mUrl,mParams,callback);
     }
 
+    private <T> void put(Callback<T> callback){
+        mEngine.put(activity,mUrl,mParams,callback);
+    }
+
+    private <T> void delete(Callback<T> callback){
+        mEngine.delete(activity,mUrl,mParams,callback);
+    }
+
     private <T> void upload(Callback<T> callback){
         mEngine.upload(activity,mUrl,mFile,mParams,callback);
     }
@@ -114,6 +132,10 @@ public class Https {
                 throw new NullPointerException("文件不能为空!");
             }
             upload(callback);
+        }else if(method==Type_Delete){
+            delete(callback);
+        }else if(method==Type_Put){
+            put(callback);
         }
     }
 }
