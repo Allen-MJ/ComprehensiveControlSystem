@@ -88,7 +88,7 @@ public class NewsDetailActivity extends AllenBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        userId=shared.getString(Constants.USER_ID,"");
+        userId=shared.getString(Constants.UserId,"");
         squareMessage = (SquareMessage) getIntent().getSerializableExtra("square");
         detailTitle.setText(squareMessage.getServiceTitle());
         detailDate.setText(StringUtils.empty(squareMessage.getCreateTime()) ? squareMessage.getCreateTime() : squareMessage.getCreateTime().substring(0, 10));

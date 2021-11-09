@@ -49,8 +49,7 @@
         android:textSize="@dimen/frame_text_normal_size"
         android:inputType="textPassword"
         android:layout_marginStart="@dimen/frame_32_distance"
-        android:layout_marginEnd="@dimen/frame_32_distance"
-        android:layout_marginTop="@dimen/frame_edge_distance"/>
+        android:layout_marginEnd="@dimen/frame_32_distance"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_one_distance"
@@ -74,7 +73,7 @@
             android:padding="@dimen/frame_edge_distance"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:drawableStart="@mipmap/ic_phone"
+            android:drawableStart="@mipmap/ic_yzm"
             android:drawablePadding="@dimen/frame_edge_distance"
             android:textColor="@color/text_black_color"
             android:textSize="@dimen/frame_text_normal_size"
@@ -84,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/frame_32_distance"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:src="@mipmap/ic_yam_refush"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
     <View
         android:layout_width="match_parent"

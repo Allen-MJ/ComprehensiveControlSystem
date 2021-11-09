@@ -121,11 +121,15 @@ public class LoginActivity extends AllenIMBaseActivity {
                 @Override
                 public void success(LoginInfo data) {
                     dismissProgressDialog();
-                    shared.edit()
-                            .putString(Constants.UserToken,data.getToken())
+                    shared.edit().putString(Constants.UserToken,data.getToken())
                             .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
+                            .putString(Constants.UserId,data.getUser().getUser().getId())
+                            .putString(Constants.UserAddress,data.getUser().getUser().getAddress())
+                            .putString(Constants.UserEmail,data.getUser().getUser().getEmail())
                             .putString(Constants.UserName,data.getUser().getUser().getUsername())
-                            .putString(Constants.USER_ID,data.getUser().getUser().getId())
+                            .putString(Constants.UserGender,data.getUser().getUser().getGender())
+                            .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
+                            .putString(Constants.UserGrage,data.getUser().getUser().getGrade())
                             .apply();
                     if(isToken){
                         setResult(RESULT_OK,getIntent());

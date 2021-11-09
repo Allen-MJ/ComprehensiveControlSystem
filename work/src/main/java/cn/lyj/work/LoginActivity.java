@@ -1,4 +1,4 @@
-package cn.lyj.core;
+package cn.lyj.work;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,19 +20,20 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.lyj.core.R2;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.LoginAuth;
 
-public class CoreLoginActivity extends AllenIMBaseActivity {
-    @BindView(R2.id.login_account)
+public class LoginActivity extends AllenIMBaseActivity {
+    @BindView(cn.lyj.core.R2.id.login_account)
     AppCompatEditText loginAccount;
-    @BindView(R2.id.login_psw)
+    @BindView(cn.lyj.core.R2.id.login_psw)
     ClickDrawEditText loginPsw;
-    @BindView(R2.id.login_bt)
+    @BindView(cn.lyj.core.R2.id.login_bt)
     AppCompatButton loginBt;
-    @BindView(R2.id.login_yzm)
+    @BindView(cn.lyj.core.R2.id.login_yzm)
     AppCompatEditText loginYzm;
-    @BindView(R2.id.yzm)
+    @BindView(cn.lyj.core.R2.id.yzm)
     AppCompatImageView yzm;
 
     @Override
@@ -42,7 +43,7 @@ public class CoreLoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_login_layout;
+        return cn.lyj.core.R.layout.core_login_layout;
     }
 
     @Override
@@ -60,13 +61,13 @@ public class CoreLoginActivity extends AllenIMBaseActivity {
 
     }
 
-    @OnClick({R2.id.login_bt,R2.id.yzm})
+    @OnClick({cn.lyj.core.R2.id.login_bt, R2.id.yzm})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
-        if (id == R.id.login_bt) {
+        if (id == cn.lyj.core.R.id.login_bt) {
             login();
-        }else if(id == R.id.yzm){
+        }else if(id == cn.lyj.core.R.id.yzm){
             authCode();
         }
         view.setEnabled(true);
@@ -108,19 +109,32 @@ public class CoreLoginActivity extends AllenIMBaseActivity {
         }
         if(StringUtils.empty(yzmCode)){
             MsgUtils.showMDMessage(context,"请输入验证码!");
+            return;
         }
+        showProgressDialog("");
         Https.with(this).url(CoreApi.authLogin)
-                .addParam("code",yzmCode).addParam("username",account).addParam("password", EncryptUtils.rsaEncrypt(psw, Constants.publicKey))
+                .addParam("code",yzmCode).addParam("username",account)
+                .addParam("password", EncryptUtils.rsaEncrypt(psw, Constants.publicKey))
                 .addParam("uuid",uuid).post()
                 .enqueue(new Callback<LoginInfo>() {
                     @Override
                     public void success(LoginInfo data) {
-
+                        dismissProgressDialog();
+                        shared.edit().putString(Constants.UserToken,data.getToken())
+                                .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
+                                .putString(Constants.UserId,data.getUser().getUser().getId())
+                                .putString(Constants.UserAddress,data.getUser().getUser().getAddress())
+                                .putString(Constants.UserEmail,data.getUser().getUser().getEmail())
+                                .putString(Constants.UserName,data.getUser().getUser().getUsername())
+                                .putString(Constants.UserGender,data.getUser().getUser().getGender())
+                                .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
+                                .putString(Constants.UserGrage,data.getUser().getUser().getGrade()).apply();
                     }
 
                     @Override
                     public void fail(Response response) {
-
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
                     }
                 });
     }

@@ -18,7 +18,10 @@ public class ImageUtils {
 	 * @return
 	 */
 	public static Bitmap base64ToBitmap(String base64String) {
-		byte[] decode = Base64.decode(base64String, Base64.DEFAULT);
+		if(StringUtils.empty(base64String)){
+			return null;
+		}
+		byte[] decode = Base64.decode(base64String.replaceFirst("data:image/png;base64,",""), Base64.DEFAULT);
 		Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);
 		return bitmap;
 	}

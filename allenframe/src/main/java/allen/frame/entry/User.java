@@ -4,13 +4,19 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String id;
-    private String phone;
-    private String username;
-    private String createTime;
-    private boolean enabled;
-    private String createBy;
-    private int isThepublic;
-    private String updateTime;
+    private String phone;//
+    private String username;//
+    private String nickName;//昵称
+    private String address;//
+    private String avatarPath;//头像
+    private String email;//
+    private String createTime;//
+    private String gender;//性别
+    private String grade;//用户等级
+    private boolean enabled;//是否启用
+    private String createBy;//
+    private int isThepublic;//0公众号
+    private String updateTime;//
 
     public String getId() {
         return id;
@@ -74,5 +80,53 @@ public class User implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

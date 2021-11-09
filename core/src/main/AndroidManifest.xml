@@ -10,6 +10,6 @@
         <activity android:name=".place.UnSocialPlaceListActivity" />
         <activity android:name=".place.SocialPlaceListActivity" />
         <activity android:name=".log.LogListActivity" />
-        <activity android:name=".CoreLoginActivity" />
+        <activity android:name="cn.lyj.work.LoginActivity" />
     </application>
 </manifest>
