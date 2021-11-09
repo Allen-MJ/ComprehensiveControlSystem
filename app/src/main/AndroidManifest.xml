@@ -66,6 +66,22 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.news.MessageDetailActivity"
             android:screenOrientation="portrait"/>
+        <!--core start-->
+        <activity android:name="cn.lyj.core.person.PersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.house.HouseListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.house.RentHouseListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.place.UnSocialPlaceListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.place.SocialPlaceListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.log.LogListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.CoreLoginActivity"
+            android:screenOrientation="portrait"/>
+        <!--core end-->
         <!--基础通用界面start-->
         <activity
             android:name="allen.frame.MultiImageSelectorActivity"

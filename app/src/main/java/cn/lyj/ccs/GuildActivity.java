@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import cn.lyj.thepublic.LoginActivity;
+import cn.lyj.core.CoreLoginActivity;
 
 public class GuildActivity extends AllenIMBaseActivity {
     @BindView(R.id.guild)
@@ -50,7 +50,8 @@ public class GuildActivity extends AllenIMBaseActivity {
         guild.setEnterSkipViewIdAndDelegate(R.id.btn_guide_enter, R.id.tv_guide_skip, new BGABanner.GuideDelegate() {
             @Override
             public void onClickEnterOrSkip() {
-                startActivity(new Intent(context, LoginActivity.class));
+                startActivity(new Intent(context, CoreLoginActivity.class));
+//                startActivity(new Intent(context, LoginActivity.class));
                 finish();
             }
         });
