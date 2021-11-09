@@ -6,15 +6,12 @@ import android.widget.ImageView;
 
 import allen.frame.AllenIMBaseActivity;
 import allen.frame.entry.BGALocalImageSize;
-import allen.frame.tools.Constants;
-import allen.frame.tools.EncryptUtils;
-import allen.frame.tools.Logger;
 import allen.frame.widget.BGABanner;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import cn.lyj.thepublic.LoginActivity;
+import cn.lyj.leader.LoginActivity;
 
 public class GuildActivity extends AllenIMBaseActivity {
     @BindView(R.id.guild)
@@ -41,7 +38,6 @@ public class GuildActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        Logger.e("ceshi", EncryptUtils.rsaEncrypt("123456", Constants.publicKey));
         processLogic();
     }
 

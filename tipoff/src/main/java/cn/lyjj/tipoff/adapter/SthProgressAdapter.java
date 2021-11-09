@@ -1,6 +1,5 @@
-package cn.lyj.thepublic.adapter;
+package cn.lyjj.tipoff.adapter;
 
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
-import cn.lyj.thepublic.R;
-import cn.lyj.thepublic.entry.SthProgress;
+import cn.lyjj.tipoff.R;
+import cn.lyjj.tipoff.entry.SthProgress;
 
 
 public class SthProgressAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -30,7 +29,7 @@ public class SthProgressAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.public_progress_item, parent, false);
+                .inflate(R.layout.tipoff_progress_item, parent, false);
         v.setLayoutParams(new ViewGroup
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));

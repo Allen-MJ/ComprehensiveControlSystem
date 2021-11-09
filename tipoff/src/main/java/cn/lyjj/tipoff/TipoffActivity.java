@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.main;
+package cn.lyjj.tipoff;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -39,10 +39,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.lyj.thepublic.LoginActivity;
-import cn.lyj.thepublic.R;
-import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.data.API;
+import cn.lyjj.tipoff.api.TipApi;
 
 public class TipoffActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
@@ -72,6 +69,8 @@ public class TipoffActivity extends AllenBaseActivity {
     private UploadProgressDialog dialog;
     private Map<String,UploadFile> map;
     private Map<String,Boolean> keys;
+    private int type = 0;
+    private String title,api;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -80,11 +79,22 @@ public class TipoffActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.public_tipoff_layout;
+        return R.layout.tipoff_layout;
     }
 
     @Override
     protected void initBar() {
+        type = getIntent().getIntExtra(Constants.Key_1,0);
+        if(type==0){
+            title = "爆料";
+            api = TipApi.TipPublicAdd;
+        }else if(type==1){
+            title = "事件上报";
+            api = TipApi.TipGridAdd;
+        }else{
+            title = "事件上报";
+            api = TipApi.TipLeaderAdd;
+        }
         setToolbarTitle(toolbar,"爆料",true);
     }
 
@@ -240,7 +250,7 @@ public class TipoffActivity extends AllenBaseActivity {
             sb.delete(0,1);
         }
         showProgressDialog("正在提交爆料,请稍等...");
-        Https.with(this).url(API._3).addParam("appealOrgId",orgId).addParam("name",name).addParam("phone",phone).addParam("idNumber",idNumber)
+        Https.with(this).url(api).addParam("appealOrgId",orgId).addParam("name",name).addParam("phone",phone).addParam("idNumber",idNumber)
                 .addParam("sex",sex).addParam("point","").addParam("address",address).addParam("gid",gid).addParam("content",content)
                 .addParam("fileIds",sb.toString())
                 .post()
@@ -257,7 +267,7 @@ public class TipoffActivity extends AllenBaseActivity {
                     public void token() {
                         dismissProgressDialog();
                         MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
-                        startActivityForResult(new Intent(context, LoginActivity.class).putExtra(Constants.Key_Token,true),11);
+                        /*startActivityForResult(new Intent(context, LoginActivity.class).putExtra(Constants.Key_Token,true),11);*/
                     }
 
                     @Override
@@ -269,7 +279,7 @@ public class TipoffActivity extends AllenBaseActivity {
     }
 
     private void upload(final File file){
-        Https.with(this).url(API.upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+        Https.with(this).url(TipApi.upload).file(file).upload().enqueue(new Callback<UploadFile>() {
 
             @Override
             public void success(UploadFile data) {

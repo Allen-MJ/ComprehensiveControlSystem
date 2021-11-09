@@ -1,5 +1,6 @@
 package cn.lyj.leader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -129,6 +130,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                                 .putString(Constants.UserGender,data.getUser().getUser().getGender())
                                 .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
                                 .putString(Constants.UserGrage,data.getUser().getUser().getGrade()).apply();
+                        startActivity(new Intent(context,HomeActivity.class));
                     }
 
                     @Override

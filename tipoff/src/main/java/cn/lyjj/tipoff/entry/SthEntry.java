@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.entry;
+package cn.lyjj.tipoff.entry;
 
 import java.io.Serializable;
 import java.util.List;

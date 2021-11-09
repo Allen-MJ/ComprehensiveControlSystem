@@ -55,4 +55,11 @@ public class CoreApi {
     /*工作日志start*/
     public static final String _core_11 = "/api/gridWorkLog/gridmember";
     /*工作日志end*/
+    /**
+     * 统计图数据
+     * decisionType 必填 查询统计类型 字符串
+     * time 选填 查询截止时间 YYYY-MM-DD字符串 （出租房统计不支持此参数）
+     * orgid 选填 查询范围，机构id 字符串（地区分布的图表不支持此参数）
+     */
+    public static final String CoreChart = "/api/decision/appDecision";
 }

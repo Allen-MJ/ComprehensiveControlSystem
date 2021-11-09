@@ -3,9 +3,7 @@ package cn.lyj.thepublic.main;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import allen.frame.BaseFragment;
 import allen.frame.tools.Constants;
@@ -14,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,17 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
-import allen.frame.WebActivity;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.entry.Type;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.CheckUtils;
-import allen.frame.tools.MsgUtils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.lyj.thepublic.HomeActivity;
@@ -43,6 +36,8 @@ import cn.lyj.thepublic.adapter.FyAdapter;
 import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.Notice;
 import cn.lyj.thepublic.news.MessageDetailActivity;
+import cn.lyjj.tipoff.TipOffListActivity;
+import cn.lyjj.tipoff.TipoffActivity;
 
 public class ServeFragment extends BaseFragment {
 
@@ -187,11 +182,11 @@ public class ServeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.layout_baoliao) {
-            startActivity(new Intent(getActivity(),TipoffActivity.class));
+            startActivity(new Intent(getActivity(), TipoffActivity.class).putExtra(Constants.Key_1,0));
         } else if (id == R.id.layout_wenjuan) {
             startActivity(new Intent(getContext(),WjdcActivity.class));
         } else if (id == R.id.layout_jindu) {
-            startActivity(new Intent(getContext(),TipOffListActivity.class).putExtra(Constants.Key_1,"进度查询"));
+            startActivity(new Intent(getContext(), TipOffListActivity.class).putExtra(Constants.Key_1,"进度查询"));
         } else if (id == R.id.notice_more) {
             ((HomeActivity)getActivity()).goOtherFragment(2);
         }

@@ -142,4 +142,15 @@
         <item name="android:background">@drawable/fab_label_background</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <!--首页 start-->
+    <style name="bottomActiveTextStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="itemIconSize">@dimen/frame_edge_distance</item>
+    </style>
+    <style name="bottomInActiveTextStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+        <item name="itemIconSize">@dimen/frame_edge_distance</item>
+    </style>
+    
 </resources>

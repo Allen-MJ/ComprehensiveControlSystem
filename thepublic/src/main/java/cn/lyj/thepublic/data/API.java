@@ -30,7 +30,7 @@ public class API {
      */
     public static final String _getNotice = "/api/Notice/queryOfApp";
     /**
-     *
+     *  数据类型字典
      */
     public static final String _getType = "/api/dictDetail/queryOfApp";
     /**

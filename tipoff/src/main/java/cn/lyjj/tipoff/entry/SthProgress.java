@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.entry;
+package cn.lyjj.tipoff.entry;
 
 import allen.frame.entry.Units;
 

@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.adapter;
+package cn.lyjj.tipoff.adapter;
 
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import allen.frame.tools.DateUtils;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
-import cn.lyj.thepublic.R;
-import cn.lyj.thepublic.entry.SthEntry;
-import cn.lyj.thepublic.entry.WjdcEntity;
+import cn.lyjj.tipoff.R;
+import cn.lyjj.tipoff.entry.SthEntry;
 
 
 public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -33,7 +30,7 @@ public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.public_tipoff_list_item, parent, false);
+                .inflate(R.layout.tipoff_list_item, parent, false);
         v.setLayoutParams(new ViewGroup
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -87,16 +84,6 @@ public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 });
             }
         }
-    }
-
-    private int getStatusResId(double status) {
-        int resId = 0;
-        if (status < 0) {
-            resId = R.mipmap.ic_news_vote_status_finish;
-        } else {
-            resId = R.mipmap.ic_news_vote_status_start;
-        }
-        return resId;
     }
 
     private OnItemClickListener listener;

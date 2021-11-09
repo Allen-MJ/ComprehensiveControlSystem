@@ -58,11 +58,11 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.user.UserInfoActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.TipoffActivity"
+        <activity android:name="cn.lyjj.tipoff.TipoffActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.TipOffListActivity"
+        <activity android:name="cn.lyjj.tipoff.TipOffListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.TipOffInfoActivity"
+        <activity android:name="cn.lyjj.tipoff.TipOffInfoActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.news.MessageDetailActivity"
             android:screenOrientation="portrait"/>
@@ -79,9 +79,13 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.log.LogListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.core.CoreLoginActivity"
+        <activity android:name="cn.lyj.work.LoginActivity"
             android:screenOrientation="portrait"/>
         <!--core end-->
+        <!--leader start-->
+        <activity android:name="cn.lyj.leader.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <!--leader end-->
         <!--基础通用界面start-->
         <activity
             android:name="allen.frame.MultiImageSelectorActivity"

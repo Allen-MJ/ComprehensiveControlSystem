@@ -6,7 +6,7 @@
         <activity android:name=".user.UserNewsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".main.TipOffInfoActivity"
+            android:name="cn.lyjj.tipoff.TipOffInfoActivity"
             android:screenOrientation="portrait" />
     </application>
 

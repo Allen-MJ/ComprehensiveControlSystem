@@ -2,4 +2,10 @@
     package="cn.lyj.leader">
 
     /
+    <application>
+        <activity android:name="cn.lyj.leader.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.leader.LoginActivity"
+            android:screenOrientation="portrait"/>
+    </application>
 </manifest>

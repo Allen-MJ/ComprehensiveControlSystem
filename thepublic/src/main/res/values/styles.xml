@@ -1,13 +1,4 @@
 <resources>
-    <!--首页 start-->
-    <style name="bottomActiveTextStyle" parent="Widget.Design.BottomNavigationView">
-        <item name="android:textSize">@dimen/frame_text_small_size</item>
-        <item name="itemIconSize">@dimen/frame_edge_distance</item>
-    </style>
-    <style name="bottomInActiveTextStyle" parent="Widget.Design.BottomNavigationView">
-        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
-        <item name="itemIconSize">@dimen/frame_edge_distance</item>
-    </style>
     <!--首页 end-->
     <style name="ownPhotoBigWhite">
         <item name="android:textColor">@color/text_white_color</item>
@@ -430,22 +421,6 @@
         <item name="android:gravity">start|center_vertical</item>
     </style>
 
-    <style name="contentNormal8Style">
-        <item name="android:padding">@dimen/frame_eight_distance</item>
-        <item name="android:textSize">@dimen/frame_text_normal_size</item>
-    </style>
-    <style name="Small8Style">
-        <item name="android:padding">@dimen/frame_eight_distance</item>
-        <item name="android:textSize">@dimen/frame_text_small_size</item>
-    </style>
-    <style name="Smaller8Style">
-        <item name="android:padding">@dimen/frame_eight_distance</item>
-        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
-    </style>
-    <style name="Middle8Style">
-        <item name="android:padding">@dimen/frame_eight_distance</item>
-        <item name="android:textSize">@dimen/frame_text_middle_size</item>
-    </style>
     <style name="robotButtonStyle">
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:textSize">@dimen/frame_text_small_size</item>

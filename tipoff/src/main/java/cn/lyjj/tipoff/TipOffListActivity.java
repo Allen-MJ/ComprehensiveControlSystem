@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.main;
+package cn.lyjj.tipoff;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,12 +29,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import cn.lyj.thepublic.LoginActivity;
-import cn.lyj.thepublic.R;
-import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.adapter.TipOffAdapter;
-import cn.lyj.thepublic.data.API;
-import cn.lyj.thepublic.entry.SthEntry;
+import cn.lyjj.tipoff.adapter.TipOffAdapter;
+import cn.lyjj.tipoff.api.TipApi;
+import cn.lyjj.tipoff.entry.SthEntry;
 
 public class TipOffListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
@@ -58,7 +55,7 @@ public class TipOffListActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.public_tipoff_list;
+        return R.layout.tipoff_list;
     }
 
     @Override
@@ -122,7 +119,7 @@ public class TipOffListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url(API._4).addParam("name",mKey)
+        Https.with(this).url(TipApi.TipList).addParam("name",mKey)
                 .addParam("phone",mKey).addParam("idNumber",mKey).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<SthEntry>>() {
 
@@ -137,8 +134,8 @@ public class TipOffListActivity extends AllenBaseActivity {
                         sublist = new ArrayList<>();
                         showData();
                         MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
-                        startActivityForResult(new Intent(context, LoginActivity.class)
-                                .putExtra(Constants.Key_Token,true),11);
+                        /*startActivityForResult(new Intent(context, LoginActivity.class)
+                                .putExtra(Constants.Key_Token,true),11);*/
                     }
 
                     @Override

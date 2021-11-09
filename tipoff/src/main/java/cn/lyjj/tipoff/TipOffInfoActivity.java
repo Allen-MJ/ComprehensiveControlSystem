@@ -1,4 +1,4 @@
-package cn.lyj.thepublic.main;
+package cn.lyjj.tipoff;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,12 +20,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import cn.lyj.thepublic.R;
-import cn.lyj.thepublic.R2;
-import cn.lyj.thepublic.adapter.SthProgressAdapter;
-import cn.lyj.thepublic.data.API;
-import cn.lyj.thepublic.entry.SthEntry;
-import cn.lyj.thepublic.entry.SthProgress;
+import cn.lyjj.tipoff.adapter.SthProgressAdapter;
+import cn.lyjj.tipoff.api.TipApi;
+import cn.lyjj.tipoff.entry.SthEntry;
+import cn.lyjj.tipoff.entry.SthProgress;
 
 public class TipOffInfoActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
@@ -61,7 +59,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.public_tipoff_info;
+        return R.layout.tipoff_info;
     }
 
     @Override
@@ -99,7 +97,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
     }
 
     private void loadInfo(){
-        Https.with(this).url(API._5).addParam("id",id).get().enqueue(new Callback<SthEntry>() {
+        Https.with(this).url(TipApi.TipDetail).addParam("id",id).get().enqueue(new Callback<SthEntry>() {
             @Override
             public void success(SthEntry data) {
                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
@@ -123,7 +121,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
         });
     }
     private void loadProgress(){
-        Https.with(this).url(API._6).addParam("appealId",id).get().enqueue(new Callback<List<SthProgress>>() {
+        Https.with(this).url(TipApi.TipProgress).addParam("appealId",id).get().enqueue(new Callback<List<SthProgress>>() {
             @Override
             public void success(List<SthProgress> data) {
                 progressAdapter.setList(data);
