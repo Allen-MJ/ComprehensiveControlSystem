@@ -7,11 +7,11 @@ public class CoreApi {
     /**
      * 登录验证码
      */
-    public static final String authCode = "/auth/code";
+    public static final String authCode = "/auth/app/code";
     /**
      * 登录
      */
-    public static final String authLogin = "/auth/login";
+    public static final String authLogin = "/auth/app/login";
     /**
      * 户籍人口查询
      */
