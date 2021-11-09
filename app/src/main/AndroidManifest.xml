@@ -91,6 +91,8 @@
         <!--leader start-->
         <activity android:name="cn.lyj.leader.HomeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.chart.ChartActivity"
+            android:screenOrientation="portrait"/>
         <!--leader end-->
         <!--基础通用界面start-->
         <activity

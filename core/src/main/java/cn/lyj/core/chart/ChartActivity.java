@@ -4,13 +4,21 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
+import com.github.lzyzsd.randomcolor.RandomColor;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
@@ -34,6 +42,10 @@ public class ChartActivity extends AllenBaseActivity {
     @BindView(R2.id.chart)
     BarChart chart;
     private Model entry;
+    private YAxis leftAxis;             //左侧Y轴
+    private YAxis rightAxis;            //右侧Y轴
+    private XAxis xAxis;                //X轴
+    private Legend legend;              //图例
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -64,19 +76,19 @@ public class ChartActivity extends AllenBaseActivity {
 
         /***XY轴的设置***/
         //X轴设置显示位置在底部
-        XAxis xAxis = chart.getXAxis();
+        xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 //        xAxis.setAxisMinimum(0f);
 //        xAxis.setGranularity(1f);
 
-        YAxis leftAxis = chart.getAxisLeft();
-        YAxis rightAxis = chart.getAxisRight();
+        leftAxis = chart.getAxisLeft();
+        rightAxis = chart.getAxisRight();
         //保证Y轴从0开始，不然会上移一点
 //        leftAxis.setAxisMinimum(0f);
 //        rightAxis.setAxisMinimum(0f);
 
         /***折线图例 标签 设置***/
-        Legend legend = chart.getLegend();
+        legend = chart.getLegend();
         legend.setForm(Legend.LegendForm.LINE);
         legend.setTextSize(11f);
         //显示位置
@@ -86,9 +98,7 @@ public class ChartActivity extends AllenBaseActivity {
         //是否绘制在图表里面
         legend.setDrawInside(false);
 
-
-        //不显示表边框
-        chart.setDrawBorders(false);
+        chart.setDrawBorders(true);
 //        不显示右下角描述内容
         Description description = new Description();
         description.setEnabled(false);
@@ -116,7 +126,8 @@ public class ChartActivity extends AllenBaseActivity {
                 .enqueue(new Callback<List<ChartEntry>>() {
                     @Override
                     public void success(List<ChartEntry> data) {
-
+                        list = data;
+                        setBarData();
                     }
 
                     @Override
@@ -124,6 +135,22 @@ public class ChartActivity extends AllenBaseActivity {
 
                     }
                 });
+    }
+    List<ChartEntry> list;
+    private void setBarData(){
+        List<BarEntry> bars = new ArrayList<>();
+        List<Integer> integers = new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            BarEntry barEntry = new BarEntry(i,list.get(i).getValue());
+            bars.add(barEntry);
+            int color = new RandomColor().randomColor();
+            integers.add(color);
+        }
+        BarDataSet barDataSet = new BarDataSet(bars,"");
+        barDataSet.setColors(integers);
+        BarData data = new BarData(barDataSet);
+        chart.setData(data);
+        chart.invalidate();
     }
 
 }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.adapter.CoreModelAdapter;
+import cn.lyj.core.chart.ChartActivity;
 import cn.lyj.core.entry.Model;
 import cn.lyjj.tipoff.TipOffListActivity;
 import cn.lyjj.tipoff.TipoffActivity;
@@ -91,6 +92,8 @@ public class ItemFragment extends BaseFragment {
                     startActivity(new Intent(getActivity(), TipoffActivity.class).putExtra(Constants.Key_1,0));
                 }else if(id.equals("sth_2")){
                     startActivity(new Intent(getActivity(), TipOffListActivity.class).putExtra(Constants.Key_1,"事件查询"));
+                }else{
+                    startActivity(new Intent(getActivity(), ChartActivity.class).putExtra(Constants.ObjectFirst,entry));
                 }
             }
         });
