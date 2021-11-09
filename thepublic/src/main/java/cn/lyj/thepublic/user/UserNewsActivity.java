@@ -29,6 +29,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import allen.frame.tools.MsgUtils;
 import butterknife.BindView;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
@@ -96,7 +98,7 @@ public class UserNewsActivity extends AllenBaseActivity {
         recyclerview.setLayoutManager(manager);
         adapter = new CommonAdapter<UserArt>(context, R.layout.item_square_news) {
             @Override
-            public void convert(ViewHolder holder, UserArt entity, int position) {
+            public void convert(ViewHolder holder, final UserArt entity, int position) {
                 holder.setText(R.id.item_source,entity.getServiceInfo().getServiceTitle());
                 holder.setText(R.id.item_message, Html.fromHtml(entity.getServiceInfo().getServiceContent()));
                 holder.setText(R.id.item_date,entity.getCreateTime());
@@ -106,6 +108,25 @@ public class UserNewsActivity extends AllenBaseActivity {
                 }else {
                     holder.setDrawableLeft(R.id.item_zan,getResources().getDrawable(R.mipmap.square_zan_gray));
                 }
+                if (entity.getServiceInfo().getIsConcern()==0){
+                    holder.setVisible(R.id.item_gz,true);
+                    holder.setVisible(R.id.item_dis_gz,false);
+                }else {
+                    holder.setVisible(R.id.item_gz,false);
+                    holder.setVisible(R.id.item_dis_gz,true);
+                }
+                holder.setOnClickListener(R.id.item_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        addGz(entity.getServiceInfo().getServiceId());
+                    }
+                });
+                holder.setOnClickListener(R.id.item_dis_gz, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delGz(entity.getServiceInfo().getServiceId());
+                    }
+                });
             }
         };
         recyclerview.setAdapter(adapter);
@@ -161,6 +182,48 @@ public class UserNewsActivity extends AllenBaseActivity {
             }
         });
     }
+
+
+    private void addGz(String id) {
+        Https.with(this).url(API._addGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(context, "关注成功!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(context, response.getMsg());
+                    }
+                });
+    }
+
+    private void delGz(String id) {
+        Https.with(this).url(API._cancelGuanZhu)
+                .addParam("serviceId",id)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(context, "已取消关注!");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(context, response.getMsg());
+                    }
+                });
+    }
+
     private void loadData() {
         Https.with(this).url(url)
                 .addParam("page",page++)
@@ -169,7 +232,6 @@ public class UserNewsActivity extends AllenBaseActivity {
                 .enqueue(new Callback<List<UserArt>>() {
                     @Override
                     public void success(List<UserArt> data) {
-                        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
                         sublist=data;
                         if (isRefresh) {
                             list = sublist;
@@ -184,11 +246,20 @@ public class UserNewsActivity extends AllenBaseActivity {
                         }
                         adapter.setDatas(list);
                         refresh.setNoMoreData(actHelper.isNoMoreData(sublist, pageSize));
+                        if(list==null||list.size()==0){
+                            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, "暂无数据");
+                        }else{
+                            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        }
                     }
 
                     @Override
                     public void fail(Response response) {
-                        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        if(list==null||list.size()==0){
+                            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+                        }else{
+                            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                        }
                     }
                 });
 

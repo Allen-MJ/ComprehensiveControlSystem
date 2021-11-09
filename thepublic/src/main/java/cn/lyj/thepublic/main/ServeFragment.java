@@ -36,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.lyj.thepublic.HomeActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.adapter.FyAdapter;
@@ -113,12 +114,13 @@ public class ServeFragment extends BaseFragment {
     private void initNotice() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         rvNotice.setLayoutManager(manager);
-        noticeAdapter=new CommonAdapter<Notice>(getContext(),R.layout.item_notice) {
+        noticeAdapter=new CommonAdapter<Notice>(getContext(),R.layout.item_main_notice) {
             @Override
             public void convert(ViewHolder holder, Notice entity, int position) {
                 holder.setText(R.id.item_source,entity.getNoticeTitle());
                 holder.setText(R.id.item_message,entity.getNoticeSubtitle());
                 holder.setText(R.id.item_date,entity.getUpdateTime());
+                holder.setVisible(R.id.item_zd,entity.isNoticeUp());
             }
         };
         rvNotice.setAdapter(noticeAdapter);
@@ -162,6 +164,12 @@ public class ServeFragment extends BaseFragment {
                 return false;
             }
         });
+        actHelper.setProgressClickListener(new ActivityHelper.OnProgressClickListener() {
+            @Override
+            public void onAgainClick(View v) {
+                loadData();
+            }
+        });
     }
 
     private void go2Url(Type type) {
@@ -185,6 +193,7 @@ public class ServeFragment extends BaseFragment {
         } else if (id == R.id.layout_jindu) {
             startActivity(new Intent(getContext(),TipOffListActivity.class).putExtra(Constants.Key_1,"进度查询"));
         } else if (id == R.id.notice_more) {
+            ((HomeActivity)getActivity()).goOtherFragment(2);
         }
     }
 }

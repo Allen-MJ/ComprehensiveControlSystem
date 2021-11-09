@@ -163,8 +163,11 @@ public class TipOffListActivity extends AllenBaseActivity {
             adapter.setList(list);
             refresh.finishLoadMore();
         }
-        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
-        refresh.setEnableFooterFollowWhenNoMoreData(true);
+        if(list==null||list.size()==0){
+            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL,"暂无数据");
+        }else{
+            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
+        }
         refresh.setNoMoreData(actHelper.isNoMoreData(sublist, size));
     }
 

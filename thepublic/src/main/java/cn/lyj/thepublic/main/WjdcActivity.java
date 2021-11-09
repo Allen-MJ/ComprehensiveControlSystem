@@ -98,13 +98,20 @@ public class WjdcActivity extends AllenBaseActivity {
             public void success(List<WjdcEntity> data) {
                 list=data;
                 adapter.setList(list);
-                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
-
+                if(list==null||list.size()==0){
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, "暂无数据");
+                }else{
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                }
             }
 
             @Override
             public void fail(Response response) {
-                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+                if(list==null||list.size()==0){
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, response.getMsg());
+                }else{
+                    helper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+                }
             }
         });
     }

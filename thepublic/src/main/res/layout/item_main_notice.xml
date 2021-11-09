@@ -32,23 +32,32 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/main_notice_icon" />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_source"
-                    style="@style/messageItemBlackSmall"
+                    android:id="@+id/item_message"
+                    style="@style/messageItemNormalSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
                     android:lines="1"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_date"
-                    style="@style/mainItemGraySmallStyle"
+                    android:id="@+id/item_zd"
+                    style="@style/mainNewsItemWhiteSmaller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLength="10"/>
+                    android:background="@drawable/orange_circle_2dp"
+                    android:text="@string/more_zhiding"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:paddingStart="@dimen/frame_eight_distance"
+                    android:paddingEnd="@dimen/frame_eight_distance"
+                    android:paddingTop="@dimen/frame_four_distance"
+                    android:paddingBottom="@dimen/frame_four_distance"
+                    />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -57,15 +66,20 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_message"
-                    style="@style/messageItemNormalSmaller"
-                    android:layout_width="0dp"
+                    android:id="@+id/item_source"
+                    style="@style/messageItemBlueSmaller"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:lines="1"
-                    android:maxLines="2"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
                     android:layout_marginStart="@dimen/frame_20_distance" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_date"
+                    style="@style/mainItemGraySmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
+                    android:maxLength="10"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>

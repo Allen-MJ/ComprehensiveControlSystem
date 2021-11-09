@@ -82,13 +82,16 @@ public class SquareFragment extends Fragment {
                 helper.dismissProgressDialog();
 
                 lmList=data;
-                tabs=new String[lmList.size()];
+                tabs=new String[lmList.size()+1];
+                tabs[0] = "关注";
                 for (int i = 0; i <lmList.size() ; i++) {
-                    tabs[i]=lmList.get(i).getLabel();
+                    tabs[i+1]=lmList.get(i).getLabel();
                 }
                 fragments = new ArrayList<>();
+                newsTab.addTab(newsTab.newTab().setText(tabs[0]));
+                fragments.add(GzFragment.init());
                 for(int i=0;i<lmList.size();i++){
-                    String s=tabs[i];
+                    String s=tabs[i+1];
                     newsTab.addTab(newsTab.newTab().setText(s));
                     fragments.add(SquareNewsFragment.init(lmList.get(i).getValue()));
                 }

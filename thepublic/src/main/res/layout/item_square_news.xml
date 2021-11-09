@@ -36,22 +36,22 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_gz"
-                    style="@style/newsItemWhiteSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/newsItemWhiteSmaller"
+                    android:layout_width="@dimen/frame_90_distance"
+                    android:layout_height="@dimen/frame_32_distance"
                     android:background="@drawable/blue_circle_16dp"
                     android:text="@string/square_guan_zu"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:paddingStart="@dimen/frame_edge_distance"
                     android:paddingEnd="@dimen/frame_edge_distance"
                      />
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_dis_gz"
-                    style="@style/newsItemBlackSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/newsItemBlackSmaller"
+                    android:layout_width="@dimen/frame_90_distance"
+                    android:layout_height="@dimen/frame_32_distance"
                     android:background="@drawable/gray_stroke_circle_16dp"
                     android:text="@string/square_dis_guan_zu"
                     android:layout_gravity="center"
@@ -67,13 +67,12 @@
                 style="@style/messageItemNormalSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
                  />
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_date"
@@ -91,8 +90,8 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <View
-            android:id="@+id/item_line"
-            style="@style/HalfGrayLine" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <View
+        android:id="@+id/item_line"
+        style="@style/HalfGrayLine" />
 </androidx.appcompat.widget.LinearLayoutCompat>

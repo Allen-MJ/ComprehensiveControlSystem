@@ -17,6 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenManager;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
@@ -28,6 +31,7 @@ import butterknife.Unbinder;
 import cn.lyj.thepublic.LoginActivity;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
+import cn.lyj.thepublic.data.API;
 
 public class OwnFragment extends Fragment {
 
@@ -103,6 +107,22 @@ public class OwnFragment extends Fragment {
 
     }
 
+    private void logout() {
+        Https.with(getActivity()).url(API._logout)
+                .get()
+                .enqueue(new Callback() {
+                    @Override
+                    public void success(Object data) {
+                        MsgUtils.showLongToast(getContext(), "退出成功!");
+                        AllenManager.getInstance().back2Activity(LoginActivity.class);
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        MsgUtils.showLongToast(getContext(), response.getMsg());
+                    }
+                });
+    }
 
     @OnClick({R2.id.user_name, R2.id.user_dw, R2.id.user_photo, R2.id.info_layout, R2.id.user_gz, R2.id.user_zan, R2.id.user_notice_number,
             R2.id.user_pl, R2.id.user_fk, R2.id.user_update, R2.id.exit_btn})
@@ -129,7 +149,7 @@ public class OwnFragment extends Fragment {
                     dialog.dismiss();
 //                    shared.edit().putBoolean(Constants.UserIsLogin, false).putString(Constants.UserToken, "").apply();
 //                    WebHelper.init().refush();
-                    AllenManager.getInstance().back2Activity(LoginActivity.class);
+                    logout();
                 }
             }, "取消", new DialogInterface.OnClickListener() {
                 @Override
