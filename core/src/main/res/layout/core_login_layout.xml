@@ -61,24 +61,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/login_yzm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:hint="@string/login_account_hint"
-        android:padding="@dimen/frame_edge_distance"
-        android:gravity="center_vertical"
-        android:singleLine="true"
-        android:drawableStart="@mipmap/ic_phone"
-        android:drawablePadding="@dimen/frame_edge_distance"
-        android:textColor="@color/text_black_color"
-        android:textSize="@dimen/frame_text_normal_size"
+        android:gravity="center"
         android:layout_marginStart="@dimen/frame_32_distance"
-        android:layout_marginEnd="@dimen/frame_32_distance"/>
+        android:layout_marginEnd="@dimen/frame_32_distance">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/login_yzm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/login_yzm_hint"
+            android:padding="@dimen/frame_edge_distance"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:drawableStart="@mipmap/ic_phone"
+            android:drawablePadding="@dimen/frame_edge_distance"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/frame_text_normal_size"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/yzm"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/frame_32_distance"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_one_distance"
