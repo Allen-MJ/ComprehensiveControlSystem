@@ -80,7 +80,7 @@ public class SthGdActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
+//        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
         bar = findViewById(R.id.toolbar);
         setSupportActionBar(bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

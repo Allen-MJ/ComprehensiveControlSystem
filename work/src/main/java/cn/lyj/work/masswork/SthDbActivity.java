@@ -80,8 +80,8 @@ public class SthDbActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
-        uType = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
+//        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
+//        uType = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
         bar = findViewById(R.id.toolbar);
         setSupportActionBar(bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

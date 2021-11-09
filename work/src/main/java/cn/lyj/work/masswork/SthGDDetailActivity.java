@@ -75,9 +75,9 @@ public class SthGDDetailActivity extends AllenBaseActivity {
     protected void initBar() {
         id = getIntent().getStringExtra(Constants.STH_ID);
         RegSate = getIntent().getStringExtra("RegSate");
-        uCode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
-        utype = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
-        uid = actHelper.getSharedPreferences().getString(Constants.USER_ID,"");
+//        uCode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
+//        utype = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
+//        uid = actHelper.getSharedPreferences().getString(Constants.USER_ID,"");
         bar = findViewById(R.id.toolbar);
         setSupportActionBar(bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

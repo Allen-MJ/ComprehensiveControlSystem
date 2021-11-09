@@ -115,10 +115,10 @@ public class SthDbDetailActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         id = getIntent().getStringExtra(Constants.STH_ID);
-        uCode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
-        uName = actHelper.getSharedPreferences().getString(Constants.USER_UNITNAME,"");
-        utype = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
-        uid = actHelper.getSharedPreferences().getString(Constants.USER_ID,"");
+//        uCode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE,"");
+//        uName = actHelper.getSharedPreferences().getString(Constants.USER_UNITNAME,"");
+//        utype = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE,"");
+//        uid = actHelper.getSharedPreferences().getString(Constants.USER_ID,"");
         bar = findViewById(R.id.toolbar);
         setSupportActionBar(bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

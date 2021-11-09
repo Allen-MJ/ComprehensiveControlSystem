@@ -77,9 +77,9 @@ public class SthSbActivity extends AllenBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         shared = actHelper.getSharedPreferences();
-        uid = shared.getString(Constants.USER_ID, "");
-        ucode = shared.getString(Constants.USER_UNITCODE, "");
-        utype = shared.getString(Constants.USER_UNITTYPE, "");
+//        uid = shared.getString(Constants.USER_ID, "");
+//        ucode = shared.getString(Constants.USER_UNITCODE, "");
+//        utype = shared.getString(Constants.USER_UNITTYPE, "");
         sldw = findViewById(R.id.sl_dw);
         slr = findViewById(R.id.sl_slr);
         fyqd = findViewById(R.id.fy_fyqd);
@@ -108,7 +108,7 @@ public class SthSbActivity extends AllenBaseActivity {
         xbdw = findViewById(R.id.zb_sbdw_names);
         sexqg.check(R.id.sex_male);
         jjcdqg.check(R.id.jjcd_yb);
-        sldw.setText(shared.getString(Constants.USER_UNITNAME, ""));
+//        sldw.setText(shared.getString(Constants.USER_UNITNAME, ""));
         booleanMap = new HashMap<>();
         if (!utype.equals("1")) {
             zbcode = "101";

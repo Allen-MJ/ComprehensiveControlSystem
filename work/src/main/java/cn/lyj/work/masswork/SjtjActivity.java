@@ -124,8 +124,8 @@ public class SjtjActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         ButterKnife.bind(this);
-        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE, "");
-        uType = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE, "");
+//        ucode = actHelper.getSharedPreferences().getString(Constants.USER_UNITCODE, "");
+//        uType = actHelper.getSharedPreferences().getString(Constants.USER_UNITTYPE, "");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

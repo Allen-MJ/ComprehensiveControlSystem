@@ -1,3 +1,4 @@
 <resources>
-
+    <string name="leader_menu_tj">统计查询</string>
+    <string name="leader_menu_sth">指挥管理</string>
 </resources>
