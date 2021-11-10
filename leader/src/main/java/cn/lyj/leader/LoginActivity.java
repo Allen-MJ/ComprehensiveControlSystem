@@ -2,6 +2,8 @@ package cn.lyj.leader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
 import allen.frame.AllenIMBaseActivity;
@@ -53,13 +55,29 @@ public class LoginActivity extends AllenIMBaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loginAccount.setText(shared.getString(Constants.UserName,""));
+    }
+
+    @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         authCode();
     }
 
     @Override
     protected void addEvent() {
+        loginPsw.setOnClickDrawListenner(new ClickDrawEditText.onClickDrawListenner() {
+            @Override
+            public void onHide(ClickDrawEditText view) {
+                view.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
 
+            @Override
+            public void onShow(ClickDrawEditText view) {
+                view.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
     }
 
     @OnClick({cn.lyj.core.R2.id.login_bt, R2.id.yzm})

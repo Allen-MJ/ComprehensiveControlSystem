@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,7 @@ public class ChartActivity extends AllenBaseActivity {
         chart.setHighlightFullBarEnabled(false);
         //显示边框
         chart.setDrawBorders(true);
+        chart.setPinchZoom(false);
 
         /***XY轴的设置***/
         //X轴设置显示位置在底部
@@ -84,19 +86,20 @@ public class ChartActivity extends AllenBaseActivity {
         leftAxis = chart.getAxisLeft();
         rightAxis = chart.getAxisRight();
         //保证Y轴从0开始，不然会上移一点
-//        leftAxis.setAxisMinimum(0f);
-//        rightAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMinimum(0f);
+        rightAxis.setAxisMinimum(0f);
 
         /***折线图例 标签 设置***/
         legend = chart.getLegend();
-        legend.setForm(Legend.LegendForm.LINE);
-        legend.setTextSize(11f);
+        legend.setEnabled(false);
+        /*legend.setForm(Legend.LegendForm.LINE);
+        legend.setTextSize(10f);
         //显示位置
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         //是否绘制在图表里面
-        legend.setDrawInside(false);
+        legend.setDrawInside(false);*/
 
         chart.setDrawBorders(true);
 //        不显示右下角描述内容
@@ -146,10 +149,26 @@ public class ChartActivity extends AllenBaseActivity {
             int color = new RandomColor().randomColor();
             integers.add(color);
         }
+        chart.getXAxis().setLabelCount(list.size());
+        chart.getXAxis().setLabelRotationAngle(45f);
+        chart.getXAxis().setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return list.get((int)value).getLabel();
+            }
+        });
         BarDataSet barDataSet = new BarDataSet(bars,"");
+        barDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return (int)value+"人";
+            }
+        });
         barDataSet.setColors(integers);
         BarData data = new BarData(barDataSet);
+        data.notifyDataChanged();
         chart.setData(data);
+        chart.notifyDataSetChanged();
         chart.invalidate();
     }
 
