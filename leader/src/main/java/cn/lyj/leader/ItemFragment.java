@@ -46,7 +46,7 @@ public class ItemFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         type = getArguments().getInt(Constants.Key_1,0);
         Logger.e("type","type->"+type);
-        GridLayoutManager manager = new GridLayoutManager(getActivity(),4);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(),3);
         rv.setLayoutManager(manager);
         adapter = new CoreModelAdapter();
         rv.setAdapter(adapter);
@@ -61,24 +61,26 @@ public class ItemFragment extends BaseFragment {
                     "特殊人口年龄结构","特殊人口文化程度","重点青少年地区分布","重点青少年性别比例",
                     "重点青少年年龄结构","重点青少年文化程度",
                     "重点青少年类型分布","出租房地区分布","出租房出租用途比例"};
-            int[] resIds = new int[]{R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test,R.drawable.ic_test};
+            int[] resIds = new int[]{R.mipmap.tb_1,R.mipmap.tb_2,R.mipmap.tb_3,R.mipmap.tb_4,R.mipmap.tb_5,
+                    R.mipmap.tb_6,R.mipmap.tb_7,R.mipmap.tb_8,R.mipmap.tb_9,R.mipmap.tb_10,R.mipmap.tb_11,
+                    R.mipmap.tb_12};
             for(int i=0;i<ids.length;i++){
                 Model item = new Model();
                 item.setId(ids[i]);
                 item.setName(names[i]);
-                item.setResId(resIds[0]);
+                item.setResId(resIds[i]);
                 models.add(item);
             }
         }else{
             Model bl = new Model();
             bl.setId("sth_1");
             bl.setName("上报事件");
-            bl.setResId(R.drawable.ic_test);
+            bl.setResId(R.drawable.tip_baoliao);
             models.add(bl);
             Model cx = new Model();
             cx.setId("sth_2");
             cx.setName("事件查询");
-            cx.setResId(R.drawable.ic_test);
+            cx.setResId(R.drawable.tip_jindu);
             models.add(cx);
         }
         adapter.setData(models);
