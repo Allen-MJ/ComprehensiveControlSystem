@@ -3,4 +3,7 @@
     package="cn.lyj.work">
 
 
+    <application>
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait" />
+    </application>
 </manifest>
