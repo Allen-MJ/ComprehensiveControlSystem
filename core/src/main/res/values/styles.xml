@@ -1,4 +1,8 @@
 <resources>
+    <style name="CoreNormal8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+    </style>
     <style name="CoreSmall8Style">
         <item name="android:padding">@dimen/frame_eight_distance</item>
         <item name="android:textSize">@dimen/frame_text_small_size</item>

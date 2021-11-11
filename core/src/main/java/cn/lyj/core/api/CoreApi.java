@@ -57,6 +57,10 @@ public class CoreApi {
      * 获取工作日志列表
      */
     public static final String _core_11 = "/api/gridWorkLog/gridmember";
+    /**
+     * 新增(post),修改(put)工作日志
+     */
+    public static final String CoreaddLog = "/api/gridWorkLog/gridmember";
     /*工作日志end*/
     /**
      * 我的任务列表

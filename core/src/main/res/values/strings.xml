@@ -17,4 +17,11 @@
     <string name="task_type">指派类型:</string>
     <string name="task_type_1">个人</string>
     <string name="task_type_2">部门</string>
+
+    <string name="log_sth">工作事项:</string>
+    <string name="log_progress">工作进度:</string>
+    <string name="log_des">工作描述:</string>
+    <string name="log_des_hint">请输入工作描述</string>
+
+
 </resources>

@@ -9,4 +9,9 @@ public class BaseApi {
      * 获取所有网格
      */
     public static final String _2 = "/api/gridPower/grOfApp";
+    /**
+     * 获取类型
+     */
+    public static final String getType = "/api/dictDetail/queryOfApp";
+
 }

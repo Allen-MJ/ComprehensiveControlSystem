@@ -22,6 +22,7 @@
         <activity android:name=".log.LogListActivity" />
         <activity android:name="cn.lyj.work.LoginActivity" />
         <activity android:name=".person.TransientPersonListActivity" />
+        <activity android:name=".log.UpdateLogActivity" />
     </application>
 
 </manifest>

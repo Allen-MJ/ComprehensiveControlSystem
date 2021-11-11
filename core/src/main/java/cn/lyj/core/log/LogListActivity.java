@@ -1,7 +1,10 @@
 package cn.lyj.core.log;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -73,6 +76,21 @@ public class LogListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         setToolbarTitle(toolbar, "工作日志", true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId==R.id.alen_menu_add){
+            startActivityForResult(new Intent(context,UpdateLogActivity.class),10);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

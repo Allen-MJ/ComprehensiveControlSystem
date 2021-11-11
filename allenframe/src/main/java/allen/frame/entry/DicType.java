@@ -1,8 +1,8 @@
-package cn.lyj.thepublic.entry;
+package allen.frame.entry;
 
 import java.io.Serializable;
 
-public class SquareType implements Serializable {
+public class DicType implements Serializable {
 
 
     /**
