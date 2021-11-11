@@ -13,10 +13,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/allenframe" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/gifdecoder" />
             <option value="$PROJECT_DIR$/leader" />
-            <option value="$PROJECT_DIR$/thepublic" />
-            <option value="$PROJECT_DIR$/work" />
+            <option value="$PROJECT_DIR$/tipoff" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

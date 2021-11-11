@@ -142,6 +142,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                         shared.edit().putString(Constants.UserToken,data.getToken())
                                 .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                                 .putString(Constants.UserId,data.getUser().getUser().getId())
+                                .putString(Constants.UserPhoto,data.getUser().getUser().getAvatarPath())
                                 .putString(Constants.UserAddress,data.getUser().getUser().getAddress())
                                 .putString(Constants.UserEmail,data.getUser().getUser().getEmail())
                                 .putString(Constants.UserName,data.getUser().getUser().getUsername())
