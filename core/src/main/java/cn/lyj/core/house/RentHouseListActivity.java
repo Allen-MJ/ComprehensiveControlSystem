@@ -29,9 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.HousePersonAdapter;
+import cn.lyj.core.adapter.RentHouseAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.RentHouse;
 
 /**
  * 房屋管理列表
@@ -45,12 +45,11 @@ public class RentHouseListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private HousePersonAdapter adapter;
+    private RentHouseAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<HousePerson> list,sublist;
+    private List<RentHouse> list,sublist;
     private String mKey = "";
-    private String type = "0";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -64,7 +63,6 @@ public class RentHouseListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        type = getIntent().getStringExtra(Constants.Key_1);
         setToolbarTitle(toolbar,"出租房",true);
     }
 
@@ -75,7 +73,7 @@ public class RentHouseListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new HousePersonAdapter();
+        adapter = new RentHouseAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -114,25 +112,25 @@ public class RentHouseListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new RentHouseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, HousePerson entry, int position) {
+            public void onItemClick(View v, RentHouse entry, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, HousePerson entry, int position) {
+            public void onItemDelete(View v, RentHouse entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
+        Https.with(this).url(CoreApi.RentHouse)
                 .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
-                .enqueue(new Callback<List<HousePerson>>() {
+                .enqueue(new Callback<List<RentHouse>>() {
                     @Override
-                    public void success(List<HousePerson> data) {
+                    public void success(List<RentHouse> data) {
                         sublist = data;
                         showData();
                     }

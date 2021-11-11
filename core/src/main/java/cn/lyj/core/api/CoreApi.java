@@ -47,11 +47,11 @@ public class CoreApi {
     /**
      * 实有房屋查询
      */
-    public static final String _core_9 = "/api/houseinfo/appQuery";
+    public static final String House = "/api/houseinfo/appQuery";
     /**
      * 出租房查询
      */
-    public static final String _core_10 = "/api/tb16/appQuery";
+    public static final String RentHouse = "/api/tb16/appQuery";
     /**
      *
      * 社会组织列表

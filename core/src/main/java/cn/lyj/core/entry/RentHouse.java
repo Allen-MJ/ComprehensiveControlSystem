@@ -239,5 +239,41 @@ public class RentHouse implements Serializable {
     }
 
     public static class GidObjBean implements Serializable{
+        private String orgFullName;
+        private String orgId;
+        private String orgName;
+        private String orgNo;
+
+        public String getOrgFullName() {
+            return orgFullName;
+        }
+
+        public void setOrgFullName(String orgFullName) {
+            this.orgFullName = orgFullName;
+        }
+
+        public String getOrgId() {
+            return orgId;
+        }
+
+        public void setOrgId(String orgId) {
+            this.orgId = orgId;
+        }
+
+        public String getOrgName() {
+            return orgName;
+        }
+
+        public void setOrgName(String orgName) {
+            this.orgName = orgName;
+        }
+
+        public String getOrgNo() {
+            return orgNo;
+        }
+
+        public void setOrgNo(String orgNo) {
+            this.orgNo = orgNo;
+        }
     }
 }

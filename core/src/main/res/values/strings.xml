@@ -58,4 +58,31 @@
     <string name="house_person_sfcz">是否常住人口:</string>
     <string name="house_person_sfzd">是否重点关注人员:</string>
 
+    <string name="house_no">户号:</string>
+    <string name="house_dw">所在单位:</string>
+    <string name="house_xq">所在小区:</string>
+    <string name="house_ld">所在楼栋:</string>
+    <string name="house_dy">单元:</string>
+    <string name="house_lc">楼层:</string>
+    <string name="house_fh">房号:</string>
+    <string name="house_fwyt">房屋用途:</string>
+    <string name="house_address">地址:</string>
+    <string name="house_zj">座机:</string>
+    <string name="house_remark">备注:</string>
+    <string name="house_rent">承租人:</string>
+    <string name="rent_no">房屋编号:</string>
+    <string name="rent_address">房屋地址:</string>
+    <string name="rent_yt">建筑用途:</string>
+    <string name="rent_jzmj">建筑面积（平方米）:</string>
+    <string name="rent_zjdm">证件代码:</string>
+    <string name="rent_zjhm">证件号码:</string>
+    <string name="rent_hz">房主姓名:</string>
+    <string name="rent_hzphone">房主联系方式:</string>
+    <string name="rent_hzaddress">房主现居详址:</string>
+    <string name="rent_czyt">出租用途:</string>
+    <string name="rent_yhlx">隐患类型:</string>
+    <string name="rent_czrsfz">承租人公民身份号码:</string>
+    <string name="rent_czrname">承租人公民身份号码:</string>
+    <string name="rent_czrphone">承租人联系方式:</string>
+
 </resources>
