@@ -54,7 +54,7 @@ public class CoreApi {
     public static final String RentHouse = "/api/tb16/appQuery";
     /**
      *
-     * 社会组织列表
+     *
      */
     public static final String _core_12 = "/api/tb24/gridmember";
     /**
