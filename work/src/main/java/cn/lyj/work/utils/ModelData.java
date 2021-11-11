@@ -1,5 +1,7 @@
 package cn.lyj.work.utils;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,11 +85,35 @@ public class ModelData {
         return list;
     }
 
+    public List<Model> getHome(){
+        List<Model> list = new ArrayList<>();
+        Model ks = new Model();
+        ks.setId("快速上报");
+        ks.setName("快速上报");
+        ks.setResId(getResId("快速上报"));
+        list.add(ks);
+        Model sth = new Model();
+        sth.setId("事件上报");
+        sth.setName("事件上报");
+        sth.setResId(getResId("事件上报"));
+        list.add(sth);
+        Model cx = new Model();
+        cx.setId("事件查询");
+        cx.setName("事件查询");
+        cx.setResId(getResId("事件查询"));
+        list.add(cx);
+        return list;
+    }
+
     private int getResId(String id){
         switch (id){
             case "户籍人口":
                 break;
         }
         return 0;
+    }
+
+    public void onClickListener(Context context,Model model){
+
     }
 }

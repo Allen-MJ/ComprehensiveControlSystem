@@ -48,6 +48,16 @@ public class ModelFragment extends BaseFragment {
         rv.setAdapter(adapter);
         type = getArguments().getInt(Constants.Key_1,0);
         loadModel();
+        addEvent();
+    }
+
+    private void addEvent(){
+        adapter.setOnItemClickListener(new ModelParentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, Model entry, int position) {
+                ModelData.init().onClickListener(getActivity(),entry);
+            }
+        });
     }
 
     private void loadModel(){
@@ -63,4 +73,5 @@ public class ModelFragment extends BaseFragment {
         Logger.e("type","type"+type);
         adapter.setList(list);
     }
+
 }

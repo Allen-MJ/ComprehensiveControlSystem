@@ -73,9 +73,10 @@ public class HomeActivity extends AllenBaseActivity {
         userName.setText(shared.getString(Constants.UserName, ""));
         userGrade.setText(shared.getString(Constants.UserGrage, ""));
         list = new ArrayList<>();
-        list.add(ModelFragment.init(0));
+        list.add(HomeFragment.init());
         list.add(ModelFragment.init(1));
         list.add(ModelFragment.init(2));
+        adapter = new FragmentAdapter(getSupportFragmentManager(),list);
         pager.setAdapter(adapter);
     }
 

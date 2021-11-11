@@ -58,12 +58,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.user.UserInfoActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipoffActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffInfoActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.thepublic.news.MessageDetailActivity"
             android:screenOrientation="portrait"/>
         <!--core start-->

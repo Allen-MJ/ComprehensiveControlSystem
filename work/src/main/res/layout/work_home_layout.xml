@@ -7,7 +7,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorPrimary">
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="0dp">
         <allen.frame.widget.ScaleLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,6 +70,18 @@
             </RelativeLayout>
         </allen.frame.widget.ScaleLinearLayout>
     </androidx.cardview.widget.CardView>
+    <allen.frame.widget.MarqueeView
+        android:id="@+id/notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/text_gray_color"
+        android:textSize="@dimen/frame_text_smaller_size"
+        android:padding="@dimen/frame_four_distance"
+        android:drawableStart="@drawable/ic_alen_notice"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/frame_four_distance"
+        android:background="@color/gray_line_color"/>
     <allen.frame.widget.ContrlScrollViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"

@@ -57,9 +57,9 @@ public class ModelParentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         private CoreModelAdapter adapter;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.item_name);
+            name = itemView.findViewById(R.id.item_model);
             rv = itemView.findViewById(R.id.item_rv);
-            manager = new GridLayoutManager(name.getContext(),3);
+            manager = new GridLayoutManager(itemView.getContext(),3);
             rv.setLayoutManager(manager);
             adapter = new CoreModelAdapter();
             rv.setAdapter(adapter);
