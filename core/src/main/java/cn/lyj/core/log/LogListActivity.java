@@ -126,7 +126,7 @@ public class LogListActivity extends AllenBaseActivity {
 
     private void loadData() {
         Https.with(this).url(CoreApi._core_11)
-                .addParam("workItem",workItem).addParam("progress",progress).get()
+                .addParam("workItem",workItem).addParam("progress",progress).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<Log>>() {
                     @Override
                     public void success(List<Log> data) {

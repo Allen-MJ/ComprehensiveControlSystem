@@ -1,6 +1,7 @@
 <resources>
     <string name="core_delete">删除</string>
     <string name="core_wg">所在网格:</string>
+    <string name="core_address">地址:</string>
     <string name="update_time">更新时间:</string>
     <string name="create_time">发布时间:</string>
     <string name="to_object">指派对象:</string>

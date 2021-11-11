@@ -27,17 +27,14 @@ import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
-import cn.lyj.core.entry.Person;
 import cn.lyj.core.entry.TaskEntity;
 
 /**

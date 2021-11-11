@@ -1,6 +1,5 @@
 package cn.lyj.core.adapter;
 
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.lyj.core.R;
-import cn.lyj.core.entry.Person;
+import cn.lyj.core.entry.HousePerson;
 
 
-public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HousePersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Person> list;
+    private List<HousePerson> list;
 
-    public PersonAdapter() {
+    public HousePersonAdapter() {
     }
 
-    public void setList(List<Person> list) {
+    public void setList(List<HousePerson> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -51,23 +50,21 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public class ObjectHolder extends RecyclerView.ViewHolder {
 
-        private AppCompatTextView name, delete, sort, wg, idno;
+        private AppCompatTextView name, delete, address, idno;
         private View view;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
-            sort = itemView.findViewById(R.id.item_sort);
             name = itemView.findViewById(R.id.item_name);
             idno = itemView.findViewById(R.id.item_idno);
-            wg = itemView.findViewById(R.id.item_wg);
+            address = itemView.findViewById(R.id.item_address);
             delete = itemView.findViewById(R.id.item_delete);
             view = itemView.findViewById(R.id.item_layout);
         }
-        public void bind(final Person entry) {
+        public void bind(final HousePerson entry) {
             if (entry != null) {
-                name.setText("测试人");
-                sort.setText(String.valueOf(getAdapterPosition()));
-                idno.setText(StringUtils.hideStr("513902198810162310",7,14,"*"));
-                wg.setText("测试网格测试网格测试网格");
+                name.setText(entry.getB1202());
+                idno.setText(StringUtils.hideStr(entry.getB1222(),7,14,"*"));
+                address.setText(entry.getB1217());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -99,7 +96,7 @@ public class PersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View v, Person entry, int position);
-        void onItemDelete(View v, Person entry, int position);
+        void onItemClick(View v, HousePerson entry, int position);
+        void onItemDelete(View v, HousePerson entry, int position);
     }
 }

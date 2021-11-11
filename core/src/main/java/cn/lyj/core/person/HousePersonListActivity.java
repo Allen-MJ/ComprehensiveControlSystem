@@ -1,6 +1,5 @@
 package cn.lyj.core.person;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,7 +18,6 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
@@ -30,14 +28,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.PersonAdapter;
+import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.Person;
+import cn.lyj.core.entry.HousePerson;
 
 /**
- * 实有人口管理列表
+ * 户籍人口管理列表
  */
-public class PersonListActivity extends AllenBaseActivity {
+public class HousePersonListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
@@ -46,12 +44,11 @@ public class PersonListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private PersonAdapter adapter;
+    private HousePersonAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<Person> list,sublist;
+    private List<HousePerson> list,sublist;
     private String mKey = "";
-    private String type = "0";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -65,8 +62,7 @@ public class PersonListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"0".equals(type)?"户籍人口":"流动人口",true);
+        setToolbarTitle(toolbar,"户籍人口",true);
     }
 
     @Override
@@ -76,7 +72,7 @@ public class PersonListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new PersonAdapter();
+        adapter = new HousePersonAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -115,25 +111,26 @@ public class PersonListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, Person entry, int position) {
+            public void onItemClick(View v, HousePerson entry, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, Person entry, int position) {
+            public void onItemDelete(View v, HousePerson entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
+        page++;
+        Https.with(this).url(CoreApi._core_1)
                 .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<Person>>() {
+                .enqueue(new Callback<List<HousePerson>>() {
                     @Override
-                    public void success(List<Person> data) {
+                    public void success(List<HousePerson> data) {
                         sublist = data;
                         showData();
                     }

@@ -35,7 +35,7 @@
                     android:gravity="end|center_vertical"
                     android:singleLine="true"
                     android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@mipmap/user_item_go"/>
+                    android:drawableEnd="@drawable/ic_arrow_down"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                     android:gravity="end|center_vertical"
                     android:singleLine="true"
                     android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@mipmap/user_item_go"/>
+                    android:drawableEnd="@drawable/ic_arrow_down"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -254,7 +254,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/frame_text_normal_size"
         android:textColor="@color/text_white_color"
-        android:padding="@dimen/frame_edge_distance"
         android:text="@string/ok_bt"
         android:gravity="center"
         android:background="@drawable/frame_btn_selector"

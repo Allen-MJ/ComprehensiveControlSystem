@@ -29,9 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.PersonAdapter;
+import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.Person;
+import cn.lyj.core.entry.HousePerson;
 
 /**
  * 房屋管理列表
@@ -45,10 +45,10 @@ public class HouseListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private PersonAdapter adapter;
+    private HousePersonAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<Person> list,sublist;
+    private List<HousePerson> list,sublist;
     private String mKey = "";
     private String type = "0";
 
@@ -75,7 +75,7 @@ public class HouseListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new PersonAdapter();
+        adapter = new HousePersonAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -114,14 +114,14 @@ public class HouseListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, Person entry, int position) {
+            public void onItemClick(View v, HousePerson entry, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, Person entry, int position) {
+            public void onItemDelete(View v, HousePerson entry, int position) {
 
             }
         });
@@ -129,10 +129,10 @@ public class HouseListActivity extends AllenBaseActivity {
 
     private void loadData(){
         Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
-                .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<Person>>() {
+                .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<HousePerson>>() {
                     @Override
-                    public void success(List<Person> data) {
+                    public void success(List<HousePerson> data) {
                         sublist = data;
                         showData();
                     }

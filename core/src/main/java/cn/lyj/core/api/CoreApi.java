@@ -53,6 +53,9 @@ public class CoreApi {
      */
     public static final String _core_10 = "/api/tb16/appQuery";
     /*工作日志start*/
+    /**
+     * 获取工作日志列表
+     */
     public static final String _core_11 = "/api/gridWorkLog/gridmember";
     /*工作日志end*/
     /**

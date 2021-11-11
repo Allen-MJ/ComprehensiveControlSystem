@@ -6,21 +6,23 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import allen.frame.tools.StringUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.lyj.core.R;
-import cn.lyj.core.entry.Log;
+import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.TranPerson;
 
 
-public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TranPersonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Log> list;
+    private List<TranPerson> list;
 
-    public LogAdapter() {
+    public TranPersonAdapter() {
     }
 
-    public void setList(List<Log> list) {
+    public void setList(List<TranPerson> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -29,7 +31,7 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.core_log_item, parent, false);
+                .inflate(R.layout.core_person_item, parent, false);
         v.setLayoutParams(new ViewGroup
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -49,21 +51,21 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ObjectHolder extends RecyclerView.ViewHolder {
 
-        private AppCompatTextView name, delete, date, content;
+        private AppCompatTextView name, delete, address, idno;
         private View view;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.item_name);
-            date = itemView.findViewById(R.id.item_date);
-            content = itemView.findViewById(R.id.item_content);
+            idno = itemView.findViewById(R.id.item_idno);
+            address = itemView.findViewById(R.id.item_address);
             delete = itemView.findViewById(R.id.item_delete);
             view = itemView.findViewById(R.id.item_layout);
         }
-        public void bind(final Log entry) {
+        public void bind(final TranPerson entry) {
             if (entry != null) {
-                name.setText(entry.getCreateBy());
-                date.setText(entry.getCreateTime());
-                content.setText(entry.getDescription());
+                name.setText(entry.getB1302());
+                idno.setText(StringUtils.hideStr(entry.getB1322(),7,14,"*"));
+                address.setText(entry.getB1317());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -95,7 +97,7 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View v, Log entry, int position);
-        void onItemDelete(View v, Log entry, int position);
+        void onItemClick(View v, TranPerson entry, int position);
+        void onItemDelete(View v, TranPerson entry, int position);
     }
 }

@@ -1,4 +1,4 @@
-package cn.lyj.core.place;
+package cn.lyj.core.person;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +18,6 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
@@ -30,13 +29,15 @@ import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.adapter.HousePersonAdapter;
+import cn.lyj.core.adapter.TranPersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.TranPerson;
 
 /**
- * 社会公有场所列表
+ * 流动人口管理列表
  */
-public class SocialPlaceListActivity extends AllenBaseActivity {
+public class TransientPersonListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
@@ -45,12 +46,11 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private HousePersonAdapter adapter;
+    private TranPersonAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<HousePerson> list,sublist;
+    private List<TranPerson> list,sublist;
     private String mKey = "";
-    private String type = "0";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -64,8 +64,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"实有房屋",true);
+        setToolbarTitle(toolbar,"流动人口",true);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new HousePersonAdapter();
+        adapter = new TranPersonAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -114,25 +113,25 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new TranPersonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, HousePerson entry, int position) {
+            public void onItemClick(View v, TranPerson entry, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, HousePerson entry, int position) {
+            public void onItemDelete(View v, TranPerson entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
-                .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<HousePerson>>() {
+        Https.with(this).url(CoreApi._core_8)
+                .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<TranPerson>>() {
                     @Override
-                    public void success(List<HousePerson> data) {
+                    public void success(List<TranPerson> data) {
                         sublist = data;
                         showData();
                     }

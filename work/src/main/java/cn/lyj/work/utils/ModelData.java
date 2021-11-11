@@ -1,11 +1,24 @@
 package cn.lyj.work.utils;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import allen.frame.tools.Constants;
 import cn.lyj.core.entry.Model;
+import cn.lyj.core.house.HouseListActivity;
+import cn.lyj.core.house.RentHouseListActivity;
+import cn.lyj.core.log.LogListActivity;
+import cn.lyj.core.person.HousePersonListActivity;
+import cn.lyj.core.person.TransientPersonListActivity;
+import cn.lyj.core.place.SocialPlaceListActivity;
+import cn.lyj.core.place.UnSocialPlaceListActivity;
+import cn.lyj.core.task.MyTaskListActivity;
+import cn.lyjj.tipoff.SmartTipActivity;
+import cn.lyjj.tipoff.TipOffListActivity;
+import cn.lyjj.tipoff.TipoffActivity;
 
 public class ModelData {
     private ModelData(){
@@ -130,20 +143,37 @@ public class ModelData {
     public void onClickListener(Context context,Model model){
         switch (model.getId()){
             case "户籍人口":
+                context.startActivity(new Intent(context, HousePersonListActivity.class));
                 break;
             case "流动人口":
+                context.startActivity(new Intent(context, TransientPersonListActivity.class));
                 break;
             case "实有房屋":
+                context.startActivity(new Intent(context, HouseListActivity.class));
                 break;
             case "出租房":
+                context.startActivity(new Intent(context, RentHouseListActivity.class));
                 break;
             case "非公有制经济":
+                context.startActivity(new Intent(context, UnSocialPlaceListActivity.class));
                 break;
             case "社会组织":
+                context.startActivity(new Intent(context, SocialPlaceListActivity.class));
                 break;
             case "我的任务":
+                context.startActivity(new Intent(context, MyTaskListActivity.class));
                 break;
             case "工作日志":
+                context.startActivity(new Intent(context, LogListActivity.class));
+                break;
+            case "快速上报":
+                context.startActivity(new Intent(context, SmartTipActivity.class));
+                break;
+            case "事件上报":
+                context.startActivity(new Intent(context, TipoffActivity.class).putExtra(Constants.Key_1,1));
+                break;
+            case "事件查询":
+                context.startActivity(new Intent(context, TipOffListActivity.class));
                 break;
         }
     }

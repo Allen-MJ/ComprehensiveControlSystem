@@ -3,7 +3,7 @@
     package="cn.lyj.core">
 
     <application>
-        <activity android:name="cn.lyj.core.person.PersonListActivity"
+        <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.house.HouseListActivity" />
         <activity android:name="cn.lyj.core.house.RentHouseListActivity" />
@@ -13,7 +13,7 @@
         <activity android:name="cn.lyj.core.chart.ChartActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".person.PersonListActivity"
+            android:name=".person.HousePersonListActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".house.HouseListActivity" />
         <activity android:name=".house.RentHouseListActivity" />
@@ -21,6 +21,7 @@
         <activity android:name=".place.SocialPlaceListActivity" />
         <activity android:name=".log.LogListActivity" />
         <activity android:name="cn.lyj.work.LoginActivity" />
+        <activity android:name=".person.TransientPersonListActivity" />
     </application>
 
 </manifest>
