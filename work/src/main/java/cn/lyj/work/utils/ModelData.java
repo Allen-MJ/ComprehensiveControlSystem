@@ -109,11 +109,42 @@ public class ModelData {
         switch (id){
             case "户籍人口":
                 break;
+            case "流动人口":
+                break;
+            case "实有房屋":
+                break;
+            case "出租房":
+                break;
+            case "非公有制经济":
+                break;
+            case "社会组织":
+                break;
+            case "我的任务":
+                break;
+            case "工作日志":
+                break;
         }
         return 0;
     }
 
     public void onClickListener(Context context,Model model){
-
+        switch (model.getId()){
+            case "户籍人口":
+                break;
+            case "流动人口":
+                break;
+            case "实有房屋":
+                break;
+            case "出租房":
+                break;
+            case "非公有制经济":
+                break;
+            case "社会组织":
+                break;
+            case "我的任务":
+                break;
+            case "工作日志":
+                break;
+        }
     }
 }
