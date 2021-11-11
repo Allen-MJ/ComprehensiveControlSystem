@@ -40,28 +40,8 @@
         </activity>
         <activity android:name=".TestActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.HomeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.RegistActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.VoteActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.square.DiscussActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.WjdcActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.square.NewsDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.user.UserInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.news.MessageDetailActivity"
-            android:screenOrientation="portrait"/>
         <!--core start-->
-        <activity android:name="cn.lyj.core.person.PersonListActivity"
+        <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.house.HouseListActivity"
             android:screenOrientation="portrait"/>
@@ -83,8 +63,6 @@
             android:screenOrientation="portrait"/>
         <!--core end-->
         <!--leader start-->
-        <activity android:name="cn.lyj.leader.HomeActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.chart.ChartActivity"
             android:screenOrientation="portrait"/>
         <!--leader end-->

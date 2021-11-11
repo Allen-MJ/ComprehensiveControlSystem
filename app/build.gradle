@@ -39,8 +39,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation project(path: ':allenframe')
-    implementation project(path: ':thepublic')//公众版
-    implementation project(path: ':leader')//领导版
     implementation project(path: ':work')//工作版（网格员等工作人员版）
 
 }
