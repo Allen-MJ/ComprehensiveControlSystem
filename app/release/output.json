@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "cn.lyj.ccs",
+  "applicationId": "cn.lyj.ccs.pubver",
   "variantName": "release",
   "elements": [
     {

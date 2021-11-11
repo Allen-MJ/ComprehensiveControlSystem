@@ -6,7 +6,8 @@ import allen.frame.AllenManager;
 //常量常数
 public class Constants {
 
-	public static String url = "http://150.158.184.184:30050";
+	public static String url = "http://222.179.3.62:30050";//正式
+//	public static String url = "http://150.158.184.184:30050";//测试
 	public static boolean ISDEBUG = false;
 
 	// APP下载文件夹

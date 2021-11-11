@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import allen.frame.BaseFragment;
+import allen.frame.WebActivity;
 import allen.frame.tools.Constants;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -170,6 +171,9 @@ public class ServeFragment extends BaseFragment {
     private void go2Url(Type type) {
         switch (type.getId()) {
             case "1"://天气预报
+                startActivity(new Intent(getContext(), WebActivity.class)
+                        .putExtra(Constants.Key_1,"天气预报")
+                        .putExtra(Constants.Key_2,"https://e.weather.com.cn/mweather/101040100.shtml"));
                 break;
             case "2"://物业管理
                 break;

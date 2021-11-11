@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="allen.frame" />
+    package="allen.frame" >
+
+    <application>
+        <activity android:name=".WebActivity" />
+    </application>
+</manifest>

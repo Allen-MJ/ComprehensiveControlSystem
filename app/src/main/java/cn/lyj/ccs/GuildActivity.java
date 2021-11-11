@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import cn.lyj.leader.LoginActivity;
+import cn.lyj.thepublic.LoginActivity;
 
 public class GuildActivity extends AllenIMBaseActivity {
     @BindView(R.id.guild)
