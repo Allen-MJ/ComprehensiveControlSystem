@@ -1,5 +1,6 @@
 package cn.lyj.core.place;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,6 +37,7 @@ import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.SocialPlaceEntity;
 import cn.lyj.core.entry.UnSocialPlaceEntity;
 
 /**
@@ -83,7 +85,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
         rv.setLayoutManager(manager);
         adapter = new CommonAdapter<UnSocialPlaceEntity>(context,R.layout.core_unsocial_person_item) {
             @Override
-            public void convert(ViewHolder holder, UnSocialPlaceEntity entity, int position) {
+            public void convert(ViewHolder holder, final UnSocialPlaceEntity entity, int position) {
                 holder.setText(R.id.item_name,entity.getB2302());
                 if (natures!=null&&natures.size()>0){
                     for (CoreType type:natures
@@ -96,6 +98,25 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
 
                 holder.setText(R.id.item_phone,entity.getB2305());
 
+                holder.setOnClickListener(R.id.item_delete, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id=entity.getB2300();
+                                delete("["+id+"]");
+                                dialog.dismiss();
+                            }
+                        }, "取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                    }
+                });
             }
         };
         rv.setAdapter(adapter);
@@ -149,7 +170,31 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
             }
         });
     }
+    private void delete(String ids){
+        Https.with(this).url(CoreApi._core_13)
+                .addJsons(ids).delete()
+                .enqueue(new Callback<List<SocialPlaceEntity>>() {
+                    @Override
+                    public void success(List<SocialPlaceEntity> data) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,"删除成功！");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
 
+                    @Override
+                    public void token() {
+                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
     private void loadData(){
         Https.with(this).url(CoreApi._core_13)
                 .addParam("b2302",mKey).get()
