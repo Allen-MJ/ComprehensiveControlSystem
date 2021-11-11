@@ -52,6 +52,15 @@ public class CoreApi {
      * 出租房查询
      */
     public static final String _core_10 = "/api/tb16/appQuery";
+    /**
+     *
+     * 社会组织列表
+     */
+    public static final String _core_12 = "/api/tb24/gridmember";
+    /**
+     * 非公有制经济组织
+     */
+    public static final String _core_13 = "/api/tb23/gridmember";
     /*工作日志start*/
     /**
      * 获取工作日志列表

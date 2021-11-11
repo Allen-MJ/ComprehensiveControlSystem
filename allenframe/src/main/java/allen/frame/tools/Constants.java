@@ -7,6 +7,7 @@ import allen.frame.AllenManager;
 public class Constants {
 
 	public static String url = "http://150.158.184.184:30050";
+//	public static String url = "http://222.179.3.62:30050";
 	public static boolean ISDEBUG = false;
 
 	// APP下载文件夹

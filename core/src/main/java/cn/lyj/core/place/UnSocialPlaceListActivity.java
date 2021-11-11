@@ -15,9 +15,12 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
@@ -31,7 +34,9 @@ import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
+import cn.lyj.core.entry.CoreType;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.UnSocialPlaceEntity;
 
 /**
  * 非公有社会场所
@@ -45,12 +50,13 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private HousePersonAdapter adapter;
+    private CommonAdapter<UnSocialPlaceEntity> adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<HousePerson> list,sublist;
+    private List<UnSocialPlaceEntity> list=new ArrayList<>(),sublist;
     private String mKey = "";
     private String type = "0";
+    private List<CoreType> natures;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -65,7 +71,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"实有房屋",true);
+        setToolbarTitle(toolbar,"非公有制组织",true);
     }
 
     @Override
@@ -75,9 +81,26 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new HousePersonAdapter();
+        adapter = new CommonAdapter<UnSocialPlaceEntity>(context,R.layout.core_unsocial_person_item) {
+            @Override
+            public void convert(ViewHolder holder, UnSocialPlaceEntity entity, int position) {
+                holder.setText(R.id.item_name,entity.getB2302());
+                if (natures!=null&&natures.size()>0){
+                    for (CoreType type:natures
+                    ) {
+                        if (type.getValue().equals(entity.getB2303())){
+                            holder.setText(R.id.item_nature,type.getLabel());
+                        }
+                    }
+                }
+
+                holder.setText(R.id.item_phone,entity.getB2305());
+
+            }
+        };
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+        loadNature();
         loadData();
     }
 
@@ -114,25 +137,25 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, HousePerson entry, int position) {
+            public void onItemClick(View view, ViewHolder holder, int position) {
 
             }
 
             @Override
-            public void onItemDelete(View v, HousePerson entry, int position) {
-
+            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                return false;
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
-                .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<HousePerson>>() {
+        Https.with(this).url(CoreApi._core_13)
+                .addParam("b2302",mKey).get()
+                .enqueue(new Callback<List<UnSocialPlaceEntity>>() {
                     @Override
-                    public void success(List<HousePerson> data) {
+                    public void success(List<UnSocialPlaceEntity> data) {
                         sublist = data;
                         showData();
                     }
@@ -151,18 +174,37 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                     }
                 });
     }
+
+    private void loadNature(){
+        showProgressDialog("");
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","business_type").addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        natures=data;
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
     private void showData() {
         if (isRefresh) {
             list = sublist;
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishRefresh();
         } else if (page == 1) {
             list = sublist;
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishLoadMore();
         } else {
             list.addAll(sublist);
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishLoadMore();
         }
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
