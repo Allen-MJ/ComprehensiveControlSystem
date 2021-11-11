@@ -1,6 +1,9 @@
 package cn.lyj.core.person;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -18,6 +21,7 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
@@ -60,6 +64,21 @@ public class TransientPersonListActivity extends AllenBaseActivity {
     @Override
     protected int getLayoutResID() {
         return R.layout.core_person_list;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId==R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateTranPersonActivity.class),10);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -116,7 +135,8 @@ public class TransientPersonListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new TranPersonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, TranPerson entry, int position) {
-
+                startActivityForResult(new Intent(context, UpdateTranPersonActivity.class)
+                        .putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override

@@ -19,15 +19,15 @@ public class CoreApi {
     /**
      * 户籍人口添加
      */
-    public static final String _core_2 = "/api/tb12/appAdd";
+    public static final String HousePersonAdd = "/api/tb12/appAdd";
     /**
      * 户籍人口修改
      */
-    public static final String _core_3 = "/api/tb12/appUpdate";
+    public static final String HousePersonUpdate = "/api/tb12/appUpdate";
     /**
      * 户籍人口删除
      */
-    public static final String _core_4 = "/api/tb12/appDel";
+    public static final String HousePersonDelete = "/api/tb12/appDel";
     /**
      * 流动人口添加
      */
@@ -58,7 +58,7 @@ public class CoreApi {
      */
     public static final String _core_11 = "/api/gridWorkLog/gridmember";
     /**
-     * 新增(post),修改(put)工作日志
+     * 新增(post),修改(put),删除(delete)工作日志
      */
     public static final String CoreaddLog = "/api/gridWorkLog/gridmember";
     /*工作日志end*/

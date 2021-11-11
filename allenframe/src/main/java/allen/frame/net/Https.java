@@ -111,11 +111,19 @@ public class Https {
     }
 
     private <T> void put(Callback<T> callback){
-        mEngine.put(activity,mUrl,mParams,callback);
+        if(StringUtils.notEmpty(jsons)){
+            mEngine.put(activity,mUrl,jsons,callback);
+        }else{
+            mEngine.put(activity,mUrl,mParams,callback);
+        }
     }
 
     private <T> void delete(Callback<T> callback){
-        mEngine.delete(activity,mUrl,mParams,callback);
+        if(StringUtils.notEmpty(jsons)){
+            mEngine.delete(activity,mUrl,jsons,callback);
+        }else{
+            mEngine.delete(activity,mUrl,mParams,callback);
+        }
     }
 
     private <T> void upload(Callback<T> callback){

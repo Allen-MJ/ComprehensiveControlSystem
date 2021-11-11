@@ -23,5 +23,39 @@
     <string name="log_des">工作描述:</string>
     <string name="log_des_hint">请输入工作描述</string>
 
+    <string name="house_person_name">姓名:</string>
+    <string name="house_person_aname">曾用名:</string>
+    <string name="house_person_idnumber">身份证号:</string>
+    <string name="house_person_sex">性别:</string>
+    <string name="house_person_birthday">出生日期:</string>
+    <string name="house_person_mz">民族:</string>
+    <string name="house_person_jg">籍贯:</string>
+    <string name="house_person_hyzk">婚姻状况:</string>
+    <string name="house_person_zzmm">政治面貌:</string>
+    <string name="house_person_xl">学历:</string>
+    <string name="house_person_zjxy">宗教信仰:</string>
+    <string name="house_person_zylb">职业类别:</string>
+    <string name="house_person_zy">职业:</string>
+    <string name="house_person_fwcs">服务处所:</string>
+    <string name="house_person_phone">联系方式:</string>
+    <string name="house_person_hjd">户籍地:</string>
+    <string name="house_person_hjddz">户籍门（楼）地址:</string>
+    <string name="house_person_xzd">现住地:</string>
+    <string name="house_person_xzddz">现住门（楼）地址:</string>
+    <string name="house_person_rhyz">人户一致标识:</string>
+    <string name="house_person_hh">户号:</string>
+    <string name="house_person_hzsfz">户主公民身份号码:</string>
+    <string name="house_person_hzname">户主姓名:</string>
+    <string name="house_person_hzgx">与户主关系:</string>
+    <string name="house_person_hzphone">户主联系方式:</string>
+    <string name="house_person_wg">所属网格:</string>
+    <string name="house_person_lryy">流入原因:</string>
+    <string name="house_person_bzlx">办证类型:</string>
+    <string name="house_person_zjhm">证件号码:</string>
+    <string name="house_person_djrq">登记日期:</string>
+    <string name="house_person_zjdq">证件到期日期:</string>
+    <string name="house_person_zslx">住所类型:</string>
+    <string name="house_person_sfcz">是否常住人口:</string>
+    <string name="house_person_sfzd">是否重点关注人员:</string>
 
 </resources>

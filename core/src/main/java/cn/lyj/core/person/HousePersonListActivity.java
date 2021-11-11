@@ -1,6 +1,9 @@
 package cn.lyj.core.person;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -18,6 +21,7 @@ import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
@@ -31,6 +35,7 @@ import cn.lyj.core.R2;
 import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.log.UpdateLogActivity;
 
 /**
  * 户籍人口管理列表
@@ -63,6 +68,21 @@ public class HousePersonListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         setToolbarTitle(toolbar,"户籍人口",true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId==R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateHousePersonActivity.class),10);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -114,7 +134,7 @@ public class HousePersonListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, HousePerson entry, int position) {
-
+                startActivityForResult(new Intent(context, UpdateHousePersonActivity.class).putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override

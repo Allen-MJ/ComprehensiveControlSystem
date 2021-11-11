@@ -23,6 +23,8 @@
         <activity android:name="cn.lyj.work.LoginActivity" />
         <activity android:name=".person.TransientPersonListActivity" />
         <activity android:name=".log.UpdateLogActivity" />
+        <activity android:name=".person.UpdateHousePersonActivity" />
+        <activity android:name=".person.UpdateTranPersonActivity" />
     </application>
 
 </manifest>
