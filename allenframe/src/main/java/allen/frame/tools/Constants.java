@@ -6,8 +6,8 @@ import allen.frame.AllenManager;
 //常量常数
 public class Constants {
 
-	public static String url = "http://150.158.184.184:30050";
-//	public static String url = "http://222.179.3.62:30050";
+	public static String url = "http://150.158.184.184:30050";//测试
+//	public static String url = "http://222.179.3.62:30050";//正式
 	public static boolean ISDEBUG = false;
 
 	// APP下载文件夹
@@ -45,6 +45,7 @@ public class Constants {
 	public static final String UserPsw = "_User_Psw";
 	public static final String UserId = "_User_Id";
 
+	public static final String UserUnitsName = "_User_Units_Name";//用户单位
 	public static final String UserName = "_User_Name";//用户名
 	public static final String UserPhoto = "_User_Photo";
 	public static final String UserAddress = "_User_Address";
@@ -52,6 +53,8 @@ public class Constants {
 	public static final String UserGender = "_User_gender";//性别
 	public static final String UserNickName = "_User_nickName";//昵称
 	public static final String UserGrage = "_User_Grage";//用户性质
+
+	public static final String UserMap = "_User_Map";//用户是否开启后台定位巡逻
 
 
 	public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/NqHjZQTA/NuOeAalhgb20wSoLe8NDNSYGbaOL+wu8s3X++BUezRiBiHdfvp55LNCC2Ua422Bu1UnZgwolcWhKg3ZFTLH47eX5adfrV5R/IpGZxh6ZebsioJGTeCQKq6ZB08jHdq6RBv7Fe0Q2nmW7P2hGblGSHuevMjaJ1rPFwIDAQAB";

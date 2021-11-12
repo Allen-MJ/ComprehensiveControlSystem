@@ -43,25 +43,41 @@ public class OkHttpEngine implements HttpEngine {
 
     @Override
     public <T> void post(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+        post(act, url, params, null, callback);
+    }
+
+    @Override
+    public <T> void post(final Activity act, String url, Map<String, Object> params, Map<String,Object> headers, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();// 创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");// 数据类型为json格式，
         RequestBody body = RequestBody.create(JSON, mbody.post(params));
-        Request request = new Request.Builder().url(url)
+        Request.Builder builder = new Request.Builder();
+        builder.url(url).addHeader("keep-alive", "false")
+                .addHeader("Authorization", token);
+        if(headers!=null){
+            for(Map.Entry<String,Object> entry:headers.entrySet()){
+                String key = entry.getKey();
+                String value = StringUtils.getObject(entry.getValue());
+                builder.addHeader(key,value);
+            }
+        }
+        builder.post(body);
+        /*Request request = new Request.Builder().url(url)
                 .addHeader("keep-alive", "false")
                 .addHeader("Authorization", token).post(body)
-                .build();
+                .build();*/
         Logger.e("body",mbody.post(params));
-        client.newCall(request).enqueue(new okhttp3.Callback() {
+        client.newCall(builder.build()).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -73,7 +89,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -162,7 +178,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -174,7 +190,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -263,7 +279,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -275,7 +291,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -363,7 +379,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -375,7 +391,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -463,7 +479,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -475,7 +491,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -563,7 +579,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -575,7 +591,7 @@ public class OkHttpEngine implements HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -664,7 +680,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -677,11 +693,11 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
@@ -769,12 +785,20 @@ public class OkHttpEngine implements HttpEngine {
                 RequestBody.create(MediaType.parse(guessMimeType(file.getPath())), file.getFile()));
         MyMultipartBody myMultipartBody = new MyMultipartBody(builder.build(), new ProgressListener() {
             @Override
-            public void onProgress(long total, long current) {
+            public void onProgress(final long total, final long current) {
                 //回调接口打印总进度和当前进度
                 Logger.e("upload", total + " : " + current);
-                if(callback!=null){
-                    callback.onProgress(total,current);
+                if(act!=null&&act.isFinishing()){
+                    return;
                 }
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(callback!=null){
+                            callback.onProgress(total,current);
+                        }
+                    }
+                });
             }
         });
         Request request = new Request.Builder().addHeader("keep-alive", "false")
@@ -789,7 +813,7 @@ public class OkHttpEngine implements HttpEngine {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(act.isFinishing()){
+                        if(act!=null&&act.isFinishing()){
                             Logger.http("data", "Activity is on isFinishing!");
                             return;
                         }
@@ -802,11 +826,11 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
-                if(act.isFinishing()){
+                if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }

@@ -1,6 +1,7 @@
 package allen.frame.net;
 
 import android.app.Activity;
+import android.content.Context;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +13,11 @@ import allen.frame.tools.StringUtils;
 public class Https {
     private static HttpEngine mEngine = new OkHttpEngine();
     private Activity activity;
+    private Context context;
     private String mUrl;
     private File mFile;
     private Map<String,Object> mParams;
+    private Map<String,Object> mHeaders;
     private String jsons;
     private int method = Type_Post;
     public static int Type_Post = 0;
@@ -22,8 +25,14 @@ public class Https {
     public static int Type_Put = 3;
     public static int Type_Delete = 4;
     public static int Type_Upload = 2;
+
     public Https(Activity activity) {
         this.activity = activity;
+        mParams = new HashMap<>();
+    }
+
+    public Https(Context ctt) {
+        this.context = ctt;
         mParams = new HashMap<>();
     }
 
@@ -37,6 +46,10 @@ public class Https {
 
     public static Https with(Activity activity){
         return new Https(activity);
+    }
+
+    public static Https with(Context ctt){
+        return new Https(ctt);
     }
 
     public Https url(String url){
@@ -85,6 +98,15 @@ public class Https {
         mParams.put(key,value);
         return this;
     }
+
+    public Https addHeader(String key,Object value){
+        if(mHeaders==null){
+            mHeaders = new HashMap<>();
+        }
+        mHeaders.put(key,value);
+        return this;
+    }
+
     public Https addParams(Map<String,Object> params){
         if(mParams==null){
             mParams = new HashMap<>();
@@ -102,7 +124,7 @@ public class Https {
         if(StringUtils.notEmpty(jsons)){
             mEngine.post(activity,mUrl,jsons,callback);
         }else{
-            mEngine.post(activity,mUrl,mParams,callback);
+            mEngine.post(activity,mUrl,mParams,mHeaders,callback);
         }
     }
 

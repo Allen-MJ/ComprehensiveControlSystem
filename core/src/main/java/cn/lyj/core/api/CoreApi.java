@@ -94,4 +94,8 @@ public class CoreApi {
      * orgid 选填 查询范围，机构id 字符串（地区分布的图表不支持此参数）
      */
     public static final String CoreChart = "/api/decision/appDecision";
+    /**
+     * 网格员巡逻定位
+     */
+    public static final String GridMap = "/api/gridMemberTrack/add";
 }

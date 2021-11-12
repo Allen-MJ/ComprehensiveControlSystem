@@ -1,11 +1,9 @@
 package cn.lyj.core;
 
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -15,30 +13,31 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenManager;
+import allen.frame.entry.Response;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
+import cn.lyj.core.api.CoreApi;
 
 
 public class LocationService extends Service {
     private static final String TAG="LocationService";
     //声明mlocationClient对象
-    public AMapLocationClient mlocationClient;
+    public LocationClient mlocationClient;
     //声明mLocationOption对象
-    public AMapLocationClientOption mLocationOption = null;
+    public LocationClientOption mLocationOption = null;
     private ActivityHelper actHelper = new ActivityHelper(this);
     private SharedPreferences shared;
     private String uid;
+    private Context context = this;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -58,20 +57,20 @@ public class LocationService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Logger.e(TAG, "onStartCommand：");
         shared = actHelper.getSharedPreferences();
-        uid = shared.getString(Constants.USER_ID, "");
+        uid = shared.getString(Constants.UserId, "");
         if(mlocationClient!=null){
-            mlocationClient.onDestroy();
+            mlocationClient.stop();
             mlocationClient = null;
             mLocationOption = null;
         }
-        setAlarm();
+//        setAlarm();
         getPosition();
         return START_STICKY;
     }
-    public void setAlarm() {
-        /**
+    /*public void setAlarm() {
+        *//**
          * 设置7点到21点定时提示
-         */
+         *//*
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(this,
                     AlarmReceiver.class);
@@ -84,9 +83,9 @@ public class LocationService extends Service {
             calendar.set(calendar.HOUR_OF_DAY, 22);
             calendar.set(calendar.MINUTE, 0);
             calendar.set(calendar.SECOND, 0);
-            /**
+            *//**
              * 当前时间大于设置的时间，将设置的时间增加一天
-             */
+             *//*
             if (currentTime > calendar.getTimeInMillis()) {
                 calendar.add(Calendar.DATE, 1);
             }
@@ -94,26 +93,27 @@ public class LocationService extends Service {
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
                     calendar.getTimeInMillis(), 1000 * 60 * 60 * 24,
                     pendingIntent);
-    }
+    }*/
     public void getPosition() {
         //初始化定位
-        mlocationClient = new AMapLocationClient(this);
+        mlocationClient = new LocationClient(this);
 //初始化定位参数
-        mLocationOption = new AMapLocationClientOption();
+        mLocationOption = new LocationClientOption();
 //设置定位监听
-        mlocationClient.setLocationListener(mLocationListener);
+        mlocationClient.registerLocationListener(mLocationListener);
 //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        mLocationOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
 //设置定位间隔,单位毫秒,默认为2000ms
-        mLocationOption.setInterval(60000);
+        mLocationOption.setScanSpan(60000);
+        mLocationOption.setIsNeedAddress(false);
 //设置定位参数
-        mlocationClient.setLocationOption(mLocationOption);
+        mlocationClient.setLocOption(mLocationOption);
 // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
 // 注意设置合适的定位时间的间隔（最小间隔支持为1000ms），并且在合适时间调用stopLocation()方法来取消定位请求
 // 在定位结束后，在合适的生命周期调用onDestroy()方法
 // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
 //启动定位
-        mlocationClient.startLocation();
+        mlocationClient.start();
     }
 
     private static final String NOTIFICATION_CHANNEL_NAME = "BackgroundLocation";
@@ -147,7 +147,7 @@ public class LocationService extends Service {
         }
         builder.setSmallIcon(R.drawable.ic_launcher)
                 .setContentTitle(AllenManager.getInstance().getAppname())
-                .setSmallIcon(R.drawable.app_logo)
+                .setSmallIcon(R.mipmap.app_logo)
                 .setContentText("正在后台运行")
                 .setWhen(System.currentTimeMillis());
 
@@ -160,44 +160,28 @@ public class LocationService extends Service {
     }
 
     // 声明定位回调监听器
-    public AMapLocationListener mLocationListener = new AMapLocationListener() {
+    public BDAbstractLocationListener mLocationListener = new BDAbstractLocationListener() {
         @Override
-        public void onLocationChanged(AMapLocation aMapLocation) {
-            if (aMapLocation != null) {
-                if (aMapLocation.getErrorCode() == 0) {
+        public void onReceiveLocation(BDLocation location) {
+            if (location != null) {
+                if (location.getLocType() == 0) {
                     //定位成功回调信息，设置相关消息
-                    aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
-                    double lat = aMapLocation.getLatitude();//获取纬度
-                    double lon = aMapLocation.getLongitude();//获取经度
-                    aMapLocation.getAccuracy();//获取精度信息
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = new Date(aMapLocation.getTime());
-                    df.format(date);//定位时间
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            double mlat = AmapPonitUtil.WGSLat(lat, lon);
-                            double mlon = AmapPonitUtil.WGSLon(lat, lon);
-                            AppDataHelper.init().SetPeoMapdata(uid, mlon + "," + mlat,shared.getString(Constants.USER_PASSWORD,""));
-                            shared.edit().putString(Constants.User_LocalPoint, mlon + "," + mlat)
-                                    .putString(Constants.User_LocalAddress, aMapLocation
-                                            .getAddress())
-                                    .commit();
-                            Logger.e(TAG, "原坐标：" + lon + "," + lat);
-                            Logger.e(TAG, "高德坐标转换：" + mlon + "," + mlat);
-                        }
-                    }).start();
-                } else {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AppDataHelper.init().SetPeoMapdata(uid, shared.getString(Constants.User_LocalPoint,""),shared.getString(Constants.USER_PASSWORD,""));
-                        }
-                    }).start();
-                    //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                    Logger.e(TAG+".AmapError", "location Error, ErrCode:"
-                            + aMapLocation.getErrorCode() + ", errInfo:"
-                            + aMapLocation.getErrorInfo());
+                    double lat = location.getLatitude();//获取纬度
+                    double lon = location.getLongitude();//获取经度
+                    Https.with(context).url(CoreApi.GridMap).addHeader("gridmemberId",uid)
+                            .addParam("pointX",lon).addParam("pointY",lat).post()
+                            .enqueue(new Callback<Object>() {
+
+                                @Override
+                                public void success(Object data) {
+                                    Logger.e("定位","add grid map point");
+                                }
+
+                                @Override
+                                public void fail(Response response) {
+                                    Logger.e("定位","fail add grid map point");
+                                }
+                            });
                 }
             }
         }
@@ -208,7 +192,7 @@ public class LocationService extends Service {
         super.onDestroy();
         if(mlocationClient!=null){
 //            mlocationClient.disableBackgroundLocation(false);
-            mlocationClient.onDestroy();
+            mlocationClient.stop();
             mlocationClient = null;
             mLocationOption = null;
         }

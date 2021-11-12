@@ -27,6 +27,8 @@
         <activity android:name=".person.UpdateTranPersonActivity" />
         <activity android:name=".house.UpdateHouseActivity" />
         <activity android:name=".house.UpdateRentHouseActivity" />
+
+        <service android:name=".LocationService" />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import allen.frame.entry.File;
 
 public interface HttpEngine {
     public <T> void post(Activity act, String url, Map<String,Object> params,Callback<T> callBack);
+    public <T> void post(Activity act, String url, Map<String,Object> params,Map<String,Object> headers,Callback<T> callBack);
     public <T> void delete(Activity act, String url, Map<String,Object> params,Callback<T> callBack);
     public <T> void delete(Activity act, String url, String params,Callback<T> callBack);
     public <T> void put(Activity act, String url, Map<String,Object> params,Callback<T> callBack);

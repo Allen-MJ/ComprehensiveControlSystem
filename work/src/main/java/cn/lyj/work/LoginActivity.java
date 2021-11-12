@@ -122,6 +122,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                     public void success(LoginInfo data) {
                         dismissProgressDialog();
                         shared.edit().putString(Constants.UserToken,data.getToken())
+                                .putString(Constants.UserUnitsName,data.getUser().getUser().getOrg().getOrgFullName())
                                 .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                                 .putString(Constants.UserId,data.getUser().getUser().getId())
                                 .putString(Constants.UserPhoto,data.getUser().getUser().getAvatarPath())
