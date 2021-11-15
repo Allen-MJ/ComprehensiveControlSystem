@@ -145,9 +145,8 @@ public class LocationService extends Service {
         } else {
             builder = new Notification.Builder(getApplicationContext());
         }
-        builder.setSmallIcon(R.drawable.ic_launcher)
+        builder.setSmallIcon(R.drawable.logo_grid)
                 .setContentTitle(AllenManager.getInstance().getAppname())
-                .setSmallIcon(R.mipmap.app_logo)
                 .setContentText("正在后台运行")
                 .setWhen(System.currentTimeMillis());
 
@@ -164,25 +163,23 @@ public class LocationService extends Service {
         @Override
         public void onReceiveLocation(BDLocation location) {
             if (location != null) {
-                if (location.getLocType() == 0) {
-                    //定位成功回调信息，设置相关消息
-                    double lat = location.getLatitude();//获取纬度
-                    double lon = location.getLongitude();//获取经度
-                    Https.with(context).url(CoreApi.GridMap).addHeader("gridmemberId",uid)
-                            .addParam("pointX",lon).addParam("pointY",lat).post()
-                            .enqueue(new Callback<Object>() {
+                //定位成功回调信息，设置相关消息
+                double lat = location.getLatitude();//获取纬度
+                double lon = location.getLongitude();//获取经度
+                Https.with(context).url(CoreApi.GridMap).addHeader("gridmemberId",uid)
+                        .addParam("pointX",lon).addParam("pointY",lat).post()
+                        .enqueue(new Callback<Object>() {
 
-                                @Override
-                                public void success(Object data) {
-                                    Logger.e("定位","add grid map point");
-                                }
+                            @Override
+                            public void success(Object data) {
+                                Logger.e("定位","add grid map point");
+                            }
 
-                                @Override
-                                public void fail(Response response) {
-                                    Logger.e("定位","fail add grid map point");
-                                }
-                            });
-                }
+                            @Override
+                            public void fail(Response response) {
+                                Logger.e("定位","fail add grid map point");
+                            }
+                        });
             }
         }
     };

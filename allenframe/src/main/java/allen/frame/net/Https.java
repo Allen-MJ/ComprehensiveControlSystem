@@ -1,6 +1,5 @@
 package allen.frame.net;
 
-import android.app.Activity;
 import android.content.Context;
 
 import java.util.HashMap;
@@ -12,7 +11,6 @@ import allen.frame.tools.StringUtils;
 
 public class Https {
     private static HttpEngine mEngine = new OkHttpEngine();
-    private Activity activity;
     private Context context;
     private String mUrl;
     private File mFile;
@@ -26,11 +24,6 @@ public class Https {
     public static int Type_Delete = 4;
     public static int Type_Upload = 2;
 
-    public Https(Activity activity) {
-        this.activity = activity;
-        mParams = new HashMap<>();
-    }
-
     public Https(Context ctt) {
         this.context = ctt;
         mParams = new HashMap<>();
@@ -42,10 +35,6 @@ public class Https {
      */
     public static void init(HttpEngine engine){
         mEngine = engine;
-    }
-
-    public static Https with(Activity activity){
-        return new Https(activity);
     }
 
     public static Https with(Context ctt){
@@ -122,34 +111,34 @@ public class Https {
 
     private <T> void post(Callback<T> callback){
         if(StringUtils.notEmpty(jsons)){
-            mEngine.post(activity,mUrl,jsons,callback);
+            mEngine.post(context,mUrl,jsons,callback);
         }else{
-            mEngine.post(activity,mUrl,mParams,mHeaders,callback);
+            mEngine.post(context,mUrl,mParams,mHeaders,callback);
         }
     }
 
     private <T> void get(Callback<T> callback){
-        mEngine.get(activity,mUrl,mParams,callback);
+        mEngine.get(context,mUrl,mParams,callback);
     }
 
     private <T> void put(Callback<T> callback){
         if(StringUtils.notEmpty(jsons)){
-            mEngine.put(activity,mUrl,jsons,callback);
+            mEngine.put(context,mUrl,jsons,callback);
         }else{
-            mEngine.put(activity,mUrl,mParams,callback);
+            mEngine.put(context,mUrl,mParams,callback);
         }
     }
 
     private <T> void delete(Callback<T> callback){
         if(StringUtils.notEmpty(jsons)){
-            mEngine.delete(activity,mUrl,jsons,callback);
+            mEngine.delete(context,mUrl,jsons,callback);
         }else{
-            mEngine.delete(activity,mUrl,mParams,callback);
+            mEngine.delete(context,mUrl,mParams,callback);
         }
     }
 
     private <T> void upload(Callback<T> callback){
-        mEngine.upload(activity,mUrl,mFile,mParams,callback);
+        mEngine.upload(context,mUrl,mFile,mParams,callback);
     }
 
     public <T> void enqueue(Callback<T> callback){

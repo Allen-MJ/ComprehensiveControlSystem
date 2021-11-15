@@ -1,6 +1,6 @@
 package allen.frame.net;
 
-import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -42,12 +42,12 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void post(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+    public <T> void post(final Context act, String url, Map<String, Object> params, final Callback<T> callback) {
         post(act, url, params, null, callback);
     }
 
     @Override
-    public <T> void post(final Activity act, String url, Map<String, Object> params, Map<String,Object> headers, final Callback<T> callback) {
+    public <T> void post(final Context act, String url, Map<String, Object> params, Map<String,Object> headers, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -74,25 +74,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -100,57 +98,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -159,7 +161,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void delete(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+    public <T> void delete(final Context act, String url, Map<String, Object> params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -175,25 +177,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -201,57 +201,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -260,7 +264,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void put(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+    public <T> void put(final Context act, String url, Map<String, Object> params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -276,25 +280,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -302,57 +304,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -361,7 +367,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void post(final Activity act, String url, String params, final Callback<T> callback) {
+    public <T> void post(final Context act, String url, String params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -376,25 +382,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -402,57 +406,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -461,7 +469,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void put(final Activity act, String url, String params, final Callback<T> callback) {
+    public <T> void put(final Context act, String url, String params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -476,25 +484,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -502,57 +508,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -561,7 +571,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void delete(final Activity act, String url, String params, final Callback<T> callback) {
+    public <T> void delete(final Context act, String url, String params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -576,25 +586,23 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -602,57 +610,61 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.xequals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.xequals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        Logger.http("data", "token is erro!");
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                Logger.http("data", "->Not isSuccessful");
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
-                            String msg = "请求失败!";
-                            Logger.http("data", data);
-                            try {
-                                JSONObject obj = new JSONObject(data);
-                                msg = obj.getString("message");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                            if(callback!=null){
+                                String msg = "请求失败!";
+                                Logger.http("data", data);
+                                try {
+                                    JSONObject obj = new JSONObject(data);
+                                    msg = obj.getString("message");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
                         }
                     });
                 }
@@ -661,7 +673,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void get(final Activity act, String url, Map<String, Object> params, final Callback<T> callback) {
+    public <T> void get(final Context act, String url, Map<String, Object> params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         Logger.http("token", ">>" + token);
         OkHttpClient client = new OkHttpClient.Builder()
@@ -677,15 +689,13 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
+                        if(callback!=null){
+                            Logger.http("data", "onFailure");
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                         }
-                        Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
                     }
                 });
             }
@@ -693,14 +703,14 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
                 if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -708,46 +718,47 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.codeEquals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.codeEquals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             String msg = "请求失败!";
@@ -758,7 +769,9 @@ public class OkHttpEngine implements HttpEngine {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                            if(callback!=null){
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                            }
                         }
                     });
                 }
@@ -767,7 +780,7 @@ public class OkHttpEngine implements HttpEngine {
     }
 
     @Override
-    public <T> void upload(final Activity act, String url, File file, Map<String, Object> params, final Callback<T> callback) {
+    public <T> void upload(final Context act, String url, File file, Map<String, Object> params, final Callback<T> callback) {
         token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
         OkHttpClient httpClient = new OkHttpClient();
         MultipartBody.Builder builder = new MultipartBody
@@ -788,10 +801,10 @@ public class OkHttpEngine implements HttpEngine {
             public void onProgress(final long total, final long current) {
                 //回调接口打印总进度和当前进度
                 Logger.e("upload", total + " : " + current);
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     return;
-                }
-                act.runOnUiThread(new Runnable() {
+                }*/
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
                         if(callback!=null){
@@ -810,15 +823,13 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.http("data", "onFailure");
-                act.runOnUiThread(new Runnable() {
+                new RunMain(act).run2main(new Runnable() {
                     @Override
                     public void run() {
-                        if(act!=null&&act.isFinishing()){
-                            Logger.http("data", "Activity is on isFinishing!");
-                            return;
-                        }
                         Logger.http("data", "onFailure");
-                        callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                        if(callback!=null){
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                        }
                     }
                 });
             }
@@ -826,14 +837,14 @@ public class OkHttpEngine implements HttpEngine {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Logger.http("data", "onResponse");
-                if(act!=null&&act.isFinishing()){
+                /*if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
                 }
                 if(act!=null&&act.isFinishing()){
                     Logger.http("data", "Activity is on isFinishing!");
                     return;
-                }
+                }*/
                 final int code = response.code();
                 Logger.http("code", ">>" + code);
                 final String data = response.body().string();
@@ -841,46 +852,48 @@ public class OkHttpEngine implements HttpEngine {
                 if (response.isSuccessful()) {
                     final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
                     if(result.codeEquals("200")){
-
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
-                                callback.success(result);
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
                             }
                         });
                     }else if(result.codeEquals("401")){
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
                                 Logger.http("data", "token is erro!");
-                                act.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.token();
-                                    }
-                                });
+                                if(callback!=null){
+                                    callback.token();
+                                }
                             }
                         });
                     }else{
                         Logger.http("data", "code is not 200!");
-                        act.runOnUiThread(new Runnable() {
+                        new RunMain(act).run2main(new Runnable() {
                             @Override
                             public void run() {
-                                callback.fail(result);
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
                             }
                         });
                     }
                 } else if(code==401){
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             Logger.http("data", "->Not isSuccessful");
-                            callback.token();
+                            if(callback!=null){
+                                callback.token();
+                            }
                         }
                     });
                 }else{
-                    act.runOnUiThread(new Runnable() {
+                    new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             String msg = "请求失败!";
@@ -891,7 +904,9 @@ public class OkHttpEngine implements HttpEngine {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                            if(callback!=null){
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                            }
                         }
                     });
                 }
