@@ -33,6 +33,7 @@
     <string name="regist_bt">注册</string>
     <!--login end-->
     <string name="add_bt">添加</string>
+    <string name="commit_bt">提交</string>
     <string name="search_hint">输入关键字查询</string>
 
 </resources>

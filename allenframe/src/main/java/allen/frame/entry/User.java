@@ -17,6 +17,7 @@ public class User implements Serializable {
     private String createBy;//
     private int isThepublic;//0公众号
     private String updateTime;//
+    private Units org;//单位
 
     public String getId() {
         return id;
@@ -128,5 +129,13 @@ public class User implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public Units getOrg() {
+        return org;
+    }
+
+    public void setOrg(Units org) {
+        this.org = org;
     }
 }

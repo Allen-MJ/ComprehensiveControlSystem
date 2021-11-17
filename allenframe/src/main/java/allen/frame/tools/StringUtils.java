@@ -144,7 +144,7 @@ public class StringUtils {
 		}
 		int len = param.length();
 		if(len<start||len<end){
-			throw new IndexOutOfBoundsException("起始位置设置错位！");
+			return param;
 		}
 		StringBuffer sb = new StringBuffer();
 		for(int i=0;i<len;i++){

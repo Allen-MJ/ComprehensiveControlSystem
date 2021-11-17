@@ -45,6 +45,7 @@ public class Constants {
 	public static final String UserPsw = "_User_Psw";
 	public static final String UserId = "_User_Id";
 
+	public static final String UserUnitsName = "_User_Units_Name";//用户单位
 	public static final String UserName = "_User_Name";//用户名
 	public static final String UserPhoto = "_User_Photo";
 	public static final String UserAddress = "_User_Address";
