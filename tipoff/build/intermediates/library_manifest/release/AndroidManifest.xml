@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.lyjj.tipoff"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="30" />
+    /
+    <application>
+        <activity
+            android:name="cn.lyjj.tipoff.TipoffActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.lyjj.tipoff.TipOffInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.lyjj.tipoff.TipOffListActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
