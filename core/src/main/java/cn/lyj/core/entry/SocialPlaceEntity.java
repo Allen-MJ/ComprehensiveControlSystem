@@ -60,19 +60,73 @@ public class SocialPlaceEntity implements Serializable {
     private String b2417;
     private String b2418;
     private String b2419;
+    private String b2420;
     private String b2421;
     private String b2423;
     private String b2425;
     private String b2428;
+    private String b2427;
     private double b2490;
     private double b2491;
     private String b2495;
+    private String b2455;
     private String createBy;
     private String createTime;
     private String gid;
     private GridInfoBean gridInfo;
     private String updateBy;
     private String updateTime;
+    private int b2422;
+    private int b2424;
+    private int b2426;
+
+    public String getB2427() {
+        return b2427;
+    }
+
+    public void setB2427(String b2427) {
+        this.b2427 = b2427;
+    }
+
+    public int getB2422() {
+        return b2422;
+    }
+
+    public void setB2422(int b2422) {
+        this.b2422 = b2422;
+    }
+
+    public int getB2424() {
+        return b2424;
+    }
+
+    public void setB2424(int b2424) {
+        this.b2424 = b2424;
+    }
+
+    public int getB2426() {
+        return b2426;
+    }
+
+    public void setB2426(int b2426) {
+        this.b2426 = b2426;
+    }
+
+    public String getB2420() {
+        return b2420;
+    }
+
+    public void setB2420(String b2420) {
+        this.b2420 = b2420;
+    }
+
+    public String getB2455() {
+        return b2455;
+    }
+
+    public void setB2455(String b2455) {
+        this.b2455 = b2455;
+    }
 
     public String getB2400() {
         return b2400;
@@ -338,7 +392,7 @@ public class SocialPlaceEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public static class GridInfoBean {
+    public static class GridInfoBean implements Serializable{
         /**
          * gid : 402880997c9b45a0017c9b72dbc90002
          * gridName : 三教九流

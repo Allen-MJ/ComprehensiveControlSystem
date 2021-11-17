@@ -1,6 +1,7 @@
 package cn.lyj.core.place;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -123,6 +124,20 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK){
+            switch (requestCode){
+                case 100:
+                    isRefresh = true;
+                    page = 0;
+                    loadData();
+                    break;
+            }
+        }
+    }
+
+    @Override
     protected void addEvent() {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +173,9 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
            @Override
            public void onItemClick(View view, ViewHolder holder, int position) {
-
+               Intent intent=new Intent(context,UpdateSocialActivity.class);
+               intent.putExtra(Constants.ObjectFirst,list.get(position));
+               startActivityForResult(intent,100);
            }
 
            @Override

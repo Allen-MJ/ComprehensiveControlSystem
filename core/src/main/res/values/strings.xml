@@ -58,6 +58,74 @@
     <string name="house_person_sfcz">是否常住人口:</string>
     <string name="house_person_sfzd">是否重点关注人员:</string>
 
+
+    <string name="social_tyxydm">统一社会信用代码:</string>
+    <string name="social_djzh">登记证号:</string>
+    <string name="social_shzzmc">社会组织名称:</string>
+    <string name="social_qyhy">企业行业:</string>
+    <string name="social_clnd">成立年度:</string>
+    <string name="social_djgldm">登记管理机关代码:</string>
+    <string name="social_fddbr">法定代表人姓名:</string>
+    <string name="social_zs">住所:</string>
+    <string name="social_pzrq">批准日期:</string>
+    <string name="social_shzzlx">社会组织类型:</string>
+    <string name="social_zt">状态:</string>
+    <string name="social_fzrzzdm">负责人证件代码:</string>
+    <string name="social_fzrzzhm">负责人证件号码:</string>
+    <string name="social_fzrxm">负责人姓名:</string>
+    <string name="social_fzrlxfs">负责人联系方式:</string>
+    <string name="social_bgdz">办公地址:</string>
+    <string name="social_zbfzrxm">治保负责人姓名:</string>
+    <string name="social_zbfzrlxfs">治保负责人联系方式:</string>
+    <string name="social_gzcd">关注程度:</string>
+    <string name="social_jbjltj">是否具备建立中共党组织条件:</string>
+    <string name="social_sfyzgdzz">是否有中共党组织:</string>
+    <string name="social_zgdysl">中共党员数量:</string>
+    <string name="social_sfygh">是否有工会:</string>
+    <string name="social_ghhysl">工会会员数量:</string>
+    <string name="social_sfygqtzz">是否有共青团组织:</string>
+    <string name="social_gqtysl">共青团团员数量:</string>
+    <string name="social_sfyflzz">是否有妇联组织:</string>
+    <string name="social_fnsl">妇女数量:</string>
+    <string name="social_sfyjwbj">是否有境外背景:</string>
+    <string name="social_zjly">资金来源:</string>
+    <string name="social_sswg">所属网格:</string>
+    <string name="social_jd">经度:</string>
+    <string name="social_wd">纬度:</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+
+    <string name="unsocial_00">工商执照注册号:</string>
+    <string name="unsocial_01">企业名称:</string>
+    <string name="unsocial_02">企业类别:</string>
+    <string name="unsocial_03">企业行业:</string>
+    <string name="unsocial_04">企业地址:</string>
+    <string name="unsocial_05">企业联系方式:</string>
+    <string name="unsocial_06">企业员工数:</string>
+    <string name="unsocial_07">法定代表人证件代码:</string>
+    <string name="unsocial_08">法定代表人证件号码:</string>
+    <string name="unsocial_09">法定代表人姓名:</string>
+    <string name="unsocial_10">法定代表人联系方式:</string>
+    <string name="unsocial_11">治保负责人姓名:</string>
+    <string name="unsocial_12">治保负责人联系方式:</string>
+    <string name="unsocial_13">关注程度:</string>
+    <string name="unsocial_14">是否危化企业:</string>
+    <string name="unsocial_15">安全隐患类型:</string>
+    <string name="unsocial_16">是否具备建立中共党组织条件:</string>
+    <string name="unsocial_17">是否有中共党组织:</string>
+    <string name="unsocial_18">中共党员数量:</string>
+    <string name="unsocial_19">是否有工会:</string>
+    <string name="unsocial_20">工会会员数量:</string>
+    <string name="unsocial_21">是否有共青团组织:</string>
+    <string name="unsocial_22">共青团团员数量:</string>
+    <string name="unsocial_23">是否有妇联组织:</string>
+    <string name="unsocial_24">成立年度:</string>
+    <string name="unsocial_25">所属网格:</string>
+    <string name="unsocial_26">经度:</string>
+    <string name="unsocial_27">纬度:</string>
+
+
+
     <string name="house_no">户号:</string>
     <string name="house_dw">所在单位:</string>
     <string name="house_xq">所在小区:</string>

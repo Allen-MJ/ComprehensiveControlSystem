@@ -369,7 +369,7 @@ public class UnSocialPlaceEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public static class GridInfoBean {
+    public static class GridInfoBean implements Serializable{
         /**
          * gid : 402880997c90f363017c9117897d0000
          * gridName : 紫田网格
