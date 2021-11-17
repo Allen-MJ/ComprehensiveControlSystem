@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.lyj.thepublic">
+
+    <application>
+        <activity android:name=".user.UserNewsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.lyjj.tipoff.TipOffInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.VoteActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main.WjdcActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".news.MessageDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".square.DiscussActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".square.NewsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.UserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RegistActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>
