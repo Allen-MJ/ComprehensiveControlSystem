@@ -17,6 +17,7 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.CoordType;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenManager;
@@ -106,6 +107,8 @@ public class LocationService extends Service {
 //设置定位间隔,单位毫秒,默认为2000ms
         mLocationOption.setScanSpan(60000);
         mLocationOption.setIsNeedAddress(false);
+        mLocationOption.setCoorType("bd09ll");
+        mLocationOption.setOpenGps(true);
 //设置定位参数
         mlocationClient.setLocOption(mLocationOption);
 // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
@@ -163,6 +166,11 @@ public class LocationService extends Service {
         @Override
         public void onReceiveLocation(BDLocation location) {
             if (location != null) {
+                if(location.getFloor()!=null){
+                    mlocationClient.startIndoorMode();
+                }else{
+                    mlocationClient.stopIndoorMode();
+                }
                 //定位成功回调信息，设置相关消息
                 double lat = location.getLatitude();//获取纬度
                 double lon = location.getLongitude();//获取经度
