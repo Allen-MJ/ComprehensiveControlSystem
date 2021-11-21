@@ -140,6 +140,7 @@ public class OwnFragment extends Fragment {
         } else if (id == R.id.user_pl) {
             startActivity(new Intent(getContext(), UserNewsActivity.class).putExtra("type",1));
         } else if (id == R.id.user_fk) {
+            startActivity(new Intent(getContext(), UserFeedbackActivity.class));
         } else if (id == R.id.user_update) {
         } else if (id == R.id.exit_btn) {
             MsgUtils.showMDMessage(getActivity(), "确认退出登录？", "退出", new DialogInterface.OnClickListener() {
