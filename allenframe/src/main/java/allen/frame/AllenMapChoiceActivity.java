@@ -1,5 +1,6 @@
 package allen.frame;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.adapter.PoiItemAdapter;
+import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
+import allen.frame.tools.MsgUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -61,6 +64,7 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
     private boolean mStatusChangeByItemClick = false;
     private LatLng mCenter;
     private Handler mHandler;
+    private PoiInfo info;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -70,6 +74,28 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
     @Override
     protected int getLayoutResID() {
         return R.layout.alen_map_layout;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_save,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.alen_choice_save){
+            if(info!=null){
+                Intent intent = getIntent();
+                intent.putExtra(Constants.ObjectFirst,info);
+                setResult(RESULT_OK,intent);
+                finish();
+            }else{
+                MsgUtils.showMDMessage(context,"请选择地址!");
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -179,6 +205,7 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
         mStatusChangeByItemClick = true;
         MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(poiInfo.getLocation());
         baiduMap.setMapStatus(mapStatusUpdate);
+        info = poiInfo;
     }
 
     /**
@@ -323,7 +350,7 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
         PoiInfo curAddressPoiInfo = new PoiInfo();
         curAddressPoiInfo.address = reverseGeoCodeResult.getAddress();
         curAddressPoiInfo.location = reverseGeoCodeResult.getLocation();
-
+        info = curAddressPoiInfo;
         if (null == poiInfos) {
             poiInfos = new ArrayList<>(2);
         }

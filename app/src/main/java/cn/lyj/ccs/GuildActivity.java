@@ -2,6 +2,7 @@ package cn.lyj.ccs;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -17,7 +18,9 @@ import allen.frame.entry.Version;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
@@ -35,6 +38,7 @@ public class GuildActivity extends AllenIMBaseActivity {
     AppCompatTextView tvGuideSkip;
     @BindView(R.id.btn_guide_enter)
     AppCompatButton btnGuideEnter;
+    private ProgressDialog mDialog;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -93,7 +97,23 @@ public class GuildActivity extends AllenIMBaseActivity {
                         dismissProgressDialog();
                         if(data!=null){
                             if(AllenManager.getInstance().isNewVersion(data.getAppVersion())){
-                                download(data.getAppUrl());
+                                if(data.isAppCompel()){
+                                    download(Constants.url+data.getAppPath());
+                                }else{
+                                    MsgUtils.showNotOutMDMessage(context, "新版本", data.getAppDesc(), "跳过", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            startActivity(new Intent(context, LoginActivity.class));
+                                            finish();
+                                        }
+                                    }, "更新", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            download(Constants.url+data.getAppPath());
+                                        }
+                                    });
+                                }
                             }
                         }
                     }
@@ -106,27 +126,30 @@ public class GuildActivity extends AllenIMBaseActivity {
                 });
     }
     private void download(String url){
-        ProgressDialog dialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
-        dialog.setTitle("版本更新");
-        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        dialog.setCancelable(false);
-        dialog.show();
-        Https.with(this).url(url).download()
-                .enqueue(new Callback<File>() {
+        mDialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
+        mDialog.setTitle("版本更新");
+        mDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mDialog.setMax(100);
+        mDialog.setProgress(0);
+        mDialog.setCancelable(false);
+        mDialog.show();
+        Https.with(this).url(url)
+                .download(new Callback<File>() {
                     @Override
                     public void success(File data) {
-                        dialog.dismiss();
-                        FileIntent.installApk(context,data);
+                        mDialog.dismiss();
+                        FileIntent.installApk(context, data);
                     }
 
                     @Override
                     public void onProgress(long total, long current) {
-                        dialog.setProgressNumberFormat(String.format("%s/%s", StringUtils.formatFileSize(current),StringUtils.formatFileSize(total)));
+                        mDialog.setProgress((int) (100*current/total));
+                        mDialog.setProgressNumberFormat(String.format("%s/%s", StringUtils.formatFileSize(current),StringUtils.formatFileSize(total)));
                     }
 
                     @Override
                     public void fail(Response response) {
-                        dialog.dismiss();
+                        mDialog.dismiss();
                         MsgUtils.exitNotOutMDMessage(context,response.getMsg());
                     }
                 });

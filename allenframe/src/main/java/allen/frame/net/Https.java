@@ -75,10 +75,6 @@ public class Https {
         method = Type_Upload;
         return this;
     }
-    public Https download(){
-        method = Type_Download;
-        return this;
-    }
 
     public Https file(File file){
         mFile = file;
@@ -146,7 +142,8 @@ public class Https {
         mEngine.upload(context,mUrl,mFile,mParams,callback);
     }
 
-    private <T> void download(Callback<T> callback){
+    public void download(Callback<java.io.File> callback){
+        method = Type_Download;
         mEngine.download(context,mUrl,callback);
     }
 
@@ -164,8 +161,6 @@ public class Https {
             delete(callback);
         }else if(method==Type_Put){
             put(callback);
-        }else if(method==Type_Download){
-            download(callback);
         }
     }
 }

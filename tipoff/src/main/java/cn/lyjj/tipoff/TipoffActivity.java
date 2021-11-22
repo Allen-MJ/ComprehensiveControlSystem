@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 
+import com.baidu.mapapi.search.core.PoiInfo;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -130,7 +132,11 @@ public class TipoffActivity extends AllenBaseActivity {
                 gid = data.getStringExtra(Constants.Key_1);
                 tipGrid.setText(data.getStringExtra(Constants.Key_2));
             } else if (requestCode == 5) {
-                tipAddress.setText(data.getStringExtra(Constants.Key_3));
+                PoiInfo info = data.getParcelableExtra(Constants.ObjectFirst);
+                address = info.getAddress();
+                tipAddress.setText(address);
+                point = info.getLocation().longitude+","+info.getLocation().latitude;
+                Logger.e("address",address+"||"+point);
             }
         }
     }
@@ -232,7 +238,7 @@ public class TipoffActivity extends AllenBaseActivity {
         view.setEnabled(true);
     }
 
-    private String orgId, name, phone, idNumber, sex = "0", address, gid, content;
+    private String orgId, name, phone, idNumber, sex = "0", address, point, gid, content;
 
     private void addTipOff() {
         name = tipFyr.getText().toString().trim();
@@ -271,7 +277,7 @@ public class TipoffActivity extends AllenBaseActivity {
         }
         showProgressDialog("正在提交爆料,请稍等...");
         Https.with(this).url(api).addParam("appealOrgId", orgId).addParam("name", name).addParam("phone", phone).addParam("idNumber", idNumber)
-                .addParam("sex", sex).addParam("point", "").addParam("address", address).addParam("gid", gid).addParam("content", content)
+                .addParam("sex", sex).addParam("point", point).addParam("address", address).addParam("gid", gid).addParam("content", content)
                 .addParam("fileIds", sb.toString())
                 .post()
                 .enqueue(new Callback<Object>() {

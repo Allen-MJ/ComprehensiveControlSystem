@@ -168,10 +168,25 @@ public class OwnFragment extends BaseFragment {
         Https.with(getActivity()).url(BaseApi.Version).addParam("type",3).get()
                 .enqueue(new Callback<Version>() {
                     @Override
-                    public void success(Version data) {
+                    public void success(final Version data) {
                         actHelper.dismissProgressDialog();
                         if(data!=null&&AllenManager.getInstance().isNewVersion(data.getAppVersion())){
-                            download(data.getAppUrl());
+                            if(data.isAppCompel()){
+                                download(Constants.url+data.getAppPath());
+                            }else{
+                                MsgUtils.showNotOutMDMessage(getActivity(), "新版本", data.getAppDesc(), "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }, "更新", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        download(Constants.url+data.getAppPath());
+                                    }
+                                });
+                            }
                         }else{
                             MsgUtils.showMDMessage(getActivity(),"当前无新版本!");
                         }
@@ -188,10 +203,12 @@ public class OwnFragment extends BaseFragment {
         final ProgressDialog udialog = new ProgressDialog(getActivity(), allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
         udialog.setTitle("版本更新");
         udialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        udialog.setMax(100);
+        udialog.setProgress(0);
         udialog.setCancelable(false);
         udialog.show();
-        Https.with(getActivity()).url(url).download()
-                .enqueue(new Callback<File>() {
+        Https.with(getActivity()).url(url)
+                .download(new Callback<File>() {
                     @Override
                     public void success(File data) {
                         udialog.dismiss();
@@ -200,6 +217,7 @@ public class OwnFragment extends BaseFragment {
 
                     @Override
                     public void onProgress(long total, long current) {
+                        udialog.setProgress((int) (100*current*total));
                         udialog.setProgressNumberFormat(String.format("%s/%s", StringUtils.formatFileSize(current),StringUtils.formatFileSize(total)));
                     }
 

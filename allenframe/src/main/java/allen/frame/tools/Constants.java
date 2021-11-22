@@ -8,7 +8,7 @@ public class Constants {
 
 	public static String url = "http://222.179.3.62:30050";//正式
 //	public static String url = "http://150.158.184.184:30050";//测试
-	public static boolean ISDEBUG = false;
+	public static boolean ISDEBUG = true;
 
 	// APP下载文件夹
 	public static final String APPFILE_NAME = "appfile";

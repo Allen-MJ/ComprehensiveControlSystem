@@ -922,7 +922,7 @@ public class OkHttpEngine implements HttpEngine {
     private long length,total;
     private final static String TAG = "download";
     @Override
-    public <T> void download(final Context act, String url, final Callback<T> callBack) {
+    public void download(final Context act, String url, final Callback<java.io.File> callBack) {
         final java.io.File file = FileUtils.getInstance().creatNewFile(Constants.APPFILE_NAME,FileUtils.getInstance().url2LocalName(url));
         length = file.length();
         OkHttpClient client = new OkHttpClient.Builder()
@@ -958,6 +958,16 @@ public class OkHttpEngine implements HttpEngine {
                 if (length != 0){
                     randomAccessFile.seek(length);
                 }
+                /*if(total>0&&length>0&&total==length){
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(callBack!=null){
+                                callBack.success(file);
+                            }
+                        }
+                    });
+                }*/
                 byte[] bytes = new byte[2048];
                 int len = 0;
                 try {
@@ -973,32 +983,28 @@ public class OkHttpEngine implements HttpEngine {
                             }
                         });
                     }
-                    new RunMain(act).run2main(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(callBack!=null){
-                                Logger.http("data", "onFailure");
-                                callBack.success(new allen.frame.entry.Response("200","下载完成!",file));
-                            }
-                        }
-                    });
 
                 } catch (Exception e) {
                     Log.e(TAG, "Get下载异常");
-                    new RunMain(act).run2main(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(callBack!=null){
-                                Logger.http("data", "onFailure");
-                                callBack.fail(new allen.frame.entry.Response("501","下载异常!",file));
-                            }
-                        }
-                    });
+
                 } finally {
                     length = randomAccessFile.getFilePointer();//记录当前保存文件的位置
                     randomAccessFile.close();
                     inputStream.close();
-                    Log.e(TAG, "流关闭 下载的位置="+length);
+                    Log.e(TAG, total+"流关闭 下载的位置="+length);
+                    Logger.e("更新","++++");
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(callBack!=null){
+                                if(length==total){
+                                    callBack.success(file);
+                                }else{
+                                    callBack.fail(new allen.frame.entry.Response("501","下载失败!","下载失败!"));
+                                }
+                            }
+                        }
+                    });
                 }
             }
         });

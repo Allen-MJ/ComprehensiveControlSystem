@@ -8,6 +8,7 @@ public class Version implements Serializable {
     private String appUrl;
     private boolean appCompel;
     private String appPath;
+    private String appDesc;
 
     public String getAppId() {
         return appId;
@@ -47,5 +48,13 @@ public class Version implements Serializable {
 
     public void setAppPath(String appPath) {
         this.appPath = appPath;
+    }
+
+    public String getAppDesc() {
+        return appDesc;
+    }
+
+    public void setAppDesc(String appDesc) {
+        this.appDesc = appDesc;
     }
 }
