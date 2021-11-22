@@ -350,20 +350,14 @@ public class FileIntent {
 			return;
 		}
 		Intent intentApk = new Intent(Intent.ACTION_VIEW);
-		intentApk.setDataAndType(Uri.parse("file://"+apkfile.toString()), "application/vnd.android.package-archive");
-		mContext.startActivity(intentApk);
-	}
-
-	/**
-	 * 安装apk
-	 */
-	public static void installApk(Context mContext,Uri apkfile){
-		Intent intentApk = new Intent(Intent.ACTION_VIEW);
 		if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
-		    intentApk.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
-		intentApk.setDataAndType(apkfile, "application/vnd.android.package-archive");
-		mContext.startActivity(intentApk);
+			intentApk.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			Uri uri = FileProvider.getUriForFile(mContext, AllenManager.getInstance().getPackagename() +".provider",apkfile);
+			intentApk.setDataAndType(uri, "application/vnd.android.package-archive");
+			mContext.startActivity(intentApk);
+		}else{
+			intentApk.setDataAndType(Uri.parse("file://"+apkfile.toString()), "application/vnd.android.package-archive");
+			mContext.startActivity(intentApk);
+		}
 	}
-
 }

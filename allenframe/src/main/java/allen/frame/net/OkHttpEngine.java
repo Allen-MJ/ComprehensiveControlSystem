@@ -2,6 +2,7 @@ package allen.frame.net;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -9,6 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
 import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.util.Map;
@@ -17,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import allen.frame.AllenManager;
 import allen.frame.entry.File;
 import allen.frame.tools.Constants;
+import allen.frame.tools.FileUtils;
 import allen.frame.tools.Logger;
 import allen.frame.tools.ProgressListener;
 import allen.frame.tools.StringUtils;
@@ -27,6 +31,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class OkHttpEngine implements HttpEngine {
 
@@ -909,6 +914,91 @@ public class OkHttpEngine implements HttpEngine {
                             }
                         }
                     });
+                }
+            }
+        });
+    }
+
+    private long length,total;
+    private final static String TAG = "download";
+    @Override
+    public <T> void download(final Context act, String url, final Callback<T> callBack) {
+        final java.io.File file = FileUtils.getInstance().creatNewFile(Constants.APPFILE_NAME,FileUtils.getInstance().url2LocalName(url));
+        length = file.length();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)
+                .build();// 创建OkHttpClient对象。
+        final Request request = new Request.Builder().url(url)
+                .addHeader("RANGE", "bytes=" + length + "-")
+                .build();
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Logger.http("data", "onFailure");
+                new RunMain(act).run2main(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(callBack!=null){
+                            Logger.http("data", "onFailure");
+                            callBack.fail(new allen.frame.entry.Response("501","下载失败!","下载失败!"));
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+                InputStream inputStream = responseBody.byteStream();//得到输入流
+                RandomAccessFile randomAccessFile = new RandomAccessFile(file.getAbsoluteFile(), "rw");//得到任意保存文件处理类实例
+                if (total == 0){
+                    total = responseBody.contentLength();//得到文件的总字节大小
+                    randomAccessFile.setLength(total);//预设创建一个总字节的占位文件
+                }
+                if (length != 0){
+                    randomAccessFile.seek(length);
+                }
+                byte[] bytes = new byte[2048];
+                int len = 0;
+                try {
+                    while ((len = inputStream.read(bytes)) != -1) {
+                        randomAccessFile.write(bytes,0,len);
+                        length = length + len;
+                        new RunMain(act).run2main(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (callBack != null) {
+                                    callBack.onProgress(total,length);
+                                }
+                            }
+                        });
+                    }
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(callBack!=null){
+                                Logger.http("data", "onFailure");
+                                callBack.success(new allen.frame.entry.Response("200","下载完成!",file));
+                            }
+                        }
+                    });
+
+                } catch (Exception e) {
+                    Log.e(TAG, "Get下载异常");
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(callBack!=null){
+                                Logger.http("data", "onFailure");
+                                callBack.fail(new allen.frame.entry.Response("501","下载异常!",file));
+                            }
+                        }
+                    });
+                } finally {
+                    length = randomAccessFile.getFilePointer();//记录当前保存文件的位置
+                    randomAccessFile.close();
+                    inputStream.close();
+                    Log.e(TAG, "流关闭 下载的位置="+length);
                 }
             }
         });

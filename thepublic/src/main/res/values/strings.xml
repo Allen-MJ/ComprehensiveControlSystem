@@ -61,6 +61,7 @@
     <string name="vote_title">#环保调查问卷#</string>
 
     <string name="square_discuss_waring_hint">最多可写200字哦</string>
+    <string name="feedback_hint">请输入意见反馈</string>
     <string name="commit_hint">提交</string>
 
     <string name="exit_bt_hint">退出登录</string>

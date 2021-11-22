@@ -115,5 +115,10 @@ public class API {
      * 评价详情
      */
     public static final String _7 = "/api/appealEvaluate/get";
+    /**
+     * 意见反馈
+     */
+    public static final String FeedBack = "/api/Opinion";
+
 
 }

@@ -23,6 +23,7 @@ public class Https {
     public static int Type_Put = 3;
     public static int Type_Delete = 4;
     public static int Type_Upload = 2;
+    public static int Type_Download = 5;
 
     public Https(Context ctt) {
         this.context = ctt;
@@ -72,6 +73,10 @@ public class Https {
     }
     public Https upload(){
         method = Type_Upload;
+        return this;
+    }
+    public Https download(){
+        method = Type_Download;
         return this;
     }
 
@@ -141,6 +146,10 @@ public class Https {
         mEngine.upload(context,mUrl,mFile,mParams,callback);
     }
 
+    private <T> void download(Callback<T> callback){
+        mEngine.download(context,mUrl,callback);
+    }
+
     public <T> void enqueue(Callback<T> callback){
         if(method==Type_Post){
             post(callback);
@@ -155,6 +164,8 @@ public class Https {
             delete(callback);
         }else if(method==Type_Put){
             put(callback);
+        }else if(method==Type_Download){
+            download(callback);
         }
     }
 }
