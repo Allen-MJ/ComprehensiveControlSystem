@@ -4,7 +4,7 @@
       xmlns:tools="http://schemas.android.com/tools">
     <!--android:icon="@drawable/wc"-->
     <item
-        android:id="@+id/cls_choice_save"
+        android:id="@+id/alen_choice_save"
         android:orderInCategory="1"
         android:title="保存"
         app:showAsAction="ifRoom|withText" />
