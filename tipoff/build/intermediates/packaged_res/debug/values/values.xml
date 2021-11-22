@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tip_add_file">添加附件</string>
+    <string name="tip_address">地址</string>
+    <string name="tip_content">写下自己要爆料的内容</string>
+    <string name="tip_dw">受理单位</string>
+    <string name="tip_fyr">反映人</string>
+    <string name="tip_gps">定位</string>
+    <string name="tip_grid">所在网格</string>
+    <string name="tip_info_address">地        址：</string>
+    <string name="tip_info_content">内        容：</string>
+    <string name="tip_info_dw">受理单位：</string>
+    <string name="tip_info_file">附件：</string>
+    <string name="tip_info_grid">网格选择：</string>
+    <string name="tip_info_idno">身份证号：</string>
+    <string name="tip_info_name">反  映  人：</string>
+    <string name="tip_info_phone">联系电话：</string>
+    <string name="tip_info_sex">性        别：</string>
+    <string name="tip_phone">联系电话</string>
+    <string name="tip_search_hint">输入关键字查询</string>
+    <string name="tip_sex">性别</string>
+    <string name="tip_sex_female">女</string>
+    <string name="tip_sex_male">男</string>
+    <string name="tip_sfz">身份证号</string>
+    <style name="Middle8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_middle_size</item>
+    </style>
+    <style name="Small8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+    </style>
+    <style name="Smaller8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_smaller_size</item>
+    </style>
+    <style name="contentNormal8Style">
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+    </style>
+</resources>
