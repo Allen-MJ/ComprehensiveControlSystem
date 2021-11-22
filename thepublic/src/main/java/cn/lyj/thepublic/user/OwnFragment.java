@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import allen.frame.ActivityHelper;
 import allen.frame.AllenManager;
 import allen.frame.entry.Response;
@@ -93,10 +95,17 @@ public class OwnFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        userName.setText(shared.getString(Constants.UserNickName, ""));
+        userDw.setText(shared.getString(Constants.UserAddress,""));
+        Glide.with(this)
+                .load(Constants.url+shared.getString(Constants.UserPhoto,""))
+                .error(R.drawable.default_photo)
+                .into(userPhoto);
     }
 
     private void initUI(View view) {
-        userName.setText(StringUtils.empty(shared.getString(Constants.UserName, "")) ? "未登录" : shared.getString(Constants.UserName, ""));
+        userName.setText(shared.getString(Constants.UserNickName, ""));
+        userDw.setText(shared.getString(Constants.UserAddress,""));
         userNoticeNumber.setText("");
         String number = userNoticeNumber.getText().toString().trim();
         userNoticeNumber.setVisibility(StringUtils.empty(number) ? View.INVISIBLE : View.VISIBLE);
@@ -130,8 +139,11 @@ public class OwnFragment extends Fragment {
         if (id == R.id.user_name) {
             startActivity(new Intent(getContext(), UserInfoActivity.class));
         } else if (id == R.id.user_dw) {
+            startActivity(new Intent(getContext(), UserInfoActivity.class));
         } else if (id == R.id.user_photo) {
+            startActivity(new Intent(getContext(), UserInfoActivity.class));
         } else if (id == R.id.info_layout) {
+            startActivity(new Intent(getContext(), UserInfoActivity.class));
         } else if (id == R.id.user_gz) {
             startActivity(new Intent(getContext(), UserNewsActivity.class).putExtra("type",2));
         } else if (id == R.id.user_zan) {
