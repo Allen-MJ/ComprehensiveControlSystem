@@ -18,9 +18,9 @@ import java.lang.Override;
 public class SmartTipActivity_ViewBinding implements Unbinder {
   private SmartTipActivity target;
 
-  private View view807;
+  private View view810;
 
-  private View view805;
+  private View view80e;
 
   @UiThread
   public SmartTipActivity_ViewBinding(SmartTipActivity target) {
@@ -35,7 +35,7 @@ public class SmartTipActivity_ViewBinding implements Unbinder {
     target.toolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, "field 'toolbar'", Toolbar.class);
     view = Utils.findRequiredView(source, R.id.tip_dw, "field 'tipDw' and method 'onViewClicked'");
     target.tipDw = Utils.castView(view, R.id.tip_dw, "field 'tipDw'", AppCompatTextView.class);
-    view807 = view;
+    view810 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class SmartTipActivity_ViewBinding implements Unbinder {
     target.tipFile = Utils.findRequiredViewAsType(source, R.id.tip_file, "field 'tipFile'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.tip_bt, "field 'tipBt' and method 'onViewClicked'");
     target.tipBt = Utils.castView(view, R.id.tip_bt, "field 'tipBt'", AppCompatButton.class);
-    view805 = view;
+    view80e = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -68,9 +68,9 @@ public class SmartTipActivity_ViewBinding implements Unbinder {
     target.tipFile = null;
     target.tipBt = null;
 
-    view807.setOnClickListener(null);
-    view807 = null;
-    view805.setOnClickListener(null);
-    view805 = null;
+    view810.setOnClickListener(null);
+    view810 = null;
+    view80e.setOnClickListener(null);
+    view80e = null;
   }
 }

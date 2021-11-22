@@ -40,6 +40,10 @@
             </intent-filter>
         </activity>
         <!--core start-->
+        <activity android:name="cn.lyj.core.place.UpdateUnsocialActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.place.UpdateSocialActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyj.core.house.HouseListActivity"
