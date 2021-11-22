@@ -10,7 +10,17 @@
         android:layout_height="wrap_content"
         app:scale="0.768"
         android:background="@mipmap/ic_login_top"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"
+        android:gravity="top|end"
+        android:padding="@dimen/frame_eight_distance">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_white_color"
+            android:padding="@dimen/frame_eight_distance"
+            android:textSize="@dimen/frame_text_small_size"
+            android:text="管理员版"/>
+    </allen.frame.widget.ScaleLinearLayout>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/login_account"
         android:layout_width="match_parent"

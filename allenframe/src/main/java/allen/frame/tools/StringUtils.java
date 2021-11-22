@@ -115,6 +115,17 @@ public class StringUtils {
 		return "";
 	}
 
+	public static String getFileTypeByPath(String path){
+		if(notEmpty(path)){
+			int index = path.lastIndexOf(".");
+			if(index<0){
+				return "";
+			}
+			return path.substring(index).toLowerCase();
+		}
+		return "";
+	}
+
 	public static String formatFileSize(long file) {
 		DecimalFormat df = new DecimalFormat("#.00");
 		String fileSizeString = "";

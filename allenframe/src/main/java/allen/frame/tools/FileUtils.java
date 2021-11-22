@@ -35,7 +35,7 @@ public class FileUtils {
         // genFile = Environment.getExternalStorageDirectory()+"/" +
         // PackageUtiles.getInstance().getPackagename();
         genFile = Environment.getExternalStorageDirectory() + "/"
-                + "dzCCCache";
+                + "dzzzCache";
         gen = new File(genFile);
         if (!gen.exists()) {
             gen.mkdirs();
@@ -117,6 +117,15 @@ public class FileUtils {
             dir.mkdirs();
         }
         return dir;
+    }
+
+    public String url2LocalName(String url){
+        String type = StringUtils.getFileTypeByPath(url);
+        if(StringUtils.notEmpty(type)){
+            return EncryptUtils.MD5Encoder(url)+"."+type;
+        }else{
+            return StringUtils.getFileNameByPath(url);
+        }
     }
 
     /**

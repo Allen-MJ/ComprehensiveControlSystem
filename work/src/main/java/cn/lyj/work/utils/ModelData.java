@@ -173,7 +173,7 @@ public class ModelData {
                 context.startActivity(new Intent(context, TipoffActivity.class).putExtra(Constants.Key_1,1));
                 break;
             case "事件查询":
-                context.startActivity(new Intent(context, TipOffListActivity.class));
+                context.startActivity(new Intent(context, TipOffListActivity.class).putExtra(Constants.Key_1,"事件查询"));
                 break;
         }
     }

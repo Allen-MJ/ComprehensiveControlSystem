@@ -39,8 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity"
-            android:screenOrientation="portrait"/>
         <!--core start-->
         <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
@@ -82,7 +80,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="sensor" />
         <activity android:name="com.huawei.hms.hmsscankit.ScanKitActivity" />
-        <activity android:name="allen.frame.AllenMapActivity"/>
 
         <activity android:name="allen.frame.AllenPicsActivity"
             android:screenOrientation="portrait"/>
@@ -103,10 +100,12 @@
         </provider>
         <!--文件夹权限end-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"></service>
+        <!--管理员地图 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="BvX7q3rSPfy1fwLnoL5EWq8DqNOGsRVA" >
         </meta-data>
+        <!--管理员地图 end-->
     </application>
 
 </manifest>

@@ -170,6 +170,9 @@ public class AllenManager {
 	 * @return
 	 */
 	public boolean isNewVersion(String newVercode){
+		if(StringUtils.empty(newVercode)){
+			return false;
+		}
 		boolean isupdate = false;
 		int first = 0;
 		int second = 0;
@@ -251,7 +254,7 @@ public class AllenManager {
 					Build.TAGS.length()%10 + Build.TYPE.length()%10 +
 					Build.USER.length()%10 ; //13 位
 			try {
-				serial = android.os.Build.class.getField("SERIAL").get(null).toString();
+				serial = Build.class.getField("SERIAL").get(null).toString();
 				//API>=9 使用serial号
 				return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
 			} catch (Exception exception) {

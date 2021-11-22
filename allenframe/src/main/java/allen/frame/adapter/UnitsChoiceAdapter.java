@@ -81,6 +81,6 @@ public class UnitsChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public interface OnItemClickListener{
-        void onItemClick(View v,int position,Units units);
+        void onItemClick(View v, int position, Units units);
     }
 }

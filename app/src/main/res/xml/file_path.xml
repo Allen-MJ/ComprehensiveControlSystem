@@ -3,16 +3,16 @@
     <paths>
         <external-path
             name="files_root"
-            path="dzCCCache/"></external-path>
+            path="dzzzCache/"></external-path>
         <external-path
             name="camera_root"
-            path="dzCCCache/Camera/"></external-path>
+            path="dzzzCache/Camera/"></external-path>
         <external-path
             name="camera_clid_root"
-            path="dzCCCache/take_photo/"></external-path>
+            path="dzzzCache/take_photo/"></external-path>
         <external-path
             name="download_root"
-            path="dzCCCache/download/"></external-path>
+            path="dzzzCache/download/"></external-path>
         <external-path
             name="external_storage_root"
             path="."></external-path>

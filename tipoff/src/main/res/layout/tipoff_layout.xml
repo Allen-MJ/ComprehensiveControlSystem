@@ -214,15 +214,24 @@
                     android:text="@string/tip_address"
                     android:textColor="@color/text_gray_color"
                     style="@style/contentNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tip_address"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
                     style="@style/contentNormal8Style"
                     android:gravity="end|center_vertical"
                     android:singleLine="true"
                     android:background="@color/transparent"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tip_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/contentNormal8Style"
+                    android:textColor="@color/text_white_color"
+                    android:background="@drawable/frame_blue_btn_bg"
+                    android:text="@string/tip_gps"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"

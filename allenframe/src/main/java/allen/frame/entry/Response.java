@@ -15,7 +15,7 @@ public class Response implements Serializable {
 		super();
 	}
 
-	public Response(String code, String msg, String obj) {
+	public Response(String code, String msg, Object obj) {
 		this.code = code;
 		this.msg = msg;
 		this.obj = obj;

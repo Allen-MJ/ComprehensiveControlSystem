@@ -23,6 +23,7 @@ public class Https {
     public static int Type_Put = 3;
     public static int Type_Delete = 4;
     public static int Type_Upload = 2;
+    public static int Type_Download = 5;
 
     public Https(Context ctt) {
         this.context = ctt;
@@ -80,7 +81,7 @@ public class Https {
         return this;
     }
 
-    public Https addParam(String key,Object value){
+    public Https addParam(String key, Object value){
         if(mParams==null){
             mParams = new HashMap<>();
         }
@@ -88,7 +89,7 @@ public class Https {
         return this;
     }
 
-    public Https addHeader(String key,Object value){
+    public Https addHeader(String key, Object value){
         if(mHeaders==null){
             mHeaders = new HashMap<>();
         }
@@ -139,6 +140,11 @@ public class Https {
 
     private <T> void upload(Callback<T> callback){
         mEngine.upload(context,mUrl,mFile,mParams,callback);
+    }
+
+    public void download(Callback<java.io.File> callback){
+        method = Type_Download;
+        mEngine.download(context,mUrl,callback);
     }
 
     public <T> void enqueue(Callback<T> callback){
