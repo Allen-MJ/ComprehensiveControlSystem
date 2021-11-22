@@ -170,6 +170,9 @@ public class AllenManager {
 	 * @return
 	 */
 	public boolean isNewVersion(String newVercode){
+		if(StringUtils.empty(newVercode)){
+			return false;
+		}
 		boolean isupdate = false;
 		int first = 0;
 		int second = 0;
