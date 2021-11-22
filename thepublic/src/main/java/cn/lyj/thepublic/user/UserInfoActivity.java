@@ -89,7 +89,7 @@ public class UserInfoActivity extends AllenBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Glide.with(context).load(shared.getString(Constants.UserPhoto, ""))
+        Glide.with(context).load(Constants.url+shared.getString(Constants.UserPhoto, ""))
                 .placeholder(R.mipmap.ic_degault_photo)
                 .error(R.mipmap.ic_degault_photo).into(userPhoto);
     }
@@ -98,6 +98,9 @@ public class UserInfoActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         userName.setText(shared.getString(Constants.UserName, ""));
         userPhone.setText(shared.getString(Constants.UserPhone, ""));
+        userAddress.setText(shared.getString(Constants.UserAddress,""));
+        userSex.setText(shared.getString(Constants.UserGender,""));
+        userEmail.setText(shared.getString(Constants.UserEmail,""));
         dialog = new UploadProgressDialog();
     }
 
