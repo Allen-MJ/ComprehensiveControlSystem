@@ -96,7 +96,7 @@ public class UserInfoActivity extends AllenBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        userName.setText(shared.getString(Constants.UserName, ""));
+        userName.setText(shared.getString(Constants.UserNickName, ""));
         userPhone.setText(shared.getString(Constants.UserPhone, ""));
         userAddress.setText(shared.getString(Constants.UserAddress,""));
         userSex.setText(shared.getString(Constants.UserGender,""));
@@ -170,8 +170,11 @@ public class UserInfoActivity extends AllenBaseActivity {
             MsgUtils.showMDMessage(context,"请选择性别!");
             return;
         }
-        String[] array={"nickName",userName.getText().toString(),"email",userEmail.getText().toString(),"phone",userPhone.getText().toString(),"gender",userSex.getText().toString()
-        ,"avatarPath",uploadFile.getRelativePath(),"address",userAddress.getText().toString()};
+        String[] array={"nickName",userName.getText().toString(),"email",userEmail.getText().toString(),
+                "phone",userPhone.getText().toString(),
+                "gender",userSex.getText().toString(),
+                "avatarPath",uploadFile==null?shared.getString(Constants.UserPhoto, ""):uploadFile.getRelativePath(),
+                "address",userAddress.getText().toString()};
         Body body=new Body();
         String json=body.postJson(array);
         Https.with(this).url(API._updateUserInfo).addJsons(json).post().enqueue(new Callback() {
@@ -179,6 +182,12 @@ public class UserInfoActivity extends AllenBaseActivity {
             public void success(Object data) {
                 dismissProgressDialog();
                 MsgUtils.showShortToast(context,"提交成功!");
+                shared.edit().putString(Constants.UserNickName,userName.getText().toString())
+                        .putString(Constants.UserEmail,userEmail.getText().toString())
+                        .putString(Constants.UserGender,userSex.getText().toString())
+                        .putString(Constants.UserPhoto,uploadFile==null?shared.getString(Constants.UserPhoto, ""):uploadFile.getRelativePath())
+                        .putString(Constants.UserAddress,userAddress.getText().toString())
+                        .putString(Constants.UserPhone,userPhone.getText().toString()).apply();
                 finish();
             }
 
