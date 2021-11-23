@@ -1,8 +1,7 @@
-package cn.lyj.core.log;
+package cn.lyj.core.word;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,34 +36,31 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.LogAdapter;
+import cn.lyj.core.adapter.WordAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
-import cn.lyj.core.entry.Log;
+import cn.lyj.core.entry.Word;
 
-/**
- * 实有人口管理列表
- */
-public class LogListActivity extends AllenBaseActivity {
+public class SendListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
+    @BindView(R2.id.search)
+    SearchView search;
+    @BindView(R2.id.choice_status)
+    AppCompatTextView choiceStatus;
     @BindView(R2.id.rv)
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    @BindView(R2.id.choice_work)
-    AppCompatTextView choiceWork;
-    @BindView(R2.id.choice_status)
-    AppCompatTextView choiceStatus;
-    private LogAdapter adapter;
+
     private int page = 0, size = 20;
     private boolean isRefresh = false;
-    private List<Log> list, sublist;
-    private String workItem="",progress="";
+    private List<Word> list, sublist;
+    private String title,state;
+    private WordAdapter adapter;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -73,12 +69,12 @@ public class LogListActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_log_list;
+        return R.layout.core_word_list;
     }
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar, "工作日志", true);
+        setToolbarTitle(toolbar,"我的发文",true);
     }
 
     @Override
@@ -91,22 +87,9 @@ public class LogListActivity extends AllenBaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
         if(menuId==R.id.alen_menu_add){
-            startActivityForResult(new Intent(context,UpdateLogActivity.class),10);
+            startActivityForResult(new Intent(context, SendWordInfoActivty.class),10);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
-            if(requestCode==10){
-                isRefresh = true;
-                page = 0;
-                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
-                loadData();
-            }
-        }
     }
 
     @Override
@@ -116,9 +99,9 @@ public class LogListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new LogAdapter();
+        adapter = new WordAdapter(true);
         rv.setAdapter(adapter);
-        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START, "");
+        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
     }
 
@@ -127,7 +110,9 @@ public class LogListActivity extends AllenBaseActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.setEnabled(false);
                 finish();
+                v.setEnabled(true);
             }
         });
         refresh.setOnRefreshListener(new OnRefreshListener() {
@@ -145,15 +130,26 @@ public class LogListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new LogAdapter.OnItemClickListener() {
+        search.setOnSerchListenner(new SearchView.onSerchListenner() {
             @Override
-            public void onItemClick(View v, Log entry, int position) {
-                startActivityForResult(new Intent(context,UpdateLogActivity.class).putExtra(Constants.ObjectFirst,entry),10);
+            public void onSerchEvent(String key) {
+                title = key;
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        });
+        adapter.setOnItemClickListener(new WordAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, Word entry, int position) {
+                startActivityForResult(new Intent(context, SendWordInfoActivty.class)
+                        .putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override
-            public void onItemDelete(View v, final Log entry, int position) {
-                MsgUtils.showMDMessage(context, "确定删除该日志?", "确定", new DialogInterface.OnClickListener() {
+            public void onDelete(View v, final Word entry, int position) {
+                MsgUtils.showMDMessage(context, "确定删除该发文?", "确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -169,12 +165,26 @@ public class LogListActivity extends AllenBaseActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==10){
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
+    }
+
     private void loadData() {
-        Https.with(this).url(CoreApi._core_11)
-                .addParam("workItem",workItem).addParam("progress",progress).addParam("page",page++).addParam("size",size).get()
-                .enqueue(new Callback<List<Log>>() {
+        Https.with(this).url(CoreApi.Missive)
+                .addParam("title",title).addParam("state",state).addParam("isMySigner",true)
+                .addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<Word>>() {
                     @Override
-                    public void success(List<Log> data) {
+                    public void success(List<Word> data) {
                         sublist = data;
                         showData();
                     }
@@ -208,56 +218,35 @@ public class LogListActivity extends AllenBaseActivity {
             adapter.setList(list);
             refresh.finishLoadMore();
         }
-        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+        if(list==null||list.size()==0){
+            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_FAIL, "暂无数据!");
+        }else{
+            actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES, "");
+        }
         refresh.setEnableFooterFollowWhenNoMoreData(true);
         refresh.setNoMoreData(actHelper.isNoMoreData(sublist, size));
     }
 
-    @OnClick({R2.id.choice_work, R2.id.choice_status})
+    @OnClick(R2.id.choice_status)
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
-        if(id==R.id.choice_work){
-            loadWork();
-        }else if(id==R.id.choice_status){
-            loadStatus();
+        if(id==R.id.choice_status){
+            status();
         }
         view.setEnabled(true);
     }
 
-    private void delete(Log entry){
+    private void status(){
         showProgressDialog("");
-        String[] ids = new String[]{entry.getLogId()};
-        Https.with(this).url(CoreApi.CoreaddLog).addJsons(new Gson().toJson(ids)).delete()
-                .enqueue(new Callback<Object>() {
-                    @Override
-                    public void success(Object data) {
-                        dismissProgressDialog();
-                        MsgUtils.showShortToast(context,"已删除!");
-                        isRefresh = true;
-                        page = 0;
-                        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
-                        loadData();
-                    }
-
-                    @Override
-                    public void fail(Response response) {
-                        dismissProgressDialog();
-                        MsgUtils.showMDMessage(context,response.getMsg());
-                    }
-                });
-    }
-
-    private void loadWork(){
-        showProgressDialog("");
-        Https.with(this).url(CoreApi.core_Type).addParam("dictName","work_item").addParam("page",0).addParam("size",9999).get()
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","receive_state").addParam("page",0).addParam("size",9999).get()
                 .enqueue(new Callback<List<CoreType>>() {
 
                     @Override
                     public void success(final List<CoreType> data) {
                         dismissProgressDialog();
                         final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
-                        dialog.showDialog("请选择工作事项", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                        dialog.showDialog("请选择签收状态", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
                             @Override
                             public void convert(ViewHolder holder, CoreType entity, int position) {
                                 holder.setText(R.id.name_tv,entity.getLabel());
@@ -266,47 +255,7 @@ public class LogListActivity extends AllenBaseActivity {
                             @Override
                             public void onItemClick(View view, ViewHolder holder, int position) {
                                 dialog.dismiss();
-                                workItem = data.get(position).getValue();
-                                choiceWork.setText(data.get(position).getLabel());
-                                page = 0;
-                                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
-                                isRefresh = true;
-                                loadData();
-                            }
-
-                            @Override
-                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
-                                return false;
-                            }
-                        }).show();
-                    }
-
-                    @Override
-                    public void fail(Response response) {
-                        dismissProgressDialog();
-                        MsgUtils.showMDMessage(context,response.getMsg());
-                    }
-                });
-    }
-    private void loadStatus(){
-        showProgressDialog("");
-        Https.with(this).url(CoreApi.core_Type).addParam("dictName","work_progress").addParam("page",0).addParam("size",9999).get()
-                .enqueue(new Callback<List<CoreType>>() {
-
-                    @Override
-                    public void success(final List<CoreType> data) {
-                        dismissProgressDialog();
-                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
-                        dialog.showDialog("请选择状态", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
-                            @Override
-                            public void convert(ViewHolder holder, CoreType entity, int position) {
-                                holder.setText(R.id.name_tv,entity.getLabel());
-                            }
-                        }, new CommonAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, ViewHolder holder, int position) {
-                                dialog.dismiss();
-                                progress = data.get(position).getValue();
+                                state = data.get(position).getValue();
                                 choiceStatus.setText(data.get(position).getLabel());
                                 page = 0;
                                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
@@ -319,6 +268,29 @@ public class LogListActivity extends AllenBaseActivity {
                                 return false;
                             }
                         }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void delete(Word entry){
+        showProgressDialog("");
+        String[] ids = new String[]{entry.getMissiveId()};
+        Https.with(this).url(CoreApi.Missive).addJsons(new Gson().toJson(ids)).delete()
+                .enqueue(new Callback<Object>() {
+                    @Override
+                    public void success(Object data) {
+                        dismissProgressDialog();
+                        MsgUtils.showShortToast(context,"已删除!");
+                        isRefresh = true;
+                        page = 0;
+                        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                        loadData();
                     }
 
                     @Override

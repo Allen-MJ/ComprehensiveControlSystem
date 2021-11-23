@@ -16,6 +16,8 @@ import cn.lyj.core.person.TransientPersonListActivity;
 import cn.lyj.core.place.SocialPlaceListActivity;
 import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
+import cn.lyj.core.word.ReceivListActivity;
+import cn.lyj.core.word.SendListActivity;
 import cn.lyjj.tipoff.SmartTipActivity;
 import cn.lyjj.tipoff.TipOffListActivity;
 import cn.lyjj.tipoff.TipoffActivity;
@@ -95,6 +97,22 @@ public class ModelData {
         items1.add(item12);
         item1.setList(items1);
         list.add(item1);
+
+        Model item2 = new Model();
+        item2.setName("公文收发");
+        List<Model> items2 = new ArrayList<>();
+        Model item21 = new Model();
+        item21.setName("我的收文");
+        item21.setId("我的收文");
+        item21.setResId(getResId("我的收文"));
+        items2.add(item21);
+        Model item22 = new Model();
+        item22.setName("我的发文");
+        item22.setId("我的发文");
+        item22.setResId(getResId("我的发文"));
+        items2.add(item22);
+        item2.setList(items2);
+        list.add(item2);
         return list;
     }
 
@@ -136,6 +154,10 @@ public class ModelData {
                 break;
             case "工作日志":
                 break;
+            case "我的收文":
+                break;
+            case "我的发文":
+                break;
         }
         return 0;
     }
@@ -174,6 +196,12 @@ public class ModelData {
                 break;
             case "事件查询":
                 context.startActivity(new Intent(context, TipOffListActivity.class).putExtra(Constants.Key_1,"事件查询"));
+                break;
+            case "我的发文":
+                context.startActivity(new Intent(context, SendListActivity.class));
+                break;
+            case "我的收文":
+                context.startActivity(new Intent(context, ReceivListActivity.class));
                 break;
         }
     }

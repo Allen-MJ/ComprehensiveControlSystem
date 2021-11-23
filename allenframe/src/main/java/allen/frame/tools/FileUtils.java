@@ -23,6 +23,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.Collator;
+import java.text.DecimalFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import static android.os.Environment.MEDIA_MOUNTED;
 
@@ -148,6 +153,100 @@ public class FileUtils {
         return file;
     }
 
+
+    public static String getFileSize(long size) {
+        StringBuffer bytes = new StringBuffer();
+        DecimalFormat format = new DecimalFormat("###.0");
+        if (size >= 1024 * 1024 * 1024) {
+            double i = (size / (1024.0 * 1024.0 * 1024.0));
+            bytes.append(format.format(i)).append("GB");
+        }
+        else if (size >= 1024 * 1024) {
+            double i = (size / (1024.0 * 1024.0));
+            bytes.append(format.format(i)).append("MB");
+        }
+        else if (size >= 1024) {
+            double i = (size / (1024.0));
+            bytes.append(format.format(i)).append("KB");
+        }
+        else {
+            if (size <= 0) {
+                bytes.append("0B");
+            }
+            else {
+                bytes.append((int) size).append("B");
+            }
+        }
+        return bytes.toString();
+
+    }
+
+    public static void SortFilesByName(List<File> fileList) {
+        Collections.sort(fileList, new Comparator<File>() {
+            @Override
+            public int compare(File o1, File o2) {
+                if (o1.isDirectory() && o2.isFile())
+                    return -1;
+                if (o1.isFile() && o2.isDirectory())
+                    return 1;
+                return Collator.getInstance(java.util.Locale.CHINA).compare(o1.getName(), o2.getName());
+            }
+
+        });
+    }
+
+    public static int getSubfolderNum(String path) {
+        int i=0;
+        File[] files = new File(path).listFiles();
+        if (files==null){
+            return 0;
+        }
+        for (File f : files) {
+            if (f.getName().indexOf(".") != 0){
+                i++;
+            }
+        }
+        return i;
+    }
+
+    public static boolean isAudioFileType(String path){
+        String type = getFileTypeByPath(path);
+        if(StringUtils.notEmpty(type)){
+            return type.equals("audio");
+        }
+        return false;
+    }
+    public static boolean isImageFileType(String path){
+        String type = getFileTypeByPath(path);
+        if(StringUtils.notEmpty(type)){
+            return type.equals("image");
+        }
+        return false;
+    }
+    public static boolean isVideoFileType(String path){
+        String type = getFileTypeByPath(path);
+        if(StringUtils.notEmpty(type)){
+            return type.equals("video");
+        }
+        return false;
+    }
+
+    /**
+     * 根据路径获取文件类型
+     * @param path
+     * @return
+     */
+    public static String getFileTypeByPath(String path){
+        if(StringUtils.empty(path)){
+            return "";
+        }
+        int last = path.lastIndexOf(".");
+        if(last<0){
+            return "";
+        }
+        String type = path.substring(last+1);
+        return fileType(type);
+    }
 
     /**
      * @param f

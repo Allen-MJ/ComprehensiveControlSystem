@@ -38,7 +38,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
-                    style="@style/CoreMiddle8Style"/>
+                    style="@style/CoreSmall8Style"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_delete"
                     android:layout_width="wrap_content"

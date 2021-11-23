@@ -179,7 +179,7 @@ public class AllenManager {
 		int third = 0;
 		String[] oldV = verCode.split("\\.");
 		String[] newV = newVercode.split("\\.");
-		for(int i=0;i<oldV.length;i++){
+		for(int i=0;i<newV.length;i++){
 			int nC = Integer.parseInt(newV[i]);
 			int oC = Integer.parseInt(oldV[i]);
 			switch (i) {

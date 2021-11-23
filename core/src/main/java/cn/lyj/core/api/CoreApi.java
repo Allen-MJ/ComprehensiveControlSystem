@@ -98,4 +98,17 @@ public class CoreApi {
      * 网格员巡逻定位
      */
     public static final String GridMap = "/api/gridMemberTrack/add";
+
+    /**
+     * 查询(get),新增（post）,修改（put）,删除（delete）公文
+     */
+    public static final String Missive = "/api/missive/leader";
+    /**
+     * 收文签收
+     */
+    public static final String MissiveSign = "/api/missive/leader/sign";
+    /**
+     * 查询接收人
+     */
+    public static final String QueReciviPerson = "/api/gridPower/users";
 }

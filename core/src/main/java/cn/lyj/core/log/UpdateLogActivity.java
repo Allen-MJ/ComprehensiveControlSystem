@@ -73,7 +73,14 @@ public class UpdateLogActivity extends AllenBaseActivity {
 
     @Override
     protected void addEvent() {
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setEnabled(false);
+                finish();
+                v.setEnabled(true);
+            }
+        });
     }
 
     @OnClick({R2.id.log_sth, R2.id.log_progress, R2.id.commit_bt})

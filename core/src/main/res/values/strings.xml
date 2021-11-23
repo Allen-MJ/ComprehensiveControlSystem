@@ -153,4 +153,17 @@
     <string name="rent_czrname">承租人公民身份号码:</string>
     <string name="rent_czrphone">承租人联系方式:</string>
 
+    <string name="word_title">公文标题:</string>
+    <string name="word_number">公文字号:</string>
+    <string name="word_status">收发状态:</string>
+    <string name="word_jjcd">紧急程度:</string>
+    <string name="word_users">接收人:</string>
+    <string name="word_signer">发送人:</string>
+    <string name="word_singn_date">签发时间:</string>
+    <string name="word_content">公文内容:</string>
+    <string name="word_files">公文文件:</string>
+
+    <string name="sign_bt">签收</string>
+    <string name="opinion_hint">请输入意见</string>
+
 </resources>

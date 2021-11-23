@@ -27,6 +27,11 @@
         <activity android:name=".person.UpdateTranPersonActivity" />
         <activity android:name=".house.UpdateHouseActivity" />
         <activity android:name=".house.UpdateRentHouseActivity" />
+        <activity android:name=".word.SendListActivity" />
+        <activity android:name=".word.SendWordInfoActivty" />
+        <activity android:name=".ChoicePersonActivity" />
+        <activity android:name=".word.ReceivListActivity" />
+        <activity android:name=".word.ReceivWordInfoActivty" />
 
         <service android:name=".LocationService" />
     </application>
