@@ -71,7 +71,7 @@ public class HomeActivity extends AllenBaseActivity {
         super.onResume();
         Glide.with(this)
                 .load(Constants.url + shared.getString(Constants.UserPhoto, ""))
-                .error(R.drawable.default_photo)
+                .error(R.drawable.default_photo).placeholder(R.drawable.default_photo)
                 .into(userPhoto);
         isXl = shared.getBoolean(Constants.UserMap,false);
         xlBt.setImageResource(isXl?R.drawable.lamp_green:R.drawable.lamp_red);

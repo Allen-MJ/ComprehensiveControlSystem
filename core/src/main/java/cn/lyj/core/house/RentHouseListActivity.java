@@ -1,5 +1,6 @@
 package cn.lyj.core.house;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -115,7 +116,7 @@ public class RentHouseListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new RentHouseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, RentHouse entry, int position) {
-
+                startActivityForResult(new Intent(context,UpdateRentHouseActivity.class).putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override

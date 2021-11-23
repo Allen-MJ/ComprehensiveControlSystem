@@ -56,6 +56,8 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        loginAccount.setText(shared.getString(Constants.UserName,""));
+        loginPsw.setText("a-123456");
         authCode();
     }
 
