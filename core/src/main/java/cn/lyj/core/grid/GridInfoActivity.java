@@ -49,19 +49,25 @@ public class GridInfoActivity extends AllenBaseActivity {
     protected void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        gridMap.onResume();
+        if(gridMap!=null){
+            gridMap.onResume();
+        }
     }
     @Override
     protected void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        gridMap.onPause();
+        if(gridMap!=null){
+            gridMap.onPause();
+        }
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        gridMap.onDestroy();
+        if(gridMap!=null){
+            gridMap.onDestroy();
+        }
     }
 
     @Override
