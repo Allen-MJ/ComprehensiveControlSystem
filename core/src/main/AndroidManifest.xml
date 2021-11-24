@@ -61,6 +61,7 @@
         <activity android:name=".word.ReceivWordInfoActivty" />
         <activity android:name=".grid.GridListActivity" />
         <activity android:name=".grid.GridInfoActivity" />
+        <activity android:name=".grid.GridmanagerListActivity" />
 
         <service android:name=".LocationService" />
     </application>

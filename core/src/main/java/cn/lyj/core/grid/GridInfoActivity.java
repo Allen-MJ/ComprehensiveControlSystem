@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.PolygonOptions;
 import com.baidu.mapapi.map.Stroke;
+import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
@@ -101,16 +105,27 @@ public class GridInfoActivity extends AllenBaseActivity {
         if(pos==null||pos.length<3){
             return;
         }
+        UiSettings uiSettings = mBaiduMap.getUiSettings();
+        uiSettings.setCompassEnabled(true);
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.zoom(Float.parseFloat(entry.getZoom()));
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+        LatLng latLng = new LatLng(Double.parseDouble(entry.getCenterPointY()),Double.parseDouble(entry.getCenterPointX()));
+        MapStatusUpdate statusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
+        mBaiduMap.setMapStatus(statusUpdate);
+
         List<LatLng> points = new ArrayList<>();
         for(String str:pos){
             String[] po = str.split(":");
             points.add(new LatLng(Double.parseDouble(po[1]), Double.parseDouble(po[0])));
         }
         //多边形顶点位置
+        StringBuffer sb = new StringBuffer(entry.getMapColor());
+        sb.insert(1,"52");
         //构造PolygonOptions
         PolygonOptions mPolygonOptions = new PolygonOptions()
                 .points(points)
-                .fillColor(Color.parseColor(entry.getMapColor())) //填充颜色
+                .fillColor(Color.parseColor(sb.toString())) //填充颜色
                 .stroke(new Stroke(5, Color.parseColor(entry.getMapColor()))); //边框宽度和颜色
 
         //在地图上显示多边形

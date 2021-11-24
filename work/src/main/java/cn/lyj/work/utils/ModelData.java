@@ -10,6 +10,7 @@ import allen.frame.tools.Constants;
 import cn.lyj.core.entry.Model;
 import cn.lyj.core.entry.XjPersonEntity;
 import cn.lyj.core.grid.GridListActivity;
+import cn.lyj.core.grid.GridmanagerListActivity;
 import cn.lyj.core.house.HouseListActivity;
 import cn.lyj.core.house.RentHouseListActivity;
 import cn.lyj.core.log.LogListActivity;
@@ -335,6 +336,9 @@ public class ModelData {
                 break;
             case "网格管理":
                 context.startActivity(new Intent(context, GridListActivity.class));
+                break;
+            case "网格人员":
+                context.startActivity(new Intent(context, GridmanagerListActivity.class));
                 break;
         }
     }
