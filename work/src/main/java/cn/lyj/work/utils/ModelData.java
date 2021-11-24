@@ -8,6 +8,7 @@ import java.util.List;
 
 import allen.frame.tools.Constants;
 import cn.lyj.core.entry.Model;
+import cn.lyj.core.grid.GridListActivity;
 import cn.lyj.core.house.HouseListActivity;
 import cn.lyj.core.house.RentHouseListActivity;
 import cn.lyj.core.log.LogListActivity;
@@ -18,6 +19,7 @@ import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
 import cn.lyj.core.word.ReceivListActivity;
 import cn.lyj.core.word.SendListActivity;
+import cn.lyj.work.R;
 import cn.lyjj.tipoff.SmartTipActivity;
 import cn.lyjj.tipoff.TipOffListActivity;
 import cn.lyjj.tipoff.TipoffActivity;
@@ -31,6 +33,21 @@ public class ModelData {
 
     public List<Model> getGrid(){
         List<Model> list = new ArrayList<>();
+        Model item4 = new Model();
+        item4.setName("基础信息");
+        List<Model> items4 = new ArrayList<>();
+        Model item41 = new Model();
+        item41.setName("网格管理");
+        item41.setId("网格管理");
+        item41.setResId(getResId("网格管理"));
+        items4.add(item41);
+        Model item42 = new Model();
+        item42.setName("网格人员");
+        item42.setId("网格人员");
+        item42.setResId(getResId("网格人员"));
+        items4.add(item42);
+        item4.setList(items4);
+        list.add(item4);
         Model item1 = new Model();
         item1.setName("实有人口管理");
         List<Model> items1 = new ArrayList<>();
@@ -137,29 +154,55 @@ public class ModelData {
     }
 
     private int getResId(String id){
+        int resId = 0;
         switch (id){
             case "户籍人口":
+                resId = R.mipmap.core_hjrk;
                 break;
             case "流动人口":
+                resId = R.mipmap.core_ldrk;
                 break;
             case "实有房屋":
+                resId = R.mipmap.core_syfw;
                 break;
             case "出租房":
+                resId = R.mipmap.core_rent;
                 break;
             case "非公有制经济":
+                resId = R.mipmap.core_gyz;
                 break;
             case "社会组织":
+                resId = R.mipmap.core_shzz;
                 break;
             case "我的任务":
+                resId = R.mipmap.core_task;
                 break;
             case "工作日志":
+                resId = R.mipmap.core_log;
                 break;
             case "我的收文":
+                resId = R.mipmap.core_wdsw;
                 break;
             case "我的发文":
+                resId = R.mipmap.core_wdfw;
+                break;
+            case "快速上报":
+                resId = R.mipmap.core_kssb;
+                break;
+            case "事件上报":
+                resId = R.mipmap.core_sxsb;
+                break;
+            case "事件查询":
+                resId = R.mipmap.core_sxcx;
+                break;
+            case "网格管理":
+                resId = R.mipmap.core_wggl;
+                break;
+            case "网格人员":
+                resId = R.mipmap.core_wggl;
                 break;
         }
-        return 0;
+        return resId;
     }
 
     public void onClickListener(Context context,Model model){
@@ -202,6 +245,9 @@ public class ModelData {
                 break;
             case "我的收文":
                 context.startActivity(new Intent(context, ReceivListActivity.class));
+                break;
+            case "网格管理":
+                context.startActivity(new Intent(context, GridListActivity.class));
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package cn.lyj.core.house;
+package cn.lyj.core.grid;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.entry.Grid;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
@@ -30,14 +31,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.RentHouseAdapter;
+import cn.lyj.core.adapter.GridAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.RentHouse;
 
-/**
- * 房屋管理列表
- */
-public class RentHouseListActivity extends AllenBaseActivity {
+public class GridListActivity extends AllenBaseActivity {
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
     @BindView(R2.id.search)
@@ -46,10 +44,10 @@ public class RentHouseListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private RentHouseAdapter adapter;
+    private GridAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<RentHouse> list,sublist;
+    private List<Grid> list,sublist;
     private String mKey = "";
 
     @Override
@@ -59,12 +57,12 @@ public class RentHouseListActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_person_list;
+        return R.layout.core_model_list;
     }
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar,"出租房",true);
+        setToolbarTitle(toolbar,"网格管理",true);
     }
 
     @Override
@@ -74,7 +72,7 @@ public class RentHouseListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new RentHouseAdapter();
+        adapter = new GridAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -113,26 +111,24 @@ public class RentHouseListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new RentHouseAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new GridAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, RentHouse entry, int position) {
-                startActivityForResult(new Intent(context,UpdateRentHouseActivity.class)
-                        .putExtra(Constants.ObjectFirst,entry),10);
+            public void onItemClick(View v, Grid entry, int position) {
+                startActivity(new Intent(context,GridInfoActivity.class).putExtra(Constants.ObjectFirst,entry));
             }
 
             @Override
-            public void onItemDelete(View v, RentHouse entry, int position) {
+            public void onItemDelete(View v, Grid entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url(CoreApi.RentHouse)
-                .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
-                .enqueue(new Callback<List<RentHouse>>() {
+        Https.with(this).url(CoreApi.Grids).addParam("gridName",mKey).addParam("ucode","").addParam("orgNo","").addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<Grid>>() {
                     @Override
-                    public void success(List<RentHouse> data) {
+                    public void success(List<Grid> data) {
                         sublist = data;
                         showData();
                     }
@@ -151,6 +147,7 @@ public class RentHouseListActivity extends AllenBaseActivity {
                     }
                 });
     }
+
     private void showData() {
         if (isRefresh) {
             list = sublist;

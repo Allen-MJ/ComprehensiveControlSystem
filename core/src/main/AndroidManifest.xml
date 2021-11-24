@@ -12,15 +12,6 @@
         <activity android:name="cn.lyj.core.log.LogListActivity" />
         <activity android:name="cn.lyj.core.chart.ChartActivity"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".person.HousePersonListActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".house.HouseListActivity" />
-        <activity android:name=".house.RentHouseListActivity" />
-        <activity android:name=".place.UnSocialPlaceListActivity" />
-        <activity android:name=".place.SocialPlaceListActivity" />
-        <activity android:name=".log.LogListActivity" />
-        <activity android:name="cn.lyj.work.LoginActivity" />
         <activity android:name=".person.TransientPersonListActivity" />
         <activity android:name=".log.UpdateLogActivity" />
         <activity android:name=".person.UpdateHousePersonActivity" />
@@ -32,6 +23,8 @@
         <activity android:name=".ChoicePersonActivity" />
         <activity android:name=".word.ReceivListActivity" />
         <activity android:name=".word.ReceivWordInfoActivty" />
+        <activity android:name=".grid.GridListActivity" />
+        <activity android:name=".grid.GridInfoActivity" />
 
         <service android:name=".LocationService" />
     </application>

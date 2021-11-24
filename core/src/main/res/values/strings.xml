@@ -166,4 +166,7 @@
     <string name="sign_bt">签收</string>
     <string name="opinion_hint">请输入意见</string>
 
+    <string name="grid_dw">所在单位:</string>
+    <string name="grid_date">创建时间:</string>
+
 </resources>

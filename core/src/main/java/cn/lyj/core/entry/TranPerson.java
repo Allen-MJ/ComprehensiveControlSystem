@@ -408,7 +408,7 @@ public class TranPerson implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public static class B1309ObjBean {
+    public static class B1309ObjBean implements Serializable{
         /**
          * code : 03
          * codeName : 共青团员
@@ -434,7 +434,7 @@ public class TranPerson implements Serializable {
         }
     }
 
-    public static class B1310ObjBean {
+    public static class B1310ObjBean implements Serializable{
         /**
          * code : 81
          * codeName : 小学
@@ -460,7 +460,7 @@ public class TranPerson implements Serializable {
         }
     }
 
-    public static class B1316ObjBean {
+    public static class B1316ObjBean implements Serializable{
         /**
          * code : 469002
          * codeName : 海南省琼海市
@@ -486,7 +486,7 @@ public class TranPerson implements Serializable {
         }
     }
 
-    public static class B1318ObjBean {
+    public static class B1318ObjBean implements Serializable{
         /**
          * code : 340121
          * codeName : 安徽省合肥市长丰县
@@ -512,7 +512,7 @@ public class TranPerson implements Serializable {
         }
     }
 
-    public static class GidObjBean {
+    public static class GidObjBean implements Serializable{
         /**
          * orgFullName : 1104桃树网格
          * orgId : 2c9180907ce91391017cea32cbc30005

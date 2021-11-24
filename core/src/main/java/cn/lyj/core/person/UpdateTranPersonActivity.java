@@ -102,7 +102,12 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
 
     @Override
     protected void addEvent() {
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_mz, R2.id.house_person_hyzk, R2.id.house_person_zzmm, R2.id.house_person_xl,

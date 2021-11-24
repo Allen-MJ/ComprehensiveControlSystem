@@ -111,4 +111,12 @@ public class CoreApi {
      * 查询接收人
      */
     public static final String QueReciviPerson = "/api/gridPower/users";
+    /**
+     * 查询网格列表
+     */
+    public static final String Grids = "/api/gridInfo/gridmember";
+    /**
+     * 查询网格人员列表
+     */
+    public static final String GridPerson = "/api/gridPower/adminmembers";
 }
