@@ -58,6 +58,23 @@
     <string name="house_person_sfcz">是否常住人口:</string>
     <string name="house_person_sfzd">是否重点关注人员:</string>
 
+    <string name="xj_person_zpdz">照片地址:</string>
+
+    <string name="xmsf_person_sflf">是否累犯:</string>
+    <string name="xmsf_person_yzm">原罪名:</string>
+    <string name="xmsf_person_ypxq">原判刑期:</string>
+    <string name="xmsf_person_fxcs">服刑场所:</string>
+    <string name="xmsf_person_sfrq">释放日期:</string>
+    <string name="xmsf_person_wxxpg">危险性评估类型:</string>
+    <string name="xmsf_person_xjrq">衔接日期:</string>
+    <string name="xmsf_person_xjqk">衔接情况:</string>
+    <string name="xmsf_person_azrq">安置日期:</string>
+    <string name="xmsf_person_azqk">安置情况:</string>
+    <string name="xmsf_person_wazyy">未安置原因:</string>
+    <string name="xmsf_person_bjqk">帮教情况:</string>
+    <string name="xmsf_person_sfcxfz">是否重新犯罪:</string>
+    <string name="xmsf_person_cxfzzm">重新犯罪罪名:</string>
+
 
     <string name="social_tyxydm">统一社会信用代码:</string>
     <string name="social_djzh">登记证号:</string>

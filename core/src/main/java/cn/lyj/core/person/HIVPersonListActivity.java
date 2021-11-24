@@ -79,7 +79,7 @@ public class HIVPersonListActivity extends AllenBaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_add,menu);
+        getMenuInflater().inflate(R.menu.menu_add,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -87,7 +87,7 @@ public class HIVPersonListActivity extends AllenBaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
         if(menuId==R.id.alen_menu_add){
-//            startActivityForResult(new Intent(context, UpdateHousePersonActivity.class),10);
+            startActivityForResult(new Intent(context, UpdateHIVPersonActivity.class),10);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -170,7 +170,8 @@ public class HIVPersonListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ViewHolder holder, int position) {
-
+                startActivityForResult(new Intent(context, UpdateHIVPersonActivity.class)
+                        .putExtra(Constants.ObjectFirst,list.get(position)),10);
             }
 
             @Override
