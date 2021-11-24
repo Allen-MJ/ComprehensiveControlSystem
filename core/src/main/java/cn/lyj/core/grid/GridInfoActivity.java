@@ -92,14 +92,15 @@ public class GridInfoActivity extends AllenBaseActivity {
 
     private void drawMap(){
         String[] pos = entry.getMapData().split(",");
-        //多边形顶点位置
+        if(pos==null||pos.length<3){
+            return;
+        }
         List<LatLng> points = new ArrayList<>();
-        points.add(new LatLng(39.93923, 116.357428));
-        points.add(new LatLng(39.91923, 116.327428));
-        points.add(new LatLng(39.89923, 116.347428));
-        points.add(new LatLng(39.89923, 116.367428));
-        points.add(new LatLng(39.91923, 116.387428));
-
+        for(String str:pos){
+            String[] po = str.split(":");
+            points.add(new LatLng(Double.parseDouble(po[1]), Double.parseDouble(po[0])));
+        }
+        //多边形顶点位置
         //构造PolygonOptions
         PolygonOptions mPolygonOptions = new PolygonOptions()
                 .points(points)
