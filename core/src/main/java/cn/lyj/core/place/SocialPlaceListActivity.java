@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -103,7 +104,8 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String id=entity.getB2400();
-                                delete("["+id+"]");
+                                String[] ids=new String[]{id};
+                                delete(ids);
                                 dialog.dismiss();
                             }
                         }, "取消", new DialogInterface.OnClickListener() {
@@ -184,9 +186,9 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
            }
        });
     }
-    private void delete(String ids){
+    private void delete(String[] ids){
         Https.with(this).url(CoreApi._core_12)
-                .addJsons(ids).delete()
+                .addJsons(new Gson().toJson(ids)).delete()
                 .enqueue(new Callback<List<SocialPlaceEntity>>() {
                     @Override
                     public void success(List<SocialPlaceEntity> data) {

@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -107,8 +108,8 @@ public class DrugPersonListActivity extends AllenBaseActivity {
                         MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String id=entity.getB2000();
-                                delete("["+id+"]");
+                                String[] ids = new String[]{entity.getB2000()};
+                                delete(ids);
                                 dialog.dismiss();
                             }
                         }, "取消", new DialogInterface.OnClickListener() {
@@ -201,9 +202,9 @@ public class DrugPersonListActivity extends AllenBaseActivity {
                 });
     }
 
-    private void delete(String ids){
+    private void delete(String[] ids){
         Https.with(this).url(CoreApi.del_DrugPerson)
-                .addJsons(ids).delete()
+                .addJsons(new Gson().toJson(ids)).delete()
                 .enqueue(new Callback() {
                     @Override
                     public void success(Object data) {

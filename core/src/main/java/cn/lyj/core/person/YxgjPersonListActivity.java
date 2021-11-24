@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -108,7 +109,8 @@ public class YxgjPersonListActivity extends AllenBaseActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String id=entity.getId();
-                                delete("["+id+"]");
+                                String[] ids=new String[]{id};
+                                delete(ids);
                                 dialog.dismiss();
                             }
                         }, "取消", new DialogInterface.OnClickListener() {
@@ -201,9 +203,9 @@ public class YxgjPersonListActivity extends AllenBaseActivity {
                 });
     }
 
-    private void delete(String ids){
+    private void delete(String[] ids){
         Https.with(this).url(CoreApi.del_YxgjPerson)
-                .addJsons(ids).delete()
+                .addJsons(new Gson().toJson(ids)).delete()
                 .enqueue(new Callback() {
                     @Override
                     public void success(Object data) {

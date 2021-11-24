@@ -1,11 +1,13 @@
 package cn.lyj.core.person;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -36,6 +38,7 @@ import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.adapter.TranPersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.entry.SocialPlaceEntity;
 import cn.lyj.core.entry.TranPerson;
 
 /**
@@ -140,8 +143,20 @@ public class TransientPersonListActivity extends AllenBaseActivity {
             }
 
             @Override
-            public void onItemDelete(View v, TranPerson entry, int position) {
-
+            public void onItemDelete(View v, final TranPerson entry, int position) {
+                MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String[] ids = new String[]{entry.getB1300()};
+                        delete(ids);
+                        dialog.dismiss();
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }
@@ -167,6 +182,32 @@ public class TransientPersonListActivity extends AllenBaseActivity {
                     public void fail(Response response) {
                         sublist = new ArrayList<>();
                         showData();
+                    }
+                });
+    }
+
+    private void delete(String[] ids){
+        Https.with(this).url(CoreApi._core_6)
+                .addJsons(new Gson().toJson(ids)).delete()
+                .enqueue(new Callback<List<SocialPlaceEntity>>() {
+                    @Override
+                    public void success(List<SocialPlaceEntity> data) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,"删除成功！");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void token() {
+                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
                     }
                 });
     }
