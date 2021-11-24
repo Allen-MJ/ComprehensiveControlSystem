@@ -8,12 +8,22 @@ import java.util.List;
 
 import allen.frame.tools.Constants;
 import cn.lyj.core.entry.Model;
+import cn.lyj.core.entry.XjPersonEntity;
 import cn.lyj.core.grid.GridListActivity;
 import cn.lyj.core.house.HouseListActivity;
 import cn.lyj.core.house.RentHouseListActivity;
 import cn.lyj.core.log.LogListActivity;
+import cn.lyj.core.person.CzPersonListActivity;
+import cn.lyj.core.person.DrugPersonListActivity;
+import cn.lyj.core.person.HIVPersonListActivity;
 import cn.lyj.core.person.HousePersonListActivity;
+import cn.lyj.core.person.JwPersonListActivity;
+import cn.lyj.core.person.SqjzPersonListActivity;
 import cn.lyj.core.person.TransientPersonListActivity;
+import cn.lyj.core.person.XjPersonListActivity;
+import cn.lyj.core.person.XmsfPersonListActivity;
+import cn.lyj.core.person.YxgjPersonListActivity;
+import cn.lyj.core.person.ZsZhPersonListActivity;
 import cn.lyj.core.place.SocialPlaceListActivity;
 import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
@@ -262,6 +272,33 @@ public class ModelData {
                 break;
             case "流动人口":
                 context.startActivity(new Intent(context, TransientPersonListActivity.class));
+                break;
+            case "艾滋病人":
+                context.startActivity(new Intent(context, HIVPersonListActivity.class));
+                break;
+            case "吸毒人员":
+                context.startActivity(new Intent(context, DrugPersonListActivity.class));
+                break;
+            case "肇事肇祸严重精神障碍患者":
+                context.startActivity(new Intent(context, ZsZhPersonListActivity.class));
+                break;
+            case "社区矫正人员":
+                context.startActivity(new Intent(context, SqjzPersonListActivity.class));
+                break;
+            case "刑满释放人员":
+                context.startActivity(new Intent(context, XmsfPersonListActivity.class));
+                break;
+            case "言行过激人员":
+                context.startActivity(new Intent(context, YxgjPersonListActivity.class));
+                break;
+            case "邪教人员":
+                context.startActivity(new Intent(context, XjPersonListActivity.class));
+                break;
+            case "境外人口":
+                context.startActivity(new Intent(context, JwPersonListActivity.class));
+                break;
+            case "常住人口":
+                context.startActivity(new Intent(context, CzPersonListActivity.class));
                 break;
             case "实有房屋":
                 context.startActivity(new Intent(context, HouseListActivity.class));

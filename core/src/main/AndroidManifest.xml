@@ -5,6 +5,25 @@
     <application>
         <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.HIVPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.DrugPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.ZsZhPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.SqjzPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.XmsfPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.YxgjPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.XjPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.JwPersonListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="cn.lyj.core.person.CzPersonListActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name="cn.lyj.core.house.HouseListActivity" />
         <activity android:name="cn.lyj.core.house.RentHouseListActivity" />
         <activity android:name="cn.lyj.core.place.UnSocialPlaceListActivity" />

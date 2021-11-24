@@ -119,4 +119,52 @@ public class CoreApi {
      * 查询网格人员列表
      */
     public static final String GridPerson = "/api/gridPower/adminmembers";
+
+    /**
+     * 艾滋病人员列表
+     */
+    public static final String get_HIVPerson = "/api/tb21/appQuery";
+    public static final String del_HIVPerson = "/api/tb21/appDel";
+    /**
+     * 吸毒人员
+     */
+    public static final String get_DrugPerson = "/api/tb20/appQuery";
+    public static final String del_DrugPerson = "/api/tb20/appDel";
+    /**
+     * 肇事肇祸严重精神障碍患者
+     */
+    public static final String get_ZszhPerson = "/api/tb19/appQuery";
+    public static final String del_ZszhPerson = "/api/tb19/appDel";
+    /**
+     * 社区矫正人员
+     */
+    public static final String get_SqjzPerson = "/api/tb18/appQuery";
+    public static final String del_SqjzPerson = "/api/tb18/appDel";
+    /**
+     * 刑满释放人员
+     */
+    public static final String get_XmsfPerson = "/api/tb17/appQuery";
+    public static final String del_XmsfPerson = "/api/tb17/appDel";
+    /**
+     * 言行过激人员
+     */
+    public static final String get_YxgjPerson = "/api/yxgj/appQuery";
+    public static final String del_YxgjPerson = "/api/yxgj/appDel";
+
+    /**
+     * 邪教人员
+     */
+    public static final String get_FxjPerson = "/api/fxj/appQuery";
+    public static final String del_FxjPerson = "/api/fxj/appDel";
+    /**
+     * 境外人口
+     */
+    public static final String get_JwPerson = "/api/tb15/appQuery";
+    public static final String del_JwjPerson = "/api/tb15/appDel";
+    /**
+     * 常住人口
+     */
+    public static final String get_CzPerson = "/api/tb1213/appQuery";
+
+
 }
