@@ -15,7 +15,7 @@
 
     <!--爆料start-->
     <string name="tip_info_dw">受理单位：</string>
-    <string name="tip_info_grid">网格选择：</string>
+    <string name="tip_info_grid">所在网格：</string>
     <string name="tip_info_name">反&#160;&#160;映&#160;&#160;人：</string>
     <string name="tip_info_sex">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别：</string>
     <string name="tip_info_phone">联系电话：</string>
