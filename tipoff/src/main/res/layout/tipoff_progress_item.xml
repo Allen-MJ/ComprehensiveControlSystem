@@ -21,7 +21,7 @@
                 android:id="@+id/item_flag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_dw_flag"
+                android:src="@drawable/ic_dw_flag"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:layout_margin="@dimen/frame_eight_distance"

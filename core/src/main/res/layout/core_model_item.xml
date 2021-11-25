@@ -24,8 +24,9 @@
                 android:id="@+id/item_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/frame_20_distance"
-                android:layout_marginEnd="@dimen/frame_20_distance"/>
+                android:layout_marginStart="@dimen/frame_30_distance"
+                android:layout_marginEnd="@dimen/frame_30_distance"
+                android:layout_marginTop="@dimen/frame_30_distance"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_name"
                 android:layout_width="match_parent"

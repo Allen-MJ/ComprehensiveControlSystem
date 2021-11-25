@@ -85,6 +85,9 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 		if(StringUtils.notEmpty(title.toString())){
 			bar.setTitle("");
 			titleat.setText(title);
+		}else{
+			bar.setTitle("");
+			titleat.setText(title);
 		}
 		setSupportActionBar(bar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);

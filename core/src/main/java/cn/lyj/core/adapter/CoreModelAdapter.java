@@ -79,6 +79,6 @@ public class CoreModelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public interface OnItemClickListener{
-        void onItemClick(View v,Model entry,int position);
+        void onItemClick(View v, Model entry, int position);
     }
 }

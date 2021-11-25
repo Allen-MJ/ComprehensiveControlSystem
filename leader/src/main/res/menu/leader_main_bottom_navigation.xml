@@ -8,4 +8,12 @@
         android:id="@+id/item_sth"
         android:icon="@drawable/leader_sth"
         android:title="@string/leader_menu_sth" />
+    <item
+        android:id="@+id/item_manager"
+        android:icon="@drawable/leader_work"
+        android:title="@string/leader_menu_manager" />
+    <item
+        android:id="@+id/item_oa"
+        android:icon="@drawable/leader_oa"
+        android:title="@string/leader_menu_oa" />
 </menu>

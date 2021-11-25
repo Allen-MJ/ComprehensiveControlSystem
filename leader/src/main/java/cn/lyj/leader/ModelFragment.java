@@ -1,0 +1,101 @@
+package cn.lyj.leader;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import allen.frame.BaseFragment;
+import allen.frame.tools.Constants;
+import allen.frame.tools.Logger;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import cn.lyj.core.entry.Model;
+import cn.lyj.leader.adapter.ModelParentAdapter;
+import cn.lyj.leader.utils.ModelData;
+
+public class ModelFragment extends BaseFragment {
+    @BindView(R2.id.rv)
+    RecyclerView rv;
+    private ModelParentAdapter adapter;
+    private List<Model> list;
+    private int type = 1;
+
+    public static ModelFragment init(int type){
+        ModelFragment fragment = new ModelFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.Key_1,type);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Override
+    protected int getLayoutResID() {
+        return R.layout.leader_home_model_layout;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                rv.scrollToPosition(0);
+            }
+        });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        rv.setLayoutManager(manager);
+        adapter = new ModelParentAdapter();
+        rv.setAdapter(adapter);
+        type = getArguments().getInt(Constants.Key_1,0);
+        loadModel();
+        addEvent();
+    }
+
+    private void addEvent(){
+        adapter.setOnItemClickListener(new ModelParentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, Model entry, int position) {
+                ModelData.init().onClickListener(getActivity(),entry);
+            }
+        });
+    }
+
+    private void loadModel(){
+        list = new ArrayList<>();
+        switch (type){
+            case 0:
+                list = ModelData.init().getHome();
+                break;
+            case 1:
+                list = ModelData.init().getGrid();
+                break;
+            case 2:
+                list = ModelData.init().getWork();
+                break;
+            case 3:
+                list = ModelData.init().getTj();
+                break;
+        }
+        Logger.e("type","type"+type);
+        adapter.setList(list);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                rv.scrollToPosition(0);
+            }
+        });
+    }
+
+}

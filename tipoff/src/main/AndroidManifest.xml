@@ -9,5 +9,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyjj.tipoff.TipOffListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".SmartTipActivity" />
     </application>
 </manifest>

@@ -66,8 +66,8 @@ public class SearchView extends LinearLayoutCompat {
         bt = new AppCompatImageView(context);
         bt.setScaleType(ImageView.ScaleType.FIT_CENTER);
         bt.setImageResource(resId);
-        LinearLayoutCompat.LayoutParams inputParams = new LinearLayoutCompat.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT,1.0f);
-        LinearLayoutCompat.LayoutParams btParams = new LinearLayoutCompat.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        LayoutParams inputParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT,1.0f);
+        LayoutParams btParams = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
         btParams.setMarginEnd(padding);
         addView(input,inputParams);
         addView(bt,btParams);

@@ -6,13 +6,12 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import allen.frame.tools.StringUtils;
+import allen.frame.tools.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import cn.lyj.core.R;
 import cn.lyj.core.entry.Log;
-import cn.lyj.core.entry.Person;
 
 
 public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -31,7 +30,7 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.core_person_item, parent, false);
+                .inflate(R.layout.core_log_item, parent, false);
         v.setLayoutParams(new ViewGroup
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -51,23 +50,21 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ObjectHolder extends RecyclerView.ViewHolder {
 
-        private AppCompatTextView name, delete, sort, wg, idno;
+        private AppCompatTextView name, delete, date, content;
         private View view;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
-            sort = itemView.findViewById(R.id.item_sort);
             name = itemView.findViewById(R.id.item_name);
-            idno = itemView.findViewById(R.id.item_idno);
-            wg = itemView.findViewById(R.id.item_wg);
+            date = itemView.findViewById(R.id.item_date);
+            content = itemView.findViewById(R.id.item_content);
             delete = itemView.findViewById(R.id.item_delete);
             view = itemView.findViewById(R.id.item_layout);
         }
         public void bind(final Log entry) {
             if (entry != null) {
-                name.setText("测试人");
-                sort.setText(String.valueOf(getAdapterPosition()));
-                idno.setText(StringUtils.hideStr("513902198810162310",7,14,"*"));
-                wg.setText("测试网格测试网格测试网格");
+                name.setText(entry.getCreateBy());
+                date.setText(DateUtils.getTimeFormatText(entry.getCreateTime()));
+                content.setText(entry.getDescription());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

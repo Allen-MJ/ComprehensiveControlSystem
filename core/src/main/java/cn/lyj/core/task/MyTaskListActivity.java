@@ -4,12 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -27,17 +21,19 @@ import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
-import cn.lyj.core.entry.Person;
 import cn.lyj.core.entry.TaskEntity;
 
 /**
@@ -90,7 +86,7 @@ public class MyTaskListActivity extends AllenBaseActivity {
     }
 
     private void initAdapter() {
-        adapter = new CommonAdapter<TaskEntity>(context,R.layout.task_item) {
+        adapter = new CommonAdapter<TaskEntity>(context, R.layout.task_item) {
             @Override
             public void convert(ViewHolder holder, TaskEntity entity, int position) {
                 holder.setText(R.id.item_name,entity.getTaskName());
@@ -149,7 +145,7 @@ public class MyTaskListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ViewHolder holder, int position) {
-                startActivityForResult(new Intent(context,TaskDeailActivity.class).putExtra(Constants.Key_1,list.get(position)),100);
+                startActivityForResult(new Intent(context, TaskDeailActivity.class).putExtra(Constants.Key_1,list.get(position)),100);
             }
 
             @Override

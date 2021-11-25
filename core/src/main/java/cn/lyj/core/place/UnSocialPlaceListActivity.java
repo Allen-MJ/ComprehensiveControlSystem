@@ -1,8 +1,11 @@
 package cn.lyj.core.place;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -15,6 +18,8 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
@@ -29,9 +34,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.PersonAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.Person;
+import cn.lyj.core.entry.CoreType;
+import cn.lyj.core.entry.SocialPlaceEntity;
+import cn.lyj.core.entry.UnSocialPlaceEntity;
 
 /**
  * 非公有社会场所
@@ -45,12 +51,13 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private PersonAdapter adapter;
+    private CommonAdapter<UnSocialPlaceEntity> adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<Person> list,sublist;
+    private List<UnSocialPlaceEntity> list=new ArrayList<>(),sublist;
     private String mKey = "";
     private String type = "0";
+    private List<CoreType> natures;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -65,7 +72,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
-        setToolbarTitle(toolbar,"实有房屋",true);
+        setToolbarTitle(toolbar,"非公有制组织",true);
     }
 
     @Override
@@ -75,10 +82,62 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new PersonAdapter();
+        adapter = new CommonAdapter<UnSocialPlaceEntity>(context, R.layout.core_unsocial_person_item) {
+            @Override
+            public void convert(ViewHolder holder, final UnSocialPlaceEntity entity, int position) {
+                holder.setText(R.id.item_name,entity.getB2302());
+                if (natures!=null&&natures.size()>0){
+                    for (CoreType type:natures
+                    ) {
+                        if (type.getValue().equals(entity.getB2303())){
+                            holder.setText(R.id.item_nature,type.getLabel());
+                        }
+                    }
+                }
+
+                holder.setText(R.id.item_phone,entity.getB2305());
+
+                holder.setOnClickListener(R.id.item_delete, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id=entity.getB2300();
+                                String[] ids=new String[]{id};
+                                delete(ids);
+                                dialog.dismiss();
+                            }
+                        }, "取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                    }
+                });
+            }
+        };
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+        loadNature();
         loadData();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK){
+            switch (requestCode){
+                case 100:
+                    isRefresh = true;
+                    page = 0;
+                    loadData();
+                    break;
+            }
+        }
     }
 
     @Override
@@ -114,25 +173,51 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, Person entry, int position) {
-
+            public void onItemClick(View view, ViewHolder holder, int position) {
+                Intent intent=new Intent(context,UpdateUnsocialActivity.class);
+                intent.putExtra(Constants.ObjectFirst,list.get(position));
+                startActivityForResult(intent,100);
             }
 
             @Override
-            public void onItemDelete(View v, Person entry, int position) {
-
+            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                return false;
             }
         });
     }
-
-    private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
-                .addParam("b1202",mKey).get()
-                .enqueue(new Callback<List<Person>>() {
+    private void delete(String[] ids){
+        Https.with(this).url(CoreApi._core_13)
+                .addJsons(new Gson().toJson(ids)).delete()
+                .enqueue(new Callback<List<SocialPlaceEntity>>() {
                     @Override
-                    public void success(List<Person> data) {
+                    public void success(List<SocialPlaceEntity> data) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,"删除成功！");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void token() {
+                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void loadData(){
+        Https.with(this).url(CoreApi._core_13)
+                .addParam("b2302",mKey).get()
+                .enqueue(new Callback<List<UnSocialPlaceEntity>>() {
+                    @Override
+                    public void success(List<UnSocialPlaceEntity> data) {
                         sublist = data;
                         showData();
                     }
@@ -151,18 +236,37 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                     }
                 });
     }
+
+    private void loadNature(){
+        showProgressDialog("");
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","business_type").addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        natures=data;
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
     private void showData() {
         if (isRefresh) {
             list = sublist;
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishRefresh();
         } else if (page == 1) {
             list = sublist;
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishLoadMore();
         } else {
             list.addAll(sublist);
-            adapter.setList(list);
+            adapter.setDatas(list);
             refresh.finishLoadMore();
         }
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");

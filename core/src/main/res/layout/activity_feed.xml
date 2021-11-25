@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/reflect_sxfy_submit"
-                android:text="@string/commit"
+                android:text="@string/commit_bt"
                 />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

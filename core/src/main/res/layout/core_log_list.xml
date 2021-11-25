@@ -27,7 +27,7 @@
                 style="@style/CoreSmall8Style"/>
             <View
                 android:layout_width="@dimen/frame_one_distance"
-                android:layout_height="@dimen/frame_32_distance"
+                android:layout_height="@dimen/frame_20_distance"
                 android:background="@color/gray_line_color"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/choice_status"

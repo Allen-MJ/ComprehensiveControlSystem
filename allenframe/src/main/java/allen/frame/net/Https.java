@@ -1,6 +1,6 @@
 package allen.frame.net;
 
-import android.app.Activity;
+import android.content.Context;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,10 +11,11 @@ import allen.frame.tools.StringUtils;
 
 public class Https {
     private static HttpEngine mEngine = new OkHttpEngine();
-    private Activity activity;
+    private Context context;
     private String mUrl;
     private File mFile;
     private Map<String,Object> mParams;
+    private Map<String,Object> mHeaders;
     private String jsons;
     private int method = Type_Post;
     public static int Type_Post = 0;
@@ -22,8 +23,10 @@ public class Https {
     public static int Type_Put = 3;
     public static int Type_Delete = 4;
     public static int Type_Upload = 2;
-    public Https(Activity activity) {
-        this.activity = activity;
+    public static int Type_Download = 5;
+
+    public Https(Context ctt) {
+        this.context = ctt;
         mParams = new HashMap<>();
     }
 
@@ -35,8 +38,8 @@ public class Https {
         mEngine = engine;
     }
 
-    public static Https with(Activity activity){
-        return new Https(activity);
+    public static Https with(Context ctt){
+        return new Https(ctt);
     }
 
     public Https url(String url){
@@ -78,13 +81,22 @@ public class Https {
         return this;
     }
 
-    public Https addParam(String key,Object value){
+    public Https addParam(String key, Object value){
         if(mParams==null){
             mParams = new HashMap<>();
         }
         mParams.put(key,value);
         return this;
     }
+
+    public Https addHeader(String key, Object value){
+        if(mHeaders==null){
+            mHeaders = new HashMap<>();
+        }
+        mHeaders.put(key,value);
+        return this;
+    }
+
     public Https addParams(Map<String,Object> params){
         if(mParams==null){
             mParams = new HashMap<>();
@@ -100,26 +112,39 @@ public class Https {
 
     private <T> void post(Callback<T> callback){
         if(StringUtils.notEmpty(jsons)){
-            mEngine.post(activity,mUrl,jsons,callback);
+            mEngine.post(context,mUrl,jsons,callback);
         }else{
-            mEngine.post(activity,mUrl,mParams,callback);
+            mEngine.post(context,mUrl,mParams,mHeaders,callback);
         }
     }
 
     private <T> void get(Callback<T> callback){
-        mEngine.get(activity,mUrl,mParams,callback);
+        mEngine.get(context,mUrl,mParams,callback);
     }
 
     private <T> void put(Callback<T> callback){
-        mEngine.put(activity,mUrl,mParams,callback);
+        if(StringUtils.notEmpty(jsons)){
+            mEngine.put(context,mUrl,jsons,callback);
+        }else{
+            mEngine.put(context,mUrl,mParams,callback);
+        }
     }
 
     private <T> void delete(Callback<T> callback){
-        mEngine.delete(activity,mUrl,mParams,callback);
+        if(StringUtils.notEmpty(jsons)){
+            mEngine.delete(context,mUrl,jsons,callback);
+        }else{
+            mEngine.delete(context,mUrl,mParams,callback);
+        }
     }
 
     private <T> void upload(Callback<T> callback){
-        mEngine.upload(activity,mUrl,mFile,mParams,callback);
+        mEngine.upload(context,mUrl,mFile,mParams,callback);
+    }
+
+    public void download(Callback<java.io.File> callback){
+        method = Type_Download;
+        mEngine.download(context,mUrl,callback);
     }
 
     public <T> void enqueue(Callback<T> callback){

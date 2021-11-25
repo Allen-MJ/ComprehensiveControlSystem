@@ -115,6 +115,17 @@ public class StringUtils {
 		return "";
 	}
 
+	public static String getFileTypeByPath(String path){
+		if(notEmpty(path)){
+			int index = path.lastIndexOf(".");
+			if(index<0){
+				return "";
+			}
+			return path.substring(index).toLowerCase();
+		}
+		return "";
+	}
+
 	public static String formatFileSize(long file) {
 		DecimalFormat df = new DecimalFormat("#.00");
 		String fileSizeString = "";
@@ -144,7 +155,7 @@ public class StringUtils {
 		}
 		int len = param.length();
 		if(len<start||len<end){
-			throw new IndexOutOfBoundsException("起始位置设置错位！");
+			return param;
 		}
 		StringBuffer sb = new StringBuffer();
 		for(int i=0;i<len;i++){

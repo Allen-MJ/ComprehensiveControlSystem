@@ -23,4 +23,8 @@ public class TipApi {
      * 附件上传
      */
     public static final String upload = "/api/localStorage/app";
+    /**
+     * 快速上报
+     */
+    public static final String SmartAdd = "api/appeal/gridmember";
 }

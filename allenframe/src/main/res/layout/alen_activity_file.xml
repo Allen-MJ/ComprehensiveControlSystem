@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/alen_toolbar_layout"/>
+    <FrameLayout
+        android:id="@+id/fgt_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/choice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:gravity="center"
+        android:paddingTop="@dimen/frame_eight_distance"
+        android:paddingBottom="@dimen/frame_eight_distance"
+        android:paddingStart="@dimen/frame_32_distance"
+        android:paddingEnd="@dimen/frame_32_distance">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_bt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/allen_cancel_bt"
+            android:textColor="@color/text_color_white2black_selector"
+            android:background="@drawable/frame_btn_selector"
+            android:padding="@dimen/frame_eight_distance"
+            android:textSize="@dimen/frame_text_normal_size"
+            android:layout_marginStart="@dimen/frame_32_distance"
+            android:layout_marginEnd="@dimen/frame_32_distance"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ok_bt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/allen_ok_bt"
+            android:textColor="@color/text_color_white2black_selector"
+            android:background="@drawable/frame_btn_selector"
+            android:padding="@dimen/frame_eight_distance"
+            android:textSize="@dimen/frame_text_normal_size"
+            android:layout_marginStart="@dimen/frame_32_distance"
+            android:layout_marginEnd="@dimen/frame_32_distance"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

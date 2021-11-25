@@ -4,15 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatRadioButton;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
@@ -23,8 +14,14 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
@@ -107,7 +104,7 @@ public class TaskDeailActivity extends AllenBaseActivity {
 
     }
     private void initAdapter() {
-        adapter=new CommonAdapter<FeedEntity>(context,R.layout.feed_item) {
+        adapter=new CommonAdapter<FeedEntity>(context, R.layout.feed_item) {
             @Override
             public void convert(ViewHolder holder, FeedEntity entity, int position) {
                 holder.setText(R.id.item_name,entity.getFeedbackPeople());
@@ -186,7 +183,7 @@ public class TaskDeailActivity extends AllenBaseActivity {
         if (id == R.id.tv_souli) {
             accept();
         } else if (id == R.id.tv_fankui) {
-            startActivityForResult(new Intent(context,FeedActivity.class).putExtra(Constants.Key_1,taskEntity),100);
+            startActivityForResult(new Intent(context, FeedActivity.class).putExtra(Constants.Key_1,taskEntity),100);
         }
     }
 }

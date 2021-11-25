@@ -5,12 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-
 import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
@@ -18,6 +12,11 @@ import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.lyj.core.R;
@@ -117,7 +116,7 @@ public class FeedActivity extends AllenBaseActivity {
     @OnClick({R2.id.ok_bt})
     public void onViewClicked(View view) {
         int id=view.getId();
-        if (id==R.id.ok_bt){
+        if (id== R.id.ok_bt){
             feed=etDiscussInfo.getText().toString().trim();
             if (StringUtils.empty(feed)){
                 MsgUtils.showMDMessage(context,"请先填写反馈内容!");

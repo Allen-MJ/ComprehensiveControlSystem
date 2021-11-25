@@ -38,7 +38,7 @@ public class ItemFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_home_item;
+        return R.layout.leader_home_model_layout;
     }
 
     @Override
