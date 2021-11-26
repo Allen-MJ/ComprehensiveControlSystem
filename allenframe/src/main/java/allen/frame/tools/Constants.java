@@ -55,6 +55,7 @@ public class Constants {
 	public static final String UserGender = "_User_gender";//性别
 	public static final String UserNickName = "_User_nickName";//昵称
 	public static final String UserGrage = "_User_Grage";//用户性质
+	public static final String UserRoleName = "_User_role_name";//用户角色
 
 	public static final String UserMap = "_User_Map";//地图巡逻
 

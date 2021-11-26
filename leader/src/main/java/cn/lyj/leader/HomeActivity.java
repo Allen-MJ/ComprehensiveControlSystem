@@ -82,7 +82,7 @@ public class HomeActivity extends AllenBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         userName.setText(shared.getString(Constants.UserName, ""));
-        userGrade.setText(shared.getString(Constants.UserGrage, ""));
+        userGrade.setText(shared.getString(Constants.UserRoleName, ""));
         userDw.setText(shared.getString(Constants.UserUnitsName, ""));
         adapter = new FragmentAdapter(getSupportFragmentManager(), list);
         pager.setAdapter(adapter);
