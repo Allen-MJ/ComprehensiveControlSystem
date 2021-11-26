@@ -43,7 +43,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGeoCoderResultListener, PoiItemAdapter.MyOnItemClickListener {
     @BindView(R2.id.map)
@@ -85,7 +84,7 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.alen_choice_save){
+        if(id== R.id.alen_choice_save){
             if(info!=null){
                 Intent intent = getIntent();
                 intent.putExtra(Constants.ObjectFirst,info);

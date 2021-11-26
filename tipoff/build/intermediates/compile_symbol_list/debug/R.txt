@@ -1599,6 +1599,7 @@ int drawable bga_banner_point_enabled 0x0
 int drawable bga_banner_selector_point_hollow 0x0
 int drawable bga_banner_selector_point_solid 0x0
 int drawable bga_sbl_shadow 0x0
+int drawable bottom_navigation_selector 0x0
 int drawable btn_accent2primary_selector 0x0
 int drawable btn_accent_bg 0x0
 int drawable btn_blue2yellow_selector 0x0
@@ -1628,6 +1629,7 @@ int drawable dialog_bar 0x0
 int drawable fab_bg_mini 0x0
 int drawable fab_bg_normal 0x0
 int drawable fab_label_background 0x0
+int drawable frame_blue_btn_bg 0x0
 int drawable frame_btn_normal 0x0
 int drawable frame_btn_select 0x0
 int drawable frame_btn_selector 0x0
@@ -1640,6 +1642,7 @@ int drawable frame_input_right_bg 0x0
 int drawable frame_radiobutton_selector 0x0
 int drawable frame_set 0x0
 int drawable holder 0x0
+int drawable ic_alen_notice 0x0
 int drawable ic_arrow_down 0x0
 int drawable ic_arrow_drop_down_white_24dp 0x0
 int drawable ic_check_on_icon 0x0
@@ -1647,6 +1650,7 @@ int drawable ic_check_out_icon 0x0
 int drawable ic_check_white_18dp 0x0
 int drawable ic_checkbox_selecor 0x0
 int drawable ic_close 0x0
+int drawable ic_dw_flag 0x0
 int drawable ic_empty_dracula 0x0
 int drawable ic_empty_zhihu 0x0
 int drawable ic_emtpy_light 0x0
@@ -1654,6 +1658,7 @@ int drawable ic_gif 0x0
 int drawable ic_launcher 0x0
 int drawable ic_logo_back 0x0
 int drawable ic_logo_robort 0x0
+int drawable ic_menu_add 0x0
 int drawable ic_mtrl_chip_checked_black 0x0
 int drawable ic_mtrl_chip_checked_circle 0x0
 int drawable ic_mtrl_chip_close_circle 0x0
@@ -1663,11 +1668,16 @@ int drawable ic_preview_radio_off 0x0
 int drawable ic_preview_radio_on 0x0
 int drawable ic_test 0x0
 int drawable icon_bg_selecor 0x0
+int drawable icon_binding_point 0x0
+int drawable icon_check 0x0
 int drawable ketangbiaoxian 0x0
 int drawable lianjie 0x0
 int drawable live 0x0
 int drawable load 0x0
 int drawable load_error 0x0
+int drawable logo_grid 0x0
+int drawable logo_leader 0x0
+int drawable logo_public 0x0
 int drawable mis_action_btn 0x0
 int drawable mis_asv 0x0
 int drawable mis_asy 0x0
@@ -1796,6 +1806,8 @@ int id add 0x0
 int id album_cover 0x0
 int id album_media_count 0x0
 int id album_name 0x0
+int id alen_choice_save 0x0
+int id alen_menu_add 0x0
 int id alertTitle 0x0
 int id alpha 0x0
 int id app_frame_progress_layout 0x0
@@ -1826,7 +1838,6 @@ int id checked 0x0
 int id checkmark 0x0
 int id chronometer 0x0
 int id circle 0x0
-int id cls_choice_save 0x0
 int id comet 0x0
 int id commit 0x0
 int id container 0x0
@@ -1890,6 +1901,7 @@ int id icon_group 0x0
 int id image 0x0
 int id image_grid 0x0
 int id image_view 0x0
+int id imgCheck 0x0
 int id img_btn 0x0
 int id indicator 0x0
 int id info 0x0
@@ -1963,6 +1975,8 @@ int id pin 0x0
 int id player 0x0
 int id player_loading 0x0
 int id player_statInfo 0x0
+int id poiResultDetail 0x0
+int id poiResultName 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
 int id pullOut 0x0
@@ -2072,6 +2086,7 @@ int id tip_info_phone 0x0
 int id tip_info_progress 0x0
 int id tip_info_sex 0x0
 int id tip_phone 0x0
+int id tip_point 0x0
 int id tip_sex 0x0
 int id tip_sfz 0x0
 int id title 0x0
@@ -2181,6 +2196,7 @@ int layout alen_qrcode_layout 0x0
 int layout alen_toolbar_layout 0x0
 int layout alen_type_item 0x0
 int layout alen_type_layout 0x0
+int layout baidumap_rgc_item 0x0
 int layout bga_banner_item_image 0x0
 int layout custom_dialog 0x0
 int layout design_bottom_navigation_item 0x0
@@ -2243,7 +2259,10 @@ int layout tipoff_layout 0x0
 int layout tipoff_list 0x0
 int layout tipoff_list_item 0x0
 int layout tipoff_progress_item 0x0
+int layout tipoff_smart_layout 0x0
+int menu menu_add 0x0
 int menu menu_save 0x0
+int mipmap app_logo 0x0
 int mipmap ic_audio 0x0
 int mipmap ic_file 0x0
 int mipmap ic_login_top 0x0
@@ -2322,6 +2341,7 @@ int string button_sure 0x0
 int string button_sure_default 0x0
 int string character_counter_content_description 0x0
 int string character_counter_pattern 0x0
+int string commit_bt 0x0
 int string empty_text 0x0
 int string error_file_type 0x0
 int string error_no_video_activity 0x0
@@ -2343,6 +2363,9 @@ int string login_phone_hint 0x0
 int string login_psw_hint 0x0
 int string login_regist 0x0
 int string login_yzm_hint 0x0
+int string map_address 0x0
+int string map_mph 0x0
+int string map_mph_hint 0x0
 int string mis_action_button_string 0x0
 int string mis_action_done 0x0
 int string mis_error_image_not_exist 0x0

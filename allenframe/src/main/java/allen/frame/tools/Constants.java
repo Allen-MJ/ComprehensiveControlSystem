@@ -8,7 +8,7 @@ public class Constants {
 
 	public static String url = "http://222.179.3.62:30050";//正式
 //	public static String url = "http://150.158.184.184:30050";//测试
-	public static boolean ISDEBUG = true;
+	public static boolean ISDEBUG = false;
 
 	// APP下载文件夹
 	public static final String APPFILE_NAME = "appfile";
@@ -53,6 +53,8 @@ public class Constants {
 	public static final String UserGender = "_User_gender";//性别
 	public static final String UserNickName = "_User_nickName";//昵称
 	public static final String UserGrage = "_User_Grage";//用户性质
+
+	public static final String UserMap = "_User_Map";//地图巡逻
 
 
 	public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/NqHjZQTA/NuOeAalhgb20wSoLe8NDNSYGbaOL+wu8s3X++BUezRiBiHdfvp55LNCC2Ua422Bu1UnZgwolcWhKg3ZFTLH47eX5adfrV5R/IpGZxh6ZebsioJGTeCQKq6ZB08jHdq6RBv7Fe0Q2nmW7P2hGblGSHuevMjaJ1rPFwIDAQAB";

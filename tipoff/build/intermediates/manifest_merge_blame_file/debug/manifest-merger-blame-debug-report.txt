@@ -6,30 +6,33 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml
+8-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml
+9-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml
 10    /
 11    <application>
-11-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:5:5-12:19
+11-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:5:5-13:19
 12        <activity
-12-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:6:9-7:51
+12-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:6:9-7:51
 13            android:name="cn.lyjj.tipoff.TipoffActivity"
-13-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:6:19-63
+13-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:6:19-63
 14            android:screenOrientation="portrait" />
-14-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:7:13-49
+14-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:7:13-49
 15        <activity
-15-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:8:9-9:51
+15-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:8:9-9:51
 16            android:name="cn.lyjj.tipoff.TipOffInfoActivity"
-16-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:8:19-67
+16-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:8:19-67
 17            android:screenOrientation="portrait" />
-17-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:9:13-49
+17-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:9:13-49
 18        <activity
-18-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:10:9-11:51
+18-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:10:9-11:51
 19            android:name="cn.lyjj.tipoff.TipOffListActivity"
-19-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:10:19-67
+19-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:10:19-67
 20            android:screenOrientation="portrait" />
-20-->E:\PersonalProject\CCSPublicVersion\tipoff\src\main\AndroidManifest.xml:11:13-49
-21    </application>
-22
-23</manifest>
+20-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:11:13-49
+21        <activity android:name="cn.lyjj.tipoff.SmartTipActivity" />
+21-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:12:9-54
+21-->E:\PersonalProject\CCSGridVersion\tipoff\src\main\AndroidManifest.xml:12:19-51
+22    </application>
+23
+24</manifest>

@@ -923,7 +923,7 @@ public class OkHttpEngine implements HttpEngine {
     private final static String TAG = "download";
     @Override
     public void download(final Context act, String url, final Callback<java.io.File> callBack) {
-        final java.io.File file = FileUtils.getInstance().creatNewFile(Constants.APPFILE_NAME,FileUtils.getInstance().url2LocalName(url));
+        final java.io.File file = FileUtils.getInstance().creatNewFile(Constants.APPFILE_NAME, FileUtils.getInstance().url2LocalName(url));
         length = file.length();
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS).readTimeout(TIME_OUT, TimeUnit.SECONDS)

@@ -1,5 +1,6 @@
 R_DEF: Internal format may change without notice
 local
+drawable ic_dw_flag
 drawable ic_test
 drawable tip_baoliao
 drawable tip_jindu
@@ -37,6 +38,7 @@ id tip_info_phone
 id tip_info_progress
 id tip_info_sex
 id tip_phone
+id tip_point
 id tip_sex
 id tip_sfz
 layout tipoff_info
@@ -44,6 +46,7 @@ layout tipoff_layout
 layout tipoff_list
 layout tipoff_list_item
 layout tipoff_progress_item
+layout tipoff_smart_layout
 string tip_add_file
 string tip_address
 string tip_content

@@ -19,14 +19,14 @@
             android:textColor="@color/text_white_color"
             android:padding="@dimen/frame_eight_distance"
             android:textSize="@dimen/frame_text_small_size"
-            android:text="公众版"/>
+            android:text="管理员版"/>
     </allen.frame.widget.ScaleLinearLayout>
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/login_phone"
+        android:id="@+id/login_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:hint="@string/login_phone_hint"
+        android:hint="@string/login_account_hint"
         android:padding="@dimen/frame_edge_distance"
         android:gravity="center_vertical"
         android:singleLine="true"
@@ -59,8 +59,43 @@
         android:textSize="@dimen/frame_text_normal_size"
         android:inputType="textPassword"
         android:layout_marginStart="@dimen/frame_32_distance"
-        android:layout_marginEnd="@dimen/frame_32_distance"
-        android:layout_marginTop="@dimen/frame_edge_distance"/>
+        android:layout_marginEnd="@dimen/frame_32_distance"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frame_one_distance"
+        android:background="@color/gray_line_color"
+        android:layout_marginStart="@dimen/frame_32_distance"
+        android:layout_marginEnd="@dimen/frame_32_distance"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/frame_32_distance"
+        android:layout_marginEnd="@dimen/frame_32_distance">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/login_yzm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/login_yzm_hint"
+            android:padding="@dimen/frame_edge_distance"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:drawableStart="@mipmap/ic_yzm"
+            android:drawablePadding="@dimen/frame_edge_distance"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/frame_text_normal_size"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/yzm"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/frame_32_distance"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/ic_yam_refush"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/frame_one_distance"
@@ -74,19 +109,9 @@
         android:text="@string/login_bt"
         android:textColor="@color/white"
         android:textSize="@dimen/frame_text_normal_size"
-        android:padding="@dimen/frame_eight_distance"
         android:gravity="center"
         android:background="@drawable/shape_blue_btn_bg"
         android:layout_marginStart="@dimen/frame_20_distance"
         android:layout_marginEnd="@dimen/frame_20_distance"
         android:layout_marginTop="@dimen/frame_32_distance"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/login_regist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/frame_text_smaller_size"
-        android:textColor="@color/blue"
-        android:text="@string/login_regist"
-        android:padding="@dimen/frame_edge_distance"
-        android:layout_gravity="center_horizontal"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

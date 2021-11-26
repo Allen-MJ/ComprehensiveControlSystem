@@ -20,7 +20,6 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
-import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
@@ -29,7 +28,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
-import cn.lyj.thepublic.LoginActivity;
+import cn.lyj.work.LoginActivity;
 
 public class GuildActivity extends AllenIMBaseActivity {
     @BindView(R.id.guild)
@@ -38,7 +37,6 @@ public class GuildActivity extends AllenIMBaseActivity {
     AppCompatTextView tvGuideSkip;
     @BindView(R.id.btn_guide_enter)
     AppCompatButton btnGuideEnter;
-    private ProgressDialog mDialog;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -90,7 +88,7 @@ public class GuildActivity extends AllenIMBaseActivity {
 
     private void version(){
         showProgressDialog("正在加载,请稍等...");
-        Https.with(this).url(BaseApi.Version).addParam("type",3).get()
+        Https.with(this).url(BaseApi.Version).addParam("type",1).get()
                 .enqueue(new Callback<Version>() {
                     @Override
                     public void success(Version data) {
@@ -125,8 +123,9 @@ public class GuildActivity extends AllenIMBaseActivity {
                     }
                 });
     }
+
     private void download(String url){
-        mDialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
+        ProgressDialog mDialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
         mDialog.setTitle("版本更新");
         mDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         mDialog.setMax(100);

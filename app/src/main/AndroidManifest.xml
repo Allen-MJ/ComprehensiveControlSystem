@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- 这个权限用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
@@ -21,9 +22,9 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@drawable/logo_public"
+        android:icon="@drawable/logo_grid"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_public"
+        android:roundIcon="@drawable/logo_grid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -38,30 +39,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.lyj.thepublic.HomeActivity"
+        <!--core start-->
+        <activity android:name="cn.lyj.core.place.UpdateUnsocialActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.LoginActivity"
+        <activity android:name="cn.lyj.core.place.UpdateSocialActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.RegistActivity"
+        <activity android:name="cn.lyj.core.person.HousePersonListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.VoteActivity"
+        <activity android:name="cn.lyj.core.house.HouseListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.square.DiscussActivity"
+        <activity android:name="cn.lyj.core.house.RentHouseListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.main.WjdcActivity"
+        <activity android:name="cn.lyj.core.place.UnSocialPlaceListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.square.NewsDetailActivity"
+        <activity android:name="cn.lyj.core.place.SocialPlaceListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.user.UserInfoActivity"
+        <activity android:name="cn.lyj.core.log.LogListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipoffActivity"
+        <activity android:name="cn.lyj.work.LoginActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffListActivity"
+        <activity android:name="cn.lyj.core.task.MyTaskListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffInfoActivity"
+        <activity android:name="cn.lyj.core.task.FeedActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyj.thepublic.news.MessageDetailActivity"
+        <activity android:name="cn.lyj.core.task.TaskDeailActivity"
             android:screenOrientation="portrait"/>
+        <!--core end-->
+        <!--leader start-->
+        <activity android:name="cn.lyj.core.chart.ChartActivity"
+            android:screenOrientation="portrait"/>
+        <!--leader end-->
         <!--基础通用界面start-->
         <activity
             android:name="allen.frame.MultiImageSelectorActivity"
@@ -77,7 +84,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="sensor" />
         <activity android:name="com.huawei.hms.hmsscankit.ScanKitActivity" />
-        <activity android:name="allen.frame.AllenMapChoiceActivity"/>
 
         <activity android:name="allen.frame.AllenPicsActivity"
             android:screenOrientation="portrait"/>
@@ -98,18 +104,12 @@
         </provider>
         <!--文件夹权限end-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"></service>
-        <!--管理员版 start-->
-        <!--<meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="BvX7q3rSPfy1fwLnoL5EWq8DqNOGsRVA" >
-        </meta-data>-->
-        <!--管理员版 end-->
-        <!--公众版 start-->
+        <!--管理员地图 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="35V4uQqpOkEtvk5CchbaknGbGynkLbtk" >
+            android:value="BvX7q3rSPfy1fwLnoL5EWq8DqNOGsRVA" >
         </meta-data>
-        <!--公众版 end-->
+        <!--管理员地图 end-->
     </application>
 
 </manifest>
