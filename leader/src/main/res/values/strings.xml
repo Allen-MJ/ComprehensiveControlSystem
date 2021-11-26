@@ -1,0 +1,6 @@
+<resources>
+    <string name="leader_menu_tj">统计查询</string>
+    <string name="leader_menu_sth">事件处理</string>
+    <string name="leader_menu_manager">业务管理</string>
+    <string name="leader_menu_oa">辅助办公</string>
+</resources>

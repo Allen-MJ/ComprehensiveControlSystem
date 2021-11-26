@@ -116,7 +116,7 @@ public class RentHouseListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new RentHouseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, RentHouse entry, int position) {
-                startActivityForResult(new Intent(context,UpdateRentHouseActivity.class)
+                startActivityForResult(new Intent(context, UpdateRentHouseActivity.class)
                         .putExtra(Constants.ObjectFirst,entry),10);
             }
 

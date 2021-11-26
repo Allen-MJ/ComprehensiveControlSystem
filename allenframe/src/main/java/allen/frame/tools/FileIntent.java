@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 
-import java.io.File;
-
 import allen.frame.AllenManager;
 import androidx.core.content.FileProvider;
+
+import java.io.File;
 
 
 public class FileIntent {

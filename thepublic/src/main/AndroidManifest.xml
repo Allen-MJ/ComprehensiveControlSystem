@@ -6,7 +6,7 @@
         <activity android:name=".user.UserNewsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="cn.lyjj.tipoff.TipOffInfoActivity"
+            android:name="cn.lyjj.thepublic.TipOffInfoActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".main.VoteActivity"
             android:screenOrientation="portrait"/>

@@ -2,7 +2,6 @@ package cn.lyj.core.log;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +28,6 @@ import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
-import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -37,7 +35,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
@@ -90,8 +87,8 @@ public class LogListActivity extends AllenBaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
-        if(menuId==R.id.alen_menu_add){
-            startActivityForResult(new Intent(context,UpdateLogActivity.class),10);
+        if(menuId== R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateLogActivity.class),10);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -148,7 +145,7 @@ public class LogListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new LogAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, Log entry, int position) {
-                startActivityForResult(new Intent(context,UpdateLogActivity.class).putExtra(Constants.ObjectFirst,entry),10);
+                startActivityForResult(new Intent(context, UpdateLogActivity.class).putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override
@@ -217,9 +214,9 @@ public class LogListActivity extends AllenBaseActivity {
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
-        if(id==R.id.choice_work){
+        if(id== R.id.choice_work){
             loadWork();
-        }else if(id==R.id.choice_status){
+        }else if(id== R.id.choice_status){
             loadStatus();
         }
         view.setEnabled(true);

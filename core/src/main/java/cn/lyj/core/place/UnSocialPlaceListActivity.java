@@ -23,7 +23,6 @@ import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
-import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
@@ -35,10 +34,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
-import cn.lyj.core.entry.HousePerson;
 import cn.lyj.core.entry.SocialPlaceEntity;
 import cn.lyj.core.entry.UnSocialPlaceEntity;
 
@@ -85,7 +82,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new CommonAdapter<UnSocialPlaceEntity>(context,R.layout.core_unsocial_person_item) {
+        adapter = new CommonAdapter<UnSocialPlaceEntity>(context, R.layout.core_unsocial_person_item) {
             @Override
             public void convert(ViewHolder holder, final UnSocialPlaceEntity entity, int position) {
                 holder.setText(R.id.item_name,entity.getB2302());

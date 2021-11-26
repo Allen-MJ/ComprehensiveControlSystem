@@ -1,14 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.lyjj.tipoff">
+    package="cn.lyjj.thepublic">
 
     /
     <application>
-        <activity android:name="cn.lyjj.tipoff.TipoffActivity"
+        <activity android:name="cn.lyjj.thepublic.TipoffActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffInfoActivity"
+        <activity android:name="cn.lyjj.thepublic.TipOffInfoActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="cn.lyjj.tipoff.TipOffListActivity"
+        <activity android:name="cn.lyjj.thepublic.TipOffListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".SmartTipActivity" />
+        <activity android:name="cn.lyjj.thepublic.SmartTipActivity" />
     </application>
 </manifest>

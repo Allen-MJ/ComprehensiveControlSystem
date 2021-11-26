@@ -11,7 +11,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
@@ -82,17 +81,17 @@ public class UpdateRentHouseActivity extends AllenBaseActivity {
     @OnClick({R2.id.house_wg, R2.id.house_dw, R2.id.house_xq, R2.id.house_ld, R2.id.house_fwyt, R2.id.commit_bt})
     public void onViewClicked(View view) {
         int id = view.getId();
-        if(id==R.id.house_wg){
+        if(id== R.id.house_wg){
 
-        }else if(id==R.id.house_dw){
+        }else if(id== R.id.house_dw){
 
-        }else if(id==R.id.house_xq){
+        }else if(id== R.id.house_xq){
 
-        }else if(id==R.id.house_ld){
+        }else if(id== R.id.house_ld){
 
-        }else if(id==R.id.house_fwyt){
+        }else if(id== R.id.house_fwyt){
 
-        }else if(id==R.id.commit_bt){
+        }else if(id== R.id.commit_bt){
 
         }
     }

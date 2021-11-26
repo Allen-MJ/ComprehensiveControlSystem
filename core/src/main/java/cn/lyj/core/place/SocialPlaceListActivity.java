@@ -34,10 +34,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.CoreType;
-import cn.lyj.core.entry.HousePerson;
 import cn.lyj.core.entry.SocialPlaceEntity;
 
 /**
@@ -83,7 +81,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new CommonAdapter<SocialPlaceEntity>(context,R.layout.core_social_person_item) {
+        adapter = new CommonAdapter<SocialPlaceEntity>(context, R.layout.core_social_person_item) {
             @Override
             public void convert(ViewHolder holder, final SocialPlaceEntity entity, int position) {
                 holder.setText(R.id.item_name,entity.getB2403());
@@ -175,7 +173,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
            @Override
            public void onItemClick(View view, ViewHolder holder, int position) {
-               Intent intent=new Intent(context,UpdateSocialActivity.class);
+               Intent intent=new Intent(context, UpdateSocialActivity.class);
                intent.putExtra(Constants.ObjectFirst,list.get(position));
                startActivityForResult(intent,100);
            }

@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.lyj.core.R2;
@@ -38,6 +39,8 @@ public class LoginActivity extends AllenIMBaseActivity {
     AppCompatEditText loginYzm;
     @BindView(cn.lyj.core.R2.id.yzm)
     AppCompatImageView yzm;
+    @BindView(cn.lyj.core.R2.id.version_name)
+    AppCompatTextView versionName;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -58,6 +61,7 @@ public class LoginActivity extends AllenIMBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         loginAccount.setText(shared.getString(Constants.UserName,""));
         loginPsw.setText("a-123456");
+        versionName.setText("管理员版");
         authCode();
     }
 

@@ -13,7 +13,6 @@ import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.adapter.FragmentAdapter;
-import allen.frame.entry.DicType;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
@@ -27,7 +26,7 @@ import butterknife.Unbinder;
 import cn.lyj.thepublic.R;
 import cn.lyj.thepublic.R2;
 import cn.lyj.thepublic.data.API;
-
+import cn.lyj.thepublic.entry.SquareType;
 
 public class SquareFragment extends Fragment {
 
@@ -42,7 +41,7 @@ public class SquareFragment extends Fragment {
     private List<Fragment> fragments;
 
     private String[] tabs;
-    private List<DicType> lmList;
+    private List<SquareType> lmList;
 
     public static SquareFragment init() {
         SquareFragment fragment = new SquareFragment();
@@ -77,9 +76,9 @@ public class SquareFragment extends Fragment {
         Https.with(getActivity())
                 .url(API._getType).addParam("dictName","handy_service_type").addParam("page",0).addParam("size",9999)
                 .get()
-                .enqueue(new Callback<List<DicType>>() {
+                .enqueue(new Callback<List<SquareType>>() {
             @Override
-            public void success(List<DicType> data) {
+            public void success(List<SquareType> data) {
                 helper.dismissProgressDialog();
 
                 lmList=data;

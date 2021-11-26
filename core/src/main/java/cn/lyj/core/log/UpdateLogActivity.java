@@ -23,7 +23,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
@@ -91,7 +90,7 @@ public class UpdateLogActivity extends AllenBaseActivity {
             loadSth();
         } else if (id == R.id.log_progress) {
             loadProgress();
-        } else if(id==R.id.commit_bt){
+        } else if(id== R.id.commit_bt){
             commit();
         }
         view.setEnabled(true);

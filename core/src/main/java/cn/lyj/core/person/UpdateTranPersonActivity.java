@@ -116,39 +116,39 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
-        if(id==R.id.house_person_wg){
+        if(id== R.id.house_person_wg){
 
-        }else if(id==R.id.house_person_sex){
+        }else if(id== R.id.house_person_sex){
 
-        }else if(id==R.id.house_person_jg){
+        }else if(id== R.id.house_person_jg){
 
-        }else if(id==R.id.house_person_mz){
+        }else if(id== R.id.house_person_mz){
 
-        }else if(id==R.id.house_person_hyzk){
+        }else if(id== R.id.house_person_hyzk){
 
-        }else if(id==R.id.house_person_zzmm){
+        }else if(id== R.id.house_person_zzmm){
 
-        }else if(id==R.id.house_person_xl){
+        }else if(id== R.id.house_person_xl){
 
-        }else if(id==R.id.house_person_zjxy){
+        }else if(id== R.id.house_person_zjxy){
 
-        }else if(id==R.id.house_person_zylb){
+        }else if(id== R.id.house_person_zylb){
 
-        }else if(id==R.id.house_person_lryy){
+        }else if(id== R.id.house_person_lryy){
 
-        }else if(id==R.id.house_person_bzlx){
+        }else if(id== R.id.house_person_bzlx){
 
-        }else if(id==R.id.house_person_djrq){
+        }else if(id== R.id.house_person_djrq){
 
-        }else if(id==R.id.house_person_zjdq){
+        }else if(id== R.id.house_person_zjdq){
 
-        }else if(id==R.id.house_person_sfcz){
+        }else if(id== R.id.house_person_sfcz){
 
-        }else if(id==R.id.house_person_sfzd){
+        }else if(id== R.id.house_person_sfzd){
 
-        }else if(id==R.id.house_person_zslx){
+        }else if(id== R.id.house_person_zslx){
 
-        }else if(id==R.id.commit_bt){
+        }else if(id== R.id.commit_bt){
 
         }
         view.setEnabled(true);

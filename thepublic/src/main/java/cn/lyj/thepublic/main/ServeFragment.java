@@ -37,8 +37,8 @@ import cn.lyj.thepublic.adapter.FyAdapter;
 import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.Notice;
 import cn.lyj.thepublic.news.MessageDetailActivity;
-import cn.lyjj.tipoff.TipOffListActivity;
-import cn.lyjj.tipoff.TipoffActivity;
+import cn.lyjj.thepublic.TipOffListActivity;
+import cn.lyjj.thepublic.TipoffActivity;
 
 public class ServeFragment extends BaseFragment {
 

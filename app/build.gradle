@@ -6,7 +6,9 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "cn.lyj.ccs.pubver"
+        applicationId "cn.lyj.ccs.pubver"//公众版id
+//        applicationId "cn.lyj.ccs"//管理员版id
+//        applicationId "cn.lyj.ccs.leader"//领导版id
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -40,4 +42,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation project(path: ':allenframe')
     implementation project(path: ':thepublic')//公众版
+    implementation project(path: ':leader')//领导版
+    implementation project(path: ':work')//管理员版
 }

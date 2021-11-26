@@ -1,0 +1,48 @@
+<resources>
+    <style name="SthDbListTitleTheme">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="SthDbListConTheme">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingLeft">@dimen/frame_eight_distance</item>
+        <item name="android:paddingRight">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="SthLcTextTitleTheme">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:padding">@dimen/frame_four_distance</item>
+    </style>
+    <style name="SthDbTextTitleTheme">
+        <item name="android:textColor">@color/text_white_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:padding">@dimen/frame_eight_distance</item>
+    </style>
+    <style name="SthDbLayoutTheme">
+        <item name="android:paddingTop">@dimen/frame_four_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_four_distance</item>
+        <item name="android:paddingLeft">@dimen/frame_four_distance</item>
+        <item name="android:paddingRight">@dimen/frame_four_distance</item>
+    </style>
+    <style name="SthDbTextContTheme">
+        <item name="android:textColor">@color/text_gray_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingTop">@dimen/frame_four_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_four_distance</item>
+    </style>
+    <style name="SthSbTextTheme">
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:textSize">@dimen/frame_text_normal_size</item>
+        <item name="android:paddingTop">@dimen/frame_eight_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_eight_distance</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="SthDbFJContTheme">
+        <item name="android:textColor">@color/text_red_color</item>
+        <item name="android:textSize">@dimen/frame_text_small_size</item>
+        <item name="android:paddingTop">@dimen/frame_four_distance</item>
+        <item name="android:paddingBottom">@dimen/frame_four_distance</item>
+    </style>
+</resources>

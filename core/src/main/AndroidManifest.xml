@@ -62,6 +62,8 @@
         <activity android:name=".grid.GridListActivity" />
         <activity android:name=".grid.GridInfoActivity" />
         <activity android:name=".grid.GridmanagerListActivity" />
+        <activity android:name=".place.UpdateSocialActivity" />
+        <activity android:name=".place.UpdateUnsocialActivity" />
 
         <service android:name=".LocationService" />
     </application>

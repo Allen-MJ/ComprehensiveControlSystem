@@ -38,7 +38,6 @@ import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.HousePerson;
 import cn.lyj.core.entry.SocialPlaceEntity;
-import cn.lyj.core.log.UpdateLogActivity;
 
 /**
  * 户籍人口管理列表
@@ -82,7 +81,7 @@ public class HousePersonListActivity extends AllenBaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
-        if(menuId==R.id.alen_menu_add){
+        if(menuId== R.id.alen_menu_add){
             startActivityForResult(new Intent(context, UpdateHousePersonActivity.class),10);
         }
         return super.onOptionsItemSelected(item);

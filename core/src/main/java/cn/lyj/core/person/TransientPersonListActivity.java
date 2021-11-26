@@ -34,10 +34,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
-import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.adapter.TranPersonAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.HousePerson;
 import cn.lyj.core.entry.SocialPlaceEntity;
 import cn.lyj.core.entry.TranPerson;
 
@@ -78,7 +76,7 @@ public class TransientPersonListActivity extends AllenBaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
-        if(menuId==R.id.alen_menu_add){
+        if(menuId== R.id.alen_menu_add){
             startActivityForResult(new Intent(context, UpdateTranPersonActivity.class),10);
         }
         return super.onOptionsItemSelected(item);

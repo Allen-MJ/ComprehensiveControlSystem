@@ -8,7 +8,6 @@ import java.util.List;
 
 import allen.frame.tools.Constants;
 import cn.lyj.core.entry.Model;
-import cn.lyj.core.entry.XjPersonEntity;
 import cn.lyj.core.grid.GridListActivity;
 import cn.lyj.core.grid.GridmanagerListActivity;
 import cn.lyj.core.house.HouseListActivity;
@@ -31,9 +30,9 @@ import cn.lyj.core.task.MyTaskListActivity;
 import cn.lyj.core.word.ReceivListActivity;
 import cn.lyj.core.word.SendListActivity;
 import cn.lyj.work.R;
-import cn.lyjj.tipoff.SmartTipActivity;
-import cn.lyjj.tipoff.TipOffListActivity;
-import cn.lyjj.tipoff.TipoffActivity;
+import cn.lyjj.thepublic.SmartTipActivity;
+import cn.lyjj.thepublic.TipOffListActivity;
+import cn.lyjj.thepublic.TipoffActivity;
 
 public class ModelData {
     private ModelData(){

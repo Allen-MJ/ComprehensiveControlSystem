@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/alen_toolbar_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/frame_eight_distance">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/frame_four_distance"
+                app:cardElevation="@dimen/frame_two_distance">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="受理单位：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sl_dw"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请选择受理单位" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="受  理  人：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sl_slr"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请选择受理人" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/frame_four_distance"
+                app:cardElevation="@dimen/frame_two_distance">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反 映 人 姓 名：" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fyr_name"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请输入反映人姓名"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" "
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反映人身份证：" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fyr_no"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请输入反映人身份证号码"
+                            android:inputType="textVisiblePassword"
+                            android:maxLength="18"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反映人手机号：" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fyr_phone"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请输入反映人手机号码"
+                            android:inputType="phone"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  "
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反 映 人 性 别：" />
+
+                        <RadioGroup
+                            android:id="@+id/fyr_sex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/sex_male"
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="男" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/sex_female"
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/frame_edge_distance"
+                                android:text="女" />
+                        </RadioGroup>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" "
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家庭地址：" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/fyr_familyaddress"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|top"
+                            android:hint="请输入反映人家庭地址"
+                            android:lineSpacingMultiplier="1.4"
+                            android:lines="2" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/frame_four_distance"
+                app:cardElevation="@dimen/frame_two_distance">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反映渠道：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fy_fyqd"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_grey_900_24dp"
+                            android:hint="请选择反映渠道"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="人口类型：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fy_rklx"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_grey_900_24dp"
+                            android:hint="请选择人口类型"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="紧急程度：" />
+
+                        <RadioGroup
+                            android:id="@+id/fy_jjcd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/jjcd_yb"
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="一般" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/jjcd_jj"
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/frame_edge_distance"
+                                android:text="紧急" />
+                        </RadioGroup>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="事项类型：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fy_sxlx"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_grey_900_24dp"
+                            android:hint="请选择事项类型"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="涉及领域：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fy_sjly"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_grey_900_24dp"
+                            android:hint="请选择涉及领域"
+                            android:singleLine="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  "
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="地图坐标：" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fy_dtzb"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:singleLine="true" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/fy_map_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/frame_eight_distance"
+                            android:layout_marginBottom="@dimen/frame_eight_distance"
+                            android:src="@drawable/ic_delete_cion" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/fy_map_go"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/frame_eight_distance"
+                            android:src="@drawable/ic_local_icon" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="反映事项：" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fy_fysx"
+                        style="@style/SthSbTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/frame_edge_distance"
+                        android:layout_marginRight="@dimen/frame_eight_distance"
+                        android:gravity="left|top"
+                        android:hint="请输入反映事项"
+                        android:lineSpacingMultiplier="1.4"
+                        android:minLines="4" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            >
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="  "
+                                android:textColor="@color/text_red_color" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="附件列表：" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview_file"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_gray" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/frame_eight_distance">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  "
+                            android:textColor="@color/text_red_color" />
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/fy_lddb"
+                            style="@style/SthSbTextTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是否领导督办" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ld_name_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/light_gray" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/frame_eight_distance">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="*"
+                                android:textColor="@color/text_red_color" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="督办领导：" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/ld_name"
+                                style="@style/SthSbTextTheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="请输入领导姓名"
+                                android:singleLine="true" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <include layout="@layout/sth_zb_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ok_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/frame_edge_distance"
+                android:background="@drawable/frame_btn_selector"
+                android:padding="@dimen/frame_eight_distance"
+                android:text="提交"
+                android:textColor="@color/text_white_color"
+                android:textSize="@dimen/frame_text_normal_size" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>
