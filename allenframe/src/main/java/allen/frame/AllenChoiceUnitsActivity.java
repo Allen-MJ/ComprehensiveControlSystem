@@ -1,5 +1,6 @@
 package allen.frame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,6 +19,7 @@ import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -53,6 +55,19 @@ public class AllenChoiceUnitsActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         setToolbarTitle(toolbar,"单位选择",true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==Constants.KeyTokenFlag){
+                page = 0;
+                isRefresh = true;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
     }
 
     @Override
@@ -105,6 +120,13 @@ public class AllenChoiceUnitsActivity extends AllenBaseActivity {
                     public void success(List<Units> data) {
                         sublist = data;
                         showData();
+                    }
+
+                    @Override
+                    public void token() {
+                        sublist = new ArrayList<>();
+                        showData();
+                        actHelper.tokenErro2Login(AllenChoiceUnitsActivity.this);
                     }
 
                     @Override

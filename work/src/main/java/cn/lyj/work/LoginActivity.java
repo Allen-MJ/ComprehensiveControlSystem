@@ -41,6 +41,7 @@ public class LoginActivity extends AllenIMBaseActivity {
     AppCompatImageView yzm;
     @BindView(cn.lyj.core.R2.id.version_name)
     AppCompatTextView versionName;
+    private boolean isToken;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -54,7 +55,8 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initBar() {
-
+        Constants.version = 1;
+        isToken = getIntent().getBooleanExtra(Constants.Key_Token,false);
     }
 
     @Override
@@ -150,7 +152,12 @@ public class LoginActivity extends AllenIMBaseActivity {
                                 .putString(Constants.UserGender,data.getUser().getUser().getGender())
                                 .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
                                 .putString(Constants.UserGrage,data.getUser().getUser().getGrade()).apply();
-                        startActivity(new Intent(context,HomeActivity.class));
+                        if(isToken){
+                            setResult(RESULT_OK,getIntent());
+                            finish();
+                        }else{
+                            startActivity(new Intent(context,HomeActivity.class));
+                        }
                     }
 
                     @Override

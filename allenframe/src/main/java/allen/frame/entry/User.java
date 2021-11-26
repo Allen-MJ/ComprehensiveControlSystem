@@ -1,6 +1,7 @@
 package allen.frame.entry;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     private String id;
@@ -18,6 +19,7 @@ public class User implements Serializable {
     private int isThepublic;//0公众号
     private String updateTime;//
     private Units org;//单位
+    private List<Role> roles;
 
     public String getId() {
         return id;
@@ -137,5 +139,13 @@ public class User implements Serializable {
 
     public void setOrg(Units org) {
         this.org = org;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

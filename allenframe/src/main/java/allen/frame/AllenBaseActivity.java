@@ -176,4 +176,5 @@ public abstract class AllenBaseActivity extends AppCompatActivity {
 			}
 		}
 	}
+
 }

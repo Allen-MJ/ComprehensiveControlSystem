@@ -1,17 +1,21 @@
 package cn.lyjj.thepublic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
+import allen.frame.AllenChoiceUnitsActivity;
 import allen.frame.adapter.AllenFileShowAdapter;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -68,6 +72,18 @@ public class TipOffInfoActivity extends AllenBaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==Constants.KeyTokenFlag){
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadInfo();
+                loadProgress();
+            }
+        }
+    }
+
+    @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         id = getIntent().getLongExtra(Constants.Key_1,0);
         GridLayoutManager manager = new GridLayoutManager(context,4);
@@ -115,8 +131,14 @@ public class TipOffInfoActivity extends AllenBaseActivity {
             }
 
             @Override
-            public void fail(Response response) {
+            public void token() {
+                actHelper.tokenErro2Login(TipOffInfoActivity.this);
+            }
 
+            @Override
+            public void fail(Response response) {
+                MsgUtils.showShortToast(context,response.getMsg());
+                finish();
             }
         });
     }

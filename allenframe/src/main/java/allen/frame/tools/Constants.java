@@ -9,6 +9,7 @@ public class Constants {
 	public static String url = "http://222.179.3.62:30050";//正式
 //	public static String url = "http://150.158.184.184:30050";//测试
 	public static boolean ISDEBUG = false;
+	public static int version = 0;//0公众版，1管理员版，2领导版
 
 	// APP下载文件夹
 	public static final String APPFILE_NAME = "appfile";
@@ -24,6 +25,7 @@ public class Constants {
 	public static final String Key_3 = "_Key_3";//传递参数3
 	public static final String Key_4 = "_Key_4";//传递参数4
 	public static final String Key_Token = "_Key_Token";//token过期标识
+	public static final int KeyTokenFlag = 0X1111;//token过期跳转登录界面请求标识
 	/*传递常用参数 end*/
 
 	/*权限申请code,跳转返回code start*/

@@ -16,9 +16,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.Fragment;
 
 public class ActivityHelper {
 	
@@ -312,5 +314,58 @@ public class ActivityHelper {
 			preTime = cuTime;
 			return true;
 		}
+	}
+
+	/**
+	 * 返回到登录界面
+	 */
+	public void back2Login(){
+		String clsname = "";
+		if(Constants.version==0){
+			clsname = "cn.lyj.thepublic.LoginActivity";
+		}else if(Constants.version==1){
+			clsname = "cn.lyj.work.LoginActivity";
+		}else{
+			clsname = "cn.lyj.leader.LoginActivity";
+		}
+		AllenManager.getInstance().back2Activity(clsname);
+	}
+
+	/**
+	 * token过期跳转登录界面
+	 * @param activity
+	 */
+	public void tokenErro2Login(Activity activity){
+		String clsname = "";
+		if(Constants.version==0){
+			clsname = "cn.lyj.thepublic.LoginActivity";
+		}else if(Constants.version==1){
+			clsname = "cn.lyj.work.LoginActivity";
+		}else{
+			clsname = "cn.lyj.leader.LoginActivity";
+		}
+		MsgUtils.showShortToast(context,"账号过期,请重新登录!");
+		Intent intent = new Intent();
+		intent.setClassName(context,clsname);
+		intent.putExtra(Constants.Key_Token,true);
+		activity.startActivityForResult(intent,Constants.KeyTokenFlag);
+	}
+	/**
+	 * token过期跳转登录界面
+	 * @param fragment
+	 */
+	public void tokenErro2Login(Fragment fragment){
+		String clsname = "";
+		if(Constants.version==0){
+			clsname = "cn.lyj.thepublic.LoginActivity";
+		}else if(Constants.version==1){
+			clsname = "cn.lyj.work.LoginActivity";
+		}else{
+			clsname = "cn.lyj.leader.LoginActivity";
+		}
+		Intent intent = new Intent();
+		intent.setClassName(context,clsname);
+		intent.putExtra(Constants.Key_Token,true);
+		fragment.startActivityForResult(intent,Constants.KeyTokenFlag);
 	}
 }

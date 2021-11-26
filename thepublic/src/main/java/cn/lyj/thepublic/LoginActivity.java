@@ -51,6 +51,7 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initBar() {
+        Constants.version = 0;
         isToken = getIntent().getBooleanExtra(Constants.Key_Token,false);
     }
 

@@ -223,8 +223,7 @@ public class SmartTipActivity extends AllenBaseActivity {
                     @Override
                     public void token() {
                         dismissProgressDialog();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
-                        /*startActivityForResult(new Intent(context, LoginActivity.class).putExtra(Constants.Key_Token,true),11);*/
+                        actHelper.tokenErro2Login(SmartTipActivity.this);
                     }
 
                     @Override

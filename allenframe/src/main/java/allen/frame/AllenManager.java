@@ -156,6 +156,20 @@ public class AllenManager {
 			}
 		}
 	}
+
+	/**
+	 * 返回到指定Activity
+	 * @param clsname
+	 */
+	public void back2Activity(String clsname){
+		for(int i=acts.size()-1;i>=0;i--){
+			if(!acts.get(i).getClass().equals(clsname)){
+				closeActivity(acts.get(i));
+			}else{
+				return;
+			}
+		}
+	}
 	/**
 	 * 退出应用
 	 */

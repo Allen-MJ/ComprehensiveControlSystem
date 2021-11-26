@@ -133,9 +133,7 @@ public class TipOffListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
-                        /*startActivityForResult(new Intent(context, LoginActivity.class)
-                                .putExtra(Constants.Key_Token,true),11);*/
+                        actHelper.tokenErro2Login(TipOffListActivity.this);
                     }
 
                     @Override
