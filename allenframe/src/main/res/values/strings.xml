@@ -31,8 +31,15 @@
     <string name="login_bt">立即登录</string>
     <string name="login_regist"><![CDATA[<font color="#999999">还没有账号？</font>立即注册&nbsp;>]]></string>
     <string name="regist_bt">注册</string>
+    <string name="map_address">地址</string>
+    <string name="map_mph">门牌号</string>
+    <string name="map_mph_hint">例如：1栋2单元3楼4号</string>
     <!--login end-->
     <string name="add_bt">添加</string>
+    <string name="commit_bt">提交</string>
     <string name="search_hint">输入关键字查询</string>
+
+    <string name="allen_cancel_bt">取消</string>
+    <string name="allen_ok_bt">确定</string>
 
 </resources>

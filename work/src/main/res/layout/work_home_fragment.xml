@@ -19,7 +19,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@color/colorPrimary"
-            android:padding="@dimen/frame_eight_distance">
+            android:padding="@dimen/frame_four_distance">
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -46,7 +46,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@color/colorPrimary"
-            android:padding="@dimen/frame_eight_distance">
+            android:padding="@dimen/frame_four_distance">
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"

@@ -15,18 +15,42 @@
             android:orientation="vertical"
             android:background="@color/colorPrimary"
             app:scale="0.4">
-            <include layout="@layout/alen_toolbar_layout"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:layout_alignParentTop="true"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetStart="0dp"
+                    app:titleTextColor="@color/text_white_color"
+                    app:titleTextAppearance="@style/Toolbar.TitleText"
+                    app:popupTheme="@style/OverflowMenuStyle"
+                    app:navigationIcon="@mipmap/ic_logo_back">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:layout_gravity="center"
+                        style="@style/Toolbar.TitleText"
+                        android:gravity="center"
+                        />
+                </androidx.appcompat.widget.Toolbar>
                 <allen.frame.widget.CircleImageView
                     android:id="@+id/user_photo"
                     android:layout_width="@dimen/frame_60_distance"
                     android:layout_height="@dimen/frame_60_distance"
                     app:border_color="@color/white"
                     app:border_width="@dimen/frame_one_distance"
-                    android:layout_margin="@dimen/frame_edge_distance"
+                    android:layout_marginStart="@dimen/frame_edge_distance"
+                    android:layout_marginEnd="@dimen/frame_edge_distance"
                     android:src="@drawable/default_photo"
+                    android:layout_marginTop="@dimen/frame_30_distance"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"/>
                 <androidx.appcompat.widget.AppCompatTextView
@@ -36,6 +60,7 @@
                     style="@style/CoreMiddle8Style"
                     android:textColor="@color/text_white_color"
                     android:text="张三"
+                    android:layout_marginTop="@dimen/frame_30_distance"
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@id/user_photo"/>
                 <androidx.appcompat.widget.AppCompatTextView
@@ -55,18 +80,16 @@
                     android:textColor="@color/text_white_color"
                     android:layout_below="@id/user_grade"
                     android:layout_toEndOf="@id/user_photo"/>
-                <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/xl_bt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/CoreSmall8Style"
-                    android:textColor="@color/text_white_color"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:text="开启巡逻"
-                    android:gravity="center"
-                    android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableStart="@drawable/lamp_red"/>
+                    android:layout_marginTop="@dimen/frame_30_distance"
+                    android:layout_marginEnd="@dimen/frame_eight_distance"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/lamp_red"/>
             </RelativeLayout>
         </allen.frame.widget.ScaleLinearLayout>
     </androidx.cardview.widget.CardView>

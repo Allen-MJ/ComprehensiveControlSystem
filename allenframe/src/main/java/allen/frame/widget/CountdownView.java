@@ -81,12 +81,12 @@ public class CountdownView extends AppCompatTextView implements CountdownTime.On
 
 	private int measureWidth(int origin) {
 		int result = (int) textPaint.measureText("00:00");
-		int specMode = View.MeasureSpec.getMode(origin);
-		int specSize = View.MeasureSpec.getSize(origin);
-		if (specMode == View.MeasureSpec.EXACTLY) {
+		int specMode = MeasureSpec.getMode(origin);
+		int specSize = MeasureSpec.getSize(origin);
+		if (specMode == MeasureSpec.EXACTLY) {
 			result = specSize;
 		} else {
-			if (specMode == View.MeasureSpec.AT_MOST) {
+			if (specMode == MeasureSpec.AT_MOST) {
 				result = Math.min(result, specSize);
 			}
 		}
@@ -95,12 +95,12 @@ public class CountdownView extends AppCompatTextView implements CountdownTime.On
 
 	private int measureHeight(int origin) {
 		int result = (int) textPaint.measureText("00");
-		int specMode = View.MeasureSpec.getMode(origin);
-		int specSize = View.MeasureSpec.getSize(origin);
-		if (specMode == View.MeasureSpec.EXACTLY) {
+		int specMode = MeasureSpec.getMode(origin);
+		int specSize = MeasureSpec.getSize(origin);
+		if (specMode == MeasureSpec.EXACTLY) {
 			result = specSize;
 		} else {
-			if (specMode == View.MeasureSpec.AT_MOST) {
+			if (specMode == MeasureSpec.AT_MOST) {
 				result = Math.min(result, specSize);
 			}
 		}

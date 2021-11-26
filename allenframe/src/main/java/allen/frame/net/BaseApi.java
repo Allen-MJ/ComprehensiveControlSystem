@@ -14,4 +14,7 @@ public class BaseApi {
      */
     public static final String getType = "/api/dictDetail/queryOfApp";
 
+    public static final String Version = "/api/AppVersion/getWpeOfAndroid";
+
+
 }

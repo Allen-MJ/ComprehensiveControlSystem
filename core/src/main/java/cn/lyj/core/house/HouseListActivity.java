@@ -1,6 +1,9 @@
 package cn.lyj.core.house;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -29,9 +32,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
+import cn.lyj.core.adapter.HouseAdapter;
 import cn.lyj.core.adapter.HousePersonAdapter;
 import cn.lyj.core.api.CoreApi;
+import cn.lyj.core.entry.House;
 import cn.lyj.core.entry.HousePerson;
+import cn.lyj.core.log.UpdateLogActivity;
 
 /**
  * 房屋管理列表
@@ -45,12 +51,11 @@ public class HouseListActivity extends AllenBaseActivity {
     RecyclerView rv;
     @BindView(R2.id.refresh)
     SmartRefreshLayout refresh;
-    private HousePersonAdapter adapter;
+    private HouseAdapter adapter;
     private int page = 0,size = 10;
     private boolean isRefresh = false;
-    private List<HousePerson> list,sublist;
+    private List<House> list,sublist;
     private String mKey = "";
-    private String type = "0";
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -63,8 +68,35 @@ public class HouseListActivity extends AllenBaseActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId==R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateHouseActivity.class),10);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==10){
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
+    }
+
+    @Override
     protected void initBar() {
-        type = getIntent().getStringExtra(Constants.Key_1);
         setToolbarTitle(toolbar,"实有房屋",true);
     }
 
@@ -75,7 +107,7 @@ public class HouseListActivity extends AllenBaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(manager);
-        adapter = new HousePersonAdapter();
+        adapter = new HouseAdapter();
         rv.setAdapter(adapter);
         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
         loadData();
@@ -114,25 +146,26 @@ public class HouseListActivity extends AllenBaseActivity {
                 loadData();
             }
         });
-        adapter.setOnItemClickListener(new HousePersonAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new HouseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, HousePerson entry, int position) {
-
+            public void onItemClick(View v, House entry, int position) {
+                startActivityForResult(new Intent(context,UpdateHouseActivity.class)
+                        .putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override
-            public void onItemDelete(View v, HousePerson entry, int position) {
+            public void onItemDelete(View v, House entry, int position) {
 
             }
         });
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
-                .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
-                .enqueue(new Callback<List<HousePerson>>() {
+        Https.with(this).url(CoreApi.House)
+                .addParam("huhao",mKey).addParam("address",mKey).addParam("page",page++).addParam("size",size).get()
+                .enqueue(new Callback<List<House>>() {
                     @Override
-                    public void success(List<HousePerson> data) {
+                    public void success(List<House> data) {
                         sublist = data;
                         showData();
                     }

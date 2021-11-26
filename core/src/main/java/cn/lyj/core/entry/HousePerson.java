@@ -378,7 +378,7 @@ public class HousePerson implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public static class B1209ObjBean {
+    public static class B1209ObjBean implements Serializable{
         /**
          * code : 05
          * codeName : 民盟
@@ -404,7 +404,7 @@ public class HousePerson implements Serializable {
         }
     }
 
-    public static class B1210ObjBean {
+    public static class B1210ObjBean implements Serializable{
         /**
          * code : 2
          * codeName : 本科教育
@@ -430,7 +430,7 @@ public class HousePerson implements Serializable {
         }
     }
 
-    public static class B1216ObjBean {
+    public static class B1216ObjBean implements Serializable{
         /**
          * code : 500000
          * codeName : 重庆市
@@ -456,7 +456,7 @@ public class HousePerson implements Serializable {
         }
     }
 
-    public static class B1218ObjBean {
+    public static class B1218ObjBean implements Serializable{
         /**
          * code : 500111
          * codeName : 重庆市大足区
@@ -482,7 +482,7 @@ public class HousePerson implements Serializable {
         }
     }
 
-    public static class B1224ObjBean {
+    public static class B1224ObjBean implements Serializable{
         /**
          * code : 00
          * codeName : 本人
@@ -508,7 +508,7 @@ public class HousePerson implements Serializable {
         }
     }
 
-    public static class GidObjBean {
+    public static class GidObjBean implements Serializable{
         /**
          * orgFullName : 一网格
          * orgId : 828280c57c64053d017c6408fc5c0000

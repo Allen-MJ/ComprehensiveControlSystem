@@ -175,7 +175,7 @@ public class CameraPreview extends TextureView {
     /**
      * 处理生命周期内的回调事件
      */
-    private final TextureView.SurfaceTextureListener mSurfaceTextureListener = new TextureView.SurfaceTextureListener() {
+    private final SurfaceTextureListener mSurfaceTextureListener = new SurfaceTextureListener() {
 
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture texture, int width, int height) {

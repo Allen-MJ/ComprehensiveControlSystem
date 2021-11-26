@@ -28,6 +28,14 @@
         android:layout_marginTop="@dimen/frame_32_distance"
         android:layout_marginEnd="@dimen/frame_32_distance"
         android:layout_alignParentEnd="true"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/frame_text_normal_size"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerInParent="true"
+        android:text="管理员版"
+        android:textStyle="bold"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_guide_enter"
         android:background="@drawable/shape_black_tran_btn_bg"

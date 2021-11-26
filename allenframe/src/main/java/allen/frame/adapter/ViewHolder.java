@@ -121,6 +121,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public ViewHolder setGravity(int viewId, int gravity) {
+        TextView view = getView(viewId);
+        view.setGravity(gravity);
+        return this;
+    }
+
     /**
      * 带有下划线的textview
      *

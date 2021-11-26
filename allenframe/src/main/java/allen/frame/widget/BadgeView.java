@@ -55,8 +55,8 @@ public class BadgeView extends AppCompatTextView {
         if (!(getLayoutParams() instanceof LayoutParams)) {
             LayoutParams layoutParams =
                     new LayoutParams(
-                            android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-                            android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
                             Gravity.RIGHT | Gravity.TOP);
             setLayoutParams(layoutParams);
         }
@@ -140,13 +140,13 @@ public class BadgeView extends AppCompatTextView {
     }
 
     public void setBadgeGravity(int gravity) {
-        FrameLayout.LayoutParams params = (LayoutParams) getLayoutParams();
+        LayoutParams params = (LayoutParams) getLayoutParams();
         params.gravity = gravity;
         setLayoutParams(params);
     }
 
     public int getBadgeGravity() {
-        FrameLayout.LayoutParams params = (LayoutParams) getLayoutParams();
+        LayoutParams params = (LayoutParams) getLayoutParams();
         return params.gravity;
     }
 
@@ -155,7 +155,7 @@ public class BadgeView extends AppCompatTextView {
     }
 
     public void setBadgeMargin(int leftDipMargin, int topDipMargin, int rightDipMargin, int bottomDipMargin) {
-        FrameLayout.LayoutParams params = (LayoutParams) getLayoutParams();
+        LayoutParams params = (LayoutParams) getLayoutParams();
         params.leftMargin = dip2Px(leftDipMargin);
         params.topMargin = dip2Px(topDipMargin);
         params.rightMargin = dip2Px(rightDipMargin);
@@ -164,7 +164,7 @@ public class BadgeView extends AppCompatTextView {
     }
 
     public int[] getBadgeMargin() {
-        FrameLayout.LayoutParams params = (LayoutParams) getLayoutParams();
+        LayoutParams params = (LayoutParams) getLayoutParams();
         return new int[] { params.leftMargin, params.topMargin, params.rightMargin, params.bottomMargin };
     }
 

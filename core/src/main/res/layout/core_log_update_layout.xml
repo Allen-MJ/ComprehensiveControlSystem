@@ -85,4 +85,16 @@
             android:minLines="3"
             android:background="@color/transparent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/commit_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/commit_bt"
+        android:textColor="@color/white"
+        android:textSize="@dimen/frame_text_normal_size"
+        android:gravity="center"
+        android:background="@drawable/shape_blue_btn_bg"
+        android:layout_marginStart="@dimen/frame_20_distance"
+        android:layout_marginEnd="@dimen/frame_20_distance"
+        android:layout_marginTop="@dimen/frame_32_distance"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

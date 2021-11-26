@@ -2,6 +2,8 @@ package cn.lyj.work;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
 import allen.frame.AllenIMBaseActivity;
@@ -54,12 +56,24 @@ public class LoginActivity extends AllenIMBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        loginAccount.setText(shared.getString(Constants.UserName,""));
+        loginPsw.setText("a-123456");
         authCode();
     }
 
     @Override
     protected void addEvent() {
+        loginPsw.setOnClickDrawListenner(new ClickDrawEditText.onClickDrawListenner() {
+            @Override
+            public void onHide(ClickDrawEditText view) {
+                view.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
 
+            @Override
+            public void onShow(ClickDrawEditText view) {
+                view.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
     }
 
     @OnClick({cn.lyj.core.R2.id.login_bt, R2.id.yzm})
@@ -122,6 +136,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                     public void success(LoginInfo data) {
                         dismissProgressDialog();
                         shared.edit().putString(Constants.UserToken,data.getToken())
+                                .putString(Constants.UserUnitsName,data.getUser().getUser().getOrg().getOrgFullName())
                                 .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                                 .putString(Constants.UserId,data.getUser().getUser().getId())
                                 .putString(Constants.UserPhoto,data.getUser().getUser().getAvatarPath())

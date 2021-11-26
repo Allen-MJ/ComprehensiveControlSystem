@@ -170,13 +170,16 @@ public class AllenManager {
 	 * @return
 	 */
 	public boolean isNewVersion(String newVercode){
+		if(StringUtils.empty(newVercode)){
+			return false;
+		}
 		boolean isupdate = false;
 		int first = 0;
 		int second = 0;
 		int third = 0;
 		String[] oldV = verCode.split("\\.");
 		String[] newV = newVercode.split("\\.");
-		for(int i=0;i<oldV.length;i++){
+		for(int i=0;i<newV.length;i++){
 			int nC = Integer.parseInt(newV[i]);
 			int oC = Integer.parseInt(oldV[i]);
 			switch (i) {
@@ -251,7 +254,7 @@ public class AllenManager {
 					Build.TAGS.length()%10 + Build.TYPE.length()%10 +
 					Build.USER.length()%10 ; //13 位
 			try {
-				serial = android.os.Build.class.getField("SERIAL").get(null).toString();
+				serial = Build.class.getField("SERIAL").get(null).toString();
 				//API>=9 使用serial号
 				return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
 			} catch (Exception exception) {

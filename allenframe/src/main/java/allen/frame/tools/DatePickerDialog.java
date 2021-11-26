@@ -52,7 +52,7 @@ public class DatePickerDialog extends AlertDialog implements OnClickListener, On
         mDatePickerStart = (DatePicker) view.findViewById(R.id.datePickerStart);
         mDatePickerStart.init(year, monthOfYear, dayOfMonth, this);
  
-        hideDay(mDatePickerStart);
+//        hideDay(mDatePickerStart);
     }
  
     private void hideDay(DatePicker mDatePicker) {

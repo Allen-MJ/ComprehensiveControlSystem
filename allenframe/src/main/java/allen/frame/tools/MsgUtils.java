@@ -164,14 +164,18 @@ public class MsgUtils {
 		dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
 	}
 
-	public static void showNotOutMDMessage(Context context, String msg, String pos,
+	public static void showNotOutMDMessage(Context context, String title, String msg, String pos,
 			DialogInterface.OnClickListener onPosClick, String neg, DialogInterface.OnClickListener onNegClick) {
 		AlertDialog dialog = new AlertDialog.Builder(context,
-				R.style.Theme_AppCompat_Light_Dialog_Alert).setTitle("温馨提示").setCancelable(false).setMessage(msg)
+				R.style.Theme_AppCompat_Light_Dialog_Alert).setTitle(title).setCancelable(false).setMessage(msg)
 						.setNegativeButton(neg, onNegClick).setPositiveButton(pos, onPosClick).show();
 		dialog.getButton(DialogInterface.BUTTON_POSITIVE)
 				.setTextColor(context.getResources().getColor(R.color.text_blue_color));
 		dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+	}
+	public static void showNotOutMDMessage(Context context, String msg, String pos,
+			DialogInterface.OnClickListener onPosClick, String neg, DialogInterface.OnClickListener onNegClick) {
+		showNotOutMDMessage(context,"温馨提示",msg,pos,onPosClick,neg,onNegClick);
 	}
 
 	public static void exitMDMessage(Context context, String text) {

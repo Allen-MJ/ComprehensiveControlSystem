@@ -1,5 +1,6 @@
 package cn.lyj.core.log;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -25,6 +27,7 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.widget.SearchView;
 import androidx.annotation.NonNull;
@@ -94,6 +97,19 @@ public class LogListActivity extends AllenBaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==10){
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
+    }
+
+    @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         refresh.setRefreshHeader(new BezierRadarHeader(context).setEnableHorizontalDrag(true));
         refresh.setRefreshFooter(new ClassicsFooter(context));
@@ -132,12 +148,23 @@ public class LogListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new LogAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, Log entry, int position) {
-
+                startActivityForResult(new Intent(context,UpdateLogActivity.class).putExtra(Constants.ObjectFirst,entry),10);
             }
 
             @Override
-            public void onItemDelete(View v, Log entry, int position) {
-
+            public void onItemDelete(View v, final Log entry, int position) {
+                MsgUtils.showMDMessage(context, "确定删除该日志?", "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        delete(entry);
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }
@@ -198,9 +225,32 @@ public class LogListActivity extends AllenBaseActivity {
         view.setEnabled(true);
     }
 
+    private void delete(Log entry){
+        showProgressDialog("");
+        String[] ids = new String[]{entry.getLogId()};
+        Https.with(this).url(CoreApi.CoreaddLog).addJsons(new Gson().toJson(ids)).delete()
+                .enqueue(new Callback<Object>() {
+                    @Override
+                    public void success(Object data) {
+                        dismissProgressDialog();
+                        MsgUtils.showShortToast(context,"已删除!");
+                        isRefresh = true;
+                        page = 0;
+                        actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                        loadData();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
     private void loadWork(){
         showProgressDialog("");
-        Https.with(this).url(CoreApi.core_Type).addParam("dictName","").addParam("page",0).addParam("size",9999).get()
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","work_item").addParam("page",0).addParam("size",9999).get()
                 .enqueue(new Callback<List<CoreType>>() {
 
                     @Override
@@ -216,7 +266,7 @@ public class LogListActivity extends AllenBaseActivity {
                             @Override
                             public void onItemClick(View view, ViewHolder holder, int position) {
                                 dialog.dismiss();
-                                workItem = data.get(position).getId();
+                                workItem = data.get(position).getValue();
                                 choiceWork.setText(data.get(position).getLabel());
                                 page = 0;
                                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
@@ -240,7 +290,7 @@ public class LogListActivity extends AllenBaseActivity {
     }
     private void loadStatus(){
         showProgressDialog("");
-        Https.with(this).url(CoreApi.core_Type).addParam("dictName","").addParam("page",0).addParam("size",9999).get()
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName","work_progress").addParam("page",0).addParam("size",9999).get()
                 .enqueue(new Callback<List<CoreType>>() {
 
                     @Override
@@ -256,7 +306,7 @@ public class LogListActivity extends AllenBaseActivity {
                             @Override
                             public void onItemClick(View view, ViewHolder holder, int position) {
                                 dialog.dismiss();
-                                progress = data.get(position).getId();
+                                progress = data.get(position).getValue();
                                 choiceStatus.setText(data.get(position).getLabel());
                                 page = 0;
                                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");

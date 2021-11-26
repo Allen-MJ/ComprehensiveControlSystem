@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import allen.frame.tools.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,7 +63,7 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public void bind(final Log entry) {
             if (entry != null) {
                 name.setText(entry.getCreateBy());
-                date.setText(entry.getCreateTime());
+                date.setText(DateUtils.getTimeFormatText(entry.getCreateTime()));
                 content.setText(entry.getDescription());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override

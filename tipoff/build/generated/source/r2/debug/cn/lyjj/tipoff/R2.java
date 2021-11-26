@@ -6908,6 +6908,7 @@ public final class R2 {
     public static final int character_counter_pattern = 2289;
 
     @StringRes
+<<<<<<< .merge_file_a10008
     public static final int empty_text = 2290;
 
     @StringRes
@@ -7185,10 +7186,293 @@ public final class R2 {
 
     @StringRes
     public static final int tip_sfz = 2382;
+=======
+    public static final int commit_bt = 2290;
+
+    @StringRes
+    public static final int empty_text = 2291;
+
+    @StringRes
+    public static final int error_file_type = 2292;
+
+    @StringRes
+    public static final int error_no_video_activity = 2293;
+
+    @StringRes
+    public static final int error_over_count = 2294;
+
+    @StringRes
+    public static final int error_over_count_default = 2295;
+
+    @StringRes
+    public static final int error_over_original_count = 2296;
+
+    @StringRes
+    public static final int error_over_original_size = 2297;
+
+    @StringRes
+    public static final int error_over_quality = 2298;
+
+    @StringRes
+    public static final int error_type_conflict = 2299;
+
+    @StringRes
+    public static final int error_under_quality = 2300;
+
+    @StringRes
+    public static final int fab_transformation_scrim_behavior = 2301;
+
+    @StringRes
+    public static final int fab_transformation_sheet_behavior = 2302;
+
+    @StringRes
+    public static final int frameprogress = 2303;
+
+    @StringRes
+    public static final int hide_bottom_view_on_scroll_behavior = 2304;
+
+    @StringRes
+    public static final int login_account_hint = 2305;
+
+    @StringRes
+    public static final int login_apsw_hint = 2306;
+
+    @StringRes
+    public static final int login_bt = 2307;
+
+    @StringRes
+    public static final int login_phone_hint = 2308;
+
+    @StringRes
+    public static final int login_psw_hint = 2309;
+
+    @StringRes
+    public static final int login_regist = 2310;
+
+    @StringRes
+    public static final int login_yzm_hint = 2311;
+
+    @StringRes
+    public static final int mis_action_button_string = 2312;
+
+    @StringRes
+    public static final int mis_action_done = 2313;
+
+    @StringRes
+    public static final int mis_error_image_not_exist = 2314;
+
+    @StringRes
+    public static final int mis_error_no_permission = 2315;
+
+    @StringRes
+    public static final int mis_folder_all = 2316;
+
+    @StringRes
+    public static final int mis_msg_amount_limit = 2317;
+
+    @StringRes
+    public static final int mis_msg_no_camera = 2318;
+
+    @StringRes
+    public static final int mis_permission_dialog_cancel = 2319;
+
+    @StringRes
+    public static final int mis_permission_dialog_ok = 2320;
+
+    @StringRes
+    public static final int mis_permission_dialog_title = 2321;
+
+    @StringRes
+    public static final int mis_permission_rationale = 2322;
+
+    @StringRes
+    public static final int mis_permission_rationale_write_storage = 2323;
+
+    @StringRes
+    public static final int mis_photo_unit = 2324;
+
+    @StringRes
+    public static final int mis_preview = 2325;
+
+    @StringRes
+    public static final int mis_tip_take_photo = 2326;
+
+    @StringRes
+    public static final int mtrl_chip_close_icon_content_description = 2327;
+
+    @StringRes
+    public static final int ok_bt = 2328;
+
+    @StringRes
+    public static final int password_toggle_content_description = 2329;
+
+    @StringRes
+    public static final int path_password_eye = 2330;
+
+    @StringRes
+    public static final int path_password_eye_mask_strike_through = 2331;
+
+    @StringRes
+    public static final int path_password_eye_mask_visible = 2332;
+
+    @StringRes
+    public static final int path_password_strike_through = 2333;
+
+    @StringRes
+    public static final int photo_grid_capture = 2334;
+
+    @StringRes
+    public static final int regist_bt = 2335;
+
+    @StringRes
+    public static final int scankit_confirm = 2336;
+
+    @StringRes
+    public static final int scankit_light = 2337;
+
+    @StringRes
+    public static final int scankit_light_off = 2338;
+
+    @StringRes
+    public static final int scankit_no_code_tip = 2339;
+
+    @StringRes
+    public static final int scankit_scan_tip = 2340;
+
+    @StringRes
+    public static final int scankit_title = 2341;
+
+    @StringRes
+    public static final int search_hint = 2342;
+
+    @StringRes
+    public static final int search_menu_title = 2343;
+
+    @StringRes
+    public static final int srl_component_falsify = 2344;
+
+    @StringRes
+    public static final int srl_content_empty = 2345;
+
+    @StringRes
+    public static final int srl_footer_failed = 2346;
+
+    @StringRes
+    public static final int srl_footer_finish = 2347;
+
+    @StringRes
+    public static final int srl_footer_loading = 2348;
+
+    @StringRes
+    public static final int srl_footer_nothing = 2349;
+
+    @StringRes
+    public static final int srl_footer_pulling = 2350;
+
+    @StringRes
+    public static final int srl_footer_refreshing = 2351;
+
+    @StringRes
+    public static final int srl_footer_release = 2352;
+
+    @StringRes
+    public static final int srl_header_failed = 2353;
+
+    @StringRes
+    public static final int srl_header_finish = 2354;
+
+    @StringRes
+    public static final int srl_header_loading = 2355;
+
+    @StringRes
+    public static final int srl_header_pulling = 2356;
+
+    @StringRes
+    public static final int srl_header_refreshing = 2357;
+
+    @StringRes
+    public static final int srl_header_release = 2358;
+
+    @StringRes
+    public static final int srl_header_secondary = 2359;
+
+    @StringRes
+    public static final int srl_header_update = 2360;
+
+    @StringRes
+    public static final int status_bar_notification_info_overflow = 2361;
+
+    @StringRes
+    public static final int tip_add_file = 2362;
+
+    @StringRes
+    public static final int tip_address = 2363;
+
+    @StringRes
+    public static final int tip_content = 2364;
+
+    @StringRes
+    public static final int tip_dw = 2365;
+
+    @StringRes
+    public static final int tip_fyr = 2366;
+
+    @StringRes
+    public static final int tip_gps = 2367;
+
+    @StringRes
+    public static final int tip_grid = 2368;
+
+    @StringRes
+    public static final int tip_info_address = 2369;
+
+    @StringRes
+    public static final int tip_info_content = 2370;
+
+    @StringRes
+    public static final int tip_info_dw = 2371;
+
+    @StringRes
+    public static final int tip_info_file = 2372;
+
+    @StringRes
+    public static final int tip_info_grid = 2373;
+
+    @StringRes
+    public static final int tip_info_idno = 2374;
+
+    @StringRes
+    public static final int tip_info_name = 2375;
+
+    @StringRes
+    public static final int tip_info_phone = 2376;
+
+    @StringRes
+    public static final int tip_info_sex = 2377;
+
+    @StringRes
+    public static final int tip_phone = 2378;
+
+    @StringRes
+    public static final int tip_search_hint = 2379;
+
+    @StringRes
+    public static final int tip_sex = 2380;
+
+    @StringRes
+    public static final int tip_sex_female = 2381;
+
+    @StringRes
+    public static final int tip_sex_male = 2382;
+
+    @StringRes
+    public static final int tip_sfz = 2383;
+>>>>>>> .merge_file_a01404
   }
 
   public static final class style {
     @StyleRes
+<<<<<<< .merge_file_a10008
     public static final int AlertDialog_AppCompat = 2383;
 
     @StyleRes
@@ -8810,10 +9094,1634 @@ public final class R2 {
 
     @StyleRes
     public static final int popup_window_anim = 2923;
+=======
+    public static final int AlertDialog_AppCompat = 2384;
+
+    @StyleRes
+    public static final int AlertDialog_AppCompat_Light = 2385;
+
+    @StyleRes
+    public static final int Allen_Dialog_Theme = 2386;
+
+    @StyleRes
+    public static final int Animation_AppCompat_Dialog = 2387;
+
+    @StyleRes
+    public static final int Animation_AppCompat_DropDownUp = 2388;
+
+    @StyleRes
+    public static final int Animation_AppCompat_Tooltip = 2389;
+
+    @StyleRes
+    public static final int Animation_Design_BottomSheetDialog = 2390;
+
+    @StyleRes
+    public static final int AppTheme = 2391;
+
+    @StyleRes
+    public static final int AppTheme_CheckBox = 2392;
+
+    @StyleRes
+    public static final int AppTheme_DrawerArrowToggle = 2393;
+
+    @StyleRes
+    public static final int AppTheme_SwipeBack = 2394;
+
+    @StyleRes
+    public static final int AppTheme_SwipeBack_Translucent = 2395;
+
+    @StyleRes
+    public static final int AppTheme_Toolbar = 2396;
+
+    @StyleRes
+    public static final int Base_AlertDialog_AppCompat = 2397;
+
+    @StyleRes
+    public static final int Base_AlertDialog_AppCompat_Light = 2398;
+
+    @StyleRes
+    public static final int Base_Animation_AppCompat_Dialog = 2399;
+
+    @StyleRes
+    public static final int Base_Animation_AppCompat_DropDownUp = 2400;
+
+    @StyleRes
+    public static final int Base_Animation_AppCompat_Tooltip = 2401;
+
+    @StyleRes
+    public static final int Base_CardView = 2402;
+
+    @StyleRes
+    public static final int Base_DialogWindowTitleBackground_AppCompat = 2403;
+
+    @StyleRes
+    public static final int Base_DialogWindowTitle_AppCompat = 2404;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat = 2405;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Body1 = 2406;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Body2 = 2407;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Button = 2408;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Caption = 2409;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Display1 = 2410;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Display2 = 2411;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Display3 = 2412;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Display4 = 2413;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Headline = 2414;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Inverse = 2415;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Large = 2416;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Large_Inverse = 2417;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2418;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2419;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Medium = 2420;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Medium_Inverse = 2421;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Menu = 2422;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_SearchResult = 2423;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_SearchResult_Subtitle = 2424;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_SearchResult_Title = 2425;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Small = 2426;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Small_Inverse = 2427;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Subhead = 2428;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Subhead_Inverse = 2429;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Title = 2430;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Title_Inverse = 2431;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Tooltip = 2432;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = 2433;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2434;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2435;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title = 2436;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2437;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2438;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_ActionMode_Title = 2439;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_Button = 2440;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2441;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Colored = 2442;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_Button_Inverse = 2443;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_DropDownItem = 2444;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = 2445;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = 2446;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = 2447;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_Switch = 2448;
+
+    @StyleRes
+    public static final int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2449;
+
+    @StyleRes
+    public static final int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2450;
+
+    @StyleRes
+    public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2451;
+
+    @StyleRes
+    public static final int Base_TextAppearance_Widget_AppCompat_Toolbar_Title = 2452;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat = 2453;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_ActionBar = 2454;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_Dark = 2455;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_Dark_ActionBar = 2456;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_Dialog = 2457;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_Dialog_Alert = 2458;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_AppCompat_Light = 2459;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_MaterialComponents_Dialog = 2460;
+
+    @StyleRes
+    public static final int Base_ThemeOverlay_MaterialComponents_Dialog_Alert = 2461;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat = 2462;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_CompactMenu = 2463;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Dialog = 2464;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_DialogWhenLarge = 2465;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Dialog_Alert = 2466;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Dialog_FixedSize = 2467;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Dialog_MinWidth = 2468;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light = 2469;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_DarkActionBar = 2470;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_Dialog = 2471;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_DialogWhenLarge = 2472;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_Dialog_Alert = 2473;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_Dialog_FixedSize = 2474;
+
+    @StyleRes
+    public static final int Base_Theme_AppCompat_Light_Dialog_MinWidth = 2475;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents = 2476;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Bridge = 2477;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_CompactMenu = 2478;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Dialog = 2479;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_DialogWhenLarge = 2480;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Dialog_Alert = 2481;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Dialog_FixedSize = 2482;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Dialog_MinWidth = 2483;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light = 2484;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_Bridge = 2485;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_DarkActionBar = 2486;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2487;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_Dialog = 2488;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_DialogWhenLarge = 2489;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_Dialog_Alert = 2490;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_Dialog_FixedSize = 2491;
+
+    @StyleRes
+    public static final int Base_Theme_MaterialComponents_Light_Dialog_MinWidth = 2492;
+
+    @StyleRes
+    public static final int Base_V14_ThemeOverlay_MaterialComponents_Dialog = 2493;
+
+    @StyleRes
+    public static final int Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = 2494;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents = 2495;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Bridge = 2496;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Dialog = 2497;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Light = 2498;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Light_Bridge = 2499;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2500;
+
+    @StyleRes
+    public static final int Base_V14_Theme_MaterialComponents_Light_Dialog = 2501;
+
+    @StyleRes
+    public static final int Base_V21_ThemeOverlay_AppCompat_Dialog = 2502;
+
+    @StyleRes
+    public static final int Base_V21_Theme_AppCompat = 2503;
+
+    @StyleRes
+    public static final int Base_V21_Theme_AppCompat_Dialog = 2504;
+
+    @StyleRes
+    public static final int Base_V21_Theme_AppCompat_Light = 2505;
+
+    @StyleRes
+    public static final int Base_V21_Theme_AppCompat_Light_Dialog = 2506;
+
+    @StyleRes
+    public static final int Base_V22_Theme_AppCompat = 2507;
+
+    @StyleRes
+    public static final int Base_V22_Theme_AppCompat_Light = 2508;
+
+    @StyleRes
+    public static final int Base_V23_Theme_AppCompat = 2509;
+
+    @StyleRes
+    public static final int Base_V23_Theme_AppCompat_Light = 2510;
+
+    @StyleRes
+    public static final int Base_V26_Theme_AppCompat = 2511;
+
+    @StyleRes
+    public static final int Base_V26_Theme_AppCompat_Light = 2512;
+
+    @StyleRes
+    public static final int Base_V26_Widget_AppCompat_Toolbar = 2513;
+
+    @StyleRes
+    public static final int Base_V28_Theme_AppCompat = 2514;
+
+    @StyleRes
+    public static final int Base_V28_Theme_AppCompat_Light = 2515;
+
+    @StyleRes
+    public static final int Base_V7_ThemeOverlay_AppCompat_Dialog = 2516;
+
+    @StyleRes
+    public static final int Base_V7_Theme_AppCompat = 2517;
+
+    @StyleRes
+    public static final int Base_V7_Theme_AppCompat_Dialog = 2518;
+
+    @StyleRes
+    public static final int Base_V7_Theme_AppCompat_Light = 2519;
+
+    @StyleRes
+    public static final int Base_V7_Theme_AppCompat_Light_Dialog = 2520;
+
+    @StyleRes
+    public static final int Base_V7_Widget_AppCompat_AutoCompleteTextView = 2521;
+
+    @StyleRes
+    public static final int Base_V7_Widget_AppCompat_EditText = 2522;
+
+    @StyleRes
+    public static final int Base_V7_Widget_AppCompat_Toolbar = 2523;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionBar = 2524;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionBar_Solid = 2525;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionBar_TabBar = 2526;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionBar_TabText = 2527;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionBar_TabView = 2528;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionButton = 2529;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionButton_CloseMode = 2530;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionButton_Overflow = 2531;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActionMode = 2532;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ActivityChooserView = 2533;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_AutoCompleteTextView = 2534;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button = 2535;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ButtonBar = 2536;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ButtonBar_AlertDialog = 2537;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button_Borderless = 2538;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button_Borderless_Colored = 2539;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = 2540;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button_Colored = 2541;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Button_Small = 2542;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_CompoundButton_CheckBox = 2543;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_CompoundButton_RadioButton = 2544;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_CompoundButton_Switch = 2545;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_DrawerArrowToggle = 2546;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2547;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_DropDownItem_Spinner = 2548;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_EditText = 2549;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ImageButton = 2550;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar = 2551;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar_Solid = 2552;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabBar = 2553;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabText = 2554;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2555;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_ActionBar_TabView = 2556;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_PopupMenu = 2557;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Light_PopupMenu_Overflow = 2558;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ListMenuView = 2559;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ListPopupWindow = 2560;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ListView = 2561;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ListView_DropDown = 2562;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ListView_Menu = 2563;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_PopupMenu = 2564;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_PopupMenu_Overflow = 2565;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_PopupWindow = 2566;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ProgressBar = 2567;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_ProgressBar_Horizontal = 2568;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_RatingBar = 2569;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_RatingBar_Indicator = 2570;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_RatingBar_Small = 2571;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_SearchView = 2572;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_SearchView_ActionBar = 2573;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_SeekBar = 2574;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_SeekBar_Discrete = 2575;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Spinner = 2576;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Spinner_Underlined = 2577;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_TextView = 2578;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_TextView_SpinnerItem = 2579;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Toolbar = 2580;
+
+    @StyleRes
+    public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2581;
+
+    @StyleRes
+    public static final int Base_Widget_Design_TabLayout = 2582;
+
+    @StyleRes
+    public static final int Base_Widget_MaterialComponents_Chip = 2583;
+
+    @StyleRes
+    public static final int Base_Widget_MaterialComponents_TextInputEditText = 2584;
+
+    @StyleRes
+    public static final int Base_Widget_MaterialComponents_TextInputLayout = 2585;
+
+    @StyleRes
+    public static final int CardView = 2586;
+
+    @StyleRes
+    public static final int CardView_Dark = 2587;
+
+    @StyleRes
+    public static final int CardView_Light = 2588;
+
+    @StyleRes
+    public static final int JpushDialogStyle = 2589;
+
+    @StyleRes
+    public static final int Light_Toolbar_TitleText = 2590;
+
+    @StyleRes
+    public static final int Matisse_Dracula = 2591;
+
+    @StyleRes
+    public static final int Matisse_Zhihu = 2592;
+
+    @StyleRes
+    public static final int MenuTextStyle = 2593;
+
+    @StyleRes
+    public static final int Middle8Style = 2594;
+
+    @StyleRes
+    public static final int OverflowMenuStyle = 2595;
+
+    @StyleRes
+    public static final int Platform_AppCompat = 2596;
+
+    @StyleRes
+    public static final int Platform_AppCompat_Light = 2597;
+
+    @StyleRes
+    public static final int Platform_MaterialComponents = 2598;
+
+    @StyleRes
+    public static final int Platform_MaterialComponents_Dialog = 2599;
+
+    @StyleRes
+    public static final int Platform_MaterialComponents_Light = 2600;
+
+    @StyleRes
+    public static final int Platform_MaterialComponents_Light_Dialog = 2601;
+
+    @StyleRes
+    public static final int Platform_ThemeOverlay_AppCompat = 2602;
+
+    @StyleRes
+    public static final int Platform_ThemeOverlay_AppCompat_Dark = 2603;
+
+    @StyleRes
+    public static final int Platform_ThemeOverlay_AppCompat_Light = 2604;
+
+    @StyleRes
+    public static final int Platform_V21_AppCompat = 2605;
+
+    @StyleRes
+    public static final int Platform_V21_AppCompat_Light = 2606;
+
+    @StyleRes
+    public static final int Platform_V25_AppCompat = 2607;
+
+    @StyleRes
+    public static final int Platform_V25_AppCompat_Light = 2608;
+
+    @StyleRes
+    public static final int Platform_Widget_AppCompat_Spinner = 2609;
+
+    @StyleRes
+    public static final int Popup_Dracula = 2610;
+
+    @StyleRes
+    public static final int Popup_Zhihu = 2611;
+
+    @StyleRes
+    public static final int RtlOverlay_DialogWindowTitle_AppCompat = 2612;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 2613;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 2614;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem = 2615;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 2616;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = 2617;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = 2618;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 2619;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = 2620;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2621;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown = 2622;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 2623;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 2624;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 2625;
+
+    @StyleRes
+    public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 2626;
+
+    @StyleRes
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton = 2627;
+
+    @StyleRes
+    public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2628;
+
+    @StyleRes
+    public static final int Scankit_OnClick = 2629;
+
+    @StyleRes
+    public static final int Small8Style = 2630;
+
+    @StyleRes
+    public static final int Smaller8Style = 2631;
+
+    @StyleRes
+    public static final int SmartRefreshStyle = 2632;
+
+    @StyleRes
+    public static final int TabLayout_Style = 2633;
+
+    @StyleRes
+    public static final int TabLayout_Text_Style = 2634;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat = 2635;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Body1 = 2636;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Body2 = 2637;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Button = 2638;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Caption = 2639;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Display1 = 2640;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Display2 = 2641;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Display3 = 2642;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Display4 = 2643;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Headline = 2644;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Inverse = 2645;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Large = 2646;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Large_Inverse = 2647;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2648;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Light_SearchResult_Title = 2649;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2650;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2651;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Medium = 2652;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Medium_Inverse = 2653;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Menu = 2654;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_SearchResult_Subtitle = 2655;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_SearchResult_Title = 2656;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Small = 2657;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Small_Inverse = 2658;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Subhead = 2659;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Subhead_Inverse = 2660;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Title = 2661;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Title_Inverse = 2662;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Tooltip = 2663;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2664;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2665;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2666;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title = 2667;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2668;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2669;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 2670;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title = 2671;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2672;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_Button = 2673;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2674;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_Button_Colored = 2675;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_Button_Inverse = 2676;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_DropDownItem = 2677;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Header = 2678;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2679;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2680;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_Switch = 2681;
+
+    @StyleRes
+    public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2682;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification = 2683;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Info = 2684;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Info_Media = 2685;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Line2 = 2686;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Line2_Media = 2687;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Media = 2688;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Time = 2689;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Time_Media = 2690;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Title = 2691;
+
+    @StyleRes
+    public static final int TextAppearance_Compat_Notification_Title_Media = 2692;
+
+    @StyleRes
+    public static final int TextAppearance_Design_CollapsingToolbar_Expanded = 2693;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Counter = 2694;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Counter_Overflow = 2695;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Error = 2696;
+
+    @StyleRes
+    public static final int TextAppearance_Design_HelperText = 2697;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Hint = 2698;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Snackbar_Message = 2699;
+
+    @StyleRes
+    public static final int TextAppearance_Design_Tab = 2700;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Body1 = 2701;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Body2 = 2702;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Button = 2703;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Caption = 2704;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Chip = 2705;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline1 = 2706;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline2 = 2707;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline3 = 2708;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline4 = 2709;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline5 = 2710;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Headline6 = 2711;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Overline = 2712;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Subtitle1 = 2713;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Subtitle2 = 2714;
+
+    @StyleRes
+    public static final int TextAppearance_MaterialComponents_Tab = 2715;
+
+    @StyleRes
+    public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2716;
+
+    @StyleRes
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2717;
+
+    @StyleRes
+    public static final int TextAppearance_Widget_AppCompat_Toolbar_Title = 2718;
+
+    @StyleRes
+    public static final int TextInputLayout_HintTxt_Style = 2719;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat = 2720;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_ActionBar = 2721;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_Dark = 2722;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_Dark_ActionBar = 2723;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_DayNight = 2724;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_DayNight_ActionBar = 2725;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_Dialog = 2726;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_Dialog_Alert = 2727;
+
+    @StyleRes
+    public static final int ThemeOverlay_AppCompat_Light = 2728;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents = 2729;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_ActionBar = 2730;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_Dark = 2731;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_Dark_ActionBar = 2732;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_Dialog = 2733;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_Dialog_Alert = 2734;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_Light = 2735;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_TextInputEditText = 2736;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = 2737;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = 2738;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = 2739;
+
+    @StyleRes
+    public static final int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2740;
+
+    @StyleRes
+    public static final int Theme_AppCompat = 2741;
+
+    @StyleRes
+    public static final int Theme_AppCompat_CompactMenu = 2742;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight = 2743;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_DarkActionBar = 2744;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_Dialog = 2745;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_DialogWhenLarge = 2746;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_Dialog_Alert = 2747;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_Dialog_MinWidth = 2748;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DayNight_NoActionBar = 2749;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Dialog = 2750;
+
+    @StyleRes
+    public static final int Theme_AppCompat_DialogWhenLarge = 2751;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Dialog_Alert = 2752;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Dialog_MinWidth = 2753;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Empty = 2754;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light = 2755;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_DarkActionBar = 2756;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_Dialog = 2757;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_DialogWhenLarge = 2758;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_Dialog_Alert = 2759;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_Dialog_MinWidth = 2760;
+
+    @StyleRes
+    public static final int Theme_AppCompat_Light_NoActionBar = 2761;
+
+    @StyleRes
+    public static final int Theme_AppCompat_NoActionBar = 2762;
+
+    @StyleRes
+    public static final int Theme_Design = 2763;
+
+    @StyleRes
+    public static final int Theme_Design_BottomSheetDialog = 2764;
+
+    @StyleRes
+    public static final int Theme_Design_Light = 2765;
+
+    @StyleRes
+    public static final int Theme_Design_Light_BottomSheetDialog = 2766;
+
+    @StyleRes
+    public static final int Theme_Design_Light_NoActionBar = 2767;
+
+    @StyleRes
+    public static final int Theme_Design_NoActionBar = 2768;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents = 2769;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_BottomSheetDialog = 2770;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Bridge = 2771;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_CompactMenu = 2772;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Dialog = 2773;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_DialogWhenLarge = 2774;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Dialog_Alert = 2775;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Dialog_MinWidth = 2776;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light = 2777;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_BottomSheetDialog = 2778;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_Bridge = 2779;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_DarkActionBar = 2780;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2781;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_Dialog = 2782;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_DialogWhenLarge = 2783;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_Dialog_Alert = 2784;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_Dialog_MinWidth = 2785;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_NoActionBar = 2786;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_Light_NoActionBar_Bridge = 2787;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_NoActionBar = 2788;
+
+    @StyleRes
+    public static final int Theme_MaterialComponents_NoActionBar_Bridge = 2789;
+
+    @StyleRes
+    public static final int Theme_Swipe_Back_NoActionBar = 2790;
+
+    @StyleRes
+    public static final int Theme_Toolbar_AppTheme = 2791;
+
+    @StyleRes
+    public static final int Toolbar_Dracula = 2792;
+
+    @StyleRes
+    public static final int Toolbar_TitleText = 2793;
+
+    @StyleRes
+    public static final int Toolbar_Zhihu = 2794;
+
+    @StyleRes
+    public static final int Transparent = 2795;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionBar = 2796;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionBar_Solid = 2797;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionBar_TabBar = 2798;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionBar_TabText = 2799;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionBar_TabView = 2800;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionButton = 2801;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionButton_CloseMode = 2802;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionButton_Overflow = 2803;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActionMode = 2804;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ActivityChooserView = 2805;
+
+    @StyleRes
+    public static final int Widget_AppCompat_AutoCompleteTextView = 2806;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button = 2807;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ButtonBar = 2808;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ButtonBar_AlertDialog = 2809;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button_Borderless = 2810;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button_Borderless_Colored = 2811;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button_ButtonBar_AlertDialog = 2812;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button_Colored = 2813;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Button_Small = 2814;
+
+    @StyleRes
+    public static final int Widget_AppCompat_CompoundButton_CheckBox = 2815;
+
+    @StyleRes
+    public static final int Widget_AppCompat_CompoundButton_RadioButton = 2816;
+
+    @StyleRes
+    public static final int Widget_AppCompat_CompoundButton_Switch = 2817;
+
+    @StyleRes
+    public static final int Widget_AppCompat_DrawerArrowToggle = 2818;
+
+    @StyleRes
+    public static final int Widget_AppCompat_DropDownItem_Spinner = 2819;
+
+    @StyleRes
+    public static final int Widget_AppCompat_EditText = 2820;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ImageButton = 2821;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar = 2822;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_Solid = 2823;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 2824;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar = 2825;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 2826;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabText = 2827;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2828;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabView = 2829;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 2830;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionButton = 2831;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionButton_CloseMode = 2832;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionButton_Overflow = 2833;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActionMode_Inverse = 2834;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ActivityChooserView = 2835;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_AutoCompleteTextView = 2836;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_DropDownItem_Spinner = 2837;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ListPopupWindow = 2838;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_ListView_DropDown = 2839;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_PopupMenu = 2840;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_PopupMenu_Overflow = 2841;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_SearchView = 2842;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2843;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ListMenuView = 2844;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ListPopupWindow = 2845;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ListView = 2846;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ListView_DropDown = 2847;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ListView_Menu = 2848;
+
+    @StyleRes
+    public static final int Widget_AppCompat_PopupMenu = 2849;
+
+    @StyleRes
+    public static final int Widget_AppCompat_PopupMenu_Overflow = 2850;
+
+    @StyleRes
+    public static final int Widget_AppCompat_PopupWindow = 2851;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ProgressBar = 2852;
+
+    @StyleRes
+    public static final int Widget_AppCompat_ProgressBar_Horizontal = 2853;
+
+    @StyleRes
+    public static final int Widget_AppCompat_RatingBar = 2854;
+
+    @StyleRes
+    public static final int Widget_AppCompat_RatingBar_Indicator = 2855;
+
+    @StyleRes
+    public static final int Widget_AppCompat_RatingBar_Small = 2856;
+
+    @StyleRes
+    public static final int Widget_AppCompat_SearchView = 2857;
+
+    @StyleRes
+    public static final int Widget_AppCompat_SearchView_ActionBar = 2858;
+
+    @StyleRes
+    public static final int Widget_AppCompat_SeekBar = 2859;
+
+    @StyleRes
+    public static final int Widget_AppCompat_SeekBar_Discrete = 2860;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Spinner = 2861;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Spinner_DropDown = 2862;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Spinner_DropDown_ActionBar = 2863;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Spinner_Underlined = 2864;
+
+    @StyleRes
+    public static final int Widget_AppCompat_TextView = 2865;
+
+    @StyleRes
+    public static final int Widget_AppCompat_TextView_SpinnerItem = 2866;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Toolbar = 2867;
+
+    @StyleRes
+    public static final int Widget_AppCompat_Toolbar_Button_Navigation = 2868;
+
+    @StyleRes
+    public static final int Widget_Compat_NotificationActionContainer = 2869;
+
+    @StyleRes
+    public static final int Widget_Compat_NotificationActionText = 2870;
+
+    @StyleRes
+    public static final int Widget_Design_AppBarLayout = 2871;
+
+    @StyleRes
+    public static final int Widget_Design_BottomNavigationView = 2872;
+
+    @StyleRes
+    public static final int Widget_Design_BottomSheet_Modal = 2873;
+
+    @StyleRes
+    public static final int Widget_Design_CollapsingToolbar = 2874;
+
+    @StyleRes
+    public static final int Widget_Design_FloatingActionButton = 2875;
+
+    @StyleRes
+    public static final int Widget_Design_NavigationView = 2876;
+
+    @StyleRes
+    public static final int Widget_Design_ScrimInsetsFrameLayout = 2877;
+
+    @StyleRes
+    public static final int Widget_Design_Snackbar = 2878;
+
+    @StyleRes
+    public static final int Widget_Design_TabLayout = 2879;
+
+    @StyleRes
+    public static final int Widget_Design_TextInputLayout = 2880;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_BottomAppBar = 2881;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_BottomAppBar_Colored = 2882;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_BottomNavigationView = 2883;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_BottomNavigationView_Colored = 2884;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_BottomSheet_Modal = 2885;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button = 2886;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_Icon = 2887;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_OutlinedButton = 2888;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_OutlinedButton_Icon = 2889;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_TextButton = 2890;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_TextButton_Dialog = 2891;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_TextButton_Dialog_Icon = 2892;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_TextButton_Icon = 2893;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_UnelevatedButton = 2894;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Button_UnelevatedButton_Icon = 2895;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_CardView = 2896;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_ChipGroup = 2897;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Chip_Action = 2898;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Chip_Choice = 2899;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Chip_Entry = 2900;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Chip_Filter = 2901;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_FloatingActionButton = 2902;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_NavigationView = 2903;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Snackbar = 2904;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Snackbar_FullWidth = 2905;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TabLayout = 2906;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TabLayout_Colored = 2907;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputEditText_FilledBox = 2908;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = 2909;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputEditText_OutlinedBox = 2910;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2911;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputLayout_FilledBox = 2912;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = 2913;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputLayout_OutlinedBox = 2914;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = 2915;
+
+    @StyleRes
+    public static final int Widget_MaterialComponents_Toolbar = 2916;
+
+    @StyleRes
+    public static final int Widget_Support_CoordinatorLayout = 2917;
+
+    @StyleRes
+    public static final int bottomActiveTextStyle = 2918;
+
+    @StyleRes
+    public static final int bottomInActiveTextStyle = 2919;
+
+    @StyleRes
+    public static final int bottom_menu_animation = 2920;
+
+    @StyleRes
+    public static final int contentNormal8Style = 2921;
+
+    @StyleRes
+    public static final int dialog_custom = 2922;
+
+    @StyleRes
+    public static final int menu_labels_style = 2923;
+
+    @StyleRes
+    public static final int popup_window_anim = 2924;
+>>>>>>> .merge_file_a01404
   }
 
   public static final class styleable {
     @StyleableRes
+<<<<<<< .merge_file_a10008
     public static final int ActionBar_background = 2924;
 
     @StyleableRes
@@ -11605,5 +13513,2798 @@ public final class R2 {
 
     @StyleableRes
     public static final int filled_text_rowSpace = 3854;
+=======
+    public static final int ActionBar_background = 2925;
+
+    @StyleableRes
+    public static final int ActionBar_backgroundSplit = 2926;
+
+    @StyleableRes
+    public static final int ActionBar_backgroundStacked = 2927;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetEnd = 2928;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetEndWithActions = 2929;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetLeft = 2930;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetRight = 2931;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetStart = 2932;
+
+    @StyleableRes
+    public static final int ActionBar_contentInsetStartWithNavigation = 2933;
+
+    @StyleableRes
+    public static final int ActionBar_customNavigationLayout = 2934;
+
+    @StyleableRes
+    public static final int ActionBar_displayOptions = 2935;
+
+    @StyleableRes
+    public static final int ActionBar_divider = 2936;
+
+    @StyleableRes
+    public static final int ActionBar_elevation = 2937;
+
+    @StyleableRes
+    public static final int ActionBar_height = 2938;
+
+    @StyleableRes
+    public static final int ActionBar_hideOnContentScroll = 2939;
+
+    @StyleableRes
+    public static final int ActionBar_homeAsUpIndicator = 2940;
+
+    @StyleableRes
+    public static final int ActionBar_homeLayout = 2941;
+
+    @StyleableRes
+    public static final int ActionBar_icon = 2942;
+
+    @StyleableRes
+    public static final int ActionBar_indeterminateProgressStyle = 2943;
+
+    @StyleableRes
+    public static final int ActionBar_itemPadding = 2944;
+
+    @StyleableRes
+    public static final int ActionBar_logo = 2945;
+
+    @StyleableRes
+    public static final int ActionBar_navigationMode = 2946;
+
+    @StyleableRes
+    public static final int ActionBar_popupTheme = 2947;
+
+    @StyleableRes
+    public static final int ActionBar_progressBarPadding = 2948;
+
+    @StyleableRes
+    public static final int ActionBar_progressBarStyle = 2949;
+
+    @StyleableRes
+    public static final int ActionBar_subtitle = 2950;
+
+    @StyleableRes
+    public static final int ActionBar_subtitleTextStyle = 2951;
+
+    @StyleableRes
+    public static final int ActionBar_title = 2952;
+
+    @StyleableRes
+    public static final int ActionBar_titleTextStyle = 2953;
+
+    @StyleableRes
+    public static final int ActionBarLayout_android_layout_gravity = 2954;
+
+    @StyleableRes
+    public static final int ActionMenuItemView_android_minWidth = 2955;
+
+    @StyleableRes
+    public static final int ActionMode_background = 2956;
+
+    @StyleableRes
+    public static final int ActionMode_backgroundSplit = 2957;
+
+    @StyleableRes
+    public static final int ActionMode_closeItemLayout = 2958;
+
+    @StyleableRes
+    public static final int ActionMode_height = 2959;
+
+    @StyleableRes
+    public static final int ActionMode_subtitleTextStyle = 2960;
+
+    @StyleableRes
+    public static final int ActionMode_titleTextStyle = 2961;
+
+    @StyleableRes
+    public static final int ActivityChooserView_expandActivityOverflowButtonDrawable = 2962;
+
+    @StyleableRes
+    public static final int ActivityChooserView_initialActivityCount = 2963;
+
+    @StyleableRes
+    public static final int AddFloatingActionButton_fab_plusIconColor = 2964;
+
+    @StyleableRes
+    public static final int AlertDialog_android_layout = 2965;
+
+    @StyleableRes
+    public static final int AlertDialog_buttonIconDimen = 2966;
+
+    @StyleableRes
+    public static final int AlertDialog_buttonPanelSideLayout = 2967;
+
+    @StyleableRes
+    public static final int AlertDialog_listItemLayout = 2968;
+
+    @StyleableRes
+    public static final int AlertDialog_listLayout = 2969;
+
+    @StyleableRes
+    public static final int AlertDialog_multiChoiceItemLayout = 2970;
+
+    @StyleableRes
+    public static final int AlertDialog_showTitle = 2971;
+
+    @StyleableRes
+    public static final int AlertDialog_singleChoiceItemLayout = 2972;
+
+    @StyleableRes
+    public static final int AllenProgressView_dot_anim_duration = 2973;
+
+    @StyleableRes
+    public static final int AllenProgressView_dot_color = 2974;
+
+    @StyleableRes
+    public static final int AllenProgressView_dot_count = 2975;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_constantSize = 2976;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_dither = 2977;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_enterFadeDuration = 2978;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_exitFadeDuration = 2979;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_variablePadding = 2980;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableCompat_android_visible = 2981;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableItem_android_drawable = 2982;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableItem_android_id = 2983;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableTransition_android_drawable = 2984;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableTransition_android_fromId = 2985;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableTransition_android_reversible = 2986;
+
+    @StyleableRes
+    public static final int AnimatedStateListDrawableTransition_android_toId = 2987;
+
+    @StyleableRes
+    public static final int AppBarLayout_android_background = 2988;
+
+    @StyleableRes
+    public static final int AppBarLayout_android_keyboardNavigationCluster = 2989;
+
+    @StyleableRes
+    public static final int AppBarLayout_android_touchscreenBlocksFocus = 2990;
+
+    @StyleableRes
+    public static final int AppBarLayout_elevation = 2991;
+
+    @StyleableRes
+    public static final int AppBarLayout_expanded = 2992;
+
+    @StyleableRes
+    public static final int AppBarLayout_liftOnScroll = 2993;
+
+    @StyleableRes
+    public static final int AppBarLayoutStates_state_collapsed = 2994;
+
+    @StyleableRes
+    public static final int AppBarLayoutStates_state_collapsible = 2995;
+
+    @StyleableRes
+    public static final int AppBarLayoutStates_state_liftable = 2996;
+
+    @StyleableRes
+    public static final int AppBarLayoutStates_state_lifted = 2997;
+
+    @StyleableRes
+    public static final int AppBarLayout_Layout_layout_scrollFlags = 2998;
+
+    @StyleableRes
+    public static final int AppBarLayout_Layout_layout_scrollInterpolator = 2999;
+
+    @StyleableRes
+    public static final int AppCompatImageView_android_src = 3000;
+
+    @StyleableRes
+    public static final int AppCompatImageView_srcCompat = 3001;
+
+    @StyleableRes
+    public static final int AppCompatImageView_tint = 3002;
+
+    @StyleableRes
+    public static final int AppCompatImageView_tintMode = 3003;
+
+    @StyleableRes
+    public static final int AppCompatSeekBar_android_thumb = 3004;
+
+    @StyleableRes
+    public static final int AppCompatSeekBar_tickMark = 3005;
+
+    @StyleableRes
+    public static final int AppCompatSeekBar_tickMarkTint = 3006;
+
+    @StyleableRes
+    public static final int AppCompatSeekBar_tickMarkTintMode = 3007;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableBottom = 3008;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableEnd = 3009;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableLeft = 3010;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableRight = 3011;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableStart = 3012;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_drawableTop = 3013;
+
+    @StyleableRes
+    public static final int AppCompatTextHelper_android_textAppearance = 3014;
+
+    @StyleableRes
+    public static final int AppCompatTextView_android_textAppearance = 3015;
+
+    @StyleableRes
+    public static final int AppCompatTextView_autoSizeMaxTextSize = 3016;
+
+    @StyleableRes
+    public static final int AppCompatTextView_autoSizeMinTextSize = 3017;
+
+    @StyleableRes
+    public static final int AppCompatTextView_autoSizePresetSizes = 3018;
+
+    @StyleableRes
+    public static final int AppCompatTextView_autoSizeStepGranularity = 3019;
+
+    @StyleableRes
+    public static final int AppCompatTextView_autoSizeTextType = 3020;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableBottomCompat = 3021;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableEndCompat = 3022;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableLeftCompat = 3023;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableRightCompat = 3024;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableStartCompat = 3025;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableTint = 3026;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableTintMode = 3027;
+
+    @StyleableRes
+    public static final int AppCompatTextView_drawableTopCompat = 3028;
+
+    @StyleableRes
+    public static final int AppCompatTextView_firstBaselineToTopHeight = 3029;
+
+    @StyleableRes
+    public static final int AppCompatTextView_fontFamily = 3030;
+
+    @StyleableRes
+    public static final int AppCompatTextView_fontVariationSettings = 3031;
+
+    @StyleableRes
+    public static final int AppCompatTextView_lastBaselineToBottomHeight = 3032;
+
+    @StyleableRes
+    public static final int AppCompatTextView_lineHeight = 3033;
+
+    @StyleableRes
+    public static final int AppCompatTextView_textAllCaps = 3034;
+
+    @StyleableRes
+    public static final int AppCompatTextView_textLocale = 3035;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarDivider = 3036;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarItemBackground = 3037;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarPopupTheme = 3038;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarSize = 3039;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarSplitStyle = 3040;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarStyle = 3041;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarTabBarStyle = 3042;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarTabStyle = 3043;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarTabTextStyle = 3044;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarTheme = 3045;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionBarWidgetTheme = 3046;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionButtonStyle = 3047;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionDropDownStyle = 3048;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionMenuTextAppearance = 3049;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionMenuTextColor = 3050;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeBackground = 3051;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeCloseButtonStyle = 3052;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeCloseDrawable = 3053;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeCopyDrawable = 3054;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeCutDrawable = 3055;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeFindDrawable = 3056;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModePasteDrawable = 3057;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModePopupWindowStyle = 3058;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeSelectAllDrawable = 3059;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeShareDrawable = 3060;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeSplitBackground = 3061;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeStyle = 3062;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionModeWebSearchDrawable = 3063;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionOverflowButtonStyle = 3064;
+
+    @StyleableRes
+    public static final int AppCompatTheme_actionOverflowMenuStyle = 3065;
+
+    @StyleableRes
+    public static final int AppCompatTheme_activityChooserViewStyle = 3066;
+
+    @StyleableRes
+    public static final int AppCompatTheme_alertDialogButtonGroupStyle = 3067;
+
+    @StyleableRes
+    public static final int AppCompatTheme_alertDialogCenterButtons = 3068;
+
+    @StyleableRes
+    public static final int AppCompatTheme_alertDialogStyle = 3069;
+
+    @StyleableRes
+    public static final int AppCompatTheme_alertDialogTheme = 3070;
+
+    @StyleableRes
+    public static final int AppCompatTheme_android_windowAnimationStyle = 3071;
+
+    @StyleableRes
+    public static final int AppCompatTheme_android_windowIsFloating = 3072;
+
+    @StyleableRes
+    public static final int AppCompatTheme_autoCompleteTextViewStyle = 3073;
+
+    @StyleableRes
+    public static final int AppCompatTheme_borderlessButtonStyle = 3074;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonBarButtonStyle = 3075;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonBarNegativeButtonStyle = 3076;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonBarNeutralButtonStyle = 3077;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonBarPositiveButtonStyle = 3078;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonBarStyle = 3079;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonStyle = 3080;
+
+    @StyleableRes
+    public static final int AppCompatTheme_buttonStyleSmall = 3081;
+
+    @StyleableRes
+    public static final int AppCompatTheme_checkboxStyle = 3082;
+
+    @StyleableRes
+    public static final int AppCompatTheme_checkedTextViewStyle = 3083;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorAccent = 3084;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorBackgroundFloating = 3085;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorButtonNormal = 3086;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorControlActivated = 3087;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorControlHighlight = 3088;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorControlNormal = 3089;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorError = 3090;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorPrimary = 3091;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorPrimaryDark = 3092;
+
+    @StyleableRes
+    public static final int AppCompatTheme_colorSwitchThumbNormal = 3093;
+
+    @StyleableRes
+    public static final int AppCompatTheme_controlBackground = 3094;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dialogCornerRadius = 3095;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dialogPreferredPadding = 3096;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dialogTheme = 3097;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dividerHorizontal = 3098;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dividerVertical = 3099;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dropDownListViewStyle = 3100;
+
+    @StyleableRes
+    public static final int AppCompatTheme_dropdownListPreferredItemHeight = 3101;
+
+    @StyleableRes
+    public static final int AppCompatTheme_editTextBackground = 3102;
+
+    @StyleableRes
+    public static final int AppCompatTheme_editTextColor = 3103;
+
+    @StyleableRes
+    public static final int AppCompatTheme_editTextStyle = 3104;
+
+    @StyleableRes
+    public static final int AppCompatTheme_homeAsUpIndicator = 3105;
+
+    @StyleableRes
+    public static final int AppCompatTheme_imageButtonStyle = 3106;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listChoiceBackgroundIndicator = 3107;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listChoiceIndicatorMultipleAnimated = 3108;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listChoiceIndicatorSingleAnimated = 3109;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listDividerAlertDialog = 3110;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listMenuViewStyle = 3111;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPopupWindowStyle = 3112;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemHeight = 3113;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemHeightLarge = 3114;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemHeightSmall = 3115;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemPaddingEnd = 3116;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemPaddingLeft = 3117;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemPaddingRight = 3118;
+
+    @StyleableRes
+    public static final int AppCompatTheme_listPreferredItemPaddingStart = 3119;
+
+    @StyleableRes
+    public static final int AppCompatTheme_panelBackground = 3120;
+
+    @StyleableRes
+    public static final int AppCompatTheme_panelMenuListTheme = 3121;
+
+    @StyleableRes
+    public static final int AppCompatTheme_panelMenuListWidth = 3122;
+
+    @StyleableRes
+    public static final int AppCompatTheme_popupMenuStyle = 3123;
+
+    @StyleableRes
+    public static final int AppCompatTheme_popupWindowStyle = 3124;
+
+    @StyleableRes
+    public static final int AppCompatTheme_radioButtonStyle = 3125;
+
+    @StyleableRes
+    public static final int AppCompatTheme_ratingBarStyle = 3126;
+
+    @StyleableRes
+    public static final int AppCompatTheme_ratingBarStyleIndicator = 3127;
+
+    @StyleableRes
+    public static final int AppCompatTheme_ratingBarStyleSmall = 3128;
+
+    @StyleableRes
+    public static final int AppCompatTheme_searchViewStyle = 3129;
+
+    @StyleableRes
+    public static final int AppCompatTheme_seekBarStyle = 3130;
+
+    @StyleableRes
+    public static final int AppCompatTheme_selectableItemBackground = 3131;
+
+    @StyleableRes
+    public static final int AppCompatTheme_selectableItemBackgroundBorderless = 3132;
+
+    @StyleableRes
+    public static final int AppCompatTheme_spinnerDropDownItemStyle = 3133;
+
+    @StyleableRes
+    public static final int AppCompatTheme_spinnerStyle = 3134;
+
+    @StyleableRes
+    public static final int AppCompatTheme_switchStyle = 3135;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceLargePopupMenu = 3136;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceListItem = 3137;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceListItemSecondary = 3138;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceListItemSmall = 3139;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearancePopupMenuHeader = 3140;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceSearchResultSubtitle = 3141;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceSearchResultTitle = 3142;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textAppearanceSmallPopupMenu = 3143;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textColorAlertDialogListItem = 3144;
+
+    @StyleableRes
+    public static final int AppCompatTheme_textColorSearchUrl = 3145;
+
+    @StyleableRes
+    public static final int AppCompatTheme_toolbarNavigationButtonStyle = 3146;
+
+    @StyleableRes
+    public static final int AppCompatTheme_toolbarStyle = 3147;
+
+    @StyleableRes
+    public static final int AppCompatTheme_tooltipForegroundColor = 3148;
+
+    @StyleableRes
+    public static final int AppCompatTheme_tooltipFrameBackground = 3149;
+
+    @StyleableRes
+    public static final int AppCompatTheme_viewInflaterClass = 3150;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowActionBar = 3151;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowActionBarOverlay = 3152;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowActionModeOverlay = 3153;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowFixedHeightMajor = 3154;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowFixedHeightMinor = 3155;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowFixedWidthMajor = 3156;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowFixedWidthMinor = 3157;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowMinWidthMajor = 3158;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowMinWidthMinor = 3159;
+
+    @StyleableRes
+    public static final int AppCompatTheme_windowNoTitle = 3160;
+
+    @StyleableRes
+    public static final int BGABanner_android_scaleType = 3161;
+
+    @StyleableRes
+    public static final int BGABanner_banner_aspectRatio = 3162;
+
+    @StyleableRes
+    public static final int BGABanner_banner_contentBottomMargin = 3163;
+
+    @StyleableRes
+    public static final int BGABanner_banner_indicatorGravity = 3164;
+
+    @StyleableRes
+    public static final int BGABanner_banner_isNeedShowIndicatorOnOnlyOnePage = 3165;
+
+    @StyleableRes
+    public static final int BGABanner_banner_isNumberIndicator = 3166;
+
+    @StyleableRes
+    public static final int BGABanner_banner_numberIndicatorBackground = 3167;
+
+    @StyleableRes
+    public static final int BGABanner_banner_numberIndicatorTextColor = 3168;
+
+    @StyleableRes
+    public static final int BGABanner_banner_numberIndicatorTextSize = 3169;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pageChangeDuration = 3170;
+
+    @StyleableRes
+    public static final int BGABanner_banner_placeholderDrawable = 3171;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointAutoPlayAble = 3172;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointAutoPlayInterval = 3173;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointContainerBackground = 3174;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointContainerLeftRightPadding = 3175;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointDrawable = 3176;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointLeftRightMargin = 3177;
+
+    @StyleableRes
+    public static final int BGABanner_banner_pointTopBottomMargin = 3178;
+
+    @StyleableRes
+    public static final int BGABanner_banner_tipTextColor = 3179;
+
+    @StyleableRes
+    public static final int BGABanner_banner_tipTextSize = 3180;
+
+    @StyleableRes
+    public static final int BGABanner_banner_transitionEffect = 3181;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_isCapRounded = 3182;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_isHiddenText = 3183;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_mode = 3184;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_radius = 3185;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_reachedColor = 3186;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_reachedHeight = 3187;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_textColor = 3188;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_textMargin = 3189;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_textSize = 3190;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_unReachedColor = 3191;
+
+    @StyleableRes
+    public static final int BGAProgressBar_bga_pb_unReachedHeight = 3192;
+
+    @StyleableRes
+    public static final int BGASwipeItemLayout_bga_sil_bottomMode = 3193;
+
+    @StyleableRes
+    public static final int BGASwipeItemLayout_bga_sil_springDistance = 3194;
+
+    @StyleableRes
+    public static final int BGASwipeItemLayout_bga_sil_swipeAble = 3195;
+
+    @StyleableRes
+    public static final int BGASwipeItemLayout_bga_sil_swipeDirection = 3196;
+
+    @StyleableRes
+    public static final int BadgeView_badgeAnchorPosition = 3197;
+
+    @StyleableRes
+    public static final int BadgeView_badgeBgColor = 3198;
+
+    @StyleableRes
+    public static final int BadgeView_badgeBorderColor = 3199;
+
+    @StyleableRes
+    public static final int BadgeView_badgeBorderWidth = 3200;
+
+    @StyleableRes
+    public static final int BadgeView_badgeMarginHorizon = 3201;
+
+    @StyleableRes
+    public static final int BadgeView_badgeMarginVertical = 3202;
+
+    @StyleableRes
+    public static final int BadgeView_badgePaddingHorizon = 3203;
+
+    @StyleableRes
+    public static final int BadgeView_badgePaddingVertical = 3204;
+
+    @StyleableRes
+    public static final int BadgeView_badgeText = 3205;
+
+    @StyleableRes
+    public static final int BadgeView_badgeTextColor = 3206;
+
+    @StyleableRes
+    public static final int BadgeView_badgeTextSize = 3207;
+
+    @StyleableRes
+    public static final int BezierRadarHeader_srlAccentColor = 3208;
+
+    @StyleableRes
+    public static final int BezierRadarHeader_srlEnableHorizontalDrag = 3209;
+
+    @StyleableRes
+    public static final int BezierRadarHeader_srlPrimaryColor = 3210;
+
+    @StyleableRes
+    public static final int BottomAppBar_backgroundTint = 3211;
+
+    @StyleableRes
+    public static final int BottomAppBar_fabAlignmentMode = 3212;
+
+    @StyleableRes
+    public static final int BottomAppBar_fabCradleMargin = 3213;
+
+    @StyleableRes
+    public static final int BottomAppBar_fabCradleRoundedCornerRadius = 3214;
+
+    @StyleableRes
+    public static final int BottomAppBar_fabCradleVerticalOffset = 3215;
+
+    @StyleableRes
+    public static final int BottomAppBar_hideOnScroll = 3216;
+
+    @StyleableRes
+    public static final int BottomNavigationView_elevation = 3217;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemBackground = 3218;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemHorizontalTranslationEnabled = 3219;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemIconSize = 3220;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemIconTint = 3221;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemTextAppearanceActive = 3222;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemTextAppearanceInactive = 3223;
+
+    @StyleableRes
+    public static final int BottomNavigationView_itemTextColor = 3224;
+
+    @StyleableRes
+    public static final int BottomNavigationView_labelVisibilityMode = 3225;
+
+    @StyleableRes
+    public static final int BottomNavigationView_menu = 3226;
+
+    @StyleableRes
+    public static final int BottomSheetBehavior_Layout_behavior_fitToContents = 3227;
+
+    @StyleableRes
+    public static final int BottomSheetBehavior_Layout_behavior_hideable = 3228;
+
+    @StyleableRes
+    public static final int BottomSheetBehavior_Layout_behavior_peekHeight = 3229;
+
+    @StyleableRes
+    public static final int BottomSheetBehavior_Layout_behavior_skipCollapsed = 3230;
+
+    @StyleableRes
+    public static final int ButtonBarLayout_allowStacking = 3231;
+
+    @StyleableRes
+    public static final int CardView_android_minHeight = 3232;
+
+    @StyleableRes
+    public static final int CardView_android_minWidth = 3233;
+
+    @StyleableRes
+    public static final int CardView_cardBackgroundColor = 3234;
+
+    @StyleableRes
+    public static final int CardView_cardCornerRadius = 3235;
+
+    @StyleableRes
+    public static final int CardView_cardElevation = 3236;
+
+    @StyleableRes
+    public static final int CardView_cardMaxElevation = 3237;
+
+    @StyleableRes
+    public static final int CardView_cardPreventCornerOverlap = 3238;
+
+    @StyleableRes
+    public static final int CardView_cardUseCompatPadding = 3239;
+
+    @StyleableRes
+    public static final int CardView_contentPadding = 3240;
+
+    @StyleableRes
+    public static final int CardView_contentPaddingBottom = 3241;
+
+    @StyleableRes
+    public static final int CardView_contentPaddingLeft = 3242;
+
+    @StyleableRes
+    public static final int CardView_contentPaddingRight = 3243;
+
+    @StyleableRes
+    public static final int CardView_contentPaddingTop = 3244;
+
+    @StyleableRes
+    public static final int Chip_android_checkable = 3245;
+
+    @StyleableRes
+    public static final int Chip_android_ellipsize = 3246;
+
+    @StyleableRes
+    public static final int Chip_android_maxWidth = 3247;
+
+    @StyleableRes
+    public static final int Chip_android_text = 3248;
+
+    @StyleableRes
+    public static final int Chip_android_textAppearance = 3249;
+
+    @StyleableRes
+    public static final int Chip_checkedIcon = 3250;
+
+    @StyleableRes
+    public static final int Chip_checkedIconEnabled = 3251;
+
+    @StyleableRes
+    public static final int Chip_checkedIconVisible = 3252;
+
+    @StyleableRes
+    public static final int Chip_chipBackgroundColor = 3253;
+
+    @StyleableRes
+    public static final int Chip_chipCornerRadius = 3254;
+
+    @StyleableRes
+    public static final int Chip_chipEndPadding = 3255;
+
+    @StyleableRes
+    public static final int Chip_chipIcon = 3256;
+
+    @StyleableRes
+    public static final int Chip_chipIconEnabled = 3257;
+
+    @StyleableRes
+    public static final int Chip_chipIconSize = 3258;
+
+    @StyleableRes
+    public static final int Chip_chipIconTint = 3259;
+
+    @StyleableRes
+    public static final int Chip_chipIconVisible = 3260;
+
+    @StyleableRes
+    public static final int Chip_chipMinHeight = 3261;
+
+    @StyleableRes
+    public static final int Chip_chipStartPadding = 3262;
+
+    @StyleableRes
+    public static final int Chip_chipStrokeColor = 3263;
+
+    @StyleableRes
+    public static final int Chip_chipStrokeWidth = 3264;
+
+    @StyleableRes
+    public static final int Chip_closeIcon = 3265;
+
+    @StyleableRes
+    public static final int Chip_closeIconEnabled = 3266;
+
+    @StyleableRes
+    public static final int Chip_closeIconEndPadding = 3267;
+
+    @StyleableRes
+    public static final int Chip_closeIconSize = 3268;
+
+    @StyleableRes
+    public static final int Chip_closeIconStartPadding = 3269;
+
+    @StyleableRes
+    public static final int Chip_closeIconTint = 3270;
+
+    @StyleableRes
+    public static final int Chip_closeIconVisible = 3271;
+
+    @StyleableRes
+    public static final int Chip_hideMotionSpec = 3272;
+
+    @StyleableRes
+    public static final int Chip_iconEndPadding = 3273;
+
+    @StyleableRes
+    public static final int Chip_iconStartPadding = 3274;
+
+    @StyleableRes
+    public static final int Chip_rippleColor = 3275;
+
+    @StyleableRes
+    public static final int Chip_showMotionSpec = 3276;
+
+    @StyleableRes
+    public static final int Chip_textEndPadding = 3277;
+
+    @StyleableRes
+    public static final int Chip_textStartPadding = 3278;
+
+    @StyleableRes
+    public static final int ChipGroup_checkedChip = 3279;
+
+    @StyleableRes
+    public static final int ChipGroup_chipSpacing = 3280;
+
+    @StyleableRes
+    public static final int ChipGroup_chipSpacingHorizontal = 3281;
+
+    @StyleableRes
+    public static final int ChipGroup_chipSpacingVertical = 3282;
+
+    @StyleableRes
+    public static final int ChipGroup_singleLine = 3283;
+
+    @StyleableRes
+    public static final int ChipGroup_singleSelection = 3284;
+
+    @StyleableRes
+    public static final int CircleImageView_border_color = 3285;
+
+    @StyleableRes
+    public static final int CircleImageView_border_width = 3286;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_arrow_height = 3287;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_arrow_width = 3288;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_background_color = 3289;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_enable_circle_background = 3290;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_inner_radius = 3291;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_max = 3292;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress = 3293;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress_color = 3294;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress_stoke_width = 3295;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress_text_color = 3296;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress_text_size = 3297;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_progress_text_visibility = 3298;
+
+    @StyleableRes
+    public static final int CircleProgressBar_mlpb_show_arrow = 3299;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlAccentColor = 3300;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlClassicsSpinnerStyle = 3301;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableArrow = 3302;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableArrowSize = 3303;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableMarginRight = 3304;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableProgress = 3305;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableProgressSize = 3306;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlDrawableSize = 3307;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlFinishDuration = 3308;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlPrimaryColor = 3309;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextFailed = 3310;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextFinish = 3311;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextLoading = 3312;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextNothing = 3313;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextPulling = 3314;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextRefreshing = 3315;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextRelease = 3316;
+
+    @StyleableRes
+    public static final int ClassicsFooter_srlTextSizeTitle = 3317;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlAccentColor = 3318;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlClassicsSpinnerStyle = 3319;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableArrow = 3320;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableArrowSize = 3321;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableMarginRight = 3322;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableProgress = 3323;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableProgressSize = 3324;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlDrawableSize = 3325;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlEnableLastTime = 3326;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlFinishDuration = 3327;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlPrimaryColor = 3328;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextFailed = 3329;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextFinish = 3330;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextLoading = 3331;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextPulling = 3332;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextRefreshing = 3333;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextRelease = 3334;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextSecondary = 3335;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextSizeTime = 3336;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextSizeTitle = 3337;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextTimeMarginTop = 3338;
+
+    @StyleableRes
+    public static final int ClassicsHeader_srlTextUpdate = 3339;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_collapsedTitleGravity = 3340;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_collapsedTitleTextAppearance = 3341;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_contentScrim = 3342;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleGravity = 3343;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleMargin = 3344;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleMarginBottom = 3345;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleMarginEnd = 3346;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleMarginStart = 3347;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleMarginTop = 3348;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_expandedTitleTextAppearance = 3349;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_scrimAnimationDuration = 3350;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_scrimVisibleHeightTrigger = 3351;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_statusBarScrim = 3352;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_title = 3353;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_titleEnabled = 3354;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_toolbarId = 3355;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_Layout_layout_collapseMode = 3356;
+
+    @StyleableRes
+    public static final int CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = 3357;
+
+    @StyleableRes
+    public static final int ColorStateListItem_alpha = 3358;
+
+    @StyleableRes
+    public static final int ColorStateListItem_android_alpha = 3359;
+
+    @StyleableRes
+    public static final int ColorStateListItem_android_color = 3360;
+
+    @StyleableRes
+    public static final int CompoundButton_android_button = 3361;
+
+    @StyleableRes
+    public static final int CompoundButton_buttonCompat = 3362;
+
+    @StyleableRes
+    public static final int CompoundButton_buttonTint = 3363;
+
+    @StyleableRes
+    public static final int CompoundButton_buttonTintMode = 3364;
+
+    @StyleableRes
+    public static final int ContrlScrollViewPager_iscanscroll = 3365;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_keylines = 3366;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_statusBarBackground = 3367;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_android_layout_gravity = 3368;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_anchor = 3369;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_anchorGravity = 3370;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_behavior = 3371;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges = 3372;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_insetEdge = 3373;
+
+    @StyleableRes
+    public static final int CoordinatorLayout_Layout_layout_keyline = 3374;
+
+    @StyleableRes
+    public static final int DesignTheme_bottomSheetDialogTheme = 3375;
+
+    @StyleableRes
+    public static final int DesignTheme_bottomSheetStyle = 3376;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_arrowHeadLength = 3377;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_arrowShaftLength = 3378;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_barLength = 3379;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_color = 3380;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_drawableSize = 3381;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_gapBetweenBars = 3382;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_spinBars = 3383;
+
+    @StyleableRes
+    public static final int DrawerArrowToggle_thickness = 3384;
+
+    @StyleableRes
+    public static final int FloatingActionButton_backgroundTint = 3385;
+
+    @StyleableRes
+    public static final int FloatingActionButton_backgroundTintMode = 3386;
+
+    @StyleableRes
+    public static final int FloatingActionButton_borderWidth = 3387;
+
+    @StyleableRes
+    public static final int FloatingActionButton_elevation = 3388;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fabCustomSize = 3389;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fabSize = 3390;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_colorDisabled = 3391;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_colorNormal = 3392;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_colorPressed = 3393;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_icon = 3394;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_size = 3395;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_stroke_visible = 3396;
+
+    @StyleableRes
+    public static final int FloatingActionButton_fab_title = 3397;
+
+    @StyleableRes
+    public static final int FloatingActionButton_hideMotionSpec = 3398;
+
+    @StyleableRes
+    public static final int FloatingActionButton_hoveredFocusedTranslationZ = 3399;
+
+    @StyleableRes
+    public static final int FloatingActionButton_maxImageSize = 3400;
+
+    @StyleableRes
+    public static final int FloatingActionButton_pressedTranslationZ = 3401;
+
+    @StyleableRes
+    public static final int FloatingActionButton_rippleColor = 3402;
+
+    @StyleableRes
+    public static final int FloatingActionButton_showMotionSpec = 3403;
+
+    @StyleableRes
+    public static final int FloatingActionButton_useCompatPadding = 3404;
+
+    @StyleableRes
+    public static final int FloatingActionButton_Behavior_Layout_behavior_autoHide = 3405;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_addButtonColorNormal = 3406;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_addButtonColorPressed = 3407;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_addButtonPlusIconColor = 3408;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_addButtonSize = 3409;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_addButtonStrokeVisible = 3410;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_expandDirection = 3411;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_labelStyle = 3412;
+
+    @StyleableRes
+    public static final int FloatingActionsMenu_fab_labelsPosition = 3413;
+
+    @StyleableRes
+    public static final int FlowLayout_itemSpacing = 3414;
+
+    @StyleableRes
+    public static final int FlowLayout_lineSpacing = 3415;
+
+    @StyleableRes
+    public static final int FluidLayout_gravity = 3416;
+
+    @StyleableRes
+    public static final int FluidLayout_Layout_layout_gravity = 3417;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderAuthority = 3418;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderCerts = 3419;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderFetchStrategy = 3420;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderFetchTimeout = 3421;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderPackage = 3422;
+
+    @StyleableRes
+    public static final int FontFamily_fontProviderQuery = 3423;
+
+    @StyleableRes
+    public static final int FontFamilyFont_android_font = 3424;
+
+    @StyleableRes
+    public static final int FontFamilyFont_android_fontStyle = 3425;
+
+    @StyleableRes
+    public static final int FontFamilyFont_android_fontVariationSettings = 3426;
+
+    @StyleableRes
+    public static final int FontFamilyFont_android_fontWeight = 3427;
+
+    @StyleableRes
+    public static final int FontFamilyFont_android_ttcIndex = 3428;
+
+    @StyleableRes
+    public static final int FontFamilyFont_font = 3429;
+
+    @StyleableRes
+    public static final int FontFamilyFont_fontStyle = 3430;
+
+    @StyleableRes
+    public static final int FontFamilyFont_fontVariationSettings = 3431;
+
+    @StyleableRes
+    public static final int FontFamilyFont_fontWeight = 3432;
+
+    @StyleableRes
+    public static final int FontFamilyFont_ttcIndex = 3433;
+
+    @StyleableRes
+    public static final int ForegroundLinearLayout_android_foreground = 3434;
+
+    @StyleableRes
+    public static final int ForegroundLinearLayout_android_foregroundGravity = 3435;
+
+    @StyleableRes
+    public static final int ForegroundLinearLayout_foregroundInsidePadding = 3436;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_color_finger_on = 3437;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_color_finger_up = 3438;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_color_no_finger_inner_circle = 3439;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_color_no_finger_outer_circle = 3440;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_count = 3441;
+
+    @StyleableRes
+    public static final int GestureLockViewGroup_tryTimes = 3442;
+
+    @StyleableRes
+    public static final int GradientColor_android_centerColor = 3443;
+
+    @StyleableRes
+    public static final int GradientColor_android_centerX = 3444;
+
+    @StyleableRes
+    public static final int GradientColor_android_centerY = 3445;
+
+    @StyleableRes
+    public static final int GradientColor_android_endColor = 3446;
+
+    @StyleableRes
+    public static final int GradientColor_android_endX = 3447;
+
+    @StyleableRes
+    public static final int GradientColor_android_endY = 3448;
+
+    @StyleableRes
+    public static final int GradientColor_android_gradientRadius = 3449;
+
+    @StyleableRes
+    public static final int GradientColor_android_startColor = 3450;
+
+    @StyleableRes
+    public static final int GradientColor_android_startX = 3451;
+
+    @StyleableRes
+    public static final int GradientColor_android_startY = 3452;
+
+    @StyleableRes
+    public static final int GradientColor_android_tileMode = 3453;
+
+    @StyleableRes
+    public static final int GradientColor_android_type = 3454;
+
+    @StyleableRes
+    public static final int GradientColorItem_android_color = 3455;
+
+    @StyleableRes
+    public static final int GradientColorItem_android_offset = 3456;
+
+    @StyleableRes
+    public static final int Image3DSwitchView_image3d_padding = 3457;
+
+    @StyleableRes
+    public static final int Image3DSwitchView_image3d_width_precent = 3458;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_android_baselineAligned = 3459;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_android_baselineAlignedChildIndex = 3460;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_android_gravity = 3461;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_android_orientation = 3462;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_android_weightSum = 3463;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_divider = 3464;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_dividerPadding = 3465;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_measureWithLargestChild = 3466;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_showDividers = 3467;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_Layout_android_layout_gravity = 3468;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_Layout_android_layout_height = 3469;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_Layout_android_layout_weight = 3470;
+
+    @StyleableRes
+    public static final int LinearLayoutCompat_Layout_android_layout_width = 3471;
+
+    @StyleableRes
+    public static final int ListPopupWindow_android_dropDownHorizontalOffset = 3472;
+
+    @StyleableRes
+    public static final int ListPopupWindow_android_dropDownVerticalOffset = 3473;
+
+    @StyleableRes
+    public static final int MaterialButton_android_insetBottom = 3474;
+
+    @StyleableRes
+    public static final int MaterialButton_android_insetLeft = 3475;
+
+    @StyleableRes
+    public static final int MaterialButton_android_insetRight = 3476;
+
+    @StyleableRes
+    public static final int MaterialButton_android_insetTop = 3477;
+
+    @StyleableRes
+    public static final int MaterialButton_backgroundTint = 3478;
+
+    @StyleableRes
+    public static final int MaterialButton_backgroundTintMode = 3479;
+
+    @StyleableRes
+    public static final int MaterialButton_cornerRadius = 3480;
+
+    @StyleableRes
+    public static final int MaterialButton_icon = 3481;
+
+    @StyleableRes
+    public static final int MaterialButton_iconGravity = 3482;
+
+    @StyleableRes
+    public static final int MaterialButton_iconPadding = 3483;
+
+    @StyleableRes
+    public static final int MaterialButton_iconSize = 3484;
+
+    @StyleableRes
+    public static final int MaterialButton_iconTint = 3485;
+
+    @StyleableRes
+    public static final int MaterialButton_iconTintMode = 3486;
+
+    @StyleableRes
+    public static final int MaterialButton_rippleColor = 3487;
+
+    @StyleableRes
+    public static final int MaterialButton_strokeColor = 3488;
+
+    @StyleableRes
+    public static final int MaterialButton_strokeWidth = 3489;
+
+    @StyleableRes
+    public static final int MaterialCardView_strokeColor = 3490;
+
+    @StyleableRes
+    public static final int MaterialCardView_strokeWidth = 3491;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_bottomSheetDialogTheme = 3492;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_bottomSheetStyle = 3493;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_chipGroupStyle = 3494;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_chipStandaloneStyle = 3495;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_chipStyle = 3496;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_colorAccent = 3497;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_colorBackgroundFloating = 3498;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_colorPrimary = 3499;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_colorPrimaryDark = 3500;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_colorSecondary = 3501;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_editTextStyle = 3502;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_floatingActionButtonStyle = 3503;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_materialButtonStyle = 3504;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_materialCardViewStyle = 3505;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_navigationViewStyle = 3506;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_scrimBackground = 3507;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_snackbarButtonStyle = 3508;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_tabStyle = 3509;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceBody1 = 3510;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceBody2 = 3511;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceButton = 3512;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceCaption = 3513;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline1 = 3514;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline2 = 3515;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline3 = 3516;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline4 = 3517;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline5 = 3518;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceHeadline6 = 3519;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceOverline = 3520;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceSubtitle1 = 3521;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textAppearanceSubtitle2 = 3522;
+
+    @StyleableRes
+    public static final int MaterialComponentsTheme_textInputStyle = 3523;
+
+    @StyleableRes
+    public static final int MaterialHeader_mhPrimaryColor = 3524;
+
+    @StyleableRes
+    public static final int MaterialHeader_mhScrollableWhenRefreshing = 3525;
+
+    @StyleableRes
+    public static final int MaterialHeader_mhShadowColor = 3526;
+
+    @StyleableRes
+    public static final int MaterialHeader_mhShadowRadius = 3527;
+
+    @StyleableRes
+    public static final int MaterialHeader_mhShowBezierWave = 3528;
+
+    @StyleableRes
+    public static final int MaterialHeader_srlPrimaryColor = 3529;
+
+    @StyleableRes
+    public static final int MaterialHeader_srlScrollableWhenRefreshing = 3530;
+
+    @StyleableRes
+    public static final int MaterialHeader_srlShadowColor = 3531;
+
+    @StyleableRes
+    public static final int MaterialHeader_srlShadowRadius = 3532;
+
+    @StyleableRes
+    public static final int MaterialHeader_srlShowBezierWave = 3533;
+
+    @StyleableRes
+    public static final int MenuGroup_android_checkableBehavior = 3534;
+
+    @StyleableRes
+    public static final int MenuGroup_android_enabled = 3535;
+
+    @StyleableRes
+    public static final int MenuGroup_android_id = 3536;
+
+    @StyleableRes
+    public static final int MenuGroup_android_menuCategory = 3537;
+
+    @StyleableRes
+    public static final int MenuGroup_android_orderInCategory = 3538;
+
+    @StyleableRes
+    public static final int MenuGroup_android_visible = 3539;
+
+    @StyleableRes
+    public static final int MenuItem_actionLayout = 3540;
+
+    @StyleableRes
+    public static final int MenuItem_actionProviderClass = 3541;
+
+    @StyleableRes
+    public static final int MenuItem_actionViewClass = 3542;
+
+    @StyleableRes
+    public static final int MenuItem_alphabeticModifiers = 3543;
+
+    @StyleableRes
+    public static final int MenuItem_android_alphabeticShortcut = 3544;
+
+    @StyleableRes
+    public static final int MenuItem_android_checkable = 3545;
+
+    @StyleableRes
+    public static final int MenuItem_android_checked = 3546;
+
+    @StyleableRes
+    public static final int MenuItem_android_enabled = 3547;
+
+    @StyleableRes
+    public static final int MenuItem_android_icon = 3548;
+
+    @StyleableRes
+    public static final int MenuItem_android_id = 3549;
+
+    @StyleableRes
+    public static final int MenuItem_android_menuCategory = 3550;
+
+    @StyleableRes
+    public static final int MenuItem_android_numericShortcut = 3551;
+
+    @StyleableRes
+    public static final int MenuItem_android_onClick = 3552;
+
+    @StyleableRes
+    public static final int MenuItem_android_orderInCategory = 3553;
+
+    @StyleableRes
+    public static final int MenuItem_android_title = 3554;
+
+    @StyleableRes
+    public static final int MenuItem_android_titleCondensed = 3555;
+
+    @StyleableRes
+    public static final int MenuItem_android_visible = 3556;
+
+    @StyleableRes
+    public static final int MenuItem_contentDescription = 3557;
+
+    @StyleableRes
+    public static final int MenuItem_iconTint = 3558;
+
+    @StyleableRes
+    public static final int MenuItem_iconTintMode = 3559;
+
+    @StyleableRes
+    public static final int MenuItem_numericModifiers = 3560;
+
+    @StyleableRes
+    public static final int MenuItem_showAsAction = 3561;
+
+    @StyleableRes
+    public static final int MenuItem_tooltipText = 3562;
+
+    @StyleableRes
+    public static final int MenuView_android_headerBackground = 3563;
+
+    @StyleableRes
+    public static final int MenuView_android_horizontalDivider = 3564;
+
+    @StyleableRes
+    public static final int MenuView_android_itemBackground = 3565;
+
+    @StyleableRes
+    public static final int MenuView_android_itemIconDisabledAlpha = 3566;
+
+    @StyleableRes
+    public static final int MenuView_android_itemTextAppearance = 3567;
+
+    @StyleableRes
+    public static final int MenuView_android_verticalDivider = 3568;
+
+    @StyleableRes
+    public static final int MenuView_android_windowAnimationStyle = 3569;
+
+    @StyleableRes
+    public static final int MenuView_preserveIconSpacing = 3570;
+
+    @StyleableRes
+    public static final int MenuView_subMenuArrow = 3571;
+
+    @StyleableRes
+    public static final int NavigationView_android_background = 3572;
+
+    @StyleableRes
+    public static final int NavigationView_android_fitsSystemWindows = 3573;
+
+    @StyleableRes
+    public static final int NavigationView_android_maxWidth = 3574;
+
+    @StyleableRes
+    public static final int NavigationView_elevation = 3575;
+
+    @StyleableRes
+    public static final int NavigationView_headerLayout = 3576;
+
+    @StyleableRes
+    public static final int NavigationView_itemBackground = 3577;
+
+    @StyleableRes
+    public static final int NavigationView_itemHorizontalPadding = 3578;
+
+    @StyleableRes
+    public static final int NavigationView_itemIconPadding = 3579;
+
+    @StyleableRes
+    public static final int NavigationView_itemIconTint = 3580;
+
+    @StyleableRes
+    public static final int NavigationView_itemTextAppearance = 3581;
+
+    @StyleableRes
+    public static final int NavigationView_itemTextColor = 3582;
+
+    @StyleableRes
+    public static final int NavigationView_menu = 3583;
+
+    @StyleableRes
+    public static final int NineGridImageView_imgGap = 3584;
+
+    @StyleableRes
+    public static final int NineGridImageView_maxSize = 3585;
+
+    @StyleableRes
+    public static final int NineGridImageView_showStyle = 3586;
+
+    @StyleableRes
+    public static final int NineGridImageView_singleImgSize = 3587;
+
+    @StyleableRes
+    public static final int PopupWindow_android_popupAnimationStyle = 3588;
+
+    @StyleableRes
+    public static final int PopupWindow_android_popupBackground = 3589;
+
+    @StyleableRes
+    public static final int PopupWindow_overlapAnchor = 3590;
+
+    @StyleableRes
+    public static final int PopupWindowBackgroundState_state_above_anchor = 3591;
+
+    @StyleableRes
+    public static final int RatingBar_clickAble = 3592;
+
+    @StyleableRes
+    public static final int RatingBar_integerMark = 3593;
+
+    @StyleableRes
+    public static final int RatingBar_starCount = 3594;
+
+    @StyleableRes
+    public static final int RatingBar_starDistance = 3595;
+
+    @StyleableRes
+    public static final int RatingBar_starEmpty = 3596;
+
+    @StyleableRes
+    public static final int RatingBar_starFill = 3597;
+
+    @StyleableRes
+    public static final int RatingBar_starSize = 3598;
+
+    @StyleableRes
+    public static final int RecycleListView_paddingBottomNoButtons = 3599;
+
+    @StyleableRes
+    public static final int RecycleListView_paddingTopNoTitle = 3600;
+
+    @StyleableRes
+    public static final int RecyclerView_android_descendantFocusability = 3601;
+
+    @StyleableRes
+    public static final int RecyclerView_android_orientation = 3602;
+
+    @StyleableRes
+    public static final int RecyclerView_fastScrollEnabled = 3603;
+
+    @StyleableRes
+    public static final int RecyclerView_fastScrollHorizontalThumbDrawable = 3604;
+
+    @StyleableRes
+    public static final int RecyclerView_fastScrollHorizontalTrackDrawable = 3605;
+
+    @StyleableRes
+    public static final int RecyclerView_fastScrollVerticalThumbDrawable = 3606;
+
+    @StyleableRes
+    public static final int RecyclerView_fastScrollVerticalTrackDrawable = 3607;
+
+    @StyleableRes
+    public static final int RecyclerView_layoutManager = 3608;
+
+    @StyleableRes
+    public static final int RecyclerView_reverseLayout = 3609;
+
+    @StyleableRes
+    public static final int RecyclerView_spanCount = 3610;
+
+    @StyleableRes
+    public static final int RecyclerView_stackFromEnd = 3611;
+
+    @StyleableRes
+    public static final int ScaleLinearLayout_scale = 3612;
+
+    @StyleableRes
+    public static final int ScrimInsetsFrameLayout_insetForeground = 3613;
+
+    @StyleableRes
+    public static final int ScrollingViewBehavior_Layout_behavior_overlapTop = 3614;
+
+    @StyleableRes
+    public static final int SearchView_android_focusable = 3615;
+
+    @StyleableRes
+    public static final int SearchView_android_imeOptions = 3616;
+
+    @StyleableRes
+    public static final int SearchView_android_inputType = 3617;
+
+    @StyleableRes
+    public static final int SearchView_android_maxWidth = 3618;
+
+    @StyleableRes
+    public static final int SearchView_closeIcon = 3619;
+
+    @StyleableRes
+    public static final int SearchView_commitIcon = 3620;
+
+    @StyleableRes
+    public static final int SearchView_defaultQueryHint = 3621;
+
+    @StyleableRes
+    public static final int SearchView_goIcon = 3622;
+
+    @StyleableRes
+    public static final int SearchView_iconifiedByDefault = 3623;
+
+    @StyleableRes
+    public static final int SearchView_inputHint = 3624;
+
+    @StyleableRes
+    public static final int SearchView_inputPadding = 3625;
+
+    @StyleableRes
+    public static final int SearchView_inputTextColor = 3626;
+
+    @StyleableRes
+    public static final int SearchView_inputTextSize = 3627;
+
+    @StyleableRes
+    public static final int SearchView_layout = 3628;
+
+    @StyleableRes
+    public static final int SearchView_queryBackground = 3629;
+
+    @StyleableRes
+    public static final int SearchView_queryHint = 3630;
+
+    @StyleableRes
+    public static final int SearchView_searchBackground = 3631;
+
+    @StyleableRes
+    public static final int SearchView_searchHintIcon = 3632;
+
+    @StyleableRes
+    public static final int SearchView_searchIcon = 3633;
+
+    @StyleableRes
+    public static final int SearchView_submitBackground = 3634;
+
+    @StyleableRes
+    public static final int SearchView_suggestionRowLayout = 3635;
+
+    @StyleableRes
+    public static final int SearchView_voiceIcon = 3636;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_cornerRadius = 3637;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_dx = 3638;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_dy = 3639;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_oval = 3640;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_shadowColor = 3641;
+
+    @StyleableRes
+    public static final int ShadowLayout_sl_shadowRadius = 3642;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_android_clipChildren = 3643;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_android_clipToPadding = 3644;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlAccentColor = 3645;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlDisableContentWhenLoading = 3646;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlDisableContentWhenRefresh = 3647;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlDragRate = 3648;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableAutoLoadMore = 3649;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableClipFooterWhenFixedBehind = 3650;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableClipHeaderWhenFixedBehind = 3651;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableFooterFollowWhenLoadFinished = 3652;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableFooterFollowWhenNoMoreData = 3653;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableFooterTranslationContent = 3654;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableHeaderTranslationContent = 3655;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableLoadMore = 3656;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableLoadMoreWhenContentNotFull = 3657;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableNestedScrolling = 3658;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableOverScrollBounce = 3659;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableOverScrollDrag = 3660;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnablePreviewInEditMode = 3661;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnablePureScrollMode = 3662;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableRefresh = 3663;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableScrollContentWhenLoaded = 3664;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlEnableScrollContentWhenRefreshed = 3665;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFixedFooterViewId = 3666;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFixedHeaderViewId = 3667;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFooterHeight = 3668;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFooterInsetStart = 3669;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFooterMaxDragRate = 3670;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFooterTranslationViewId = 3671;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlFooterTriggerRate = 3672;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlHeaderHeight = 3673;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlHeaderInsetStart = 3674;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlHeaderMaxDragRate = 3675;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlHeaderTranslationViewId = 3676;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlHeaderTriggerRate = 3677;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlPrimaryColor = 3678;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_srlReboundDuration = 3679;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_Layout_layout_srlBackgroundColor = 3680;
+
+    @StyleableRes
+    public static final int SmartRefreshLayout_Layout_layout_srlSpinnerStyle = 3681;
+
+    @StyleableRes
+    public static final int Snackbar_snackbarButtonStyle = 3682;
+
+    @StyleableRes
+    public static final int Snackbar_snackbarStyle = 3683;
+
+    @StyleableRes
+    public static final int SnackbarLayout_android_maxWidth = 3684;
+
+    @StyleableRes
+    public static final int SnackbarLayout_elevation = 3685;
+
+    @StyleableRes
+    public static final int SnackbarLayout_maxActionInlineWidth = 3686;
+
+    @StyleableRes
+    public static final int Spinner_android_dropDownWidth = 3687;
+
+    @StyleableRes
+    public static final int Spinner_android_entries = 3688;
+
+    @StyleableRes
+    public static final int Spinner_android_popupBackground = 3689;
+
+    @StyleableRes
+    public static final int Spinner_android_prompt = 3690;
+
+    @StyleableRes
+    public static final int Spinner_popupTheme = 3691;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_constantSize = 3692;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_dither = 3693;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_enterFadeDuration = 3694;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_exitFadeDuration = 3695;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_variablePadding = 3696;
+
+    @StyleableRes
+    public static final int StateListDrawable_android_visible = 3697;
+
+    @StyleableRes
+    public static final int StateListDrawableItem_android_drawable = 3698;
+
+    @StyleableRes
+    public static final int SwipeBackLayout_directionMode = 3699;
+
+    @StyleableRes
+    public static final int SwipeBackLayout_isSwipeFromEdge = 3700;
+
+    @StyleableRes
+    public static final int SwipeBackLayout_maskAlpha = 3701;
+
+    @StyleableRes
+    public static final int SwipeBackLayout_swipeBackFactor = 3702;
+
+    @StyleableRes
+    public static final int SwitchCompat_android_textOff = 3703;
+
+    @StyleableRes
+    public static final int SwitchCompat_android_textOn = 3704;
+
+    @StyleableRes
+    public static final int SwitchCompat_android_thumb = 3705;
+
+    @StyleableRes
+    public static final int SwitchCompat_showText = 3706;
+
+    @StyleableRes
+    public static final int SwitchCompat_splitTrack = 3707;
+
+    @StyleableRes
+    public static final int SwitchCompat_switchMinWidth = 3708;
+
+    @StyleableRes
+    public static final int SwitchCompat_switchPadding = 3709;
+
+    @StyleableRes
+    public static final int SwitchCompat_switchTextAppearance = 3710;
+
+    @StyleableRes
+    public static final int SwitchCompat_thumbTextPadding = 3711;
+
+    @StyleableRes
+    public static final int SwitchCompat_thumbTint = 3712;
+
+    @StyleableRes
+    public static final int SwitchCompat_thumbTintMode = 3713;
+
+    @StyleableRes
+    public static final int SwitchCompat_track = 3714;
+
+    @StyleableRes
+    public static final int SwitchCompat_trackTint = 3715;
+
+    @StyleableRes
+    public static final int SwitchCompat_trackTintMode = 3716;
+
+    @StyleableRes
+    public static final int TabItem_android_icon = 3717;
+
+    @StyleableRes
+    public static final int TabItem_android_layout = 3718;
+
+    @StyleableRes
+    public static final int TabItem_android_text = 3719;
+
+    @StyleableRes
+    public static final int TabLayout_tabBackground = 3720;
+
+    @StyleableRes
+    public static final int TabLayout_tabContentStart = 3721;
+
+    @StyleableRes
+    public static final int TabLayout_tabGravity = 3722;
+
+    @StyleableRes
+    public static final int TabLayout_tabIconTint = 3723;
+
+    @StyleableRes
+    public static final int TabLayout_tabIconTintMode = 3724;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicator = 3725;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicatorAnimationDuration = 3726;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicatorColor = 3727;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicatorFullWidth = 3728;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicatorGravity = 3729;
+
+    @StyleableRes
+    public static final int TabLayout_tabIndicatorHeight = 3730;
+
+    @StyleableRes
+    public static final int TabLayout_tabInlineLabel = 3731;
+
+    @StyleableRes
+    public static final int TabLayout_tabMaxWidth = 3732;
+
+    @StyleableRes
+    public static final int TabLayout_tabMinWidth = 3733;
+
+    @StyleableRes
+    public static final int TabLayout_tabMode = 3734;
+
+    @StyleableRes
+    public static final int TabLayout_tabPadding = 3735;
+
+    @StyleableRes
+    public static final int TabLayout_tabPaddingBottom = 3736;
+
+    @StyleableRes
+    public static final int TabLayout_tabPaddingEnd = 3737;
+
+    @StyleableRes
+    public static final int TabLayout_tabPaddingStart = 3738;
+
+    @StyleableRes
+    public static final int TabLayout_tabPaddingTop = 3739;
+
+    @StyleableRes
+    public static final int TabLayout_tabRippleColor = 3740;
+
+    @StyleableRes
+    public static final int TabLayout_tabSelectedTextColor = 3741;
+
+    @StyleableRes
+    public static final int TabLayout_tabTextAppearance = 3742;
+
+    @StyleableRes
+    public static final int TabLayout_tabTextColor = 3743;
+
+    @StyleableRes
+    public static final int TabLayout_tabUnboundedRipple = 3744;
+
+    @StyleableRes
+    public static final int TextAppearance_android_fontFamily = 3745;
+
+    @StyleableRes
+    public static final int TextAppearance_android_shadowColor = 3746;
+
+    @StyleableRes
+    public static final int TextAppearance_android_shadowDx = 3747;
+
+    @StyleableRes
+    public static final int TextAppearance_android_shadowDy = 3748;
+
+    @StyleableRes
+    public static final int TextAppearance_android_shadowRadius = 3749;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textColor = 3750;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textColorHint = 3751;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textColorLink = 3752;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textFontWeight = 3753;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textSize = 3754;
+
+    @StyleableRes
+    public static final int TextAppearance_android_textStyle = 3755;
+
+    @StyleableRes
+    public static final int TextAppearance_android_typeface = 3756;
+
+    @StyleableRes
+    public static final int TextAppearance_fontFamily = 3757;
+
+    @StyleableRes
+    public static final int TextAppearance_fontVariationSettings = 3758;
+
+    @StyleableRes
+    public static final int TextAppearance_textAllCaps = 3759;
+
+    @StyleableRes
+    public static final int TextAppearance_textLocale = 3760;
+
+    @StyleableRes
+    public static final int TextInputLayout_android_hint = 3761;
+
+    @StyleableRes
+    public static final int TextInputLayout_android_textColorHint = 3762;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxBackgroundColor = 3763;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxBackgroundMode = 3764;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxCollapsedPaddingTop = 3765;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxCornerRadiusBottomEnd = 3766;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxCornerRadiusBottomStart = 3767;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxCornerRadiusTopEnd = 3768;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxCornerRadiusTopStart = 3769;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxStrokeColor = 3770;
+
+    @StyleableRes
+    public static final int TextInputLayout_boxStrokeWidth = 3771;
+
+    @StyleableRes
+    public static final int TextInputLayout_counterEnabled = 3772;
+
+    @StyleableRes
+    public static final int TextInputLayout_counterMaxLength = 3773;
+
+    @StyleableRes
+    public static final int TextInputLayout_counterOverflowTextAppearance = 3774;
+
+    @StyleableRes
+    public static final int TextInputLayout_counterTextAppearance = 3775;
+
+    @StyleableRes
+    public static final int TextInputLayout_errorEnabled = 3776;
+
+    @StyleableRes
+    public static final int TextInputLayout_errorTextAppearance = 3777;
+
+    @StyleableRes
+    public static final int TextInputLayout_helperText = 3778;
+
+    @StyleableRes
+    public static final int TextInputLayout_helperTextEnabled = 3779;
+
+    @StyleableRes
+    public static final int TextInputLayout_helperTextTextAppearance = 3780;
+
+    @StyleableRes
+    public static final int TextInputLayout_hintAnimationEnabled = 3781;
+
+    @StyleableRes
+    public static final int TextInputLayout_hintEnabled = 3782;
+
+    @StyleableRes
+    public static final int TextInputLayout_hintTextAppearance = 3783;
+
+    @StyleableRes
+    public static final int TextInputLayout_passwordToggleContentDescription = 3784;
+
+    @StyleableRes
+    public static final int TextInputLayout_passwordToggleDrawable = 3785;
+
+    @StyleableRes
+    public static final int TextInputLayout_passwordToggleEnabled = 3786;
+
+    @StyleableRes
+    public static final int TextInputLayout_passwordToggleTint = 3787;
+
+    @StyleableRes
+    public static final int TextInputLayout_passwordToggleTintMode = 3788;
+
+    @StyleableRes
+    public static final int ThemeEnforcement_android_textAppearance = 3789;
+
+    @StyleableRes
+    public static final int ThemeEnforcement_enforceMaterialTheme = 3790;
+
+    @StyleableRes
+    public static final int ThemeEnforcement_enforceTextAppearance = 3791;
+
+    @StyleableRes
+    public static final int Toolbar_android_gravity = 3792;
+
+    @StyleableRes
+    public static final int Toolbar_android_minHeight = 3793;
+
+    @StyleableRes
+    public static final int Toolbar_buttonGravity = 3794;
+
+    @StyleableRes
+    public static final int Toolbar_collapseContentDescription = 3795;
+
+    @StyleableRes
+    public static final int Toolbar_collapseIcon = 3796;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetEnd = 3797;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetEndWithActions = 3798;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetLeft = 3799;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetRight = 3800;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetStart = 3801;
+
+    @StyleableRes
+    public static final int Toolbar_contentInsetStartWithNavigation = 3802;
+
+    @StyleableRes
+    public static final int Toolbar_logo = 3803;
+
+    @StyleableRes
+    public static final int Toolbar_logoDescription = 3804;
+
+    @StyleableRes
+    public static final int Toolbar_maxButtonHeight = 3805;
+
+    @StyleableRes
+    public static final int Toolbar_menu = 3806;
+
+    @StyleableRes
+    public static final int Toolbar_navigationContentDescription = 3807;
+
+    @StyleableRes
+    public static final int Toolbar_navigationIcon = 3808;
+
+    @StyleableRes
+    public static final int Toolbar_popupTheme = 3809;
+
+    @StyleableRes
+    public static final int Toolbar_subtitle = 3810;
+
+    @StyleableRes
+    public static final int Toolbar_subtitleTextAppearance = 3811;
+
+    @StyleableRes
+    public static final int Toolbar_subtitleTextColor = 3812;
+
+    @StyleableRes
+    public static final int Toolbar_title = 3813;
+
+    @StyleableRes
+    public static final int Toolbar_titleMargin = 3814;
+
+    @StyleableRes
+    public static final int Toolbar_titleMarginBottom = 3815;
+
+    @StyleableRes
+    public static final int Toolbar_titleMarginEnd = 3816;
+
+    @StyleableRes
+    public static final int Toolbar_titleMarginStart = 3817;
+
+    @StyleableRes
+    public static final int Toolbar_titleMarginTop = 3818;
+
+    @StyleableRes
+    public static final int Toolbar_titleMargins = 3819;
+
+    @StyleableRes
+    public static final int Toolbar_titleTextAppearance = 3820;
+
+    @StyleableRes
+    public static final int Toolbar_titleTextColor = 3821;
+
+    @StyleableRes
+    public static final int View_android_focusable = 3822;
+
+    @StyleableRes
+    public static final int View_android_theme = 3823;
+
+    @StyleableRes
+    public static final int View_paddingEnd = 3824;
+
+    @StyleableRes
+    public static final int View_paddingStart = 3825;
+
+    @StyleableRes
+    public static final int View_theme = 3826;
+
+    @StyleableRes
+    public static final int ViewBackgroundHelper_android_background = 3827;
+
+    @StyleableRes
+    public static final int ViewBackgroundHelper_backgroundTint = 3828;
+
+    @StyleableRes
+    public static final int ViewBackgroundHelper_backgroundTintMode = 3829;
+
+    @StyleableRes
+    public static final int ViewStubCompat_android_id = 3830;
+
+    @StyleableRes
+    public static final int ViewStubCompat_android_inflatedId = 3831;
+
+    @StyleableRes
+    public static final int ViewStubCompat_android_layout = 3832;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_cornerColor = 3833;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_frameColor = 3834;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_frameHeight = 3835;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_frameWidth = 3836;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_gridColumn = 3837;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_gridHeight = 3838;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_labelText = 3839;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_labelTextColor = 3840;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_labelTextLocation = 3841;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_labelTextPadding = 3842;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_labelTextSize = 3843;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_laserColor = 3844;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_laserStyle = 3845;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_maskColor = 3846;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_resultPointColor = 3847;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_showResultPoint = 3848;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_titleColor = 3849;
+
+    @StyleableRes
+    public static final int ViewfinderView_scankit_titleSize = 3850;
+
+    @StyleableRes
+    public static final int filled_text_fillColor = 3851;
+
+    @StyleableRes
+    public static final int filled_text_fillTextSize = 3852;
+
+    @StyleableRes
+    public static final int filled_text_filledText = 3853;
+
+    @StyleableRes
+    public static final int filled_text_normalColor = 3854;
+
+    @StyleableRes
+    public static final int filled_text_rowSpace = 3855;
+>>>>>>> .merge_file_a01404
   }
 }
