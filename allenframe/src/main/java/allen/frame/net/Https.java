@@ -81,7 +81,7 @@ public class Https {
         return this;
     }
 
-    public Https addParam(String key, Object value){
+    public Https addParam(String key,Object value){
         if(mParams==null){
             mParams = new HashMap<>();
         }
@@ -89,7 +89,7 @@ public class Https {
         return this;
     }
 
-    public Https addHeader(String key, Object value){
+    public Https addHeader(String key,Object value){
         if(mHeaders==null){
             mHeaders = new HashMap<>();
         }

@@ -6,6 +6,7 @@ import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 
 import allen.frame.AllenManager;
+import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
 
 public class App extends Application {
@@ -13,7 +14,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         AllenManager.init(this);
-        Logger.init().setHttp(true).setDebug(true);
+        Logger.init().setHttp(Constants.ISDEBUG).setDebug(Constants.ISDEBUG);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.

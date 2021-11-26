@@ -4,6 +4,5 @@
     <application>
         <activity android:name=".WebActivity" />
         <activity android:name=".AllenMapChoiceActivity" />
-        <activity android:name=".FileSelectorActivity" />
     </application>
 </manifest>

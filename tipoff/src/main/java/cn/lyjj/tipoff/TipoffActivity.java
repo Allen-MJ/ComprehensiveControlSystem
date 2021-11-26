@@ -100,7 +100,7 @@ public class TipoffActivity extends AllenBaseActivity {
             title = "事件上报";
             api = TipApi.TipLeaderAdd;
         }
-        setToolbarTitle(toolbar, title, true);
+        setToolbarTitle(toolbar, "爆料", true);
     }
 
     @Override

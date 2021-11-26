@@ -18,7 +18,6 @@
         <activity
             android:name="cn.lyjj.tipoff.TipOffListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="cn.lyjj.tipoff.SmartTipActivity" />
     </application>
 
 </manifest>

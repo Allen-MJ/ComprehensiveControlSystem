@@ -1,0 +1,80 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--main start-->
+    <string name="menu_main">首页</string>
+    <string name="menu_xx">消息</string>
+    <string name="menu_gc">广场</string>
+    <string name="menu_wd">我的</string>
+    <string name="menu_action_notice">通知</string>
+    <!--main end-->
+    <!--首页start-->
+    <string name="tip_dw">受理单位</string>
+    <string name="tip_fyr">反映人</string>
+    <string name="tip_phone">联系电话</string>
+    <string name="tip_sfz">身份证号</string>
+    <string name="tip_search_hint">输入关键字查询</string>
+    <string name="tip_sex">性别</string>
+    <string name="tip_sex_male">男</string>
+    <string name="tip_sex_female">女</string>
+    <string name="tip_grid">所在网格</string>
+    <string name="tip_address">地址</string>
+    <string name="tip_gps">定位</string>
+    <string name="tip_content">写下自己要爆料的内容</string>
+    <string name="tip_add_file">添加附件</string>
+    <!--首页end-->
+    <!--我的 start-->
+    <string name="public_user_gz">我的关注</string>
+    <string name="public_user_zan">我的点赞</string>
+    <string name="public_user_pl">我的评论</string>
+    <string name="public_user_fk">意见反馈</string>
+    <string name="public_user_update">检查更新</string>
+
+
+    <string name="user_photo">头像</string>
+    <string name="user_name">昵称</string>
+    <string name="user_phone">手机号</string>
+    <string name="user_sex">性别</string>
+    <string name="user_email">邮箱</string>
+    <string name="user_level">等级</string>
+    <string name="user_address">常住地址</string>
+
+    <string name="message_type">类别</string>
+    <string name="search_key_hint">输入关键字查询</string>
+
+
+    <string name="main_baoliao">爆料</string>
+    <string name="main_wenjuan">问卷调查</string>
+    <string name="main_jindu">进度查询</string>
+    <string name="main_life_service">生活服务</string>
+    <string name="main_notice">公告</string>
+    <string name="more_hint">查看更多>></string>
+    <string name="more_zhiding">置顶</string>
+
+    <string name="square_guan_zu">+ 关注</string>
+    <string name="square_dis_guan_zu">取消关注</string>
+    <string name="square_discuss">评论</string>
+    <string name="square_gz">关注</string>
+    <string name="square_zan">点赞</string>
+    <string name="square_send">发送</string>
+    <string name="delete">删除</string>
+
+    <string name="discuss_title">#社区治理#\n请您提出宝贵意见</string>
+    <string name="vote_title">#环保调查问卷#</string>
+
+    <string name="square_discuss_waring_hint">最多可写200字哦</string>
+    <string name="feedback_hint">请输入意见反馈</string>
+    <string name="commit_hint">提交</string>
+
+    <string name="exit_bt_hint">退出登录</string>
+    <!--受理单位： 网格选择： 反 映 人： 性 别： 联系电话： 身份证号： 地 址： 内 容:-->
+    <!--爆料start-->
+    <string name="tip_info_dw">受理单位：</string>
+    <string name="tip_info_grid">网格选择：</string>
+    <string name="tip_info_name">反&#160;&#160;映&#160;&#160;人：</string>
+    <string name="tip_info_sex">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别：</string>
+    <string name="tip_info_phone">联系电话：</string>
+    <string name="tip_info_idno">身份证号：</string>
+    <string name="tip_info_address">地&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;址：</string>
+    <string name="tip_info_content">内&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;容：</string>
+    <string name="tip_info_file">附件：</string>
+    <!--爆料end-->
+</resources>

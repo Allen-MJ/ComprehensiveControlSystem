@@ -1,6 +1,5 @@
 include ':tipoff'
-include ':core'
-include ':work'
+include ':thepublic'
 include ':gifdecoder'
 include ':allenframe'
 include ':app'
