@@ -1,6 +1,7 @@
 package allen.frame.entry;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Role implements Serializable {
     private String dataScope;
@@ -9,7 +10,7 @@ public class Role implements Serializable {
     private String name;
     private String username;
     private String updateTime;
-    private Units orgs;
+    private List<Units> orgs;
 
     public String getDataScope() {
         return dataScope;
@@ -59,11 +60,11 @@ public class Role implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Units getOrgs() {
+    public List<Units> getOrgs() {
         return orgs;
     }
 
-    public void setOrgs(Units orgs) {
+    public void setOrgs(List<Units> orgs) {
         this.orgs = orgs;
     }
 }
