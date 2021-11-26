@@ -318,7 +318,34 @@ public class ModelData {
                 resId = R.mipmap.core_wggl;
                 break;
             case "网格人员":
-                resId = R.mipmap.core_wggl;
+                resId = R.mipmap.core_wgryl;
+                break;
+            case "常住人口":
+                resId = R.mipmap.core_czrk;
+                break;
+            case "境外人口":
+                resId = R.mipmap.core_jwry;
+                break;
+            case "邪教人员":
+                resId = R.mipmap.core_xjry;
+                break;
+            case "言行过激人员":
+                resId = R.mipmap.core_yxgj;
+                break;
+            case "刑满释放人员":
+                resId = R.mipmap.core_xmsf;
+                break;
+            case "社区矫正人员":
+                resId = R.mipmap.core_sqjz;
+                break;
+            case "肇事肇祸严重精神障碍患者":
+                resId = R.mipmap.core_jsza;
+                break;
+            case "吸毒人员":
+                resId = R.mipmap.core_xdry;
+                break;
+            case "艾滋病人":
+                resId = R.mipmap.core_azbr;
                 break;
         }
         return resId;
