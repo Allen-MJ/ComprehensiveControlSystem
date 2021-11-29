@@ -3,6 +3,8 @@ package allen.frame;
 import android.app.Activity;
 import android.content.Intent;
 
+import java.util.ArrayList;
+
 import allen.frame.entry.FileInfo;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.PermissionUtil;
@@ -16,6 +18,7 @@ public class FileSelector {
     private int type = FileSelectorActivity.TYPE_FOLDER;
     private int count = 0;
     private FileInfo.FileType typeName = FileInfo.FileType.Unknown;
+    private ArrayList<String> files;
 
     private FileSelector(){}
     public static FileSelector creat(){
@@ -50,6 +53,12 @@ public class FileSelector {
         return this;
     }
 
+    public FileSelector origin(ArrayList<String> files){
+        this.files = files;
+        return this;
+    }
+
+
     public FileSelector start(Activity activity, int requestCode){
         if(PermissionUtil.isStoragePermissionGranted(activity)){
             Intent intent = new Intent(activity, FileSelectorActivity.class);
@@ -58,6 +67,7 @@ public class FileSelector {
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE,type)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE_NAME,typeName)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_MODE,mode)
+            .putExtra(FileSelectorActivity.EXTRA_SELECT_FILES,files)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_COUNT,count);
             activity.startActivityForResult(intent,requestCode);
         }else{
@@ -72,6 +82,7 @@ public class FileSelector {
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE,choice)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE,type)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_MODE,mode)
+            .putExtra(FileSelectorActivity.EXTRA_SELECT_FILES,files)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_COUNT,count);
             activity.startActivity(intent);
         }else{
@@ -88,6 +99,7 @@ public class FileSelector {
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE,type)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE_NAME,typeName)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_MODE,mode)
+            .putExtra(FileSelectorActivity.EXTRA_SELECT_FILES,files)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_COUNT,count);
             fragment.startActivityForResult(intent,requestCode);
         }else{
@@ -102,6 +114,7 @@ public class FileSelector {
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE,choice)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE,type)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_MODE,mode)
+            .putExtra(FileSelectorActivity.EXTRA_SELECT_FILES,files)
             .putExtra(FileSelectorActivity.EXTRA_SELECT_COUNT,count);
             fragment.startActivity(intent);
         }else{

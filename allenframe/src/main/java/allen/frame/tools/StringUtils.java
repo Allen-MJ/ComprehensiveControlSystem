@@ -110,7 +110,7 @@ public class StringUtils {
 
 	public static String getFileNameByPath(String path){
 		if(notEmpty(path)){
-			return path.substring(path.lastIndexOf("/"));
+			return path.substring(path.lastIndexOf("/")+1);
 		}
 		return "";
 	}

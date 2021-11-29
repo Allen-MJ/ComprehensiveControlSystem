@@ -41,6 +41,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
     public static final String EXTRA_SELECT_MODE = "extra_select_mode";
     public static final String EXTRA_SELECT_COUNT = "extra_select_count";
     public static final String EXTRA_RESULT = "select_result";
+    public static final String EXTRA_SELECT_FILES = "extra_select_files";
     @BindView(R2.id.fgt_container)
     FrameLayout fgtContainer;
     @BindView(R2.id.cancel_bt)
@@ -55,6 +56,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
     private int type = TYPE_FOLDER;
     private FileInfo.FileType typeName = null;
     FileSelectorFragment fragment;
+    private ArrayList<String> files;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -79,6 +81,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
         mode = getIntent().getIntExtra(EXTRA_SELECT_MODE, MODE_SINGLE);
         type = getIntent().getIntExtra(EXTRA_SELECT_CHOICE_TYPE, TYPE_FOLDER);
         count = getIntent().getIntExtra(EXTRA_SELECT_COUNT, 0);
+        files = getIntent().getStringArrayListExtra(EXTRA_SELECT_FILES);
         typeName = (FileInfo.FileType) getIntent().getSerializableExtra(EXTRA_SELECT_CHOICE_TYPE_NAME);
         Bundle bundle = new Bundle();
         bundle.putBoolean(EXTRA_SELECT_CHOICE, choice);
@@ -90,6 +93,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
         }else{
             bundle.putSerializable(EXTRA_SELECT_CHOICE_TYPE_NAME, FileInfo.FileType.Unknown);
         }
+        bundle.putStringArrayList(EXTRA_SELECT_FILES,files);
         bundle.putInt(EXTRA_SELECT_COUNT, count);
         fragment = new FileSelectorFragment();
         fragment.setArguments(bundle);

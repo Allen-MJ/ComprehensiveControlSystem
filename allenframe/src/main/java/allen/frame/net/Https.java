@@ -14,6 +14,7 @@ public class Https {
     private Context context;
     private String mUrl;
     private File mFile;
+    private String mPath;
     private Map<String,Object> mParams;
     private Map<String,Object> mHeaders;
     private String jsons;
@@ -80,6 +81,10 @@ public class Https {
         mFile = file;
         return this;
     }
+    public Https path(String path){
+        mPath = path;
+        return this;
+    }
 
     public Https addParam(String key, Object value){
         if(mParams==null){
@@ -139,7 +144,11 @@ public class Https {
     }
 
     private <T> void upload(Callback<T> callback){
-        mEngine.upload(context,mUrl,mFile,mParams,callback);
+        if(mFile!=null){
+            mEngine.upload(context,mUrl,mFile,mParams,callback);
+        }else{
+            mEngine.upload(context,mUrl,mPath,mParams,callback);
+        }
     }
 
     public void download(Callback<java.io.File> callback){
@@ -153,7 +162,9 @@ public class Https {
         }else if(method==Type_Get){
             get(callback);
         }else if(method==Type_Upload){
-            if(mFile==null){
+            if(StringUtils.notEmpty(mPath)){
+
+            }else if(mFile==null){
                 throw new NullPointerException("文件不能为空!");
             }
             upload(callback);

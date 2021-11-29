@@ -37,6 +37,7 @@ import static allen.frame.FileSelectorActivity.EXTRA_SELECT_CHOICE;
 import static allen.frame.FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE;
 import static allen.frame.FileSelectorActivity.EXTRA_SELECT_CHOICE_TYPE_NAME;
 import static allen.frame.FileSelectorActivity.EXTRA_SELECT_COUNT;
+import static allen.frame.FileSelectorActivity.EXTRA_SELECT_FILES;
 import static allen.frame.FileSelectorActivity.EXTRA_SELECT_MODE;
 import static allen.frame.FileSelectorActivity.MODE_SINGLE;
 import static allen.frame.FileSelectorActivity.TYPE_FILE;
@@ -52,6 +53,7 @@ public class FileSelectorFragment extends BaseFragment {
     private Callback mCallback;
     private ArrayList<FileInfo> currentFileList = new ArrayList<>();
     private String path;
+    private ArrayList<String> files;
     private int mode = MODE_SINGLE;
     private int index = 0;
     private List<FileInfo> list;
@@ -84,6 +86,7 @@ public class FileSelectorFragment extends BaseFragment {
         type = getArguments().getInt(EXTRA_SELECT_CHOICE_TYPE,TYPE_FOLDER);
         typeName = (FileInfo.FileType) getArguments().getSerializable(EXTRA_SELECT_CHOICE_TYPE_NAME);
         count = getArguments().getInt(EXTRA_SELECT_COUNT,0);
+        files = getArguments().getStringArrayList(EXTRA_SELECT_FILES);
         initUI(view);
         addEvent(view);
     }

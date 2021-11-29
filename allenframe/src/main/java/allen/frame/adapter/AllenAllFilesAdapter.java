@@ -9,8 +9,8 @@ import java.util.List;
 
 import allen.frame.R;
 import allen.frame.entry.WordFile;
-import allen.frame.widget.MarqueeView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -26,8 +26,17 @@ public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.View
         notifyDataSetChanged();
     }
 
+    public List<WordFile> getFiles(){
+        return files;
+    }
+
     public void delete(WordFile file){
         files.remove(file);
+        notifyDataSetChanged();
+    }
+
+    public void add(List<WordFile> addFiles){
+        files.addAll(addFiles);
         notifyDataSetChanged();
     }
 
@@ -64,7 +73,7 @@ public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     class ObjectHolder extends RecyclerView.ViewHolder{
-        private MarqueeView name,path,delete;
+        private AppCompatTextView name,path,delete;
         public ObjectHolder(@NonNull View itemView) {
             super(itemView);
             delete = itemView.findViewById(R.id.item_delete);

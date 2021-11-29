@@ -919,6 +919,141 @@ public class OkHttpEngine implements HttpEngine {
         });
     }
 
+    @Override
+    public <T> void upload(final Context act, String url, String path, Map<String, Object> params, final Callback<T> callback) {
+        token = AllenManager.getInstance().getStoragePreference().getString(Constants.UserToken, "");
+        OkHttpClient httpClient = new OkHttpClient();
+        MultipartBody.Builder builder = new MultipartBody
+                .Builder()
+                .setType(MultipartBody.FORM);
+
+        builder.addFormDataPart("platform", "android");
+        builder.addFormDataPart("type", StringUtils.getFileTypeByPath(path));
+        if(params!=null){
+            for (Map.Entry<String,Object> entry:params.entrySet()){
+                builder.addFormDataPart(entry.getKey(),entry.getValue().toString());
+            }
+        }
+        builder.addFormDataPart("file", StringUtils.getFileNameByPath(path),
+                RequestBody.create(MediaType.parse(guessMimeType(path)), new java.io.File(path)));
+        MyMultipartBody myMultipartBody = new MyMultipartBody(builder.build(), new ProgressListener() {
+            @Override
+            public void onProgress(final long total, final long current) {
+                //回调接口打印总进度和当前进度
+                Logger.e("upload", total + " : " + current);
+                /*if(act!=null&&act.isFinishing()){
+                    return;
+                }*/
+                new RunMain(act).run2main(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(callback!=null){
+                            callback.onProgress(total,current);
+                        }
+                    }
+                });
+            }
+        });
+        Request request = new Request.Builder().addHeader("keep-alive", "false")
+                .addHeader("Authorization", token)
+                .url(url)
+                .post(myMultipartBody)
+                .build();
+        httpClient.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Logger.http("data", "onFailure");
+                new RunMain(act).run2main(new Runnable() {
+                    @Override
+                    public void run() {
+                        Logger.http("data", "onFailure");
+                        if(callback!=null){
+                            callback.fail(new allen.frame.entry.Response("501","请求失败!","请求失败!"));
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Logger.http("data", "onResponse");
+                /*if(act!=null&&act.isFinishing()){
+                    Logger.http("data", "Activity is on isFinishing!");
+                    return;
+                }
+                if(act!=null&&act.isFinishing()){
+                    Logger.http("data", "Activity is on isFinishing!");
+                    return;
+                }*/
+                final int code = response.code();
+                Logger.http("code", ">>" + code);
+                final String data = response.body().string();
+                Logger.http("data", ">>" + data);
+                if (response.isSuccessful()) {
+                    final allen.frame.entry.Response result = gson.fromJson(data,allen.frame.entry.Response.class);
+                    if(result.codeEquals("200")){
+                        new RunMain(act).run2main(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(callback!=null){
+                                    callback.success((T) gson.fromJson(gson.toJson(result.getObj()), callback.getGenericityType()));
+                                    callback.success(result);
+                                }
+                            }
+                        });
+                    }else if(result.codeEquals("401")){
+                        new RunMain(act).run2main(new Runnable() {
+                            @Override
+                            public void run() {
+                                Logger.http("data", "token is erro!");
+                                if(callback!=null){
+                                    callback.token();
+                                }
+                            }
+                        });
+                    }else{
+                        Logger.http("data", "code is not 200!");
+                        new RunMain(act).run2main(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(callback!=null){
+                                    callback.fail(result);
+                                }
+                            }
+                        });
+                    }
+                } else if(code==401){
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            Logger.http("data", "->Not isSuccessful");
+                            if(callback!=null){
+                                callback.token();
+                            }
+                        }
+                    });
+                }else{
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            String msg = "请求失败!";
+                            Logger.http("data", data);
+                            try {
+                                JSONObject obj = new JSONObject(data);
+                                msg = obj.getString("message");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            if(callback!=null){
+                                callback.fail(new allen.frame.entry.Response(String.valueOf(code),msg,msg));
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     private long length,total;
     private final static String TAG = "download";
     @Override

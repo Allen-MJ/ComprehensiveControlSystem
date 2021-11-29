@@ -55,6 +55,12 @@ public class UploadProgressDialog {
         }
     }
 
+    public void dismiss(){
+        if(dialog!=null){
+            dialog.dismiss();
+        }
+    }
+
     private OnCompletListener listener;
     public void setOnCompletListener(OnCompletListener listener){
         this.listener = listener;

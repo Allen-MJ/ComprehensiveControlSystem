@@ -26,5 +26,16 @@ public interface HttpEngine {
      * @param <T>
      */
     public <T> void upload(Context act, String url, File file, Map<String, Object> params, Callback<T> callBack);
+
+    /**
+     * 上传文件
+     * @param act
+     * @param url
+     * @param path
+     * @param params
+     * @param callBack
+     * @param <T>
+     */
+    public <T> void upload(Context act, String url, String path, Map<String, Object> params, Callback<T> callBack);
     public void download(Context act, String url, Callback<java.io.File> callBack);
 }
