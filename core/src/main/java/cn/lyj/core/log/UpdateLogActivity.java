@@ -63,7 +63,7 @@ public class UpdateLogActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         if (entry != null) {
             logSth.setText(entry.getWorkItem());
-            logProgress.setText(entry.getProgress());
+            logProgress.setText(entry.getProgressName());
             logDes.setText(entry.getDescription());
             workItem = entry.getWorkItem();
             progress = entry.getProgress();

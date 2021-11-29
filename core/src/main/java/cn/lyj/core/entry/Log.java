@@ -2,11 +2,14 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class Log implements Serializable {
     private String logId;
     private String inputPid;
     private String workItem;
     private String progress;
+    private String progressName;
     private String description;
     private String createTime;
     private String createBy;
@@ -83,5 +86,22 @@ public class Log implements Serializable {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getProgressName() {
+        String mProgress = "";
+        switch (progress){
+            case "1":
+                mProgress = "处理中";
+                break;
+            case "2":
+                mProgress = "已完成";
+                break;
+        }
+        return StringUtils.empty(mProgress)?progressName:mProgress;
+    }
+
+    public void setProgressName(String progressName) {
+        this.progressName = progressName;
     }
 }

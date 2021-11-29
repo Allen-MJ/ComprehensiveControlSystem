@@ -37,6 +37,7 @@ import cn.lyj.thepublic.adapter.FyAdapter;
 import cn.lyj.thepublic.data.API;
 import cn.lyj.thepublic.entry.Notice;
 import cn.lyj.thepublic.news.MessageDetailActivity;
+import cn.lyj.thepublic.square.LiveListActivity;
 import cn.lyjj.thepublic.TipOffListActivity;
 import cn.lyjj.thepublic.TipoffActivity;
 
@@ -101,7 +102,7 @@ public class ServeFragment extends BaseFragment {
         fyAdapter = new FyAdapter(0);
         List<Type> fys = new ArrayList<>();
         fys.add(new Type("1", "天气预报", R.mipmap.main_tianqi));
-        fys.add(new Type("2", "物业信息", R.mipmap.main_wuye));
+//        fys.add(new Type("2", "物业信息", R.mipmap.main_wuye));
         fys.add(new Type("3", "生活常识", R.mipmap.main_zhishiku));
         fyAdapter.setList(fys);
         rvLifeService.setAdapter(fyAdapter);
@@ -178,6 +179,9 @@ public class ServeFragment extends BaseFragment {
             case "2"://物业管理
                 break;
             case "3"://生活常识
+                startActivity(new Intent(getActivity(), LiveListActivity.class)
+                        .putExtra(Constants.Key_1,"3")
+                        .putExtra(Constants.Key_2,type.getName()));
                 break;
         }
     }

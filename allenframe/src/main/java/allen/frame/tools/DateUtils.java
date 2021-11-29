@@ -137,6 +137,16 @@ public class DateUtils {
         return "刚刚";
     }
 
+    public static String getYYMMDD(String dateString){
+        if(StringUtils.empty(dateString)){
+            return "";
+        }else if(dateString.contains(" ")){
+            return dateString.split(" ")[0];
+        }else{
+            return dateString;
+        }
+    }
+
     public static void doTimeDateSetting(final Context context, Handler handler) {
         // textView.setOnClickListener(new View.OnClickListener() {
         // @Override

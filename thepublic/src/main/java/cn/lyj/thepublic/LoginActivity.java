@@ -64,7 +64,12 @@ public class LoginActivity extends AllenIMBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loginPhone.setText(shared.getString(Constants.UserPhone,""));
+        if(Constants.ISDEBUG){
+            loginPhone.setText("18580617183");
+            loginPsw.setText("iloveyou!134");
+        }else{
+            loginPhone.setText(shared.getString(Constants.UserPhone,""));
+        }
     }
 
     @Override

@@ -3,6 +3,9 @@ package cn.lyj.core.entry;
 import java.io.Serializable;
 import java.util.List;
 
+import allen.frame.entry.WordFile;
+import allen.frame.tools.StringUtils;
+
 public class Word implements Serializable {
 
     /**
@@ -28,6 +31,7 @@ public class Word implements Serializable {
     private int deleted;
     private String digest;
     private String emergencyDegree;
+    private String emergencyDegreeName;
     private String missiveId;
     private String missiveNo;
     private String receiver;
@@ -37,7 +41,7 @@ public class Word implements Serializable {
     private String title;
     private String updateBy;
     private String updateTime;
-    private List<?> attachments;
+    private List<WordFile> attachments;
 
     public String getCreateBy() {
         return createBy;
@@ -151,11 +155,31 @@ public class Word implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public List<?> getAttachments() {
+    public List<WordFile> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(List<?> attachments) {
+    public void setAttachments(List<WordFile> attachments) {
         this.attachments = attachments;
+    }
+
+    public String getEmergencyDegreeName() {
+        String mEmrgen = "";
+        switch (emergencyDegree){
+            case "1":
+                mEmrgen = "特急";
+                break;
+            case "2":
+                mEmrgen = "急件";
+                break;
+            case "3":
+                mEmrgen = "平件";
+                break;
+        }
+        return StringUtils.empty(mEmrgen)?emergencyDegreeName:mEmrgen;
+    }
+
+    public void setEmergencyDegreeName(String emergencyDegreeName) {
+        this.emergencyDegreeName = emergencyDegreeName;
     }
 }

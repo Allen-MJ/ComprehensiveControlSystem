@@ -121,7 +121,7 @@ public class StringUtils {
 			if(index<0){
 				return "";
 			}
-			return path.substring(index).toLowerCase();
+			return path.substring(index+1).toLowerCase();
 		}
 		return "";
 	}

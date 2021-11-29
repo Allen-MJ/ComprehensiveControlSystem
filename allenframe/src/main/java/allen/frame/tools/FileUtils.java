@@ -126,6 +126,7 @@ public class FileUtils {
 
     public String url2LocalName(String url){
         String type = StringUtils.getFileTypeByPath(url);
+        Logger.e("debug","fileType:"+type);
         if(StringUtils.notEmpty(type)){
             return EncryptUtils.MD5Encoder(url)+"."+type;
         }else{

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <include layout="@layout/alen_toolbar_layout"/>
     <androidx.core.widget.NestedScrollView
@@ -174,23 +175,68 @@
                 android:background="@color/gray_line_color"
                 android:layout_marginStart="@dimen/frame_edge_distance"
                 android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CoreNormal8Style"
+                android:text="@string/word_files"
+                android:textColor="@color/text_black_color"/>
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/CoreNormal8Style"
-                    android:text="@string/word_files"
-                    android:textColor="@color/text_black_color"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/word_files"
+                android:orientation="vertical"
+                android:background="@color/gray_line_color"
+                android:padding="@dimen/frame_half_distance">
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="0dp">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/frame_20_distance"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/frame_text_smaller_size"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="@string/allen_file_name"/>
+                        <View
+                            android:layout_width="@dimen/frame_half_distance"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_line_color"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/frame_text_smaller_size"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="@string/allen_file_path"/>
+                        <View
+                            android:layout_width="@dimen/frame_half_distance"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray_line_color"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/word_file_add"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/frame_text_smaller_size"
+                            android:textColor="@color/text_color_red2pri_selector"
+                            android:gravity="center"
+                            android:text="@string/allen_add_bt"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
             </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/word_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
     <androidx.appcompat.widget.AppCompatButton

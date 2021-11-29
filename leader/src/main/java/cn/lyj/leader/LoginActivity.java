@@ -27,6 +27,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.lyj.core.LoginVerify;
 import cn.lyj.core.R2;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.LoginAuth;
@@ -65,7 +66,12 @@ public class LoginActivity extends AllenIMBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loginAccount.setText(shared.getString(Constants.UserName,""));
+        if(Constants.ISDEBUG){
+            loginAccount.setText("admin");
+            loginPsw.setText("123456");
+        }else{
+            loginAccount.setText(shared.getString(Constants.UserName,""));
+        }
     }
 
     @Override
@@ -149,12 +155,7 @@ public class LoginActivity extends AllenIMBaseActivity {
                     public void success(LoginInfo data) {
                         dismissProgressDialog();
                         List<Role> roles = data.getUser().getUser().getRoles();
-                        boolean isleader = false;
-                        StringBuffer rolssb = new StringBuffer();
-                        for (Role role:roles){
-                            isleader = isleader||role.getLevel()==5;
-                            rolssb.append("、"+role.getName());
-                        }
+                        LoginVerify verify = new LoginVerify(roles);
                         shared.edit().putString(Constants.UserToken,data.getToken())
                                 .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                                 .putString(Constants.UserId,data.getUser().getUser().getId())
@@ -165,8 +166,8 @@ public class LoginActivity extends AllenIMBaseActivity {
                                 .putString(Constants.UserGender,data.getUser().getUser().getGender())
                                 .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
                                 .putString(Constants.UserGrage,data.getUser().getUser().getGrade())
-                                .putString(Constants.UserRoleName,rolssb.toString().replaceFirst("、","")).apply();
-                        if(!isleader){
+                                .putString(Constants.UserRoleName,verify.getRoleNames()).apply();
+                        if(!verify.isLeader()){
                             MsgUtils.showMDMessage(context,"该账号无权限登录领导版!");
                             return;
                         }

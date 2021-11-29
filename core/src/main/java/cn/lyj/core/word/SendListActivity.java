@@ -193,7 +193,7 @@ public class SendListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context, "账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(SendListActivity.this);
                     }
 
                     @Override
@@ -291,6 +291,12 @@ public class SendListActivity extends AllenBaseActivity {
                         page = 0;
                         actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
                         loadData();
+                    }
+
+                    @Override
+                    public void token() {
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(SendListActivity.this);
                     }
 
                     @Override

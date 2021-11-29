@@ -1,5 +1,6 @@
 package cn.lyj.core.word;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,23 +11,31 @@ import java.util.Calendar;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.FileSelector;
+import allen.frame.FileSelectorActivity;
+import allen.frame.adapter.AllenAllFilesAdapter;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.FileInfo;
 import allen.frame.entry.Response;
+import allen.frame.entry.WordFile;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.DatePickerDialog;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.ChoicePersonActivity;
 import cn.lyj.core.R;
@@ -54,9 +63,12 @@ public class SendWordInfoActivty extends AllenBaseActivity {
     RecyclerView wordFiles;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
-    private String title,number,date,jjcd,content,files;
+    @BindView(R2.id.word_file_add)
+    AppCompatTextView wordFileAdd;
+    private String title, number, date, jjcd, content, files;
     private Word entry;
-    private String ids,names,missiveId;
+    private String ids, names, missiveId;
+    private AllenAllFilesAdapter adapter;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -71,33 +83,41 @@ public class SendWordInfoActivty extends AllenBaseActivity {
     @Override
     protected void initBar() {
         entry = (Word) getIntent().getSerializableExtra(Constants.ObjectFirst);
-        setToolbarTitle(toolbar,entry==null?"添加发文" : "编辑发文",true);
+        setToolbarTitle(toolbar, entry == null ? "添加发文" : "编辑发文", true);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
-            if(requestCode==10){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 10) {
                 ids = data.getStringExtra(Constants.Key_1);
                 names = data.getStringExtra(Constants.Key_2);
                 wordUsers.setText(names);
+            }else if(requestCode==11){
+
             }
         }
     }
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
-        if(entry!=null){
+        adapter = new AllenAllFilesAdapter();
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        wordFiles.setLayoutManager(manager);
+        wordFiles.setAdapter(adapter);
+        if (entry != null) {
             missiveId = entry.getMissiveId();
             wordTitle.setText(entry.getTitle());
             wordNumber.setText(entry.getMissiveNo());
-            wordJjcd.setText(entry.getEmergencyDegree());
+            wordJjcd.setText(entry.getEmergencyDegreeName());
             wordUsers.setText(entry.getReceiver());
             wordSingnDate.setText(entry.getSignTime());
             wordContent.setText(Html.fromHtml(entry.getDigest()));
             jjcd = entry.getEmergencyDegree();
             names = entry.getReceiver();
+            adapter.setData(entry.getAttachments());
         }
     }
 
@@ -111,46 +131,74 @@ public class SendWordInfoActivty extends AllenBaseActivity {
                 v.setEnabled(true);
             }
         });
+        adapter.setOnItemClickListener(new AllenAllFilesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemDelete(View v, int position, WordFile file) {
+
+            }
+
+            @Override
+            public void onItemClick(View v, int position, WordFile file) {
+
+            }
+        });
     }
 
-    @OnClick({R2.id.word_jjcd, R2.id.word_users, R2.id.word_singn_date, R2.id.commit_bt})
+    @OnClick({R2.id.word_jjcd, R2.id.word_users, R2.id.word_singn_date, R2.id.commit_bt, R2.id.word_file_add})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
-        if(id== R.id.word_jjcd){
+        if (id == R.id.word_jjcd) {
             jjcd();
-        }else if(id== R.id.word_users){
+        } else if (id == R.id.word_users) {
             startActivityForResult(new Intent(context, ChoicePersonActivity.class)
-                    .putExtra(Constants.Key_1,ids)
-                    .putExtra(Constants.Key_2,true),10);
-        }else if(id== R.id.word_singn_date){
+                    .putExtra(Constants.Key_1, ids)
+                    .putExtra(Constants.Key_2, true), 10);
+        } else if (id == R.id.word_singn_date) {
             Calendar calendar = Calendar.getInstance();
             DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear, int startDayOfMonth) {
-                    wordSingnDate.setText(startYear+"-"+String.format("%02d",startMonthOfYear+1)+"-"+String.format("%02d",startDayOfMonth));
+                    wordSingnDate.setText(startYear + "-" + String.format("%02d", startMonthOfYear + 1) + "-" + String.format("%02d", startDayOfMonth));
                 }
-            },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             dialog.show();
-        }else if(id== R.id.commit_bt){
+        } else if (id == R.id.commit_bt) {
             commit();
+        } else if (id == R.id.word_file_add){
+            requestRunPermisssion(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10, new PermissionListener() {
+                @Override
+                public void onGranted(int requestCode) {
+                    FileSelector.creat()
+                            .canChoice(true)
+                            .setTitle("请选择文件")
+                            .setMode(FileSelectorActivity.MODE_MULTI)
+                            .setChoiceType(FileSelectorActivity.TYPE_FILE, FileInfo.FileType.Unknown).setCount(6)
+                            .start(SendWordInfoActivty.this,11);
+                }
+
+                @Override
+                public void onDenied(List<String> deniedPermission) {
+                    MsgUtils.showMDMessage(context,"请开通文件读写权限!");
+                }
+            });
         }
         view.setEnabled(true);
     }
 
-    private void jjcd(){
+    private void jjcd() {
         showProgressDialog("");
-        Https.with(this).url(CoreApi.core_Type).addParam("dictName","emergency_degree").addParam("page",0).addParam("size",9999).get()
+        Https.with(this).url(CoreApi.core_Type).addParam("dictName", "emergency_degree").addParam("page", 0).addParam("size", 9999).get()
                 .enqueue(new Callback<List<CoreType>>() {
 
                     @Override
                     public void success(final List<CoreType> data) {
                         dismissProgressDialog();
-                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context, data);
                         dialog.showDialog("请选择紧急程度", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
                             @Override
                             public void convert(ViewHolder holder, CoreType entity, int position) {
-                                holder.setText(R.id.name_tv,entity.getLabel());
+                                holder.setText(R.id.name_tv, entity.getLabel());
                             }
                         }, new CommonAdapter.OnItemClickListener() {
                             @Override
@@ -170,70 +218,71 @@ public class SendWordInfoActivty extends AllenBaseActivity {
                     @Override
                     public void fail(Response response) {
                         dismissProgressDialog();
-                        MsgUtils.showMDMessage(context,response.getMsg());
+                        MsgUtils.showMDMessage(context, response.getMsg());
                     }
                 });
     }
 
-    private void commit(){
+    private void commit() {
         title = wordTitle.getText().toString().trim();
         number = wordNumber.getText().toString().trim();
         date = wordSingnDate.getText().toString().trim();
         content = wordContent.getText().toString().trim();
-        if(StringUtils.empty(title)){
-            MsgUtils.showMDMessage(context,"请输入公文标题!");
+        if (StringUtils.empty(title)) {
+            MsgUtils.showMDMessage(context, "请输入公文标题!");
             return;
         }
-        if(StringUtils.empty(number)){
-            MsgUtils.showMDMessage(context,"请输入公文字号!");
+        if (StringUtils.empty(number)) {
+            MsgUtils.showMDMessage(context, "请输入公文字号!");
             return;
         }
-        if(StringUtils.empty(jjcd)){
-            MsgUtils.showMDMessage(context,"请选择紧急程度!");
+        if (StringUtils.empty(jjcd)) {
+            MsgUtils.showMDMessage(context, "请选择紧急程度!");
             return;
         }
-        if(StringUtils.empty(ids)){
-            MsgUtils.showMDMessage(context,"请选择紧接收人!");
+        if (StringUtils.empty(ids)) {
+            MsgUtils.showMDMessage(context, "请选择紧接收人!");
             return;
         }
-        if(StringUtils.empty(date)){
-            MsgUtils.showMDMessage(context,"请选择签发时间!");
+        if (StringUtils.empty(date)) {
+            MsgUtils.showMDMessage(context, "请选择签发时间!");
             return;
         }
-        if(StringUtils.empty(content)){
-            MsgUtils.showMDMessage(context,"请输入公文内容!");
+        if (StringUtils.empty(content)) {
+            MsgUtils.showMDMessage(context, "请输入公文内容!");
             return;
         }
         showProgressDialog("");
-        Https https = Https.with(this).url(CoreApi.Missive).addParam("title",title).addParam("missiveNo",number)
-                .addParam("emergencyDegree",jjcd).addParam("signTime",date).addParam("digest",content).addParam("receiveId",ids).addParam("receiver",names)
-                .addParam("attachments","");
-        if(entry==null){
+        Https https = Https.with(this).url(CoreApi.Missive).addParam("title", title).addParam("missiveNo", number)
+                .addParam("emergencyDegree", jjcd).addParam("signTime", date).addParam("digest", content).addParam("receiveId", ids).addParam("receiver", names)
+                .addParam("attachments", "");
+        if (entry == null) {
             https.post();
-        }else{
-            https.addParam("missiveId",missiveId);
+        } else {
+            https.addParam("missiveId", missiveId);
             https.put();
         }
         https.enqueue(new Callback<Object>() {
             @Override
             public void success(Object data) {
                 dismissProgressDialog();
-                MsgUtils.showMDMessage(context,"保存成功!");
-                setResult(RESULT_OK,getIntent());
+                MsgUtils.showMDMessage(context, "保存成功!");
+                setResult(RESULT_OK, getIntent());
                 finish();
             }
 
             @Override
             public void token() {
                 dismissProgressDialog();
-                MsgUtils.showMDMessage(context,"账号过期,请重新登录!");
+                actHelper.tokenErro2Login(SendWordInfoActivty.this);
             }
 
             @Override
             public void fail(Response response) {
                 dismissProgressDialog();
-                MsgUtils.showMDMessage(context,response.getMsg());
+                MsgUtils.showMDMessage(context, response.getMsg());
             }
         });
     }
+
 }

@@ -63,7 +63,7 @@ public class WjdcActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.activity_xxdt;
+        return R.layout.public_activity_xxdt;
     }
 
     @Override
@@ -106,8 +106,7 @@ public class WjdcActivity extends AllenBaseActivity {
                 sublist = new ArrayList<>();
                 showData();
                 MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
-                        /*startActivityForResult(new Intent(context, LoginActivity.class)
-                                .putExtra(Constants.Key_Token,true),11);*/
+                actHelper.tokenErro2Login(WjdcActivity.this);
             }
 
             @Override
@@ -121,13 +120,14 @@ public class WjdcActivity extends AllenBaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case 100:
-                if (resultCode==RESULT_OK){
+        if(resultCode==RESULT_OK){
+            switch (requestCode){
+                case 100:
+                case Constants.KeyTokenFlag:
                     page=0;
                     loadData();
-                }
-                break;
+                    break;
+            }
         }
     }
 

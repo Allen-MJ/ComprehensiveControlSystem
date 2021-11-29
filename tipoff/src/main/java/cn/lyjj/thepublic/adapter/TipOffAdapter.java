@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import allen.frame.tools.DateUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,11 +68,11 @@ public class TipOffAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void bind(final SthEntry entry) {
             if (entry != null) {
                 name.setText(entry.getName());
-                date.setText(entry.getAddTime());
+                date.setText(DateUtils.getTimeFormatText(entry.getCreateTime()));
                 content.setText(Html.fromHtml("<font color=\"gray\">反映事项：</font>"+entry.getContent()));
                 dw.setText(entry.getOrg().getOrgName());
-                status.setText(entry.getState());
-                sldate.setText(entry.getSeizedTime());
+                status.setText(entry.getStateName());
+                sldate.setText(DateUtils.getYYMMDD(entry.getSeizedTime()));
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

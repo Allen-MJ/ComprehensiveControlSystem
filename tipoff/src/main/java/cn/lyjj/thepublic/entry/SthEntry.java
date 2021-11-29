@@ -5,6 +5,7 @@ import java.util.List;
 
 import allen.frame.entry.Units;
 import allen.frame.entry.UploadFile;
+import allen.frame.tools.StringUtils;
 
 public class SthEntry implements Serializable {
     private long appealId;
@@ -17,12 +18,15 @@ public class SthEntry implements Serializable {
     private String point;
     private String address;
     private String gid;
+    private String gridName;
     private String content;
     private String state;
+    private String stateName;
     private String addTime;
     private String seizedUser;
     private String seizedTime;
     private String appealSource;
+    private String createTime;
     private List<UploadFile> files;
 
     public long getAppealId() {
@@ -159,5 +163,41 @@ public class SthEntry implements Serializable {
 
     public void setFiles(List<UploadFile> files) {
         this.files = files;
+    }
+
+    public String getStateName() {
+        String mStateName = "";
+        switch (state){
+            case "1":
+                mStateName = "待受理";
+                break;
+            case "2":
+                mStateName = "已受理";
+                break;
+            case "3":
+                mStateName = "已办结";
+                break;
+        }
+        return StringUtils.empty(mStateName)?stateName:mStateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getGridName() {
+        return gridName;
+    }
+
+    public void setGridName(String gridName) {
+        this.gridName = gridName;
     }
 }

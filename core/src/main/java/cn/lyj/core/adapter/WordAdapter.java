@@ -65,7 +65,7 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (entry != null) {
                 title.setText(entry.getTitle());
                 number.setText(entry.getMissiveNo());
-                jjcd.setText(entry.getEmergencyDegree());
+                jjcd.setText(entry.getEmergencyDegreeName());
                 status.setText(entry.getState());
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override

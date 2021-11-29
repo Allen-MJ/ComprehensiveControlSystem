@@ -1,21 +1,22 @@
 package cn.lyjj.thepublic;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
-import allen.frame.AllenChoiceUnitsActivity;
+import allen.frame.AllenMapActivity;
 import allen.frame.adapter.AllenFileShowAdapter;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -115,18 +116,43 @@ public class TipOffInfoActivity extends AllenBaseActivity {
     private void loadInfo(){
         Https.with(this).url(TipApi.TipDetail).addParam("id",id).get().enqueue(new Callback<SthEntry>() {
             @Override
-            public void success(SthEntry data) {
+            public void success(final SthEntry data) {
                 actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_SUCCES,"");
                 if(data!=null){
                     tipInfoDw.setText(data.getOrg().getOrgName());
-                    tipInfoGrid.setText(data.getGid());
+                    tipInfoGrid.setText(data.getGridName());
                     tipInfoName.setText(data.getName());
-                    tipInfoSex.setText(data.getSex());
+                    tipInfoSex.setText(data.getSex().equals("0")?"女":"男");
                     tipInfoPhone.setText(data.getPhone());
                     tipInfoIdno.setText(StringUtils.hideStr(data.getIdNumber(),7,14,"*"));
                     tipInfoAddress.setText(data.getAddress());
                     tipInfoContent.setText(data.getContent());
                     fileChoiceAdapter.setData(data.getFiles());
+                    if(StringUtils.notEmpty(data.getPoint())){
+                        tipInfoAddress.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_location_on,0);
+                        tipInfoAddress.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.setEnabled(false);
+                                requestRunPermisssion(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+                                        10, new PermissionListener() {
+                                    @Override
+                                    public void onGranted(int requestCode) {
+                                        startActivity(new Intent(context, AllenMapActivity.class)
+                                                .putExtra(Constants.Key_1,data.getPoint()));
+                                    }
+
+                                    @Override
+                                    public void onDenied(List<String> deniedPermission) {
+                                        MsgUtils.showMDMessage(context,"请开通权限!");
+                                    }
+                                });
+                                v.setEnabled(true);
+                            }
+                        });
+                    }else{
+                        tipInfoAddress.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
+                    }
                 }
             }
 

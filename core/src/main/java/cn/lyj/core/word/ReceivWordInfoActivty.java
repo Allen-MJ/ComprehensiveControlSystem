@@ -4,17 +4,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
-import com.google.gson.Gson;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import allen.frame.AllenBaseActivity;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
-import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -83,7 +77,7 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
             missiveId = entry.getMissiveId();
             wordTitle.setText(entry.getTitle());
             wordNumber.setText(entry.getMissiveNo());
-            wordJjcd.setText(entry.getEmergencyDegree());
+            wordJjcd.setText(entry.getEmergencyDegreeName());
             wordSigner.setText(entry.getSigner());
             wordSingnDate.setText(entry.getSignTime());
             wordContent.setText(Html.fromHtml(entry.getDigest()));
@@ -126,10 +120,10 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
     private void commit() {
         showProgressDialog("");
         content = wordOpinion.getText().toString().trim();
-        Map<String,String> map = new HashMap<>();
+        /*Map<String,String> map = new HashMap<>();
         map.put("id",missiveId);
         map.put("opinion",content);
-        Logger.e("debug",new Gson().toJson(map));
+        Logger.e("debug",new Gson().toJson(map));*/
         Https.with(this).url(CoreApi.MissiveSign).addParam("id",missiveId).addParam("opinion",content).post()
             .enqueue(new Callback<Object>() {
                 @Override
@@ -143,7 +137,7 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
                 @Override
                 public void token() {
                     dismissProgressDialog();
-                    MsgUtils.showMDMessage(context, "账号过期,请重新登录!");
+                    actHelper.tokenErro2Login(ReceivWordInfoActivty.this);
                 }
 
                 @Override

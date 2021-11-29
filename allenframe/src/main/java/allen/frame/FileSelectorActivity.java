@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -53,6 +54,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
     private int count = 0;
     private int type = TYPE_FOLDER;
     private FileInfo.FileType typeName = null;
+    FileSelectorFragment fragment;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -67,9 +69,7 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
     @Override
     protected void initBar() {
         String title = getIntent().getStringExtra(EXTRA_SELECT_TITLE);
-        setToolbarTitle(bar, StringUtils.empty(title) ? "请选择文件夹" : title);
-        setSupportActionBar(bar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbarTitle(bar, StringUtils.empty(title) ? "请选择文件夹" : title,true);
     }
 
     @Override
@@ -91,8 +91,10 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
             bundle.putSerializable(EXTRA_SELECT_CHOICE_TYPE_NAME, FileInfo.FileType.Unknown);
         }
         bundle.putInt(EXTRA_SELECT_COUNT, count);
+        fragment = new FileSelectorFragment();
+        fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fgt_container, new FileSelectorFragment(), "file_select_tag")
+                .add(R.id.fgt_container, fragment)
                 .commit();
     }
 
@@ -101,7 +103,6 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileSelectorFragment fragment = (FileSelectorFragment) getSupportFragmentManager().findFragmentByTag("file_select_tag");
                 fragment.back();
             }
         });
@@ -110,7 +111,6 @@ public class FileSelectorActivity extends AllenBaseActivity implements FileSelec
     @OnClick({R2.id.cancel_bt, R2.id.ok_bt})
     public void onViewClicked(View view) {
         int id = view.getId();
-        FileSelectorFragment fragment = (FileSelectorFragment) getSupportFragmentManager().findFragmentByTag("file_select_tag");
         if (id == R.id.cancel_bt) {
             fragment.cancel();
         } else if (id == R.id.ok_bt) {

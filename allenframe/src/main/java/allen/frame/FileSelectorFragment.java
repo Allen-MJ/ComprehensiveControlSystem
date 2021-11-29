@@ -227,7 +227,7 @@ public class FileSelectorFragment extends BaseFragment {
             AppCompatTextView item = new AppCompatTextView(getActivity());
             final FileInfo entry = list.get(i);
             item.setText(entry.getFileName()+" >");
-            item.setTextColor(Color.WHITE);
+            item.setTextColor(Color.GRAY);
             item.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.frame_text_normal_size));
             int padding = MaterialUtil.dip2px(getActivity(),8);
             int margin = MaterialUtil.dip2px(getActivity(),4);

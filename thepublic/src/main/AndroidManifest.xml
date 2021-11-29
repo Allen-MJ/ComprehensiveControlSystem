@@ -27,6 +27,7 @@
         <activity android:name=".RegistActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".user.UserFeedbackActivity" />
+        <activity android:name=".square.LiveListActivity" />
     </application>
 
 </manifest>

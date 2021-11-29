@@ -41,5 +41,9 @@
 
     <string name="allen_cancel_bt">取消</string>
     <string name="allen_ok_bt">确定</string>
+    <string name="allen_delete_bt">删除</string>
+    <string name="allen_file_name">文件名</string>
+    <string name="allen_file_path">文件路径</string>
+    <string name="allen_add_bt">添加</string>
 
 </resources>

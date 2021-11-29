@@ -13,6 +13,7 @@ import allen.frame.R;
 import allen.frame.entry.File;
 import allen.frame.entry.UploadFile;
 import allen.frame.tools.Constants;
+import allen.frame.tools.FileUtils;
 import allen.frame.widget.MarqueeView;
 import allen.frame.widget.SquareView;
 import androidx.annotation.NonNull;
@@ -139,7 +140,15 @@ public class AllenFileChoiceAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     }
                 });
                 name.setText(file.getName());
-                Glide.with(icon.getContext()).load(file.getPath()).into(icon);
+                if(FileUtils.isAudioFileType(file.getName())){
+                    icon.setImageResource(R.mipmap.allen_file_audio);
+                }else if(FileUtils.isVideoFileType(file.getName())){
+                    icon.setImageResource(R.mipmap.allen_file_video);
+                }else if(FileUtils.isImageFileType(file.getName())){
+                    Glide.with(icon.getContext()).load(file.getPath()).into(icon);
+                }else{
+                    icon.setImageResource(R.mipmap.allen_file_folder);
+                }
                 icon.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

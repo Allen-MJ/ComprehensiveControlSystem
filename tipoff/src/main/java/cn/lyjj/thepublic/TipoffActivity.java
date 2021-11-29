@@ -194,7 +194,13 @@ public class TipoffActivity extends AllenBaseActivity {
                 }
             }
         });
-        tipSex.check(R.id.sex_female);
+        if(shared.getString(Constants.UserGender,"").equals("女")){
+            sex = "0";
+            tipSex.check(R.id.sex_female);
+        }else{
+            sex = "1";
+            tipSex.check(R.id.sex_male);
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
