@@ -1,5 +1,6 @@
 package cn.lyj.leader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +17,11 @@ import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.MsgUtils;
 import allen.frame.widget.CircleImageView;
 import allen.frame.widget.ContrlScrollViewPager;
 import allen.frame.widget.MarqueeView;
+import allen.frame.widget.VerticalTextview;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -28,6 +31,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.api.CoreApi;
+import cn.lyj.core.entry.SystemNotice;
+import cn.lyj.user.notice.SystemNoticeActivity;
 
 public class HomeActivity extends AllenBaseActivity {
 
@@ -46,7 +51,7 @@ public class HomeActivity extends AllenBaseActivity {
     @BindView(R2.id.bottom)
     BottomNavigationView bottom;
     @BindView(R2.id.notice)
-    MarqueeView notice;
+    VerticalTextview notice;
     private FragmentAdapter adapter;
     private List<Fragment> list;
 
@@ -77,6 +82,14 @@ public class HomeActivity extends AllenBaseActivity {
                 .load(Constants.url + shared.getString(Constants.UserPhoto, ""))
                 .error(R.drawable.default_photo).placeholder(R.drawable.default_photo)
                 .into(userPhoto);
+        notice();
+//        notice.startAutoScroll();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        notice.stopAutoScroll();
     }
 
     @Override
@@ -87,6 +100,8 @@ public class HomeActivity extends AllenBaseActivity {
         adapter = new FragmentAdapter(getSupportFragmentManager(), list);
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(4);
+        notice.setAnimTime(300);
+        notice.setTextStillTime(2000);
     }
 
     @Override
@@ -108,30 +123,40 @@ public class HomeActivity extends AllenBaseActivity {
             }
         });
         bottom.setSelectedItemId(R.id.item_tj);
+        notice.setOnItemClickListener(new VerticalTextview.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                startActivity(new Intent(context, SystemNoticeActivity.class));
+            }
+        });
     }
 
     private void notice(){
         Https.with(this).url(CoreApi.systemNotice).addParam("page",0).addParam("size",10).get()
-                .enqueue(new Callback<Object>() {
+                .enqueue(new Callback<List<SystemNotice>>() {
                     @Override
-                    public void success(Object data) {
-
+                    public void success(List<SystemNotice> data) {
+                        if(data!=null&&data.size()>0){
+                            ArrayList<String> texts = new ArrayList<>();
+                            for(SystemNotice entry:data){
+                                texts.add(entry.getNoticeTitle());
+                            }
+                            notice.setTextList(texts);
+                            notice.startAutoScroll();
+                        }else{
+                            MsgUtils.showShortToast(context,"暂无通知!");
+                            ArrayList<String> texts = new ArrayList<>();
+                            texts.add("暂无通知!");
+                            notice.setTextList(texts);
+                            notice.startAutoScroll();
+                        }
                     }
 
                     @Override
                     public void fail(Response response) {
-
+                        MsgUtils.showShortToast(context,response.getMsg());
                     }
                 });
     }
 
-    @OnClick(R2.id.notice)
-    public void onViewClicked(View view) {
-        view.setEnabled(false);
-        int id = view.getId();
-        if(id==R.id.notice){
-
-        }
-        view.setEnabled(true);
-    }
 }

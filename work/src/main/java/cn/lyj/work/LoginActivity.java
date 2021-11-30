@@ -66,8 +66,8 @@ public class LoginActivity extends AllenIMBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         if(Constants.ISDEBUG){
-            loginAccount.setText("app");
-            loginPsw.setText("a-123456");
+            loginAccount.setText("admin");
+            loginPsw.setText("123456");
         }else{
             loginAccount.setText(shared.getString(Constants.UserName,""));
         }

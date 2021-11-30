@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.lyj.core.ModelData;
 import cn.lyj.core.adapter.CoreModelAdapter;
 import cn.lyj.core.entry.Model;
-import cn.lyj.work.utils.ModelData;
 
 public class HomeFragment extends BaseFragment {
     @BindView(R2.id.rv)
@@ -73,7 +73,7 @@ public class HomeFragment extends BaseFragment {
         view.setEnabled(true);
     }
     private void loadModels(){
-        list = ModelData.init().getHome();
+        list = ModelData.init().getWorkHome();
         adapter.setData(list);
     }
 }

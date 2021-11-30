@@ -14,9 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import cn.lyj.core.ModelData;
 import cn.lyj.core.entry.Model;
 import cn.lyj.work.adapter.ModelParentAdapter;
-import cn.lyj.work.utils.ModelData;
 
 public class ModelFragment extends BaseFragment {
     @BindView(R2.id.rv)

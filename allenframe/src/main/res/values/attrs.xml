@@ -237,4 +237,10 @@
         <attr name="fillColor" format="color"></attr>
         <attr name="rowSpace" format="dimension"></attr>
     </declare-styleable>
+
+    <declare-styleable name="VerticalTextview">
+        <attr name="verTextSize" format="dimension"></attr>
+        <attr name="verTextColor" format="reference|color"></attr>
+        <attr name="verPadding" format="dimension"></attr>
+    </declare-styleable>
 </resources>

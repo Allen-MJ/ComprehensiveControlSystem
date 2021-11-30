@@ -31,7 +31,9 @@
                     android:textColor="@color/text_black_color"
                     style="@style/contentNormal8Style"
                     android:gravity="end|center_vertical"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:drawablePadding="@dimen/frame_eight_distance"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import cn.lyj.core.entry.Model;
 import cn.lyj.leader.adapter.ModelParentAdapter;
-import cn.lyj.leader.utils.ModelData;
+import cn.lyj.core.ModelData;
 
 public class ModelFragment extends BaseFragment {
     @BindView(R2.id.rv)
@@ -37,17 +37,6 @@ public class ModelFragment extends BaseFragment {
     @Override
     protected int getLayoutResID() {
         return R.layout.leader_home_model_layout;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                rv.scrollToPosition(0);
-            }
-        });
     }
 
     @Override
@@ -76,7 +65,7 @@ public class ModelFragment extends BaseFragment {
         list = new ArrayList<>();
         switch (type){
             case 0:
-                list = ModelData.init().getHome();
+                list = ModelData.init().getLeaderHome();
                 break;
             case 1:
                 list = ModelData.init().getGrid();

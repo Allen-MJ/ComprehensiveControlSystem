@@ -9,6 +9,10 @@ public class Units implements Serializable {
     private String orgFullName;
     private int orgLevel;
     private String pid;
+    private boolean hasChildren;
+    private String label;
+    private int subCount;
+    private String orgType;
 
     public String getOrgId() {
         return orgId;
@@ -56,5 +60,37 @@ public class Units implements Serializable {
 
     public void setPid(String pid) {
         this.pid = pid;
+    }
+
+    public boolean isHasChildren() {
+        return hasChildren;
+    }
+
+    public void setHasChildren(boolean hasChildren) {
+        this.hasChildren = hasChildren;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public int getSubCount() {
+        return subCount;
+    }
+
+    public void setSubCount(int subCount) {
+        this.subCount = subCount;
+    }
+
+    public String getOrgType() {
+        return orgType;
+    }
+
+    public void setOrgType(String orgType) {
+        this.orgType = orgType;
     }
 }

@@ -1,4 +1,4 @@
-package cn.lyj.leader.utils;
+package cn.lyj.core;
 
 import android.content.Context;
 import android.content.Intent;
@@ -30,10 +30,6 @@ import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
 import cn.lyj.core.word.ReceivListActivity;
 import cn.lyj.core.word.SendListActivity;
-import cn.lyj.leader.R;
-import cn.lyjj.thepublic.SmartTipActivity;
-import cn.lyjj.thepublic.TipOffListActivity;
-import cn.lyjj.thepublic.TipoffActivity;
 
 public class ModelData {
     private ModelData(){
@@ -194,7 +190,27 @@ public class ModelData {
         return list;
     }
 
-    public List<Model> getHome(){
+    public List<Model> getWorkHome(){
+        List<Model> list = new ArrayList<>();
+        Model ks = new Model();
+        ks.setId("快速上报");
+        ks.setName("快速上报");
+        ks.setResId(getResId("快速上报"));
+        list.add(ks);
+        Model sth = new Model();
+        sth.setId("事件上报");
+        sth.setName("事件上报");
+        sth.setResId(getResId("事件上报"));
+        list.add(sth);
+        Model cx = new Model();
+        cx.setId("事件查询");
+        cx.setName("事件查询");
+        cx.setResId(getResId("事件查询"));
+        list.add(cx);
+        return list;
+    }
+
+    public List<Model> getLeaderHome(){
         List<Model> menus = new ArrayList<>();
         Model item1 = new Model();
         item1.setName("事项处理");
@@ -220,6 +236,54 @@ public class ModelData {
     }
     public List<Model> getTj(){
         List<Model> menus = new ArrayList<>();
+
+        Model zddq = new Model();
+        zddq.setName("重点地区（场所）统计");
+        List<Model> zddqitems = new ArrayList<>();
+        Model zddqitems1 = new Model();
+        zddqitems1.setId("重点排查整治数");
+        zddqitems1.setName("重点排查整治数");
+        zddqitems1.setResId(getResId("重点排查整治数"));
+        zddqitems.add(zddqitems1);
+        Model zddqitems2 = new Model();
+        zddqitems2.setId("不同治安区域所占比例");
+        zddqitems2.setName("不同治安区域所占比例");
+        zddqitems2.setResId(getResId("不同治安区域所占比例"));
+        zddqitems.add(zddqitems2);
+        zddq.setList(zddqitems);
+        menus.add(zddq);
+
+        Model mdsj = new Model();
+        mdsj.setName("矛盾事件统计");
+        List<Model> mdsjitems = new ArrayList<>();
+        Model mdsjitems1 = new Model();
+        mdsjitems1.setId("治安重点排查整治数");
+        mdsjitems1.setName("治安重点排查整治数");
+        mdsjitems1.setResId(getResId("治安重点排查整治数"));
+        mdsjitems.add(mdsjitems1);
+        Model mdsjitems2 = new Model();
+        mdsjitems2.setId("矛盾纠纷排查调处以事件规模");
+        mdsjitems2.setName("矛盾纠纷排查调处以事件规模");
+        mdsjitems2.setResId(getResId("矛盾纠纷排查调处以事件规模"));
+        mdsjitems.add(mdsjitems2);
+        Model mdsjitems3 = new Model();
+        mdsjitems3.setId("矛盾纠纷排查调处以事件处理状态");
+        mdsjitems3.setName("矛盾纠纷排查调处以事件处理状态");
+        mdsjitems3.setResId(getResId("矛盾纠纷排查调处以事件处理状态"));
+        mdsjitems.add(mdsjitems3);
+        Model mdsjitems4 = new Model();
+        mdsjitems4.setId("矛盾纠纷排查调处月事件量");
+        mdsjitems4.setName("矛盾纠纷排查调处月事件量");
+        mdsjitems4.setResId(getResId("矛盾纠纷排查调处月事件量"));
+        mdsjitems.add(mdsjitems4);
+        Model mdsjitems5 = new Model();
+        mdsjitems5.setId("矛盾纠纷排查调处以调解方式");
+        mdsjitems5.setName("矛盾纠纷排查调处以调解方式");
+        mdsjitems5.setResId(getResId("矛盾纠纷排查调处以调解方式"));
+        mdsjitems.add(mdsjitems5);
+        mdsj.setList(mdsjitems);
+        menus.add(mdsj);
+
         Model item1 = new Model();
         item1.setName("人口统计");
         String[] ids = new String[]{"1","2","3","4","5"};
@@ -405,13 +469,15 @@ public class ModelData {
                 context.startActivity(new Intent(context, LogListActivity.class));
                 break;
             case "快速上报":
-                context.startActivity(new Intent(context, SmartTipActivity.class));
+                context.startActivity(new Intent().setClassName(context,"cn.lyjj.thepublic.SmartTipActivity"));
                 break;
             case "事件上报":
-                context.startActivity(new Intent(context, TipoffActivity.class).putExtra(Constants.Key_1,1));
+                context.startActivity(new Intent().setClassName(context,"cn.lyjj.thepublic.TipoffActivity")
+                        .putExtra(Constants.Key_1,1));
                 break;
             case "事件查询":
-                context.startActivity(new Intent(context, TipOffListActivity.class).putExtra(Constants.Key_1,"事件查询"));
+                context.startActivity(new Intent().setClassName(context,"cn.lyjj.thepublic.TipOffListActivity")
+                        .putExtra(Constants.Key_1,"事件查询"));
                 break;
             case "我的发文":
                 context.startActivity(new Intent(context, SendListActivity.class));

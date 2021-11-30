@@ -1,3 +1,4 @@
+include ':userbase'
 include ':tipoff'
 include ':core'
 include ':work'

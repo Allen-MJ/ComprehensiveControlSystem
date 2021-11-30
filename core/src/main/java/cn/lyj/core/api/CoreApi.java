@@ -165,5 +165,8 @@ public class CoreApi {
      * 常住人口
      */
     public static final String get_CzPerson = "/api/tb1213/appQuery";
+    /**
+     * 系统通知
+     */
     public static final String systemNotice = "/api/systemNotice/app";
 }

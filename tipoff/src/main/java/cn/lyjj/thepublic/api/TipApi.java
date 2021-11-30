@@ -26,5 +26,9 @@ public class TipApi {
     /**
      * 快速上报
      */
-    public static final String SmartAdd = "api/appeal/gridmember";
+    public static final String SmartAdd = "/api/appeal/gridmember";
+    /**
+     * 快速上报单位选择
+     */
+    public static final String SmartOrgChoice = "/api/org/app";
 }

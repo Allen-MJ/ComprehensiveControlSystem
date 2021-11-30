@@ -302,6 +302,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         view.setCompoundDrawables(drawable, null, null, null);
         return this;
     }
+    public ViewHolder setDrawable(int viewId, int start, int top, int end,int bottom) {
+        TextView view = (TextView) getView(viewId);
+        view.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom);
+        return this;
+    }
 
     /**
      * 事件处理

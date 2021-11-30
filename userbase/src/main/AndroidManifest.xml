@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.lyj.user">
+
+    /
+    <application>
+        <activity android:name=".notice.SystemNoticeActivity" />
+        <activity android:name=".notice.SystemNoticeInfoActiivty" />
+    </application>
+</manifest>

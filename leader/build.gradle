@@ -32,5 +32,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     api project(path: ':core')
     api project(path: ':tipoff')
+    api project(path: ':userbase')
 
 }

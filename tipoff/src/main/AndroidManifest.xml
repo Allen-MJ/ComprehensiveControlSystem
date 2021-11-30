@@ -10,5 +10,6 @@
         <activity android:name="cn.lyjj.thepublic.TipOffListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="cn.lyjj.thepublic.SmartTipActivity" />
+        <activity android:name=".ShowCanChoiceUnitsActiivty" />
     </application>
 </manifest>

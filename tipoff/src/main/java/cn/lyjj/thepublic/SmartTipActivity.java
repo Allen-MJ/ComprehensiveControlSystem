@@ -16,9 +16,11 @@ import allen.frame.MultiImageSelector;
 import allen.frame.adapter.AllenFileChoiceAdapter;
 import allen.frame.entry.File;
 import allen.frame.entry.Response;
+import allen.frame.entry.Units;
 import allen.frame.entry.UploadFile;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.FileIntent;
 import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
@@ -86,6 +88,12 @@ public class SmartTipActivity extends AllenBaseActivity {
                     upload(file);
                 }
                 adapter.setData(files);
+            }else if(requestCode==3){
+                Units units = (Units) data.getSerializableExtra(Constants.ObjectFirst);
+                if(units!=null){
+                    orgId = units.getOrgId();
+                    tipDw.setText(units.getOrgName());
+                }
             }
         }
     }
@@ -158,7 +166,7 @@ public class SmartTipActivity extends AllenBaseActivity {
         view.setEnabled(false);
         int id = view.getId();
         if(id==R.id.tip_dw){
-
+            startActivityForResult(new Intent(context,ShowCanChoiceUnitsActiivty.class),3);
         }else if(id==R.id.tip_bt){
             addTipOff();
         }

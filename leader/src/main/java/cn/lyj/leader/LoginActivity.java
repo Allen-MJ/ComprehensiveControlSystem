@@ -67,8 +67,8 @@ public class LoginActivity extends AllenIMBaseActivity {
     protected void onResume() {
         super.onResume();
         if(Constants.ISDEBUG){
-            loginAccount.setText("admin");
-            loginPsw.setText("123456");
+            loginAccount.setText("app");
+            loginPsw.setText("a-123456");
         }else{
             loginAccount.setText(shared.getString(Constants.UserName,""));
         }
