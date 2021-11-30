@@ -1118,17 +1118,32 @@ public class OkHttpEngine implements HttpEngine {
                             }
                         });
                     }
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (callBack != null) {
+                                callBack.success(file);
+                            }
+                        }
+                    });
 
-                } catch (Exception e) {
+                } catch (IOException e) {
                     Log.e(TAG, "Get下载异常");
-
+                    new RunMain(act).run2main(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (callBack != null) {
+                                callBack.fail(new allen.frame.entry.Response("501","下载异常!","下载异常!"));
+                            }
+                        }
+                    });
                 } finally {
                     length = randomAccessFile.getFilePointer();//记录当前保存文件的位置
                     randomAccessFile.close();
                     inputStream.close();
                     Log.e(TAG, total+"流关闭 下载的位置="+length);
                     Logger.e("更新","++++");
-                    new RunMain(act).run2main(new Runnable() {
+                    /*new RunMain(act).run2main(new Runnable() {
                         @Override
                         public void run() {
                             if(callBack!=null){
@@ -1139,7 +1154,7 @@ public class OkHttpEngine implements HttpEngine {
                                 }
                             }
                         }
-                    });
+                    });*/
                 }
             }
         });

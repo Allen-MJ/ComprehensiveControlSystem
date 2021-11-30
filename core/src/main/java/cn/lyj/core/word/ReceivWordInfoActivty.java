@@ -1,21 +1,29 @@
 package cn.lyj.core.word;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
+import java.io.File;
+
 import allen.frame.AllenBaseActivity;
+import allen.frame.adapter.AllenAllFilesAdapter;
 import allen.frame.entry.Response;
+import allen.frame.entry.WordFile;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
+import allen.frame.tools.FileIntent;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,6 +62,7 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
     private String content;
     private Word entry;
     private String missiveId;
+    private AllenAllFilesAdapter adapter;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -73,6 +82,11 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        wordFiles.setLayoutManager(manager);
+        adapter = new AllenAllFilesAdapter(true);
+        wordFiles.setAdapter(adapter);
         if (entry != null) {
             missiveId = entry.getMissiveId();
             wordTitle.setText(entry.getTitle());
@@ -81,6 +95,7 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
             wordSigner.setText(entry.getSigner());
             wordSingnDate.setText(entry.getSignTime());
             wordContent.setText(Html.fromHtml(entry.getDigest()));
+            adapter.setData(entry.getAttachments());
             if("未签收".equals(entry.getState())){
                 commitBt.setVisibility(View.VISIBLE);
             }else{
@@ -97,6 +112,12 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
                 v.setEnabled(false);
                 finish();
                 v.setEnabled(true);
+            }
+        });
+        adapter.setOnItemClickListener(new AllenAllFilesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, WordFile file) {
+                openNetFile(file.getAttachmentPath());
             }
         });
     }
@@ -120,10 +141,6 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
     private void commit() {
         showProgressDialog("");
         content = wordOpinion.getText().toString().trim();
-        /*Map<String,String> map = new HashMap<>();
-        map.put("id",missiveId);
-        map.put("opinion",content);
-        Logger.e("debug",new Gson().toJson(map));*/
         Https.with(this).url(CoreApi.MissiveSign).addParam("id",missiveId).addParam("opinion",content).post()
             .enqueue(new Callback<Object>() {
                 @Override
@@ -146,6 +163,31 @@ public class ReceivWordInfoActivty extends AllenBaseActivity {
                     MsgUtils.showMDMessage(context, response.getMsg());
                 }
             });
+    }
+
+    private void openNetFile(String url){
+        final ProgressDialog dialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialog.setCancelable(false);
+        dialog.show();
+        Https.with(this).url(url).download(new Callback<File>() {
+            @Override
+            public void success(File data) {
+                dialog.dismiss();
+                FileIntent.openFile(context,data);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.setProgressNumberFormat(String.format("%s/%s", StringUtils.formatFileSize(current),StringUtils.formatFileSize(current)));
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
     }
 
 }

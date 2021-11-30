@@ -8,8 +8,13 @@ import android.text.Html;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -22,7 +27,6 @@ import allen.frame.FileSelectorActivity;
 import allen.frame.adapter.AllenAllFilesAdapter;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
-import allen.frame.entry.File;
 import allen.frame.entry.FileInfo;
 import allen.frame.entry.Response;
 import allen.frame.entry.UploadFile;
@@ -47,7 +51,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.lyj.core.ChoicePersonActivity;
 import cn.lyj.core.R;
@@ -135,7 +138,7 @@ public class SendWordInfoActivty extends AllenBaseActivity {
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         dialog = new UploadProgressDialog();
-        adapter = new AllenAllFilesAdapter();
+        adapter = new AllenAllFilesAdapter(false);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         wordFiles.setLayoutManager(manager);
@@ -174,7 +177,11 @@ public class SendWordInfoActivty extends AllenBaseActivity {
 
             @Override
             public void onItemClick(View v, int position, WordFile file) {
-
+                if(file.getType()==0){
+                    openNetFile(file.getAttachmentPath());
+                }else{
+                    FileIntent.openFile(context,new File(file.getAttachmentPath()));
+                }
             }
         });
         dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
@@ -295,29 +302,31 @@ public class SendWordInfoActivty extends AllenBaseActivity {
             MsgUtils.showMDMessage(context, "请输入公文内容!");
             return;
         }
-        String attachments="";
+        JsonArray array = new JsonArray();
         if(adapter.getItemCount()==0){
             MsgUtils.showMDMessage(context, "请选择公文文件!");
             return;
         }else{
-            List<WordFile> wordFiles = new ArrayList<>();
             for(WordFile wordFile:adapter.getFiles()){
                 if(wordFile.getType()==0){
-                    wordFiles.add(wordFile);
+                    JsonObject object = new JsonObject();
+                    object.addProperty("name",wordFile.getName());
+                    object.addProperty("attachmentPath",wordFile.getAttachmentPath());
+                    array.add(object);
                 }else{
                     UploadFile data = map.get(wordFile.getAttachmentPath());
-                    WordFile entry = new WordFile();
-                    entry.setName(data.getRealName());
-                    entry.setAttachmentPath(data.getRelativePath());
-                    wordFiles.add(entry);
+                    JsonObject object = new JsonObject();
+                    object.addProperty("name",data.getRealName());
+                    object.addProperty("attachmentPath",data.getRelativePath());
+                    array.add(object);
                 }
             }
-            attachments = new Gson().toJson(wordFiles);
+
         }
         showProgressDialog("");
         Https https = Https.with(this).url(CoreApi.Missive).addParam("title", title).addParam("missiveNo", number)
                 .addParam("emergencyDegree", jjcd).addParam("signTime", date).addParam("digest", content).addParam("receiveId", ids).addParam("receiver", names)
-                .addParam("attachments", attachments);
+                .addParam("attachments", array);
         if (entry == null) {
             https.post();
         } else {
@@ -365,6 +374,31 @@ public class SendWordInfoActivty extends AllenBaseActivity {
             @Override
             public void fail(Response response) {
                 Logger.e("fail", "fail");
+            }
+        });
+    }
+
+    private void openNetFile(String url){
+        final ProgressDialog dialog = new ProgressDialog(context, allen.frame.R.style.Base_V21_Theme_AppCompat_Light_Dialog);
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialog.setCancelable(false);
+        dialog.show();
+        Https.with(this).url(url).download(new Callback<File>() {
+            @Override
+            public void success(File data) {
+                dialog.dismiss();
+                FileIntent.openFile(context,data);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.setProgressNumberFormat(String.format("%s/%s", StringUtils.formatFileSize(current),StringUtils.formatFileSize(current)));
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
             }
         });
     }

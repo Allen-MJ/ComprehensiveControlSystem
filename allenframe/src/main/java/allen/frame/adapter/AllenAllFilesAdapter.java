@@ -1,5 +1,7 @@
 package allen.frame.adapter;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<WordFile> files;
+    private boolean onlyShow = false;
 
-    public AllenAllFilesAdapter(){
+    public AllenAllFilesAdapter(boolean onlyShow){
         files = new ArrayList<>();
+        this.onlyShow = onlyShow;
     }
 
     public void setData(List<WordFile> files){
@@ -53,18 +57,33 @@ public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.View
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
+        View v;
+        if(onlyShow){
+            v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.alen_all_files_onlyshow_item, parent, false);
+            v.setLayoutParams(new ViewGroup
+                    .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            return new ShowHolder(v);
+        }else{
+            v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.alen_all_files_item, parent, false);
-        v.setLayoutParams(new ViewGroup
-                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        return new ObjectHolder(v);
+            v.setLayoutParams(new ViewGroup
+                    .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            return new ObjectHolder(v);
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ObjectHolder objectHolder = (ObjectHolder) holder;
-        objectHolder.bind(files.get(position));
+        if(onlyShow){
+            ShowHolder objectHolder = (ShowHolder) holder;
+            objectHolder.bind(files.get(position));
+        }else{
+            ObjectHolder objectHolder = (ObjectHolder) holder;
+            objectHolder.bind(files.get(position));
+        }
     }
 
     @Override
@@ -95,6 +114,32 @@ public class AllenAllFilesAdapter extends RecyclerView.Adapter<RecyclerView.View
                 });
                 name.setText(file.getName());
                 path.setText(file.getAttachmentPath());
+                name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.setEnabled(false);
+                        if(listener!=null){
+                            listener.onItemClick(v,getAdapterPosition(),file);
+                        }
+                        v.setEnabled(true);
+                    }
+                });
+            }
+        }
+    }
+
+    class ShowHolder extends RecyclerView.ViewHolder{
+
+        private AppCompatTextView name;
+        public ShowHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.item_name);
+        }
+        public void bind(final WordFile file){
+            if(file!=null){
+                SpannableString content = new SpannableString(file.getName());
+                content.setSpan(new UnderlineSpan(), 0, file.getName().length(), 0);
+                name.setText(content);
                 name.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

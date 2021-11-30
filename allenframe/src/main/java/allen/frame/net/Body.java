@@ -2,6 +2,8 @@ package allen.frame.net;
 
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
 import java.util.Map;
 
 import allen.frame.tools.Logger;
