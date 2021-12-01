@@ -41,7 +41,7 @@ import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.adapter.WordAdapter;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.CoreType;
+import allen.frame.entry.CoreType;
 import cn.lyj.core.entry.Word;
 
 public class SendListActivity extends AllenBaseActivity {

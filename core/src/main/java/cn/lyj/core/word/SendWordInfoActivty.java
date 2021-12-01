@@ -11,9 +11,6 @@ import android.widget.DatePicker;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,7 +53,7 @@ import cn.lyj.core.ChoicePersonActivity;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.api.CoreApi;
-import cn.lyj.core.entry.CoreType;
+import allen.frame.entry.CoreType;
 import cn.lyj.core.entry.Word;
 
 public class SendWordInfoActivty extends AllenBaseActivity {

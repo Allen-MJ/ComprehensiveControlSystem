@@ -13,6 +13,10 @@ public class BaseApi {
      * 获取类型
      */
     public static final String getType = "/api/dictDetail/queryOfApp";
+    /**
+     * 获取部分类型
+     */
+    public static final String getTable = "/api/dict/queryOfTable";
 
     public static final String Version = "/api/AppVersion/getWpeOfAndroid";
     /**

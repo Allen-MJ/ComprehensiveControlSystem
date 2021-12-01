@@ -1,6 +1,7 @@
-package cn.lyj.core.entry;
+package allen.frame.entry;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class CoreType implements Serializable {
     private String createBy;
@@ -10,6 +11,8 @@ public class CoreType implements Serializable {
     private String updateTime;
     private String value;
     private Dict dict;
+    private List<CoreType> children;
+    private boolean isCheck;
 
     public String getCreateBy() {
         return createBy;
@@ -77,5 +80,21 @@ public class CoreType implements Serializable {
         public void setId(String id) {
             this.id = id;
         }
+    }
+
+    public List<CoreType> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<CoreType> children) {
+        this.children = children;
+    }
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
     }
 }

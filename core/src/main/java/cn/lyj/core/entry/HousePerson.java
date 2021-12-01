@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class HousePerson implements Serializable {
 
     /**
@@ -48,7 +50,8 @@ public class HousePerson implements Serializable {
     private String b1201;
     private String b1202;
     private String b1203;
-    private String b1204;
+    private String b1204;//性别
+    private String b1204Name;//性别
     private String b1205;
     private String b1206;
     private String b1207;
@@ -57,6 +60,7 @@ public class HousePerson implements Serializable {
     private B1209ObjBean b1209Obj;
     private String b1210;
     private B1210ObjBean b1210Obj;
+    private String b1211;
     private String b1212;
     private String b1213;
     private String b1214;
@@ -68,6 +72,7 @@ public class HousePerson implements Serializable {
     private B1218ObjBean b1218Obj;
     private String b1219;
     private String b1220;
+    private String b1220Name;//人户一致
     private String b1221;
     private String b1222;
     private String b1223;
@@ -116,6 +121,23 @@ public class HousePerson implements Serializable {
 
     public String getB1204() {
         return b1204;
+    }
+
+    public String getB1204Name() {
+        String sex = "";
+        switch (b1204){
+            case "0":
+                sex = "女";
+                break;
+            case "1":
+                sex = "男";
+                break;
+        }
+        return StringUtils.empty(sex)?b1204Name:sex;
+    }
+
+    public void setB1204Name(String b1204Name) {
+        this.b1204Name = b1204Name;
     }
 
     public void setB1204(String b1204) {
@@ -184,6 +206,14 @@ public class HousePerson implements Serializable {
 
     public void setB1210Obj(B1210ObjBean b1210Obj) {
         this.b1210Obj = b1210Obj;
+    }
+
+    public String getB1211() {
+        return b1211;
+    }
+
+    public void setB1211(String b1211) {
+        this.b1211 = b1211;
     }
 
     public String getB1212() {
@@ -272,6 +302,23 @@ public class HousePerson implements Serializable {
 
     public void setB1220(String b1220) {
         this.b1220 = b1220;
+    }
+
+    public String getB1220Name() {
+        String name = "";
+        switch (b1220){
+            case "01":
+                name = "一致";
+                break;
+            case "02":
+                name = "不一致";
+                break;
+        }
+        return StringUtils.empty(name)?b1220Name:name;
+    }
+
+    public void setB1220Name(String b1220Name) {
+        this.b1220Name = b1220Name;
     }
 
     public String getB1221() {
@@ -520,6 +567,7 @@ public class HousePerson implements Serializable {
         private String orgId;
         private String orgName;
         private String orgNo;
+        private String genericName;
 
         public String getOrgFullName() {
             return orgFullName;
@@ -551,6 +599,14 @@ public class HousePerson implements Serializable {
 
         public void setOrgNo(String orgNo) {
             this.orgNo = orgNo;
+        }
+
+        public String getGenericName() {
+            return genericName;
+        }
+
+        public void setGenericName(String genericName) {
+            this.genericName = genericName;
         }
     }
 }
