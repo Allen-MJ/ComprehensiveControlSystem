@@ -175,7 +175,6 @@ public class HomeActivity extends AllenBaseActivity {
                             notice.setTextList(texts);
                             notice.startAutoScroll();
                         }else{
-                            MsgUtils.showShortToast(context,"暂无通知!");
                             ArrayList<String> texts = new ArrayList<>();
                             texts.add("暂无通知!");
                             notice.setTextList(texts);

@@ -18,6 +18,12 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Log> list;
 
+    public void setShow(boolean show) {
+        isShow = show;
+    }
+
+    private boolean isShow = false;
+
     public LogAdapter() {
     }
 
@@ -29,12 +35,21 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.core_log_item, parent, false);
-        v.setLayoutParams(new ViewGroup
-                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        return new ObjectHolder(v);
+        if(isShow){
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.core_show_log_item, parent, false);
+            v.setLayoutParams(new ViewGroup
+                    .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            return new ShowHolder(v);
+        }else{
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.core_log_item, parent, false);
+            v.setLayoutParams(new ViewGroup
+                    .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            return new ObjectHolder(v);
+        }
     }
 
     @Override
@@ -44,8 +59,13 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ObjectHolder objectHolder = (ObjectHolder) holder;
-        objectHolder.bind(list.get(position));
+        if(isShow){
+            ShowHolder objectHolder = (ShowHolder) holder;
+            objectHolder.bind(list.get(position));
+        }else{
+            ObjectHolder objectHolder = (ObjectHolder) holder;
+            objectHolder.bind(list.get(position));
+        }
     }
 
     public class ObjectHolder extends RecyclerView.ViewHolder {
@@ -81,6 +101,33 @@ public class LogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         v.setEnabled(false);
                         if(listener!=null){
                             listener.onItemDelete(v,entry,getAdapterPosition());
+                        }
+                        v.setEnabled(true);
+                    }
+                });
+            }
+        }
+    }
+    public class ShowHolder extends RecyclerView.ViewHolder {
+
+        private AppCompatTextView date, content;
+        private View view;
+        public ShowHolder(@NonNull View itemView) {
+            super(itemView);
+            date = itemView.findViewById(R.id.item_date);
+            content = itemView.findViewById(R.id.item_content);
+            view = itemView.findViewById(R.id.item_layout);
+        }
+        public void bind(final Log entry) {
+            if (entry != null) {
+                date.setText(DateUtils.getTimeFormatText(entry.getCreateTime()));
+                content.setText(entry.getDescription());
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.setEnabled(false);
+                        if(listener!=null){
+                            listener.onItemClick(v,entry,getAdapterPosition());
                         }
                         v.setEnabled(true);
                     }

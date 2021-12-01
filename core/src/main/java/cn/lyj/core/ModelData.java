@@ -8,6 +8,12 @@ import java.util.List;
 
 import allen.frame.tools.Constants;
 import cn.lyj.core.chart.ChartActivity;
+import cn.lyj.core.chart.EvenScaleChartActivity;
+import cn.lyj.core.chart.EventModeActivity;
+import cn.lyj.core.chart.EventMonthActivity;
+import cn.lyj.core.chart.EventStateActivity;
+import cn.lyj.core.chart.ZaqyChartActivity;
+import cn.lyj.core.chart.ZdpcChartActivity;
 import cn.lyj.core.entry.Model;
 import cn.lyj.core.grid.GridListActivity;
 import cn.lyj.core.grid.GridmanagerListActivity;
@@ -256,11 +262,11 @@ public class ModelData {
         Model mdsj = new Model();
         mdsj.setName("矛盾事件统计");
         List<Model> mdsjitems = new ArrayList<>();
-        Model mdsjitems1 = new Model();
+        /*Model mdsjitems1 = new Model();
         mdsjitems1.setId("治安重点排查整治数");
         mdsjitems1.setName("治安重点排查整治数");
         mdsjitems1.setResId(getResId("治安重点排查整治数"));
-        mdsjitems.add(mdsjitems1);
+        mdsjitems.add(mdsjitems1);*/
         Model mdsjitems2 = new Model();
         mdsjitems2.setId("矛盾纠纷排查调处以事件规模");
         mdsjitems2.setName("矛盾纠纷排查调处以事件规模");
@@ -411,6 +417,24 @@ public class ModelData {
             case "艾滋病人":
                 resId = R.mipmap.core_azbr;
                 break;
+            case "重点排查整治数":
+                resId = R.mipmap.core_zdpc;
+                break;
+            case "不同治安区域所占比例":
+                resId = R.mipmap.core_zaqy;
+                break;
+            case "矛盾纠纷排查调处以事件规模":
+                resId = R.mipmap.core_mdjf_1;
+                break;
+            case "矛盾纠纷排查调处以事件处理状态":
+                resId = R.mipmap.core_mdjf_2;
+                break;
+            case "矛盾纠纷排查调处月事件量":
+                resId = R.mipmap.core_mdjf_3;
+                break;
+            case "矛盾纠纷排查调处以调解方式":
+                resId = R.mipmap.core_mdjf_4;
+                break;
         }
         return resId;
     }
@@ -490,6 +514,24 @@ public class ModelData {
                 break;
             case "网格人员":
                 context.startActivity(new Intent(context, GridmanagerListActivity.class));
+                break;
+            case "重点排查整治数":
+                context.startActivity(new Intent(context, ZdpcChartActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "不同治安区域所占比例":
+                context.startActivity(new Intent(context, ZaqyChartActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "矛盾纠纷排查调处以事件规模":
+                context.startActivity(new Intent(context, EvenScaleChartActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "矛盾纠纷排查调处以事件处理状态":
+                context.startActivity(new Intent(context, EventStateActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "矛盾纠纷排查调处月事件量":
+                context.startActivity(new Intent(context, EventMonthActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "矛盾纠纷排查调处以调解方式":
+                context.startActivity(new Intent(context, EventModeActivity.class).putExtra(Constants.ObjectFirst,model));
                 break;
             default:
                 context.startActivity(new Intent(context, ChartActivity.class).putExtra(Constants.ObjectFirst,model));

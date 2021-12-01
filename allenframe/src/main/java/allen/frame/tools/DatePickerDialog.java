@@ -31,12 +31,16 @@ public class DatePickerDialog extends AlertDialog implements OnClickListener, On
     }
  
     public DatePickerDialog(Context context, OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
-        this(context, 0, callBack, year, monthOfYear, dayOfMonth);
+        this(context, 0, callBack, year, monthOfYear, dayOfMonth,false);
+
     }
- 
+    public DatePickerDialog(Context context, OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth,boolean isHide) {
+        this(context, 0, callBack, year, monthOfYear, dayOfMonth, isHide);
+    }
+
  
     public DatePickerDialog(Context context, int theme, OnDateSetListener callBack, int year, int monthOfYear,
-                            int dayOfMonth) {
+                            int dayOfMonth,boolean isHide) {
         super(context, theme);
  
         mCallBack = callBack;
@@ -51,8 +55,9 @@ public class DatePickerDialog extends AlertDialog implements OnClickListener, On
         setView(view);
         mDatePickerStart = (DatePicker) view.findViewById(R.id.datePickerStart);
         mDatePickerStart.init(year, monthOfYear, dayOfMonth, this);
- 
-//        hideDay(mDatePickerStart);
+        if(isHide){
+            hideDay(mDatePickerStart);
+        }
     }
  
     private void hideDay(DatePicker mDatePicker) {

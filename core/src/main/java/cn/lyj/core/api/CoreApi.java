@@ -95,6 +95,31 @@ public class CoreApi {
      */
     public static final String CoreChart = "/api/decision/appDecision";
     /**
+     * 按时间区间统计治安重点排查整治数
+     */
+    public static final String CoreEventsAreal = "/api/app/stat/events/areal_dist";
+    /**
+     * 按时间区间统计和组织统计不同治安区域所占比例
+     */
+    public static final String CoreStatAreal = "/api/app/stat/area_type";
+    /**
+     * 按时间区间统计矛盾纠纷排查调处以事件规模
+     */
+    public static final String CoreEventsScale = "/api/app/stat/events/scale";
+    /**
+     * 按时间区间和网格ID统计矛盾纠纷排查调处以事件处理状态
+     */
+    public static final String CoreEventsState = "/api/app/stat/events/state";
+    /**
+     * 按月和网格ID统计矛盾纠纷排查调处月事件量
+     */
+    public static final String CoreEventsMonth = "/api/app/stat/events/month";
+    /**
+     * 按时间区间和网格ID统计矛盾纠纷排查调处以调解方式
+     */
+    public static final String CoreEventsMode = "/api/app/stat/events/mode";
+
+    /**
      * 网格员巡逻定位
      */
     public static final String GridMap = "/api/gridMemberTrack/add";

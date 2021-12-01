@@ -64,6 +64,11 @@
         <activity android:name=".grid.GridmanagerListActivity" />
         <activity android:name=".place.UpdateSocialActivity" />
         <activity android:name=".place.UpdateUnsocialActivity" />
+        <activity android:name=".chart.ZdpcChartActivity" />
+        <activity android:name=".chart.ZaqyChartActivity" />
+        <activity android:name=".chart.EvenScaleChartActivity" />
+        <activity android:name=".chart.EventStateActivity" />
+        <activity android:name=".chart.EventModeActivity" />
 
         <service android:name=".LocationService" />
     </application>

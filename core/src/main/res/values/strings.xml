@@ -185,4 +185,10 @@
 
     <string name="grid_dw">所在单位:</string>
     <string name="grid_date">创建时间:</string>
+
+    <string name="core_start_date_hint">开始日期</string>
+    <string name="core_end_date_hint">结束日期</string>
+    <string name="core_choice_month_hint">月份</string>
+    <string name="core_choice_dw_hint">请选择单位</string>
+    <string name="core_choice_grid_hint">请选择网格</string>
 </resources>

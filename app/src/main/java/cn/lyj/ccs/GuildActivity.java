@@ -118,8 +118,6 @@ public class GuildActivity extends AllenIMBaseActivity {
                                     }
                                 });
                             }
-                        }else{
-                            MsgUtils.showMDMessage(context,"当前无新版本!");
                         }
                     }
 
