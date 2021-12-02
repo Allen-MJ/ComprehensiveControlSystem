@@ -190,5 +190,17 @@
     <string name="core_end_date_hint">结束日期</string>
     <string name="core_choice_month_hint">月份</string>
     <string name="core_choice_dw_hint">请选择单位</string>
+
     <string name="core_choice_grid_hint">请选择网格</string>
+    <string name="jw_ww_xing">外文姓:</string>
+    <string name="jw_ww_ming">外文名:</string>
+    <string name="jw_zw_name">中文姓名:</string>
+    <string name="jw_gjdq">国籍(地区):</string>
+    <string name="jw_zjdm">证件类型:</string>
+    <string name="jw_zjyxq">证件有效期:</string>
+    <string name="jw_lhmd">来华目的:</string>
+    <string name="jw_zys">职业:</string>
+    <string name="jw_ddrq">抵达日期:</string>
+    <string name="jw_yjlk">预计离开日期:</string>
+
 </resources>

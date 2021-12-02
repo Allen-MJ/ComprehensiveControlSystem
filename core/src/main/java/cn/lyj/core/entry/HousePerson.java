@@ -126,7 +126,7 @@ public class HousePerson implements Serializable {
     public String getB1204Name() {
         String sex = "";
         switch (b1204){
-            case "0":
+            case "2":
                 sex = "女";
                 break;
             case "1":

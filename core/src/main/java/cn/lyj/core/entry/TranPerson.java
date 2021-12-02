@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class TranPerson implements Serializable {
 
     /**
@@ -52,6 +54,7 @@ public class TranPerson implements Serializable {
     private String b1302;
     private String b1303;
     private String b1304;
+    private String b1304Name;//性别
     private String b1305;
     private String b1306;
     private String b1307;
@@ -78,7 +81,9 @@ public class TranPerson implements Serializable {
     private String b1324;
     private String b1325;
     private String b1326;
+    private String b1326Name;
     private String b1327;
+    private String b1327Name;
     private String createBy;
     private String createTime;
     private int deleted;
@@ -126,6 +131,23 @@ public class TranPerson implements Serializable {
 
     public void setB1304(String b1304) {
         this.b1304 = b1304;
+    }
+
+    public String getB1304Name() {
+        String sex = "";
+        switch (b1304){
+            case "1":
+                sex = "男";
+                break;
+            case "2":
+                sex = "女";
+                break;
+        }
+        return StringUtils.empty(sex)?b1304Name:sex;
+    }
+
+    public void setB1304Name(String b1304Name) {
+        this.b1304Name = b1304Name;
     }
 
     public String getB1305() {
@@ -336,6 +358,40 @@ public class TranPerson implements Serializable {
         this.b1326 = b1326;
     }
 
+    public String getB1326Name() {
+        String name = "";
+        switch (b1326){
+            case "0":
+                name = "否";
+                break;
+            case "1":
+                name = "是";
+                break;
+        }
+        return StringUtils.empty(name)?b1326Name:name;
+    }
+
+    public void setB1326Name(String b1326Name) {
+        this.b1326Name = b1326Name;
+    }
+
+    public String getB1327Name() {
+        String name = "";
+        switch (b1327){
+            case "0":
+                name = "否";
+                break;
+            case "1":
+                name = "是";
+                break;
+        }
+        return StringUtils.empty(name)?b1327Name:name;
+    }
+
+    public void setB1327Name(String b1327Name) {
+        this.b1327Name = b1327Name;
+    }
+
     public String getB1327() {
         return b1327;
     }
@@ -524,6 +580,7 @@ public class TranPerson implements Serializable {
         private String orgId;
         private String orgName;
         private String orgNo;
+        private String genericName;
 
         public String getOrgFullName() {
             return orgFullName;
@@ -555,6 +612,14 @@ public class TranPerson implements Serializable {
 
         public void setOrgNo(String orgNo) {
             this.orgNo = orgNo;
+        }
+
+        public String getGenericName() {
+            return genericName;
+        }
+
+        public void setGenericName(String genericName) {
+            this.genericName = genericName;
         }
     }
 }

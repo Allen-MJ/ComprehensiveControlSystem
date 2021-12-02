@@ -323,29 +323,35 @@ public class UpdateHousePersonActivity extends AllenBaseActivity {
             MsgUtils.showMDMessage(context,"请选择所在网格");
             return;
         }
+        showProgressDialog("");
         Https https = Https.with(this);
         if(entry==null){
-            https.url(CoreApi.HousePersonAdd);
+            https.url(CoreApi.HousePersonAdd).post();
         }else{
-            https.url(CoreApi.HousePersonUpdate);
-            https.addParam("b1200",entry.getB1200());
+            https.url(CoreApi.HousePersonUpdate).addParam("b1200",entry.getB1200()).put();
         }
-        https.addParam("b1204",sex);
-        https.addParam("b1206",mz);
-        https.addParam("b1208",hyzk);
-        https.addParam("b1209",zzmm);
-        https.addParam("b1210",xl);
-        https.addParam("b1211",zjxy);
-        https.addParam("b1212",zylb);
-        https.addParam("b1216",hjd);
-        https.addParam("b1218",xzd);
-        https.addParam("b1220",rhyz);
-        https.addParam("b1224",hzgx);
-        https.addParam("gid",gid);
-        https.addParam("",);
-        https.addParam("",);
-        https.addParam("",);
-        https.addParam("",);
+        https.addParam("b1204",sex).addParam("b1206",mz).addParam("b1208",hyzk).addParam("b1209",zzmm)
+                .addParam("b1210",xl).addParam("b1211",zjxy).addParam("b1212",zylb).addParam("b1216",hjd)
+                .addParam("b1218",xzd).addParam("b1220",rhyz).addParam("b1224",hzgx).addParam("gid",gid)
+                .addParam("b1201",idno).addParam("b1202",name).addParam("b1203",aname).addParam("b1205",birth)
+                .addParam("b1207",jg).addParam("b1213",zy).addParam("b1214",fwcs).addParam("b1215",phone)
+                .addParam("b1217",hjddz).addParam("b1219",xzddz).addParam("b1221",hh).addParam("b1222",hzno)
+                .addParam("b1223",hzname).addParam("b1225",hzphone)
+                .enqueue(new Callback<Object>() {
+            @Override
+            public void success(Object data) {
+                dismissProgressDialog();
+                MsgUtils.showShortToast(context,"保存成功!");
+                setResult(RESULT_OK,getIntent());
+                finish();
+            }
+
+            @Override
+            public void fail(Response response) {
+                dismissProgressDialog();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
     }
 
     private void sex(){

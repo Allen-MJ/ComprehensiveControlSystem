@@ -1,11 +1,13 @@
 package cn.lyj.core.house;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -35,6 +37,8 @@ import cn.lyj.core.R2;
 import cn.lyj.core.adapter.HouseAdapter;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.House;
+import cn.lyj.core.entry.SocialPlaceEntity;
+import cn.lyj.core.person.TransientPersonListActivity;
 
 /**
  * 房屋管理列表
@@ -151,8 +155,20 @@ public class HouseListActivity extends AllenBaseActivity {
             }
 
             @Override
-            public void onItemDelete(View v, House entry, int position) {
-
+            public void onItemDelete(View v, final House entry, int position) {
+                MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String[] ids = new String[]{entry.getHid()};
+                        delete(ids);
+                        dialog.dismiss();
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }
@@ -181,6 +197,34 @@ public class HouseListActivity extends AllenBaseActivity {
                     }
                 });
     }
+
+    private void delete(String[] ids){
+        Https.with(this).url(CoreApi.HouseDelete)
+                .addJsons(new Gson().toJson(ids)).delete()
+                .enqueue(new Callback<List<SocialPlaceEntity>>() {
+                    @Override
+                    public void success(List<SocialPlaceEntity> data) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,"删除成功！");
+                        isRefresh = true;
+                        page = 0;
+                        loadData();
+                    }
+
+                    @Override
+                    public void token() {
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(HouseListActivity.this);
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
     private void showData() {
         if (isRefresh) {
             list = sublist;

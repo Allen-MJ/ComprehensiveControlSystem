@@ -69,6 +69,8 @@
         <activity android:name=".chart.EvenScaleChartActivity" />
         <activity android:name=".chart.EventStateActivity" />
         <activity android:name=".chart.EventModeActivity" />
+        <activity android:name=".person.UpdateCzPersonActivity" />
+        <activity android:name=".person.UpdateJwPersonActivity" />
 
         <service android:name=".LocationService" />
     </application>

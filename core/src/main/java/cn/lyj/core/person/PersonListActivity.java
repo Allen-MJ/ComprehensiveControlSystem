@@ -129,7 +129,7 @@ public class PersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi._core_8)
+        Https.with(this).url("0".equals(type)?CoreApi._core_1:CoreApi.TranPersonQuery)
                 .addParam("b1202",mKey).get()
                 .enqueue(new Callback<List<Person>>() {
                     @Override

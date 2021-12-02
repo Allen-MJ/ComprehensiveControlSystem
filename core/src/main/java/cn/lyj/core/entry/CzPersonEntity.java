@@ -150,6 +150,7 @@ public class CzPersonEntity implements Serializable {
         private String orgId;
         private String orgName;
         private String orgNo;
+        private String genericName;
 
         public String getOrgFullName() {
             return orgFullName;
@@ -181,6 +182,14 @@ public class CzPersonEntity implements Serializable {
 
         public void setOrgNo(String orgNo) {
             this.orgNo = orgNo;
+        }
+
+        public String getGenericName() {
+            return genericName;
+        }
+
+        public void setGenericName(String genericName) {
+            this.genericName = genericName;
         }
     }
 }

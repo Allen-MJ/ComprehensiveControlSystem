@@ -62,11 +62,11 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/house_no"
+                    android:text="@string/rent_no"
                     android:textColor="@color/text_gray_color"
                     style="@style/CoreNormal8Style"/>
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_no"
+                    android:id="@+id/rent_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
@@ -74,6 +74,39 @@
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
                     android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_address"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:background="@color/colorPrimary"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -96,11 +129,11 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/house_dw"
+                    android:text="@string/rent_yt"
                     android:textColor="@color/text_gray_color"
                     style="@style/CoreNormal8Style"/>
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/house_dw"
+                    android:id="@+id/rent_yt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
@@ -109,223 +142,6 @@
                     android:singleLine="true"
                     android:drawablePadding="@dimen/frame_eight_distance"
                     android:drawableEnd="@drawable/ic_arrow_down"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_xq"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/house_xq"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@drawable/ic_arrow_down"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_ld"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/house_ld"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@drawable/ic_arrow_down"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_dy"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_dy"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:background="@color/transparent"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_lc"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_lc"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:background="@color/transparent"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_fh"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_fh"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:background="@color/transparent"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_fwyt"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/house_fwyt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@drawable/ic_arrow_down"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/house_address"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:background="@color/transparent"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -348,11 +164,115 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/house_zj"
+                    android:text="@string/rent_jzmj"
                     android:textColor="@color/text_gray_color"
                     style="@style/CoreNormal8Style"/>
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_zj"
+                    android:id="@+id/rent_jzmj"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:singleLine="true"
+                    android:digits="0123456789."
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_zjdm"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rent_zjdm"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:drawablePadding="@dimen/frame_eight_distance"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_zjhm"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_zjhm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_hz"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_hz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
@@ -376,23 +296,226 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
+                    android:text="*"
                     android:textColor="@color/text_red_color"
                     style="@style/CoreNormal8Style"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/house_remark"
+                    android:text="@string/rent_hzphone"
                     android:textColor="@color/text_gray_color"
                     style="@style/CoreNormal8Style"/>
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/house_remark"
+                    android:id="@+id/rent_hzphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_color"
                     style="@style/CoreNormal8Style"
-                    android:minLines="2"
-                    android:gravity="start|top"
+                    android:singleLine="true"
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_hzaddress"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_hzaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_czyt"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rent_czyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:singleLine="true"
+                    android:drawablePadding="@dimen/frame_eight_distance"
+                    android:drawableEnd="@drawable/ic_arrow_down"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_yhlx"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rent_yhlx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:gravity="start|center_vertical"
+                    android:singleLine="true"
+                    android:drawablePadding="@dimen/frame_eight_distance"
+                    android:drawableEnd="@drawable/ic_arrow_down"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_czrsfz"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_czrsfz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:singleLine="true"
+                    android:gravity="start|center_vertical"
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_czrname"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_czrname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:singleLine="true"
+                    android:gravity="start|center_vertical"
+                    android:background="@color/transparent"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/frame_one_distance"
+                android:background="@color/gray_line_color"
+                android:layout_marginStart="@dimen/frame_edge_distance"
+                android:layout_marginEnd="@dimen/frame_edge_distance"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:padding="@dimen/frame_eight_distance">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/text_red_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rent_czrphone"
+                    android:textColor="@color/text_gray_color"
+                    style="@style/CoreNormal8Style"/>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/rent_czrphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_black_color"
+                    style="@style/CoreNormal8Style"
+                    android:singleLine="true"
+                    android:gravity="start|center_vertical"
                     android:background="@color/transparent"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.AppCompatButton

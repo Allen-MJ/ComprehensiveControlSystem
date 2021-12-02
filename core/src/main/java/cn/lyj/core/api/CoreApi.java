@@ -31,27 +31,33 @@ public class CoreApi {
     /**
      * 流动人口添加
      */
-    public static final String _core_5 = "/api/tb13/appAdd";
+    public static final String TranPersonAdd = "/api/tb13/appAdd";
     /**
      * 流动人口删除
      */
-    public static final String _core_6 = "/api/tb13/appDel";
+    public static final String TranPersonDelete = "/api/tb13/appDel";
     /**
      * 流动人口修改
      */
-    public static final String _core_7 = "/api/tb13/appUpdate";
+    public static final String TranPersonUpdate = "/api/tb13/appUpdate";
     /**
      * 流动人口查询
      */
-    public static final String _core_8 = "/api/tb13/appQuery";
+    public static final String TranPersonQuery = "/api/tb13/appQuery";
     /**
      * 实有房屋查询
      */
     public static final String House = "/api/houseinfo/appQuery";
+    public static final String HouseAdd = "/api/houseinfo/appAdd";
+    public static final String HouseDelete = "/api/houseinfo/appDel";
+    public static final String HouseUpdate = "/api/houseinfo/appUpdate";
     /**
      * 出租房查询
      */
     public static final String RentHouse = "/api/tb16/appQuery";
+    public static final String RentHouseAdd = "/api/tb16/appAdd";
+    public static final String RentHouseUpdate = "/api/tb16";
+    public static final String RentHouseDelete = "/api/tb16/appDel";
     /**
      *
      *
@@ -150,6 +156,8 @@ public class CoreApi {
      */
     public static final String get_HIVPerson = "/api/tb21/appQuery";
     public static final String del_HIVPerson = "/api/tb21/appDel";
+    public static final String add_HIVPerson = "/api/tb21/appAdd";
+    public static final String update_HIVPerson = "/api/tb21/appUpdate";
     /**
      * 吸毒人员
      */
@@ -186,6 +194,8 @@ public class CoreApi {
      */
     public static final String get_JwPerson = "/api/tb15/appQuery";
     public static final String del_JwjPerson = "/api/tb15/appDel";
+    public static final String add_JwjPerson = "/api/tb15/appAdd";
+    public static final String update_JwjPerson = "/api/tb15/appUpdate";
     /**
      * 常住人口
      */

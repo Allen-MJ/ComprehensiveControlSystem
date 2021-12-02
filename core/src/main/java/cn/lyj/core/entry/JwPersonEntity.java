@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class JwPersonEntity implements Serializable {
 
     /**
@@ -41,6 +43,7 @@ public class JwPersonEntity implements Serializable {
     private String b1502;
     private String b1503;
     private String b1504;
+    private String b1504Name;//性别
     private String b1505;
     private String b1506;
     private B1506ObjBean b1506Obj;
@@ -59,12 +62,14 @@ public class JwPersonEntity implements Serializable {
     private String b1518;
     private String b1519;
     private int b1520;
+    private String b1520Name;
     private String createBy;
     private String createTime;
     private int deleted;
     private GidObjBean gidObj;
     private String updateBy;
     private String updateTime;
+    private String gid;
 
     public String getB1500() {
         return b1500;
@@ -104,6 +109,23 @@ public class JwPersonEntity implements Serializable {
 
     public void setB1504(String b1504) {
         this.b1504 = b1504;
+    }
+
+    public String getB1504Name() {
+        String name = "";
+        switch (b1504){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?b1504Name:name;
+    }
+
+    public void setB1504Name(String b1504Name) {
+        this.b1504Name = b1504Name;
     }
 
     public String getB1505() {
@@ -250,6 +272,23 @@ public class JwPersonEntity implements Serializable {
         this.b1520 = b1520;
     }
 
+    public String getB1520Name() {
+        String name = "";
+        switch (b1520){
+            case 0:
+                name = "否";
+                break;
+            case 1:
+                name = "是";
+                break;
+        }
+        return StringUtils.empty(name)?b1520Name:name;
+    }
+
+    public void setB1520Name(String b1520Name) {
+        this.b1520Name = b1520Name;
+    }
+
     public String getCreateBy() {
         return createBy;
     }
@@ -272,6 +311,14 @@ public class JwPersonEntity implements Serializable {
 
     public void setDeleted(int deleted) {
         this.deleted = deleted;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
     }
 
     public GidObjBean getGidObj() {
@@ -298,7 +345,7 @@ public class JwPersonEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public static class B1506ObjBean {
+    public static class B1506ObjBean implements Serializable {
         /**
          * code : USA
          * codeName : 美国
@@ -364,6 +411,7 @@ public class JwPersonEntity implements Serializable {
         private String orgId;
         private String orgName;
         private String orgNo;
+        private String genericName;
 
         public String getOrgFullName() {
             return orgFullName;
@@ -395,6 +443,14 @@ public class JwPersonEntity implements Serializable {
 
         public void setOrgNo(String orgNo) {
             this.orgNo = orgNo;
+        }
+
+        public String getGenericName() {
+            return genericName;
+        }
+
+        public void setGenericName(String genericName) {
+            this.genericName = genericName;
         }
     }
 }

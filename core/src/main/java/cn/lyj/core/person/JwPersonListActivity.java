@@ -1,6 +1,7 @@
 package cn.lyj.core.person;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
 import allen.frame.widget.SearchView;
@@ -73,7 +75,7 @@ public class JwPersonListActivity extends AllenBaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_add,menu);
+        getMenuInflater().inflate(R.menu.menu_add,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -81,7 +83,7 @@ public class JwPersonListActivity extends AllenBaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuId = item.getItemId();
         if(menuId== R.id.alen_menu_add){
-//            startActivityForResult(new Intent(context, UpdateHousePersonActivity.class),10);
+            startActivityForResult(new Intent(context,UpdateJwPersonActivity.class),10);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -164,7 +166,8 @@ public class JwPersonListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ViewHolder holder, int position) {
-
+                startActivityForResult(new Intent(context,UpdateJwPersonActivity.class)
+                        .putExtra(Constants.ObjectFirst,list.get(position)),10);
             }
 
             @Override
@@ -175,9 +178,8 @@ public class JwPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
         Https.with(this).url(CoreApi.get_JwPerson)
-                .addParam("b1502",mKey).get()
+                .addParam("b1502",mKey).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<JwPersonEntity>>() {
                     @Override
                     public void success(List<JwPersonEntity> data) {
@@ -189,7 +191,7 @@ public class JwPersonListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(JwPersonListActivity.this);
                     }
 
                     @Override
@@ -215,7 +217,8 @@ public class JwPersonListActivity extends AllenBaseActivity {
 
                     @Override
                     public void token() {
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(JwPersonListActivity.this);
                     }
 
                     @Override

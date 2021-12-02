@@ -190,12 +190,12 @@ public class TipoffActivity extends AllenBaseActivity {
                 if (checkedId == R.id.sex_male) {
                     sex = "1";
                 } else {
-                    sex = "0";
+                    sex = "2";
                 }
             }
         });
         if(shared.getString(Constants.UserGender,"").equals("女")){
-            sex = "0";
+            sex = "2";
             tipSex.check(R.id.sex_female);
         }else{
             sex = "1";

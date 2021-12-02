@@ -122,7 +122,7 @@ public class TipOffInfoActivity extends AllenBaseActivity {
                     tipInfoDw.setText(data.getOrg().getOrgName());
                     tipInfoGrid.setText(data.getGridName());
                     tipInfoName.setText(data.getName());
-                    tipInfoSex.setText(data.getSex().equals("0")?"女":"男");
+                    tipInfoSex.setText(data.getSex().equals("1")?"男":"女");
                     tipInfoPhone.setText(data.getPhone());
                     tipInfoIdno.setText(StringUtils.hideStr(data.getIdNumber(),7,14,"*"));
                     tipInfoAddress.setText(data.getAddress());

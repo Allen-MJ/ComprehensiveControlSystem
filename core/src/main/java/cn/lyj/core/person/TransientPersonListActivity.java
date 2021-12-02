@@ -160,7 +160,7 @@ public class TransientPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url(CoreApi._core_8)
+        Https.with(this).url(CoreApi.TranPersonQuery)
                 .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<TranPerson>>() {
                     @Override
@@ -173,7 +173,7 @@ public class TransientPersonListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(TransientPersonListActivity.this);
                     }
 
                     @Override
@@ -185,7 +185,7 @@ public class TransientPersonListActivity extends AllenBaseActivity {
     }
 
     private void delete(String[] ids){
-        Https.with(this).url(CoreApi._core_6)
+        Https.with(this).url(CoreApi.TranPersonDelete)
                 .addJsons(new Gson().toJson(ids)).delete()
                 .enqueue(new Callback<List<SocialPlaceEntity>>() {
                     @Override
@@ -199,7 +199,8 @@ public class TransientPersonListActivity extends AllenBaseActivity {
 
                     @Override
                     public void token() {
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(TransientPersonListActivity.this);
                     }
 
                     @Override

@@ -192,7 +192,7 @@ public class HIVPersonListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(HIVPersonListActivity.this);
                     }
 
                     @Override
@@ -218,7 +218,8 @@ public class HIVPersonListActivity extends AllenBaseActivity {
 
                     @Override
                     public void token() {
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(HIVPersonListActivity.this);
                     }
 
                     @Override

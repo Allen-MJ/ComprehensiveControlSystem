@@ -213,6 +213,7 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
+                    android:inputType="number"
                     android:background="@color/transparent"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
@@ -235,6 +236,7 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
+                    android:inputType="number"
                     android:background="@color/transparent"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
@@ -257,6 +259,7 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
+                    android:inputType="number"
                     android:background="@color/transparent"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View

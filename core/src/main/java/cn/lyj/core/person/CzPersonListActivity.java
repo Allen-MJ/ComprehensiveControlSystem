@@ -1,8 +1,7 @@
 package cn.lyj.core.person;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -22,6 +21,7 @@ import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.StringUtils;
 import allen.frame.widget.SearchView;
@@ -66,10 +66,10 @@ public class CzPersonListActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar,"境外人口",true);
+        setToolbarTitle(toolbar,"常住人口",true);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.menu_add,menu);
         return super.onCreateOptionsMenu(menu);
@@ -82,7 +82,7 @@ public class CzPersonListActivity extends AllenBaseActivity {
 //            startActivityForResult(new Intent(context, UpdateHousePersonActivity.class),10);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
@@ -142,7 +142,7 @@ public class CzPersonListActivity extends AllenBaseActivity {
         adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ViewHolder holder, int position) {
-
+                startActivity(new Intent(context,UpdateCzPersonActivity.class).putExtra(Constants.ObjectFirst,list.get(position)));
             }
 
             @Override
@@ -153,9 +153,9 @@ public class CzPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
         Https.with(this).url(CoreApi.get_CzPerson)
-                .addParam("bcz02",mKey).get()
+                .addParam("bcz02",mKey).addParam("page",page++)
+                .addParam("size",size).get()
                 .enqueue(new Callback<List<CzPersonEntity>>() {
                     @Override
                     public void success(List<CzPersonEntity> data) {
@@ -167,7 +167,7 @@ public class CzPersonListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(CzPersonListActivity.this);
                     }
 
                     @Override
