@@ -3,6 +3,8 @@ package cn.lyj.core.house;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -68,6 +70,21 @@ public class RentHouseListActivity extends AllenBaseActivity {
     @Override
     protected void initBar() {
         setToolbarTitle(toolbar,"出租房",true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId== R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateRentHouseActivity.class),10);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
