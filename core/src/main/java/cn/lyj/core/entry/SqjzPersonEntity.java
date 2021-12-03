@@ -54,7 +54,9 @@ public class SqjzPersonEntity implements Serializable {
     private String b1800;
     private String b1801;
     private String b1802;
+    private String b1803;
     private String b1804;
+    private String b1804Name;
     private String b1805;
     private String b1806;
     private String b1807;
@@ -65,6 +67,8 @@ public class SqjzPersonEntity implements Serializable {
     private B1810ObjBean b1810Obj;
     private String b1811;
     private String b1812;
+    private String b1813;
+    private String b1814;
     private String b1815;
     private String b1816;
     private B1816ObjBean b1816Obj;
@@ -120,8 +124,29 @@ public class SqjzPersonEntity implements Serializable {
         this.b1802 = b1802;
     }
 
+    public String getB1803() {
+        return b1803;
+    }
+
+    public void setB1803(String b1803) {
+        this.b1803 = b1803;
+    }
+
     public String getB1804() {
         return b1804;
+    }
+
+    public String getB1804Name() {
+        String name = "";
+        switch (b1804){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return name;
     }
 
     public void setB1804(String b1804) {
@@ -206,6 +231,22 @@ public class SqjzPersonEntity implements Serializable {
 
     public void setB1812(String b1812) {
         this.b1812 = b1812;
+    }
+
+    public String getB1813() {
+        return b1813;
+    }
+
+    public void setB1813(String b1813) {
+        this.b1813 = b1813;
+    }
+
+    public String getB1814() {
+        return b1814;
+    }
+
+    public void setB1814(String b1814) {
+        this.b1814 = b1814;
     }
 
     public String getB1815() {

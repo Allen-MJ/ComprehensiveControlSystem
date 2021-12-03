@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class YxgjPersonEntity implements Serializable {
 
 
@@ -56,6 +58,7 @@ public class YxgjPersonEntity implements Serializable {
     private String nativeplace;
     private String pid;
     private String sex;
+    private String sexName;
     private String uname;
     private String updateBy;
     private String updateTime;
@@ -66,6 +69,17 @@ public class YxgjPersonEntity implements Serializable {
     private String xzddetail;
     private String zzmm;
     private ZzmmObjBean zzmmObj;
+    private String gid;
+    private String zongj;
+
+
+    public String getZongj() {
+        return zongj;
+    }
+
+    public void setZongj(String zongj) {
+        this.zongj = zongj;
+    }
 
     public String getBirthday() {
         return birthday;
@@ -121,6 +135,14 @@ public class YxgjPersonEntity implements Serializable {
 
     public void setFwcs(String fwcs) {
         this.fwcs = fwcs;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
     }
 
     public GidObjBean getGidObj() {
@@ -217,6 +239,23 @@ public class YxgjPersonEntity implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getSexName() {
+        String name = "";
+        switch (sex){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?sexName:name;
+    }
+
+    public void setSexName(String sexName) {
+        this.sexName = sexName;
     }
 
     public String getUname() {
@@ -449,4 +488,5 @@ public class YxgjPersonEntity implements Serializable {
             this.codeName = codeName;
         }
     }
+
 }

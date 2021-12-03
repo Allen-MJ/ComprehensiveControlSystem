@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class DrugEntity implements Serializable {
 
     /**
@@ -53,6 +55,7 @@ public class DrugEntity implements Serializable {
     private String b2002;
     private String b2003;
     private String b2004;
+    private String b2004Name;//性别
     private String b2005;
     private String b2006;
     private String b2007;
@@ -86,6 +89,7 @@ public class DrugEntity implements Serializable {
     private String createBy;
     private String createTime;
     private int deleted;
+    private String gid;
     private GidObjBean gidObj;
     private String updateBy;
     private String updateTime;
@@ -128,6 +132,23 @@ public class DrugEntity implements Serializable {
 
     public void setB2004(String b2004) {
         this.b2004 = b2004;
+    }
+
+    public String getB2004Name() {
+        String name = "";
+        switch (b2004){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?b2004Name:name;
+    }
+
+    public void setB2004Name(String b2004Name) {
+        this.b2004Name = b2004Name;
     }
 
     public String getB2005() {
@@ -392,6 +413,14 @@ public class DrugEntity implements Serializable {
 
     public void setDeleted(int deleted) {
         this.deleted = deleted;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
     }
 
     public GidObjBean getGidObj() {

@@ -1,10 +1,28 @@
 package cn.lyj.core.person;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
+
+import java.util.Calendar;
+import java.util.List;
 
 import allen.frame.AllenBaseActivity;
+import allen.frame.AllenChoiceGridActivity;
+import allen.frame.adapter.CommonAdapter;
+import allen.frame.adapter.CoreTypeAdapter;
+import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.CoreType;
+import allen.frame.entry.Response;
+import allen.frame.net.BaseApi;
+import allen.frame.net.Callback;
+import allen.frame.net.Https;
+import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
+import allen.frame.tools.DatePickerDialog;
+import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -14,6 +32,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
+import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.XmsfPersonEntity;
 
 public class UpdateXmsfPersonActivity extends AllenBaseActivity {
@@ -32,7 +51,7 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     @BindView(R2.id.house_person_sex)
     AppCompatTextView housePersonSex;
     @BindView(R2.id.house_person_birthday)
-    AppCompatEditText housePersonBirthday;
+    AppCompatTextView housePersonBirthday;
     @BindView(R2.id.house_person_jg)
     AppCompatEditText housePersonJg;
     @BindView(R2.id.house_person_mz)
@@ -54,9 +73,9 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     @BindView(R2.id.house_person_phone)
     AppCompatEditText housePersonPhone;
     @BindView(R2.id.house_person_hjd)
-    AppCompatEditText housePersonHjd;
+    AppCompatTextView housePersonHjd;
     @BindView(R2.id.house_person_xzd)
-    AppCompatEditText housePersonXzd;
+    AppCompatTextView housePersonXzd;
     @BindView(R2.id.house_person_xzddz)
     AppCompatEditText housePersonXzddz;
     @BindView(R2.id.house_person_hjddz)
@@ -78,11 +97,11 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     @BindView(R2.id.xmsf_person_xjrq)
     AppCompatTextView xmsfPersonXjrq;
     @BindView(R2.id.xmsf_person_xjqk)
-    AppCompatEditText xmsfPersonXjqk;
+    AppCompatTextView xmsfPersonXjqk;
     @BindView(R2.id.xmsf_person_azrq)
     AppCompatTextView xmsfPersonAzrq;
     @BindView(R2.id.xmsf_person_azqk)
-    AppCompatEditText xmsfPersonAzqk;
+    AppCompatTextView xmsfPersonAzqk;
     @BindView(R2.id.xmsf_person_wazyy)
     AppCompatEditText xmsfPersonWazyy;
     @BindView(R2.id.xmsf_person_bjqk)
@@ -90,10 +109,12 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     @BindView(R2.id.xmsf_person_sfcxfz)
     AppCompatTextView xmsfPersonSfcxfz;
     @BindView(R2.id.xmsf_person_cxfzzm)
-    AppCompatEditText xmsfPersonCxfzzm;
+    AppCompatTextView xmsfPersonCxfzzm;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
     private XmsfPersonEntity entry;
+    private String sex,nation,marriage,zzmm,edu,
+            zongj,worktype,hjd,xzd,gid;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -112,8 +133,73 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     }
 
     @Override
-    protected void initUI(@Nullable Bundle savedInstanceState) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            switch (requestCode){
+                case 10:
+                    gid = data.getStringExtra(Constants.Key_1);
+                    housePersonWg.setText(data.getStringExtra(Constants.Key_2));
+                    break;
+            }
+        }
+    }
 
+    @Override
+    protected void initUI(@Nullable Bundle savedInstanceState) {
+        if(entry!=null){
+            gid = entry.getGid();
+            housePersonWg.setText(entry.getGidObj().getOrgFullName());
+            housePersonName.setText(entry.getB1702());
+            housePersonAname.setText(entry.getB1703());
+            housePersonIdnumber.setText(entry.getB1701());
+            housePersonSex.setText(entry.getB1704Name());
+            sex = entry.getB1704();
+            housePersonBirthday.setText(entry.getB1705());
+            housePersonJg.setText(entry.getB1707());
+            housePersonMz.setText(entry.getB1706());
+            nation = entry.getB1706();
+            housePersonHyzk.setText(entry.getB1708());
+            marriage = entry.getB1708();
+            housePersonZzmm.setText(entry.getB1709Obj().getCodeName());
+            zzmm = entry.getB1709();
+            housePersonXl.setText(entry.getB1710Obj().getCodeName());
+            edu = entry.getB1710();
+            housePersonZjxy.setText(entry.getB1711());
+            zongj = entry.getB1711();
+            housePersonZylb.setText(entry.getB1712());
+            worktype = entry.getB1712();
+            housePersonZy.setText(entry.getB1713());
+            housePersonFwcs.setText(entry.getB1714());
+            housePersonPhone.setText(entry.getB1715());
+            housePersonHjd.setText(entry.getB1716Obj().getCodeName());
+            hjd = entry.getB1716();
+            housePersonHjddz.setText(entry.getB1717());
+            housePersonXzd.setText(entry.getB1718Obj().getCodeName());
+            xzd = entry.getB1718();
+            housePersonXzddz.setText(entry.getB1719());
+
+            xmsfPersonSflf.setText(entry.getB1720Name());
+            sflf = entry.getB1720();
+            xmsfPersonYzm.setText(entry.getB1721());
+            yzm = entry.getB1721();
+            xmsfPersonYpxq.setText(entry.getB1722());
+            xmsfPersonFxcs.setText(entry.getB1723());
+            xmsfPersonSfrq.setText(entry.getB1724());
+            xmsfPersonWxxpg.setText(entry.getB1725());
+            wxpg = entry.getB1725();
+            xmsfPersonXjrq.setText(entry.getB1726());
+            xmsfPersonXjqk.setText(entry.getB1727());
+            xzqk = entry.getB1727();
+            xmsfPersonAzrq.setText(entry.getB1728());
+            xmsfPersonAzqk.setText(entry.getB1729());
+            azqk = entry.getB1729();
+            xmsfPersonWazyy.setText(entry.getB1730());
+            xmsfPersonBjqk.setText(entry.getB1731());
+            xmsfPersonSfcxfz.setText(entry.getB1732Name());
+            sfcxfz = entry.getB1732();
+            xmsfPersonCxfzzm.setText(entry.getB1733());
+        }
     }
 
     @Override
@@ -126,30 +212,890 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
         });
     }
 
-
-
-    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_mz, R2.id.house_person_hyzk, R2.id.house_person_zzmm, R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_zpdz, R2.id.xmsf_person_sflf, R2.id.xmsf_person_yzm, R2.id.xmsf_person_sfrq, R2.id.xmsf_person_wxxpg, R2.id.xmsf_person_xjrq, R2.id.xmsf_person_azrq, R2.id.xmsf_person_sfcxfz, R2.id.commit_bt})
+    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk,
+            R2.id.house_person_zzmm,R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_zpdz,
+            R2.id.xmsf_person_sflf,R2.id.xmsf_person_yzm, R2.id.xmsf_person_sfrq, R2.id.xmsf_person_wxxpg, R2.id.xmsf_person_xjrq,
+            R2.id.xmsf_person_azrq,R2.id.xmsf_person_azqk,R2.id.xmsf_person_sfcxfz, R2.id.xmsf_person_cxfzzm, R2.id.house_person_hjd, R2.id.house_person_xzd,
+            R2.id.xmsf_person_xjqk, R2.id.commit_bt})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
         if (id == R.id.house_person_wg) {
+            startActivityForResult(new Intent(context, AllenChoiceGridActivity.class),10);
         } else if (id == R.id.house_person_sex) {
+            sex();
+        } else if(id == R.id.house_person_birthday){
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear, int startDayOfMonth) {
+                    housePersonBirthday.setText(startYear + "-" + String.format("%02d", startMonthOfYear + 1) + "-" + String.format("%02d", startDayOfMonth));
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            dialog.show();
         } else if (id == R.id.house_person_mz) {
+            nation();
         } else if (id == R.id.house_person_hyzk) {
+            hyzk();
         } else if (id == R.id.house_person_zzmm) {
+            zzmm();
         } else if (id == R.id.house_person_xl) {
+            xl();
         } else if (id == R.id.house_person_zjxy) {
+            zjxy();
         } else if (id == R.id.house_person_zylb) {
+            zylb();
         } else if (id == R.id.house_person_zpdz) {
         } else if (id == R.id.xmsf_person_sflf) {
+            sflf();
         } else if (id == R.id.xmsf_person_yzm) {
+            yzm();
         } else if (id == R.id.xmsf_person_sfrq) {
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear, int startDayOfMonth) {
+                    xmsfPersonSfrq.setText(startYear + "-" + String.format("%02d", startMonthOfYear + 1) + "-" + String.format("%02d", startDayOfMonth));
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            dialog.show();
         } else if (id == R.id.xmsf_person_wxxpg) {
+            wxpg();
         } else if (id == R.id.xmsf_person_xjrq) {
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear, int startDayOfMonth) {
+                    xmsfPersonXjrq.setText(startYear + "-" + String.format("%02d", startMonthOfYear + 1) + "-" + String.format("%02d", startDayOfMonth));
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            dialog.show();
         } else if (id == R.id.xmsf_person_azrq) {
-        } else if (id == R.id.xmsf_person_sfcxfz) {
-        } else if (id == R.id.commit_bt) {
+            Calendar calendar = Calendar.getInstance();
+            DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear, int startDayOfMonth) {
+                    xmsfPersonAzrq.setText(startYear + "-" + String.format("%02d", startMonthOfYear + 1) + "-" + String.format("%02d", startDayOfMonth));
+                }
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            dialog.show();
+        } else if(id==R.id.xmsf_person_azqk){
+            azqk();
+        }else if (id == R.id.xmsf_person_sfcxfz) {
+            sfcxfz();
+        } else if(id==R.id.xmsf_person_cxfzzm){
+            cfzm();
+        }else if(id==R.id.house_person_hjd){
+            hjd();
+        } else if(id==R.id.house_person_xzd){
+            xzd();
+        } else if(id==R.id.xmsf_person_xjqk){
+            xzqk();
+        }else if (id == R.id.commit_bt) {
+            commit();
         }
         view.setEnabled(true);
+    }
+    private void commit(){
+        if(StringUtils.empty(gid)){
+            MsgUtils.showMDMessage(context,"请选择所属网格!");
+            return;
+        }
+        String pid = housePersonIdnumber.getText().toString().trim();
+        if(StringUtils.empty(pid)){
+            MsgUtils.showMDMessage(context,"请输入身份证号!");
+            return;
+        }
+        String name = housePersonName.getText().toString().trim();
+        if(StringUtils.empty(name)){
+            MsgUtils.showMDMessage(context,"请输入姓名!");
+            return;
+        }
+        String uname = housePersonAname.getText().toString().trim();
+        if(StringUtils.empty(sex)){
+            MsgUtils.showMDMessage(context,"请选择性别!");
+            return;
+        }
+        String birthday = housePersonBirthday.getText().toString().trim();
+        if(StringUtils.empty(birthday)){
+            MsgUtils.showMDMessage(context,"请输入出生日期!");
+            return;
+        }
+        nation = housePersonMz.getText().toString().trim();
+        if(StringUtils.empty(nation)){
+            MsgUtils.showMDMessage(context,"请选择民族!");
+            return;
+        }
+        String nativeplace = housePersonJg.getText().toString().trim();
+        if(StringUtils.empty(marriage)){
+            MsgUtils.showMDMessage(context,"请选择婚姻状况!");
+            return;
+        }
+        if(StringUtils.empty(zzmm)){
+            MsgUtils.showMDMessage(context,"请选择政治面貌!");
+            return;
+        }
+        if(StringUtils.empty(edu)){
+            MsgUtils.showMDMessage(context,"请选择学历!");
+            return;
+        }
+        if(StringUtils.empty(zongj)){
+            MsgUtils.showMDMessage(context,"请选择宗教信仰!");
+            return;
+        }
+        if(StringUtils.empty(worktype)){
+            MsgUtils.showMDMessage(context,"请选择职业类别!");
+            return;
+        }
+        String work = housePersonZy.getText().toString().trim();
+        String fwcs = housePersonFwcs.getText().toString().trim();
+        String link = housePersonPhone.getText().toString().trim();
+        if(StringUtils.empty(link)){
+            MsgUtils.showMDMessage(context,"请输入联系方式!");
+            return;
+        }
+        if(StringUtils.empty(hjd)){
+            MsgUtils.showMDMessage(context,"请选择户籍地!");
+            return;
+        }
+        String hjddetail = housePersonHjddz.getText().toString().trim();
+        if(StringUtils.empty(hjddetail)){
+            MsgUtils.showMDMessage(context,"请输入户籍门（楼）详址!");
+            return;
+        }
+        if(StringUtils.empty(xzd)){
+            MsgUtils.showMDMessage(context,"请选择现住地!");
+            return;
+        }
+        String xzddetail = housePersonXzddz.getText().toString().trim();
+        if(StringUtils.empty(xzddetail)){
+            MsgUtils.showMDMessage(context,"请输入现住门（楼）详址!");
+            return;
+        }
+        if(StringUtils.empty(sflf)){
+            MsgUtils.showMDMessage(context,"请选择是否累犯!");
+            return;
+        }
+        if(StringUtils.empty(yzm)){
+            MsgUtils.showMDMessage(context,"请选择原罪名!");
+            return;
+        }
+        String ypdq = xmsfPersonYpxq.getText().toString().trim();
+        if(StringUtils.empty(ypdq)){
+            MsgUtils.showMDMessage(context,"请输入原判刑期!");
+            return;
+        }
+        String fxcs = xmsfPersonFxcs.getText().toString().trim();
+        if(StringUtils.empty(fxcs)){
+            MsgUtils.showMDMessage(context,"请输入服刑场所!");
+            return;
+        }
+        String sfrq = xmsfPersonSfrq.getText().toString().trim();
+        if(StringUtils.empty(sfrq)){
+            MsgUtils.showMDMessage(context,"请输入释放日期!");
+            return;
+        }
+        if(StringUtils.empty(wxpg)){
+            MsgUtils.showMDMessage(context,"请选择危险性评估类型!");
+            return;
+        }
+        String xzrq = xmsfPersonXjrq.getText().toString().trim();
+        if(StringUtils.empty(xzrq)){
+            MsgUtils.showMDMessage(context,"请选择衔接日期!");
+            return;
+        }
+        if(StringUtils.empty(xzqk)){
+            MsgUtils.showMDMessage(context,"请选择衔接情况!");
+            return;
+        }
+        String azrq = xmsfPersonAzrq.getText().toString().trim();
+        if(StringUtils.empty(azrq)){
+            MsgUtils.showMDMessage(context,"请选择安置日期!");
+            return;
+        }
+        if(StringUtils.empty(azqk)){
+            MsgUtils.showMDMessage(context,"请选择安置情况!");
+            return;
+        }
+        if(StringUtils.empty(sfcxfz)){
+            MsgUtils.showMDMessage(context,"请选择是否重新犯罪!");
+            return;
+        }
+        showProgressDialog("");
+        Https https = Https.with(this);
+        if(entry!=null){
+            https.url(CoreApi.update_XmsfPerson).put().addParam("B1700",entry.getB1700());
+        }else{
+            https.url(CoreApi.add_XmsfPerson).post();
+        }
+        https.addParam("B1701",pid).addParam("B1702",name).addParam("B1703",uname).addParam("B1704",sex).addParam("B1705",birthday)
+                .addParam("B1706",nation).addParam("B1707",nativeplace).addParam("B1708",marriage).addParam("B1709",zzmm)
+                .addParam("B1710",edu).addParam("B1711",zongj).addParam("B1712",worktype).addParam("B1713",work).addParam("B1714",fwcs)
+                .addParam("B1715",link).addParam("B1716",hjd).addParam("B1717",hjddetail).addParam("B1718",xzd).addParam("B1719",xzddetail)
+                .addParam("B1720",sflf).addParam("B1721",yzm).addParam("B1722",ypdq).addParam("B1723",fxcs).addParam("B1724",sfrq)
+                .addParam("B1725",wxpg).addParam("B1726",xzrq).addParam("B1727",xzqk).addParam("B1728",azrq).addParam("B1729",azqk)
+                .addParam("B1732",sfcxfz).addParam("b1733",cfzm)
+                .addParam("gid",gid).enqueue(new Callback<Object>() {
+            @Override
+            public void success(Object data) {
+                dismissProgressDialog();
+                MsgUtils.showShortToast(context,"保存成功!");
+                setResult(RESULT_OK,getIntent());
+                finish();
+            }
+
+            @Override
+            public void fail(Response response) {
+                dismissProgressDialog();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
+    }
+
+    private String wxpg;
+    private void wxpg(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","risk_type")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择危险性评估类型", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                wxpg = data.get(position).getValue();
+                                xmsfPersonWxxpg.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String sfcxfz;
+    private void sfcxfz(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","system_trueorfalse")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择是否重新犯罪", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                sfcxfz = data.get(position).getValue();
+                                xmsfPersonSfcxfz.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void zzmm(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getTable).addParam("name","gb4762").get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择政治面貌", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                zzmm = data.get(position).getValue();
+                                housePersonZzmm.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void xl(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getTable).addParam("name","zb64").get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择学历", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                edu = data.get(position).getValue();
+                                housePersonXl.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void hyzk(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","people_marriage")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择婚姻状况", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                marriage = data.get(position).getValue();
+                                housePersonHyzk.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String yzm;
+    private void yzm(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","charges_type")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择原罪名", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                yzm = data.get(position).getValue();
+                                xmsfPersonYzm.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String sflf;
+    private void sflf(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","system_trueorfalse")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择是否累犯", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                sflf = data.get(position).getValue();
+                                xmsfPersonSflf.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String xzqk;
+    private void xzqk(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","goes_on")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择衔接情况", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                xzqk = data.get(position).getValue();
+                                xmsfPersonXjqk.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String azqk;
+    private void azqk(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","resettlement_situation")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择安置情况", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                azqk = data.get(position).getValue();
+                                xmsfPersonAzqk.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private String cfzm;
+    private void cfzm(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","charges_type")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择重新犯罪罪名", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                cfzm = data.get(position).getValue();
+                                xmsfPersonCxfzzm.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void zjxy(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","people_religion")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择宗教信仰", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                zongj = data.get(position).getValue();
+                                housePersonZjxy.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void zylb(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","people_worktype")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择职业类别", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                worktype = data.get(position).getValue();
+                                housePersonZylb.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void sex(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","people_sex")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择性别", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                sex = data.get(position).getValue();
+                                housePersonSex.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+    private void nation(){
+        showProgressDialog("");
+        Https.with(this).url(BaseApi.getType).addParam("dictName","people_nation")
+                .addParam("page",0).addParam("size",9999).get()
+                .enqueue(new Callback<List<CoreType>>() {
+                    @Override
+                    public void success(final List<CoreType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择民族", new CommonAdapter<CoreType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, CoreType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                nation = data.get(position).getValue();
+                                housePersonMz.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private List<CoreType> coreTypes;
+    private void hjd(){
+        if(coreTypes!=null){
+            final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
+            dialog.setCoreTypes(coreTypes);
+            dialog.showLevelDialog("请选择户籍地", new CoreTypeAdapter(context),
+                    new CoreTypeAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View v, final CoreType mentry, int position) {
+                            final List<CoreType> child = mentry.getChildren();
+                            if(child==null||child.size()==0){
+                                dialog.dismiss();
+                                hjd = mentry.getValue();
+                                housePersonHjd.setText(mentry.getLabel());
+                            }else{
+                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
+                                    @Override
+                                    public void onItemClick(View v, CoreType entry, int position) {
+                                        dialog.dismiss();
+                                        hjd = entry.getValue();
+                                        housePersonHjd.setText(mentry.getLabel()+entry.getLabel());
+                                    }
+                                });
+                            }
+                        }
+                    }).show();
+        }else{
+            showProgressDialog("");
+            Https.with(this).url(BaseApi.getTable).addParam("name","zb01").get()
+                    .enqueue(new Callback<List<CoreType>>() {
+                        @Override
+                        public void success(final List<CoreType> data) {
+                            dismissProgressDialog();
+                            coreTypes = data;
+                            final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
+                            dialog.setCoreTypes(coreTypes);
+                            dialog.showLevelDialog("请选择户籍地", new CoreTypeAdapter(context),
+                                    new CoreTypeAdapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View v, final CoreType mentry, int position) {
+                                            final List<CoreType> child = mentry.getChildren();
+                                            if(child==null||child.size()==0){
+                                                dialog.dismiss();
+                                                hjd = mentry.getValue();
+                                                housePersonHjd.setText(mentry.getLabel());
+                                            }else{
+                                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
+                                                    @Override
+                                                    public void onItemClick(View v, CoreType entry, int position) {
+                                                        dialog.dismiss();
+                                                        xzd = entry.getValue();
+                                                        housePersonHjd.setText(mentry.getLabel()+entry.getLabel());
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }).show();
+                        }
+
+                        @Override
+                        public void fail(Response response) {
+                            dismissProgressDialog();
+                            MsgUtils.showMDMessage(context,response.getMsg());
+                        }
+                    });
+        }
+    }
+    private void xzd(){
+        if(coreTypes!=null){
+            final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
+            dialog.setCoreTypes(coreTypes);
+            dialog.showLevelDialog("请选择现住地", new CoreTypeAdapter(context),
+                    new CoreTypeAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View v, final CoreType mentry, int position) {
+                            final List<CoreType> child = mentry.getChildren();
+                            if(child==null||child.size()==0){
+                                dialog.dismiss();
+                                xzd = mentry.getValue();
+                                housePersonXzd.setText(mentry.getLabel());
+                            }else{
+                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
+                                    @Override
+                                    public void onItemClick(View v, CoreType entry, int position) {
+                                        dialog.dismiss();
+                                        xzd = entry.getValue();
+                                        housePersonXzd.setText(mentry.getLabel()+entry.getLabel());
+                                    }
+                                });
+                            }
+                        }
+                    }).show();
+        }else{
+            showProgressDialog("");
+            Https.with(this).url(BaseApi.getTable).addParam("name","zb01").get()
+                    .enqueue(new Callback<List<CoreType>>() {
+                        @Override
+                        public void success(final List<CoreType> data) {
+                            dismissProgressDialog();
+                            coreTypes = data;
+                            final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
+                            dialog.setCoreTypes(coreTypes);
+                            dialog.showLevelDialog("请选择现住地", new CoreTypeAdapter(context),
+                                    new CoreTypeAdapter.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View v, final CoreType mentry, int position) {
+                                            final List<CoreType> child = mentry.getChildren();
+                                            if(child==null||child.size()==0){
+                                                dialog.dismiss();
+                                                xzd = mentry.getValue();
+                                                housePersonXzd.setText(mentry.getLabel());
+                                            }else{
+                                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
+                                                    @Override
+                                                    public void onItemClick(View v, CoreType entry, int position) {
+                                                        dialog.dismiss();
+                                                        xzd = entry.getValue();
+                                                        housePersonXzd.setText(mentry.getLabel()+entry.getLabel());
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }).show();
+                        }
+
+                        @Override
+                        public void fail(Response response) {
+                            dismissProgressDialog();
+                            MsgUtils.showMDMessage(context,response.getMsg());
+                        }
+                    });
+        }
     }
 }

@@ -53,6 +53,7 @@ public class ZsZhPersonEntity implements Serializable {
     private String b1902;
     private String b1903;
     private String b1904;
+    private String b1904Name;
     private String b1905;
     private String b1906;
     private String b1907;
@@ -61,6 +62,7 @@ public class ZsZhPersonEntity implements Serializable {
     private B1909ObjBean b1909Obj;
     private String b1910;
     private B1910ObjBean b1910Obj;
+    private String b1911;
     private String b1912;
     private String b1913;
     private String b1914;
@@ -124,6 +126,18 @@ public class ZsZhPersonEntity implements Serializable {
 
     public String getB1904() {
         return b1904;
+    }
+    public String getB1904Name() {
+        String name = "";
+        switch (b1904){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return name;
     }
 
     public void setB1904(String b1904) {
@@ -192,6 +206,14 @@ public class ZsZhPersonEntity implements Serializable {
 
     public void setB1910Obj(B1910ObjBean b1910Obj) {
         this.b1910Obj = b1910Obj;
+    }
+
+    public String getB1911() {
+        return b1911;
+    }
+
+    public void setB1911(String b1911) {
+        this.b1911 = b1911;
     }
 
     public String getB1912() {

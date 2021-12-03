@@ -86,6 +86,15 @@ public class HousePerson implements Serializable {
     private GidObjBean gidObj;
     private String updateBy;
     private String updateTime;
+    private String picture_path;
+
+    public String getPicture_path() {
+        return picture_path;
+    }
+
+    public void setPicture_path(String picture_path) {
+        this.picture_path = picture_path;
+    }
 
     public String getB1200() {
         return b1200;

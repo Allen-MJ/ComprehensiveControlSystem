@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class XmsfPersonEntity implements Serializable {
 
     /**
@@ -53,7 +55,9 @@ public class XmsfPersonEntity implements Serializable {
     private String b1700;
     private String b1701;
     private String b1702;
+    private String b1703;
     private String b1704;
+    private String b1704Name;
     private String b1705;
     private String b1706;
     private String b1707;
@@ -74,6 +78,7 @@ public class XmsfPersonEntity implements Serializable {
     private B1718ObjBean b1718Obj;
     private String b1719;
     private String b1720;
+    private String b1720Name;
     private String b1721;
     private String b1722;
     private String b1723;
@@ -86,6 +91,8 @@ public class XmsfPersonEntity implements Serializable {
     private String b1730;
     private String b1731;
     private String b1732;
+    private String b1732Name;
+    private String b1733;
     private String createBy;
     private String createTime;
     private int deleted;
@@ -118,12 +125,37 @@ public class XmsfPersonEntity implements Serializable {
         this.b1702 = b1702;
     }
 
+    public String getB1703() {
+        return b1703;
+    }
+
+    public void setB1703(String b1703) {
+        this.b1703 = b1703;
+    }
+
     public String getB1704() {
         return b1704;
     }
 
     public void setB1704(String b1704) {
         this.b1704 = b1704;
+    }
+
+    public String getB1704Name() {
+        String name = "";
+        switch (b1704){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?b1704Name:name;
+    }
+
+    public void setB1704Name(String b1704Name) {
+        this.b1704Name = b1704Name;
     }
 
     public String getB1705() {
@@ -286,6 +318,35 @@ public class XmsfPersonEntity implements Serializable {
         this.b1720 = b1720;
     }
 
+    public String getB1720Name() {
+        String name = "";
+        switch (b1720){
+            case "0":
+                name="否";
+                break;
+            case "1":
+                name="是";
+                break;
+        }
+        return name;
+    }
+    public String getB1732Name() {
+        String name = "";
+        switch (b1732){
+            case "0":
+                name="否";
+                break;
+            case "1":
+                name="是";
+                break;
+        }
+        return name;
+    }
+
+    public void setB1720Name(String b1720Name) {
+        this.b1720Name = b1720Name;
+    }
+
     public String getB1721() {
         return b1721;
     }
@@ -380,6 +441,14 @@ public class XmsfPersonEntity implements Serializable {
 
     public void setB1732(String b1732) {
         this.b1732 = b1732;
+    }
+
+    public String getB1733() {
+        return b1733;
+    }
+
+    public void setB1733(String b1733) {
+        this.b1733 = b1733;
     }
 
     public String getCreateBy() {

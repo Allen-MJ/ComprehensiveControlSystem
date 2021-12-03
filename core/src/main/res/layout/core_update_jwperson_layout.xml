@@ -516,7 +516,7 @@
                     android:text="@string/jw_zys"
                     android:textColor="@color/text_gray_color"
                     style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/jw_zys"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

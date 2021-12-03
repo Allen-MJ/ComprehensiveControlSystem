@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class XjPersonEntity  implements Serializable {
 
 
@@ -61,6 +63,7 @@ public class XjPersonEntity  implements Serializable {
     private String picturePath;
     private String pid;
     private String sex;
+    private String sexName;
     private String uname;
     private String updateBy;
     private String updateTime;
@@ -239,6 +242,23 @@ public class XjPersonEntity  implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getSexName() {
+        String name = "";
+        switch (sex){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?sexName:name;
+    }
+
+    public void setSexName(String sexName) {
+        this.sexName = sexName;
     }
 
     public String getUname() {

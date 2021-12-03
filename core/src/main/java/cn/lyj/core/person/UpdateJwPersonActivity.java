@@ -627,7 +627,7 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
                             coreTypes = data;
                             final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
                             dialog.setCoreTypes(coreTypes);
-                            dialog.showLevelDialog("请选择户籍地", new CoreTypeAdapter(context),
+                            dialog.showLevelDialog("请选择现住地", new CoreTypeAdapter(context),
                                     new CoreTypeAdapter.OnItemClickListener() {
                                         @Override
                                         public void onItemClick(View v, final CoreType mentry, int position) {

@@ -163,6 +163,8 @@ public class CoreApi {
      */
     public static final String get_DrugPerson = "/api/tb20/appQuery";
     public static final String del_DrugPerson = "/api/tb20/appDel";
+    public static final String add_DrugPerson = "/api/tb20/appAdd";
+    public static final String update_DrugPerson = "/api/tb21/appUpdate";
     /**
      * 肇事肇祸严重精神障碍患者
      */
@@ -178,17 +180,23 @@ public class CoreApi {
      */
     public static final String get_XmsfPerson = "/api/tb17/appQuery";
     public static final String del_XmsfPerson = "/api/tb17/appDel";
+    public static final String add_XmsfPerson = "/api/tb17/appAdd";
+    public static final String update_XmsfPerson = "/api/tb17/appUpdate";
     /**
      * 言行过激人员
      */
     public static final String get_YxgjPerson = "/api/yxgj/appQuery";
     public static final String del_YxgjPerson = "/api/yxgj/appDel";
+    public static final String add_YxgjPerson = "/api/yxgj/appAdd";
+    public static final String update_YxgjPerson = "/api/yxgj/appUpdate";
 
     /**
      * 邪教人员
      */
     public static final String get_FxjPerson = "/api/fxj/appQuery";
     public static final String del_FxjPerson = "/api/fxj/appDel";
+    public static final String add_FxjPerson = "/api/fxj/appAdd";
+    public static final String update_FxjPerson = "/api/fxj/appUpdate";
     /**
      * 境外人口
      */

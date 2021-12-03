@@ -2,6 +2,8 @@ package cn.lyj.core.entry;
 
 import java.io.Serializable;
 
+import allen.frame.tools.StringUtils;
+
 public class HIVPersonEntity implements Serializable {
 
     /**
@@ -51,6 +53,7 @@ public class HIVPersonEntity implements Serializable {
     private String b2102;
     private String b2103;
     private String b2104;
+    private String b2104Name;//性别
     private String b2105;
     private String b2106;
     private String b2107;
@@ -72,16 +75,19 @@ public class HIVPersonEntity implements Serializable {
     private String b2119;
     private String b2120;
     private String b2121;
+    private String b2121Name;
     private String b2122;
     private String b2123;
     private String b2124;
     private String b2125;
     private String b2126;
     private String b2127;
+    private String b2128;
     private String b2129;
     private String createBy;
     private String createTime;
     private int deleted;
+    private String gid;
     private GidObjBean gidObj;
     private String updateBy;
     private String updateTime;
@@ -124,6 +130,23 @@ public class HIVPersonEntity implements Serializable {
 
     public void setB2104(String b2104) {
         this.b2104 = b2104;
+    }
+
+    public String getB2104Name() {
+        String name = "";
+        switch (b2104){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return StringUtils.empty(name)?b2104Name:name;
+    }
+
+    public void setB2104Name(String b2104Name) {
+        this.b2104Name = b2104Name;
     }
 
     public String getB2105() {
@@ -294,6 +317,23 @@ public class HIVPersonEntity implements Serializable {
         this.b2121 = b2121;
     }
 
+    public String getB2121Name() {
+        String name = "";
+        switch (b2121){
+            case "0":
+                name = "否";
+                break;
+            case "1":
+                name = "是";
+                break;
+        }
+        return StringUtils.empty(name)?b2121Name:name;
+    }
+
+    public void setB2121Name(String b2121Name) {
+        this.b2121Name = b2121Name;
+    }
+
     public String getB2122() {
         return b2122;
     }
@@ -342,6 +382,14 @@ public class HIVPersonEntity implements Serializable {
         this.b2127 = b2127;
     }
 
+    public String getB2128() {
+        return b2128;
+    }
+
+    public void setB2128(String b2128) {
+        this.b2128 = b2128;
+    }
+
     public String getB2129() {
         return b2129;
     }
@@ -372,6 +420,14 @@ public class HIVPersonEntity implements Serializable {
 
     public void setDeleted(int deleted) {
         this.deleted = deleted;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
     }
 
     public GidObjBean getGidObj() {

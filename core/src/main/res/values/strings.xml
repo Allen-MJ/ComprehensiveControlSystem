@@ -203,4 +203,14 @@
     <string name="jw_ddrq">抵达日期:</string>
     <string name="jw_yjlk">预计离开日期:</string>
 
+    <string name="hiv_grtj">感染途径:</string>
+    <string name="hiv_wffzs">是否有违法犯罪史:</string>
+    <string name="hiv_wffzqk">违法犯罪情况:</string>
+    <string name="hiv_ajlb">案件类别:</string>
+    <string name="hiv_gzlb">关注类型:</string>
+    <string name="hiv_bfqk">帮扶情况:</string>
+    <string name="hiv_bfname">帮扶人姓名:</string>
+    <string name="hiv_bfphone">帮扶人联系方式:</string>
+    <string name="hiv_szqk">收治情况:</string>
+    <string name="hiv_szjg">收治机构名称:</string>
 </resources>
