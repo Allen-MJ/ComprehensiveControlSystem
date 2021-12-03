@@ -266,7 +266,8 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
-                    android:background="@color/transparent"/>
+                    android:background="@color/transparent"
+                    android:maxLength="6"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -715,43 +716,6 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:background="@color/transparent"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/frame_one_distance"
-                android:background="@color/gray_line_color"
-                android:layout_marginStart="@dimen/frame_edge_distance"
-                android:layout_marginEnd="@dimen/frame_edge_distance"
-                android:visibility="gone"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="top"
-                android:padding="@dimen/frame_eight_distance"
-                android:visibility="gone">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" "
-                    android:textColor="@color/text_red_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/xj_person_zpdz"
-                    android:textColor="@color/text_gray_color"
-                    style="@style/CoreNormal8Style"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/house_person_zpdz"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_black_color"
-                    style="@style/CoreNormal8Style"
-                    android:gravity="start|center_vertical"
-                    android:singleLine="true"
-                    android:drawablePadding="@dimen/frame_eight_distance"
-                    android:drawableEnd="@drawable/ic_arrow_down"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatButton

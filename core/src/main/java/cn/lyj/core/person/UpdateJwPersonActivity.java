@@ -1,31 +1,44 @@
 package cn.lyj.core.person;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
 import allen.frame.AllenChoiceGridActivity;
+import allen.frame.MultiImageSelector;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.CoreTypeAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.CoreType;
+import allen.frame.entry.File;
 import allen.frame.entry.Response;
+import allen.frame.entry.UploadFile;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.DatePickerDialog;
+import allen.frame.tools.FileIntent;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
+import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -82,8 +95,12 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
     AppCompatTextView housePersonSfzd;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
+    @BindView(R2.id.person_photo)
+    AppCompatImageView personPhoto;
     private JwPersonEntity entity;
     private String gid,sex,xzd,zdry,zjxy,zjdm,zylb,lhmd,gjdq;
+    private UploadProgressDialog dialog;
+    private String photo;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -110,13 +127,54 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
                     gid = data.getStringExtra(Constants.Key_1);
                     housePersonWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
+                case 11:
+                    ArrayList<String> image = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+                    String path = image.get(0);
+                    File file = new File();
+                    file.setName(StringUtils.getFileNameByPath(path));
+                    file.setPath(path);
+                    file.setType(0);//图片
+                    file.setSuffix(FileIntent.getMIMEType(file.getFile()));
+                    upload(file);
+                    break;
             }
         }
     }
 
+    private void upload(final File file) {
+        Https.with(this).url(BaseApi.Upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+
+            @Override
+            public void success(UploadFile data) {
+                Logger.e("success", "success");
+                photo = data.getRelativePath();
+                Glide.with(context).load(Constants.url+photo).error(R.mipmap.core_default_photo)
+                        .placeholder(R.mipmap.core_default_photo)
+                        .into(personPhoto);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.changeProgress(file.getName(), total, current);
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
+    }
+
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        dialog = new UploadProgressDialog();
         if(entity!=null){
+            photo = entity.getPicture_path();
+            Glide.with(this).load(Constants.url+photo)
+                    .error(R.mipmap.core_default_photo)
+                    .placeholder(R.mipmap.core_default_photo)
+                    .into(personPhoto);
             jwWwXing.setText(entity.getB1501());
             jwWwMing.setText(entity.getB1502());
             jwZwName.setText(entity.getB1503());
@@ -158,11 +216,18 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
                 finish();
             }
         });
+        dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
+            @Override
+            public void onComplet(ProgressDialog dialog) {
+                dialog.dismiss();
+                MsgUtils.showShortToast(context, "上传成功!");
+            }
+        });
     }
 
     @OnClick({R2.id.house_person_wg, R2.id.jw_sex, R2.id.jw_birthday, R2.id.jw_gjdq, R2.id.jw_lhmd, R2.id.jw_zjxy, R2.id.jw_zjdm,
             R2.id.jw_zjyxq, R2.id.jw_zylb, R2.id.house_person_xzd, R2.id.jw_ddrq,
-            R2.id.jw_yjlk, R2.id.house_person_sfzd, R2.id.commit_bt})
+            R2.id.jw_yjlk, R2.id.house_person_sfzd, R2.id.commit_bt, R2.id.person_photo})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
@@ -222,6 +287,19 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
             zdry();
         }else if(id == R.id.commit_bt){
             commit();
+        } else if(id==R.id.person_photo){
+            requestRunPermisssion(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10, new PermissionListener() {
+                @Override
+                public void onGranted(int requestCode) {
+                    MultiImageSelector.create().single().showCamera(true)
+                            .start(UpdateJwPersonActivity.this,11);
+                }
+
+                @Override
+                public void onDenied(List<String> deniedPermission) {
+                    MsgUtils.showMDMessage(context,"请开通需要的权限!");
+                }
+            });
         }
         view.setEnabled(true);
     }
@@ -320,7 +398,7 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
                 .addParam("b1508",zjdm).addParam("b1509",zjhm).addParam("b1510",zjyxq).addParam("b1511",phone).addParam("b1512",lhmd)
                 .addParam("b1513",zylb).addParam("b1514",zy)
                 .addParam("b1515",fwcs).addParam("b1516",xzd).addParam("b1517",xzddz).addParam("b1518",ddrq).addParam("b1519",yjlk)
-                .addParam("b1520",zdry).addParam("gid",gid).enqueue(new Callback<Object>() {
+                .addParam("b1520",zdry).addParam("gid",gid).addParam("picture_path",photo).enqueue(new Callback<Object>() {
             @Override
             public void success(Object data) {
                 dismissProgressDialog();

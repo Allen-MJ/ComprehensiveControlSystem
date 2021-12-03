@@ -1,31 +1,44 @@
 package cn.lyj.core.person;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
 import allen.frame.AllenChoiceGridActivity;
+import allen.frame.MultiImageSelector;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.CoreTypeAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.CoreType;
+import allen.frame.entry.File;
 import allen.frame.entry.Response;
+import allen.frame.entry.UploadFile;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.DatePickerDialog;
+import allen.frame.tools.FileIntent;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
+import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -96,9 +109,12 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
     AppCompatTextView housePersonZslx;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
+    @BindView(R2.id.person_photo)
+    AppCompatImageView personPhoto;
     private TranPerson entry;
-
     private String gid,sex,mz,hyzk,zzmm,xl,zjxy,zylb,hjd,xzd,lryy,bzlx,czrk,zdry,zslx;
+    private UploadProgressDialog dialog;
+    private String photo;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -125,13 +141,54 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
                     gid = data.getStringExtra(Constants.Key_1);
                     housePersonWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
+                case 11:
+                    ArrayList<String> image = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+                    String path = image.get(0);
+                    File file = new File();
+                    file.setName(StringUtils.getFileNameByPath(path));
+                    file.setPath(path);
+                    file.setType(0);//图片
+                    file.setSuffix(FileIntent.getMIMEType(file.getFile()));
+                    upload(file);
+                    break;
             }
         }
     }
 
+    private void upload(final File file) {
+        Https.with(this).url(BaseApi.Upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+
+            @Override
+            public void success(UploadFile data) {
+                Logger.e("success", "success");
+                photo = data.getRelativePath();
+                Glide.with(context).load(Constants.url+photo).error(R.mipmap.core_default_photo)
+                        .placeholder(R.mipmap.core_default_photo)
+                        .into(personPhoto);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.changeProgress(file.getName(), total, current);
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
+    }
+
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        dialog = new UploadProgressDialog();
         if(entry!=null){
+            photo = entry.getPicture_path();
+            Glide.with(this).load(Constants.url+photo)
+                    .error(R.mipmap.core_default_photo)
+                    .placeholder(R.mipmap.core_default_photo)
+                    .into(personPhoto);
             gid = entry.getGid();
             housePersonWg.setText(entry.getGidObj().getGenericName());
             housePersonName.setText(entry.getB1302());
@@ -186,11 +243,19 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
                 finish();
             }
         });
+        dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
+            @Override
+            public void onComplet(ProgressDialog dialog) {
+                dialog.dismiss();
+                MsgUtils.showShortToast(context, "上传成功!");
+            }
+        });
     }
 
-    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk, R2.id.house_person_zzmm, R2.id.house_person_xl,
-            R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_lryy, R2.id.house_person_bzlx, R2.id.house_person_djrq, R2.id.house_person_zjdq,
-            R2.id.house_person_sfcz, R2.id.house_person_sfzd, R2.id.house_person_zslx, R2.id.house_person_hjd, R2.id.house_person_xzd, R2.id.commit_bt})
+    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk,
+            R2.id.house_person_zzmm, R2.id.house_person_xl,R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_lryy,
+            R2.id.house_person_bzlx, R2.id.house_person_djrq, R2.id.house_person_zjdq,R2.id.house_person_sfcz, R2.id.house_person_sfzd,
+            R2.id.house_person_zslx, R2.id.house_person_hjd, R2.id.house_person_xzd, R2.id.commit_bt, R2.id.person_photo})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
@@ -253,6 +318,19 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
             xzd();
         }else if(id== R.id.commit_bt){
             commit();
+        } else if(id==R.id.person_photo){
+            requestRunPermisssion(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10, new PermissionListener() {
+                @Override
+                public void onGranted(int requestCode) {
+                    MultiImageSelector.create().single().showCamera(true)
+                            .start(UpdateTranPersonActivity.this,11);
+                }
+
+                @Override
+                public void onDenied(List<String> deniedPermission) {
+                    MsgUtils.showMDMessage(context,"请开通需要的权限!");
+                }
+            });
         }
         view.setEnabled(true);
     }
@@ -368,7 +446,7 @@ public class UpdateTranPersonActivity extends AllenBaseActivity {
             addParam("b1313",zy).addParam("b1314",fwcs).addParam("b1315",phone).addParam("b1316",hjd).
             addParam("b1317",hjddz).addParam("b1318",xzd).addParam("b1319",xzddz).addParam("b1320",lryy).
             addParam("b1321",bzlx).addParam("b1322",zjhm).addParam("b1323",djrq).addParam("b1324",zjdq).
-            addParam("b1325",zslx).addParam("b1326",czrk).addParam("b1327",zdry).addParam("gid",gid)
+            addParam("b1325",zslx).addParam("b1326",czrk).addParam("b1327",zdry).addParam("gid",gid).addParam("picture_path",photo)
             .enqueue(new Callback<Object>() {
                 @Override
                 public void success(Object data) {

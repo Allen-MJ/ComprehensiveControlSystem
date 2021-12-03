@@ -1,31 +1,44 @@
 package cn.lyj.core.person;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
 import allen.frame.AllenChoiceGridActivity;
+import allen.frame.MultiImageSelector;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.CoreTypeAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.CoreType;
+import allen.frame.entry.File;
 import allen.frame.entry.Response;
+import allen.frame.entry.UploadFile;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.DatePickerDialog;
+import allen.frame.tools.FileIntent;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
+import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -79,13 +92,15 @@ public class UpdateZszhPersonActivity extends AllenBaseActivity {
     AppCompatEditText housePersonXzddz;
     @BindView(R2.id.house_person_hjddz)
     AppCompatEditText housePersonHjddz;
-    @BindView(R2.id.house_person_zpdz)
-    AppCompatTextView housePersonZpdz;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
+    @BindView(R2.id.person_photo)
+    AppCompatImageView personPhoto;
     private String sex,nation,marriage,zzmm,edu,
             zongj,worktype,hjd,xzd,gid;
     private ZsZhPersonEntity entry;
+    private UploadProgressDialog dialog;
+    private String photo;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -112,13 +127,54 @@ public class UpdateZszhPersonActivity extends AllenBaseActivity {
                     gid = data.getStringExtra(Constants.Key_1);
                     housePersonWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
+                case 11:
+                    ArrayList<String> image = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+                    String path = image.get(0);
+                    File file = new File();
+                    file.setName(StringUtils.getFileNameByPath(path));
+                    file.setPath(path);
+                    file.setType(0);//图片
+                    file.setSuffix(FileIntent.getMIMEType(file.getFile()));
+                    upload(file);
+                    break;
             }
         }
     }
 
+    private void upload(final File file) {
+        Https.with(this).url(BaseApi.Upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+
+            @Override
+            public void success(UploadFile data) {
+                Logger.e("success", "success");
+                photo = data.getRelativePath();
+                Glide.with(context).load(Constants.url+photo).error(R.mipmap.core_default_photo)
+                        .placeholder(R.mipmap.core_default_photo)
+                        .into(personPhoto);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.changeProgress(file.getName(), total, current);
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
+    }
+
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        dialog = new UploadProgressDialog();
         if(entry!=null){
+            photo = entry.getPicture_path();
+            Glide.with(this).load(Constants.url+photo)
+                    .error(R.mipmap.core_default_photo)
+                    .placeholder(R.mipmap.core_default_photo)
+                    .into(personPhoto);
             gid = entry.getGid();
             housePersonWg.setText(entry.getGidObj().getOrgFullName());
             housePersonName.setText(entry.getB1902());
@@ -160,10 +216,18 @@ public class UpdateZszhPersonActivity extends AllenBaseActivity {
                 finish();
             }
         });
+        dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
+            @Override
+            public void onComplet(ProgressDialog dialog) {
+                dialog.dismiss();
+                MsgUtils.showShortToast(context, "上传成功!");
+            }
+        });
     }
 
-    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk, R2.id.house_person_zzmm,
-            R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_zpdz, R2.id.house_person_hjd, R2.id.house_person_xzd, R2.id.commit_bt})
+    @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk,
+            R2.id.house_person_zzmm,R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb,
+            R2.id.house_person_hjd, R2.id.house_person_xzd, R2.id.commit_bt, R2.id.person_photo})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
@@ -196,10 +260,21 @@ public class UpdateZszhPersonActivity extends AllenBaseActivity {
             hjd();
         }else if(id==R.id.house_person_xzd){
             xzd();
-        }else if(id== R.id.house_person_zpdz){
-
         }else if(id== R.id.commit_bt){
 
+        } else if(id==R.id.person_photo){
+            requestRunPermisssion(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10, new PermissionListener() {
+                @Override
+                public void onGranted(int requestCode) {
+                    MultiImageSelector.create().single().showCamera(true)
+                            .start(UpdateZszhPersonActivity.this,11);
+                }
+
+                @Override
+                public void onDenied(List<String> deniedPermission) {
+                    MsgUtils.showMDMessage(context,"请开通需要的权限!");
+                }
+            });
         }
         view.setEnabled(true);
     }
@@ -290,7 +365,7 @@ public class UpdateZszhPersonActivity extends AllenBaseActivity {
                 .addParam("b1906",nation).addParam("b1907",nativeplace).addParam("b1908",marriage).addParam("b1909",zzmm)
                 .addParam("b1910",edu).addParam("b1911",zongj).addParam("b1912",worktype).addParam("b1913",work).addParam("b1914",fwcs)
                 .addParam("b1915",link).addParam("b1916",hjd).addParam("b1917",hjddetail).addParam("b1918",xzd).addParam("b1919",xzddetail)
-                .addParam("gid",gid).enqueue(new Callback<Object>() {
+                .addParam("gid",gid).addParam("picture_path",photo).enqueue(new Callback<Object>() {
             @Override
             public void success(Object data) {
                 dismissProgressDialog();

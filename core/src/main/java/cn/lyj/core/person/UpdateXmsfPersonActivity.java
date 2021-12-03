@@ -1,31 +1,44 @@
 package cn.lyj.core.person;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import allen.frame.AllenBaseActivity;
 import allen.frame.AllenChoiceGridActivity;
+import allen.frame.MultiImageSelector;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.CoreTypeAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.CoreType;
+import allen.frame.entry.File;
 import allen.frame.entry.Response;
+import allen.frame.entry.UploadFile;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.CommonTypeDialog;
 import allen.frame.tools.Constants;
 import allen.frame.tools.DatePickerDialog;
+import allen.frame.tools.FileIntent;
+import allen.frame.tools.Logger;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.PermissionListener;
 import allen.frame.tools.StringUtils;
+import allen.frame.tools.UploadProgressDialog;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
@@ -80,8 +93,6 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     AppCompatEditText housePersonXzddz;
     @BindView(R2.id.house_person_hjddz)
     AppCompatEditText housePersonHjddz;
-    @BindView(R2.id.house_person_zpdz)
-    AppCompatTextView housePersonZpdz;
     @BindView(R2.id.xmsf_person_sflf)
     AppCompatTextView xmsfPersonSflf;
     @BindView(R2.id.xmsf_person_yzm)
@@ -112,9 +123,13 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
     AppCompatTextView xmsfPersonCxfzzm;
     @BindView(R2.id.commit_bt)
     AppCompatButton commitBt;
+    @BindView(R2.id.person_photo)
+    AppCompatImageView personPhoto;
     private XmsfPersonEntity entry;
     private String sex,nation,marriage,zzmm,edu,
             zongj,worktype,hjd,xzd,gid;
+    private UploadProgressDialog dialog;
+    private String photo;
 
     @Override
     protected boolean isStatusBarColorWhite() {
@@ -141,13 +156,54 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
                     gid = data.getStringExtra(Constants.Key_1);
                     housePersonWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
+                case 11:
+                    ArrayList<String> image = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+                    String path = image.get(0);
+                    File file = new File();
+                    file.setName(StringUtils.getFileNameByPath(path));
+                    file.setPath(path);
+                    file.setType(0);//图片
+                    file.setSuffix(FileIntent.getMIMEType(file.getFile()));
+                    upload(file);
+                    break;
             }
         }
     }
 
+    private void upload(final File file) {
+        Https.with(this).url(BaseApi.Upload).file(file).upload().enqueue(new Callback<UploadFile>() {
+
+            @Override
+            public void success(UploadFile data) {
+                Logger.e("success", "success");
+                photo = data.getRelativePath();
+                Glide.with(context).load(Constants.url+photo).error(R.mipmap.core_default_photo)
+                        .placeholder(R.mipmap.core_default_photo)
+                        .into(personPhoto);
+            }
+
+            @Override
+            public void onProgress(long total, long current) {
+                dialog.changeProgress(file.getName(), total, current);
+            }
+
+            @Override
+            public void fail(Response response) {
+                dialog.dismiss();
+                MsgUtils.showMDMessage(context,response.getMsg());
+            }
+        });
+    }
+
     @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
+        dialog = new UploadProgressDialog();
         if(entry!=null){
+            photo = entry.getPicture_path();
+            Glide.with(this).load(Constants.url+photo)
+                    .error(R.mipmap.core_default_photo)
+                    .placeholder(R.mipmap.core_default_photo)
+                    .into(personPhoto);
             gid = entry.getGid();
             housePersonWg.setText(entry.getGidObj().getOrgFullName());
             housePersonName.setText(entry.getB1702());
@@ -210,13 +266,20 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
                 finish();
             }
         });
+        dialog.setOnCompletListener(new UploadProgressDialog.OnCompletListener() {
+            @Override
+            public void onComplet(ProgressDialog dialog) {
+                dialog.dismiss();
+                MsgUtils.showShortToast(context, "上传成功!");
+            }
+        });
     }
 
     @OnClick({R2.id.house_person_wg, R2.id.house_person_sex, R2.id.house_person_birthday, R2.id.house_person_mz, R2.id.house_person_hyzk,
-            R2.id.house_person_zzmm,R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb, R2.id.house_person_zpdz,
+            R2.id.house_person_zzmm,R2.id.house_person_xl, R2.id.house_person_zjxy, R2.id.house_person_zylb,
             R2.id.xmsf_person_sflf,R2.id.xmsf_person_yzm, R2.id.xmsf_person_sfrq, R2.id.xmsf_person_wxxpg, R2.id.xmsf_person_xjrq,
-            R2.id.xmsf_person_azrq,R2.id.xmsf_person_azqk,R2.id.xmsf_person_sfcxfz, R2.id.xmsf_person_cxfzzm, R2.id.house_person_hjd, R2.id.house_person_xzd,
-            R2.id.xmsf_person_xjqk, R2.id.commit_bt})
+            R2.id.xmsf_person_azrq,R2.id.xmsf_person_azqk,R2.id.xmsf_person_sfcxfz, R2.id.xmsf_person_cxfzzm, R2.id.house_person_hjd,
+            R2.id.house_person_xzd,R2.id.xmsf_person_xjqk, R2.id.commit_bt, R2.id.person_photo})
     public void onViewClicked(View view) {
         view.setEnabled(false);
         int id = view.getId();
@@ -245,8 +308,7 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
             zjxy();
         } else if (id == R.id.house_person_zylb) {
             zylb();
-        } else if (id == R.id.house_person_zpdz) {
-        } else if (id == R.id.xmsf_person_sflf) {
+        }else if (id == R.id.xmsf_person_sflf) {
             sflf();
         } else if (id == R.id.xmsf_person_yzm) {
             yzm();
@@ -293,6 +355,19 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
             xzqk();
         }else if (id == R.id.commit_bt) {
             commit();
+        } else if(id==R.id.person_photo){
+            requestRunPermisssion(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10, new PermissionListener() {
+                @Override
+                public void onGranted(int requestCode) {
+                    MultiImageSelector.create().single().showCamera(true)
+                            .start(UpdateXmsfPersonActivity.this,11);
+                }
+
+                @Override
+                public void onDenied(List<String> deniedPermission) {
+                    MsgUtils.showMDMessage(context,"请开通需要的权限!");
+                }
+            });
         }
         view.setEnabled(true);
     }
@@ -434,7 +509,7 @@ public class UpdateXmsfPersonActivity extends AllenBaseActivity {
                 .addParam("B1715",link).addParam("B1716",hjd).addParam("B1717",hjddetail).addParam("B1718",xzd).addParam("B1719",xzddetail)
                 .addParam("B1720",sflf).addParam("B1721",yzm).addParam("B1722",ypdq).addParam("B1723",fxcs).addParam("B1724",sfrq)
                 .addParam("B1725",wxpg).addParam("B1726",xzrq).addParam("B1727",xzqk).addParam("B1728",azrq).addParam("B1729",azqk)
-                .addParam("B1732",sfcxfz).addParam("b1733",cfzm)
+                .addParam("B1732",sfcxfz).addParam("b1733",cfzm).addParam("picture_path",photo)
                 .addParam("gid",gid).enqueue(new Callback<Object>() {
             @Override
             public void success(Object data) {

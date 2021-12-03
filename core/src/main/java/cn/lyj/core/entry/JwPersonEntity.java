@@ -71,6 +71,16 @@ public class JwPersonEntity implements Serializable {
     private String updateTime;
     private String gid;
 
+    public String getPicture_path() {
+        return picture_path;
+    }
+
+    public void setPicture_path(String picture_path) {
+        this.picture_path = picture_path;
+    }
+
+    private String picture_path;
+
     public String getB1500() {
         return b1500;
     }
