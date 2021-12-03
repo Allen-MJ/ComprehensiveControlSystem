@@ -135,6 +135,7 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
                     file.setPath(path);
                     file.setType(0);//图片
                     file.setSuffix(FileIntent.getMIMEType(file.getFile()));
+                    dialog.init(context);
                     upload(file);
                     break;
             }
