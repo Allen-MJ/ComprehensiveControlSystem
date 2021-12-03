@@ -683,7 +683,7 @@ public class UpdateDrugPersonActivity extends AllenBaseActivity {
                                                     @Override
                                                     public void onItemClick(View v, CoreType entry, int position) {
                                                         dialog.dismiss();
-                                                        xzd = entry.getValue();
+                                                        hjd = entry.getValue();
                                                         housePersonHjd.setText(mentry.getLabel()+entry.getLabel());
                                                     }
                                                 });
