@@ -171,7 +171,7 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         dialog = new UploadProgressDialog();
         if(entity!=null){
-            photo = entity.getPicture_path();
+            photo = entity.getPicturePath();
             Glide.with(this).load(Constants.url+photo)
                     .error(R.mipmap.core_default_photo)
                     .placeholder(R.mipmap.core_default_photo)
@@ -197,7 +197,7 @@ public class UpdateJwPersonActivity extends AllenBaseActivity {
             zylb = entity.getB1513();
             jwZys.setText(entity.getB1514());
             jwFwcs.setText(entity.getB1515());
-            housePersonXzd.setText(entity.getB1506Obj().getCodeName());
+            housePersonXzd.setText(entity.getB1516Obj().getCodeName());
             xzd = entity.getB1516();
             housePersonXzddz.setText(entity.getB1517());
             jwDdrq.setText(entity.getB1518());
