@@ -65,6 +65,11 @@ public class AllenManager {
 		}
 		return manager;
 	}
+
+	public Context getContext(){
+		return context;
+	}
+
 	public AllenManager put(String key,Object object){
 		user.put(key, object);
 		return this;

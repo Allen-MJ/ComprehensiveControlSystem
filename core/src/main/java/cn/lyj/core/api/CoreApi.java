@@ -170,11 +170,15 @@ public class CoreApi {
      */
     public static final String get_ZszhPerson = "/api/tb19/appQuery";
     public static final String del_ZszhPerson = "/api/tb19/appDel";
+    public static final String add_ZszhPerson = "/api/tb19/appAdd";
+    public static final String update_ZszhPerson = "/api/tb19/appUpdate";
     /**
      * 社区矫正人员
      */
     public static final String get_SqjzPerson = "/api/tb18/appQuery";
     public static final String del_SqjzPerson = "/api/tb18/appDel";
+    public static final String add_SqjzPerson = "/api/tb18/appAdd";
+    public static final String update_SqjzPerson = "/api/tb18/appUpdate";
     /**
      * 刑满释放人员
      */

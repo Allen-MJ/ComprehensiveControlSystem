@@ -76,16 +76,6 @@ public class XjPersonEntity  implements Serializable {
     private String zzmm;
     private ZzmmObjBean zzmmObj;
 
-    public String getPicture_path() {
-        return picture_path;
-    }
-
-    public void setPicture_path(String picture_path) {
-        this.picture_path = picture_path;
-    }
-
-    private String picture_path;
-
     public String getBirthday() {
         return birthday;
     }

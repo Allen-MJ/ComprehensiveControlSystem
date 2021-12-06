@@ -93,16 +93,6 @@ public class TranPerson implements Serializable {
     private String updateBy;
     private String updateTime;
 
-    public String getPicture_path() {
-        return picture_path;
-    }
-
-    public void setPicture_path(String picture_path) {
-        this.picture_path = picture_path;
-    }
-
-    private String picture_path;
-
     public String getB1300() {
         return b1300;
     }

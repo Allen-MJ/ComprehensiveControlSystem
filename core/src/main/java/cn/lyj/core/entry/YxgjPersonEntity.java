@@ -71,14 +71,14 @@ public class YxgjPersonEntity implements Serializable {
     private ZzmmObjBean zzmmObj;
     private String gid;
     private String zongj;
-    private String picture_path;
+    private String picturePath;
 
-    public String getPicture_path() {
-        return picture_path;
+    public String getPicturePath() {
+        return picturePath;
     }
 
-    public void setPicture_path(String picture_path) {
-        this.picture_path = picture_path;
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     public String getZongj() {

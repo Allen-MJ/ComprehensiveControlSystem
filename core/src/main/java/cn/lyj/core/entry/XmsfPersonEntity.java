@@ -100,16 +100,15 @@ public class XmsfPersonEntity implements Serializable {
     private GidObjBean gidObj;
     private String updateBy;
     private String updateTime;
+    private String picturePath;
 
-    public String getPicture_path() {
-        return picture_path;
+    public String getPicturePath() {
+        return picturePath;
     }
 
-    public void setPicture_path(String picture_path) {
-        this.picture_path = picture_path;
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
-
-    private String picture_path;
 
     public String getB1700() {
         return b1700;

@@ -191,7 +191,7 @@ public class UpdateHIVPersonActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         dialog = new UploadProgressDialog();
         if(entry!=null){
-            photo = entry.getPicture_path();
+            photo = entry.getPicturePath();
             Glide.with(this).load(Constants.url+photo)
                     .error(R.mipmap.core_default_photo)
                     .placeholder(R.mipmap.core_default_photo)

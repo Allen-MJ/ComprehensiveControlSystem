@@ -171,7 +171,7 @@ public class UpdateSqjzPersonActivity extends AllenBaseActivity {
     protected void initUI(@Nullable Bundle savedInstanceState) {
         dialog = new UploadProgressDialog();
         if(entry!=null){
-            photo = entry.getPicture_path();
+            photo = entry.getPicturePath();
             Glide.with(this).load(Constants.url+photo)
                     .error(R.mipmap.core_default_photo)
                     .placeholder(R.mipmap.core_default_photo)
@@ -358,9 +358,9 @@ public class UpdateSqjzPersonActivity extends AllenBaseActivity {
         showProgressDialog("");
         Https https = Https.with(this);
         if(entry!=null){
-            https.url(CoreApi.update_DrugPerson).put().addParam("b1800",entry.getB1800());
+            https.url(CoreApi.update_SqjzPerson).put().addParam("b1800",entry.getB1800());
         }else{
-            https.url(CoreApi.add_DrugPerson).post();
+            https.url(CoreApi.add_SqjzPerson).post();
         }
         https.addParam("b1801",pid).addParam("b1802",name).addParam("b1803",uname).addParam("b1804",sex).addParam("b1805",birthday)
                 .addParam("b1806",nation).addParam("b1807",nativeplace).addParam("b1808",marriage).addParam("b1809",zzmm)
