@@ -116,8 +116,6 @@ public class WSManager {
             }
 
             onWSDataChanged(DATE_NORMAL, text);
-
-
         }
 
         @Override
