@@ -194,8 +194,7 @@ public class EventMonthActivity extends AllenBaseActivity {
                     public void fail(Response response) {
                         MsgUtils.showMDMessage(context, response.getMsg());
                         list = new ArrayList<>();
-                        chart.setNoDataText("暂无数据!");
-                        chart.invalidate();
+                        setBarData();
                     }
                 });
     }
