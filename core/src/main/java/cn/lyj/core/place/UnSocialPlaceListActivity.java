@@ -3,6 +3,8 @@ package cn.lyj.core.place;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -73,6 +75,21 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
         setToolbarTitle(toolbar,"非公有制组织",true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId== R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateUnsocialActivity.class),100);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

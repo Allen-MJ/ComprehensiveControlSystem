@@ -3,6 +3,8 @@ package cn.lyj.core.place;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -20,6 +22,7 @@ import allen.frame.ActivityHelper;
 import allen.frame.AllenBaseActivity;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
+import allen.frame.entry.CoreType;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
@@ -35,7 +38,6 @@ import butterknife.BindView;
 import cn.lyj.core.R;
 import cn.lyj.core.R2;
 import cn.lyj.core.api.CoreApi;
-import allen.frame.entry.CoreType;
 import cn.lyj.core.entry.SocialPlaceEntity;
 
 /**
@@ -72,6 +74,21 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
         setToolbarTitle(toolbar,"社会组织",true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuId = item.getItemId();
+        if(menuId== R.id.alen_menu_add){
+            startActivityForResult(new Intent(context, UpdateSocialActivity.class),100);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

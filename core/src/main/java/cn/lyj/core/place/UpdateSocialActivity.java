@@ -157,8 +157,7 @@ public class UpdateSocialActivity extends AllenBaseActivity {
         socialXydm.setText(entry.getB2401());
         socialDjzh.setText(entry.getB2402());
         socialName.setText(entry.getB2403());
-        for (CoreType coreType : enterprise_industry
-        ) {
+        for (CoreType coreType : enterprise_industry) {
             if ((entry.getB2455()==null?"":entry.getB2455()).equals(coreType.getValue())) {
                 socialQyhy.setText(coreType.getLabel());
             }
@@ -243,8 +242,6 @@ public class UpdateSocialActivity extends AllenBaseActivity {
         socialJd.setText(entry.getB2490()+"");
         socialWd.setText(entry.getB2491()+"");
         socialSswg.setText(entry.getGridInfo().getGridName());
-
-
     }
 
     @Override
@@ -310,10 +307,4 @@ public class UpdateSocialActivity extends AllenBaseActivity {
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

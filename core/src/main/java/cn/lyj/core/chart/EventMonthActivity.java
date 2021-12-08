@@ -121,14 +121,14 @@ public class EventMonthActivity extends AllenBaseActivity {
         //显示边框
         chart.setDrawBorders(true);
         chart.setPinchZoom(false);
-
+        chart.setExtraOffsets(15f,15f,15f,15f);
         /***XY轴的设置***/
         //X轴设置显示位置在底部
         xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 //        xAxis.setAxisMinimum(0f);
 //        xAxis.setGranularity(1f);
-
+        xAxis.setGranularity(1);
         leftAxis = chart.getAxisLeft();
         rightAxis = chart.getAxisRight();
         //保证Y轴从0开始，不然会上移一点
@@ -211,7 +211,7 @@ public class EventMonthActivity extends AllenBaseActivity {
         for (int i = 0; i < list.size(); i++) {
             BarEntry barEntry = new BarEntry(i, list.get(i).getValue());
             bars.add(barEntry);
-            int color = Colors.init().getColor(i);
+            int color = Colors.getColor(i);
             integers.add(color);
         }
         chart.getXAxis().setLabelCount(list.size());
@@ -223,13 +223,13 @@ public class EventMonthActivity extends AllenBaseActivity {
             }
         });
         BarDataSet barDataSet = new BarDataSet(bars, "");
+        barDataSet.setColors(integers);
         barDataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
                 return String.valueOf((int)value);
             }
         });
-        barDataSet.setColors(integers);
         BarData data = new BarData(barDataSet);
         data.notifyDataChanged();
         chart.setData(data);

@@ -14,17 +14,22 @@
         app:cardElevation="@dimen/frame_one_distance"
         android:foreground="?selectableItemBackground"
         app:contentPadding="@dimen/frame_eight_distance">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_name"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CoreNormal8Style"
-            android:textColor="@color/text_black_color"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_grids"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/CoreSmall8Style"
-            android:textColor="@color/text_gray_color"/>
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CoreNormal8Style"
+                android:textColor="@color/text_black_color"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_grids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CoreSmall8Style"
+                android:textColor="@color/text_gray_color"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 </androidx.appcompat.widget.LinearLayoutCompat>

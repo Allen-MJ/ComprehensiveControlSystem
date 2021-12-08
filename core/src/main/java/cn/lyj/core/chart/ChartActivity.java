@@ -153,7 +153,7 @@ public class ChartActivity extends AllenBaseActivity {
         for(int i=0;i<list.size();i++){
             BarEntry barEntry = new BarEntry(i,list.get(i).getValue());
             bars.add(barEntry);
-            int color = Colors.init().getColor(i);
+            int color = Colors.getColor(i);
             integers.add(color);
         }
         chart.getXAxis().setLabelCount(list.size());
@@ -165,13 +165,13 @@ public class ChartActivity extends AllenBaseActivity {
             }
         });
         BarDataSet barDataSet = new BarDataSet(bars,"");
+        barDataSet.setColors(integers);
         barDataSet.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
                 return String.valueOf((int)value);
             }
         });
-        barDataSet.setColors(integers);
         BarData data = new BarData(barDataSet);
         data.notifyDataChanged();
         chart.setData(data);
