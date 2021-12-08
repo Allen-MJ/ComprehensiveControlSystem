@@ -215,7 +215,10 @@ public class AllenMapChoiceActivity extends AllenBaseActivity implements OnGetGe
         public void onReceiveLocation(BDLocation location) {
             if (location == null || map == null) {
                 Logger.e("debug", "fail!!");
+                MsgUtils.showMDMessage(context,"请检查定位功能是否已启动以及网络情况!");
                 return;
+            }else if(location.getLocType()==62||location.getLocType()==63||location.getLocType()==67){
+                MsgUtils.showMDMessage(context,"请检查定位功能是否已启动以及网络情况!");
             }
             double latitude = location.getLatitude();    //获取纬度信息
             double longitude = location.getLongitude();    //获取经度信息

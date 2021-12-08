@@ -44,7 +44,7 @@
     <string name="house_person_xzddz">现住门（楼）地址:</string>
     <string name="house_person_rhyz">人户一致标识:</string>
     <string name="house_person_hh">户号:</string>
-    <string name="house_person_hzsfz">户主公民身份号码:</string>
+    <string name="house_person_hzsfz">户主身份号码:</string>
     <string name="house_person_hzname">户主姓名:</string>
     <string name="house_person_hzgx">与户主关系:</string>
     <string name="house_person_hzphone">户主联系方式:</string>
@@ -166,8 +166,8 @@
     <string name="rent_hzaddress">房主现居详址:</string>
     <string name="rent_czyt">出租用途:</string>
     <string name="rent_yhlx">隐患类型:</string>
-    <string name="rent_czrsfz">承租人公民身份号码:</string>
-    <string name="rent_czrname">承租人公民身份号码:</string>
+    <string name="rent_czrsfz">承租人身份号码:</string>
+    <string name="rent_czrname">承租人姓名:</string>
     <string name="rent_czrphone">承租人联系方式:</string>
 
     <string name="word_title">公文标题:</string>

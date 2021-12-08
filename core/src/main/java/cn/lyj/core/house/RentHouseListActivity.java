@@ -88,6 +88,19 @@ public class RentHouseListActivity extends AllenBaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==10){
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
+    }
+
+    @Override
     protected void initUI(@Nullable Bundle savedInstanceState) {
         refresh.setRefreshHeader(new BezierRadarHeader(context).setEnableHorizontalDrag(true));
         refresh.setRefreshFooter(new ClassicsFooter(context));

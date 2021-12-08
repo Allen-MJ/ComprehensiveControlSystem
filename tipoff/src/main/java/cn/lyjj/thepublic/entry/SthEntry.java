@@ -85,6 +85,22 @@ public class SthEntry implements Serializable {
         this.sex = sex;
     }
 
+    public String getSexName() {
+        if(StringUtils.empty(sex)){
+            return "";
+        }
+        String name = "";
+        switch (sex){
+            case "1":
+                name = "男";
+                break;
+            case "2":
+                name = "女";
+                break;
+        }
+        return name;
+    }
+
     public String getPoint() {
         return point;
     }

@@ -903,28 +903,14 @@ public class UpdateHIVPersonActivity extends AllenBaseActivity {
     private void hjd(){
         if(coreTypes!=null){
             final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
-            dialog.setCoreTypes(coreTypes);
-            dialog.showLevelDialog("请选择户籍地", new CoreTypeAdapter(context),
-                    new CoreTypeAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View v, final CoreType mentry, int position) {
-                            final List<CoreType> child = mentry.getChildren();
-                            if(child==null||child.size()==0){
-                                dialog.dismiss();
-                                hjd = mentry.getValue();
-                                housePersonHjd.setText(mentry.getLabel());
-                            }else{
-                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
-                                    @Override
-                                    public void onItemClick(View v, CoreType entry, int position) {
-                                        dialog.dismiss();
-                                        hjd = entry.getValue();
-                                        housePersonHjd.setText(mentry.getLabel()+entry.getLabel());
-                                    }
-                                });
-                            }
-                        }
-                    }).show();
+            dialog.showLevelDialog("请选择户籍地", coreTypes, new CommonTypeDialog.OnItemClickListener() {
+                @Override
+                public void itemClick(String name, String code) {
+                    dialog.dismiss();
+                    hjd = code;
+                    housePersonHjd.setText(name);
+                }
+            }).show();
         }else{
             showProgressDialog("");
             Https.with(this).url(BaseApi.getTable).addParam("name","zb01").get()
@@ -934,28 +920,14 @@ public class UpdateHIVPersonActivity extends AllenBaseActivity {
                             dismissProgressDialog();
                             coreTypes = data;
                             final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
-                            dialog.setCoreTypes(coreTypes);
-                            dialog.showLevelDialog("请选择户籍地", new CoreTypeAdapter(context),
-                                    new CoreTypeAdapter.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(View v, final CoreType mentry, int position) {
-                                            final List<CoreType> child = mentry.getChildren();
-                                            if(child==null||child.size()==0){
-                                                dialog.dismiss();
-                                                hjd = mentry.getValue();
-                                                housePersonHjd.setText(mentry.getLabel());
-                                            }else{
-                                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
-                                                    @Override
-                                                    public void onItemClick(View v, CoreType entry, int position) {
-                                                        dialog.dismiss();
-                                                        hjd = entry.getValue();
-                                                        housePersonHjd.setText(mentry.getLabel()+entry.getLabel());
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    }).show();
+                            dialog.showLevelDialog("请选择户籍地", coreTypes, new CommonTypeDialog.OnItemClickListener() {
+                                @Override
+                                public void itemClick(String name, String code) {
+                                    dialog.dismiss();
+                                    hjd = code;
+                                    housePersonHjd.setText(name);
+                                }
+                            }).show();
                         }
 
                         @Override
@@ -969,28 +941,14 @@ public class UpdateHIVPersonActivity extends AllenBaseActivity {
     private void xzd(){
         if(coreTypes!=null){
             final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
-            dialog.setCoreTypes(coreTypes);
-            dialog.showLevelDialog("请选择现住地", new CoreTypeAdapter(context),
-                    new CoreTypeAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View v, final CoreType mentry, int position) {
-                            final List<CoreType> child = mentry.getChildren();
-                            if(child==null||child.size()==0){
-                                dialog.dismiss();
-                                xzd = mentry.getValue();
-                                housePersonXzd.setText(mentry.getLabel());
-                            }else{
-                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
-                                    @Override
-                                    public void onItemClick(View v, CoreType entry, int position) {
-                                        dialog.dismiss();
-                                        xzd = entry.getValue();
-                                        housePersonXzd.setText(mentry.getLabel()+entry.getLabel());
-                                    }
-                                });
-                            }
-                        }
-                    }).show();
+            dialog.showLevelDialog("请选择现住地", coreTypes, new CommonTypeDialog.OnItemClickListener() {
+                @Override
+                public void itemClick(String name, String code) {
+                    dialog.dismiss();
+                    xzd = code;
+                    housePersonXzd.setText(name);
+                }
+            }).show();
         }else{
             showProgressDialog("");
             Https.with(this).url(BaseApi.getTable).addParam("name","zb01").get()
@@ -1000,28 +958,14 @@ public class UpdateHIVPersonActivity extends AllenBaseActivity {
                             dismissProgressDialog();
                             coreTypes = data;
                             final CommonTypeDialog<CoreType> dialog = new CommonTypeDialog<>(context);
-                            dialog.setCoreTypes(coreTypes);
-                            dialog.showLevelDialog("请选择现住地", new CoreTypeAdapter(context),
-                                    new CoreTypeAdapter.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(View v, final CoreType mentry, int position) {
-                                            final List<CoreType> child = mentry.getChildren();
-                                            if(child==null||child.size()==0){
-                                                dialog.dismiss();
-                                                xzd = mentry.getValue();
-                                                housePersonXzd.setText(mentry.getLabel());
-                                            }else{
-                                                dialog.setNextData(new CoreTypeAdapter(context,child), new CoreTypeAdapter.OnItemClickListener(){
-                                                    @Override
-                                                    public void onItemClick(View v, CoreType entry, int position) {
-                                                        dialog.dismiss();
-                                                        xzd = entry.getValue();
-                                                        housePersonXzd.setText(mentry.getLabel()+entry.getLabel());
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    }).show();
+                            dialog.showLevelDialog("请选择现住地", coreTypes, new CommonTypeDialog.OnItemClickListener() {
+                                @Override
+                                public void itemClick(String name, String code) {
+                                    dialog.dismiss();
+                                    xzd = code;
+                                    housePersonXzd.setText(name);
+                                }
+                            }).show();
                         }
 
                         @Override

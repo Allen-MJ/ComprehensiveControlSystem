@@ -8,6 +8,7 @@ public class Log implements Serializable {
     private String logId;
     private String inputPid;
     private String workItem;
+    private String workItemLabel;
     private String progress;
     private String progressName;
     private String description;
@@ -38,6 +39,14 @@ public class Log implements Serializable {
 
     public void setWorkItem(String workItem) {
         this.workItem = workItem;
+    }
+
+    public String getWorkItemLabel() {
+        return workItemLabel;
+    }
+
+    public void setWorkItemLabel(String workItemLabel) {
+        this.workItemLabel = workItemLabel;
     }
 
     public String getProgress() {

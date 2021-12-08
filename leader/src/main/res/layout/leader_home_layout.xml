@@ -60,7 +60,7 @@
                     style="@style/CoreMiddle8Style"
                     android:textColor="@color/text_white_color"
                     android:text="张三"
-                    android:layout_marginTop="@dimen/frame_30_distance"
+                    android:layout_marginTop="@dimen/frame_edge_distance"
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@id/user_photo"/>
                 <androidx.appcompat.widget.AppCompatTextView

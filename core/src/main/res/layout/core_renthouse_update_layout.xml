@@ -106,7 +106,7 @@
                     android:textColor="@color/text_black_color"
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/white"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"

@@ -71,6 +71,7 @@
         <activity android:name=".chart.EventModeActivity" />
         <activity android:name=".person.UpdateCzPersonActivity" />
         <activity android:name=".person.UpdateJwPersonActivity" />
+        <activity android:name=".chart.EventMonthActivity" />
 
         <service android:name=".LocationService" />
     </application>

@@ -6,6 +6,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -25,6 +26,7 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.Logger;
+import allen.frame.tools.MsgUtils;
 import cn.lyj.core.api.CoreApi;
 
 
@@ -159,7 +161,7 @@ public class LocationService extends Service {
         }
         return notification;
     }
-
+    private boolean isShow = false;
     // 声明定位回调监听器
     public BDAbstractLocationListener mLocationListener = new BDAbstractLocationListener() {
         @Override
@@ -184,9 +186,33 @@ public class LocationService extends Service {
 
                             @Override
                             public void fail(Response response) {
+                                if(!isShow){
+                                    isShow = true;
+                                    MsgUtils.showSystemMDMessage(context, "温馨提示", response.getMsg(), "", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            isShow = false;
+                                        }
+                                    },null,null);
+                                }
                                 Logger.e("定位","fail add grid map point");
                             }
                         });
+            }else{
+                if(!isShow){
+                    isShow = true;
+                    MsgUtils.showSystemMDMessage(context, "温馨提示", "请检查定位功能是否已启动以及网络情况!", "", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            isShow = false;
+                        }
+                    },null,null);
+                }
+                /*if(location.getLocType()==62||location.getLocType()==63||location.getLocType()==67){
+                    MsgUtils.showMDMessage(context,"请检查定位功能是否已启动以及网络情况!");
+                }*/
             }
         }
     };

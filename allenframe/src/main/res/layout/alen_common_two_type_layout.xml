@@ -19,4 +19,22 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/type_last_layout"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <View
+            android:layout_width="@dimen/frame_one_distance"
+            android:layout_height="match_parent"
+            android:background="@color/gray_line_color"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/type_last_lv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </LinearLayout>

@@ -16,7 +16,8 @@
         app:titleTextColor="@color/text_black_color"
         app:titleTextAppearance="@style/Light.Toolbar.TitleText"
         app:popupTheme="@style/OverflowMenuStyle"
-        app:navigationIcon="@drawable/ic_close">
+        app:navigationIcon="@drawable/ic_close"
+        android:layout_marginTop="@dimen/frame_32_distance">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -30,7 +31,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minLines="6"
+        android:minLines="3"
         android:text="@string/regist_bt"
         android:gravity="center"
         android:textColor="@color/text_black_color"
@@ -54,7 +55,7 @@
             android:textSize="@dimen/frame_text_normal_size"
             android:layout_marginStart="@dimen/frame_32_distance"
             android:layout_marginEnd="@dimen/frame_32_distance"
-            android:layout_marginTop="@dimen/frame_40_distance"/>
+            android:layout_marginTop="@dimen/frame_edge_distance"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/frame_one_distance"

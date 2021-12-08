@@ -16,6 +16,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/choice_status"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:gravity="start|center_vertical"
+                android:hint="状态"
+                style="@style/CoreSmall8Style"/>
+            <View
+                android:layout_width="@dimen/frame_one_distance"
+                android:layout_height="@dimen/frame_20_distance"
+                android:background="@color/gray_line_color"/>
             <allen.frame.widget.SearchView
                 android:id="@+id/search"
                 android:layout_width="0dp"
@@ -26,19 +39,6 @@
                 app:inputHint="@string/search_hint"
                 app:searchIcon="@mipmap/ic_search"
                 app:searchBackground="@color/white"/>
-            <View
-                android:layout_width="@dimen/frame_one_distance"
-                android:layout_height="@dimen/frame_20_distance"
-                android:background="@color/gray_line_color"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/choice_status"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_arrow_down"
-                android:gravity="start|center_vertical"
-                android:hint="状态"
-                style="@style/CoreSmall8Style"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
     <include layout="@layout/alen_progress_layout"/>

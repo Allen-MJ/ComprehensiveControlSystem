@@ -93,7 +93,7 @@ public class UpdateRentHouseActivity extends AllenBaseActivity {
             switch (requestCode){
                 case 10:
                     gid = data.getStringExtra(Constants.Key_1);
-                    houseWg.setText(Constants.Key_2);
+                    houseWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
             }
         }

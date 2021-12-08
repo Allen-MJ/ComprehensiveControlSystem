@@ -64,6 +64,19 @@ public class PersonListActivity extends AllenBaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(requestCode==10){
+                isRefresh = true;
+                page = 0;
+                actHelper.setLoadUi(ActivityHelper.PROGRESS_STATE_START,"");
+                loadData();
+            }
+        }
+    }
+
+    @Override
     protected void initBar() {
         type = getIntent().getStringExtra(Constants.Key_1);
         setToolbarTitle(toolbar,"0".equals(type)?"户籍人口":"流动人口",true);

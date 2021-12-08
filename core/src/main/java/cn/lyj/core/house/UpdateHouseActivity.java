@@ -87,7 +87,7 @@ public class UpdateHouseActivity extends AllenBaseActivity {
             switch (requestCode){
                 case 10:
                     gid = data.getStringExtra(Constants.Key_1);
-                    houseWg.setText(Constants.Key_2);
+                    houseWg.setText(data.getStringExtra(Constants.Key_2));
                     break;
                 case 11:
                     ucode = data.getStringExtra(Constants.Key_2);
@@ -109,9 +109,9 @@ public class UpdateHouseActivity extends AllenBaseActivity {
             cid = entry.getCid();
             houseLd.setText(entry.getBidObj().getName());
             bid = entry.getBid();
-            houseDy.setText(entry.getDanyuan());
-            houseLc.setText(entry.getLouceng());
-            houseFh.setText(entry.getHao());
+            houseDy.setText(String.valueOf(entry.getDanyuan()));
+            houseLc.setText(String.valueOf(entry.getLouceng()));
+            houseFh.setText(String.valueOf(entry.getHao()));
             houseFwyt.setText(entry.getHtype());
             type = entry.getHtype();
             houseAddress.setText(entry.getAddress());
