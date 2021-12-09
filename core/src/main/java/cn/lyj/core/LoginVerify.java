@@ -21,6 +21,19 @@ public class LoginVerify {
         }
         return isleader;
     }
+
+    /**
+     * 是否具有网格员职能
+     * @return
+     */
+    public boolean isWgUser(){
+        boolean isWgUser = false;
+        for (Role role:roles){
+            isWgUser = isWgUser||role.getLevel()==4;
+        }
+        return isWgUser;
+    }
+
     /**
      * 角色名称
      * @return

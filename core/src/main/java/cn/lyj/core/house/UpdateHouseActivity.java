@@ -12,6 +12,7 @@ import allen.frame.AllenChoiceUnitsActivity;
 import allen.frame.adapter.CommonAdapter;
 import allen.frame.adapter.ViewHolder;
 import allen.frame.entry.CoreType;
+import allen.frame.entry.DicType;
 import allen.frame.entry.Response;
 import allen.frame.net.BaseApi;
 import allen.frame.net.Callback;
@@ -88,6 +89,10 @@ public class UpdateHouseActivity extends AllenBaseActivity {
                 case 10:
                     gid = data.getStringExtra(Constants.Key_1);
                     houseWg.setText(data.getStringExtra(Constants.Key_2));
+                    cid = "";
+                    bid = "";
+                    houseXq.setText("");
+                    houseLd.setText("");
                     break;
                 case 11:
                     ucode = data.getStringExtra(Constants.Key_2);
@@ -115,7 +120,7 @@ public class UpdateHouseActivity extends AllenBaseActivity {
             houseFwyt.setText(entry.getHtype());
             type = entry.getHtype();
             houseAddress.setText(entry.getAddress());
-            houseAddress.setText(entry.getLandline());
+            houseZj.setText(entry.getLandline());
             houseRemark.setText(entry.getRemark());
         }
     }
@@ -138,9 +143,9 @@ public class UpdateHouseActivity extends AllenBaseActivity {
         }else if(id== R.id.house_dw){
             startActivityForResult(new Intent(context, AllenChoiceUnitsActivity.class),11);
         }else if(id== R.id.house_xq){
-
+            xq();
         }else if(id== R.id.house_ld){
-
+            ld();
         }else if(id== R.id.house_fwyt){
             type();
         }else if(id== R.id.commit_bt){
@@ -235,6 +240,87 @@ public class UpdateHouseActivity extends AllenBaseActivity {
                                 dialog.dismiss();
                                 type = data.get(position).getValue();
                                 houseFwyt.setText(data.get(position).getLabel());
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void xq(){
+        if(StringUtils.empty(gid)){
+            MsgUtils.showMDMessage(context,"请先选择网格!");
+            return;
+        }
+        showProgressDialog("");
+        Https.with(context).url(CoreApi.FindCidsByGid).addParam("gid",gid).get()
+                .enqueue(new Callback<List<DicType>>() {
+                    @Override
+                    public void success(final List<DicType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<DicType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择小区", new CommonAdapter<DicType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, DicType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                cid = data.get(position).getValue();
+                                houseXq.setText(data.get(position).getLabel());
+                                bid = "";
+                                houseLd.setText("");
+                            }
+
+                            @Override
+                            public boolean onItemLongClick(View view, ViewHolder holder, int position) {
+                                return false;
+                            }
+                        }).show();
+                    }
+
+                    @Override
+                    public void fail(Response response) {
+                        dismissProgressDialog();
+                        MsgUtils.showMDMessage(context,response.getMsg());
+                    }
+                });
+    }
+
+    private void ld(){
+        if(StringUtils.empty(cid)){
+            MsgUtils.showMDMessage(context,"请先选择小区!");
+            return;
+        }
+        Https.with(context).url(CoreApi.FindBidsByCid).addParam("cid",cid).get()
+                .enqueue(new Callback<List<DicType>>() {
+                    @Override
+                    public void success(final List<DicType> data) {
+                        dismissProgressDialog();
+                        final CommonTypeDialog<DicType> dialog = new CommonTypeDialog<>(context,data);
+                        dialog.showDialog("请选择楼栋", new CommonAdapter<DicType>(context, data, R.layout.alen_type_item) {
+                            @Override
+                            public void convert(ViewHolder holder, DicType entity, int position) {
+                                holder.setText(R.id.name_tv,entity.getLabel());
+                            }
+                        }, new CommonAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, ViewHolder holder, int position) {
+                                dialog.dismiss();
+                                bid = data.get(position).getValue();
+                                houseLd.setText(data.get(position).getLabel());
                             }
 
                             @Override

@@ -227,7 +227,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
                 });
     }
     private void loadData(){
-        Https.with(this).url(CoreApi._core_12)
+        Https.with(this).url(CoreApi._core_12).addParam("page",page++).addParam("size",size)
                 .addParam("b2403",mKey).get()
                 .enqueue(new Callback<List<SocialPlaceEntity>>() {
                     @Override
@@ -240,7 +240,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(SocialPlaceListActivity.this);
                     }
 
                     @Override

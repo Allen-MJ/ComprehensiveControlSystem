@@ -191,8 +191,8 @@ public class HIVPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_HIVPerson)
+        Https.with(this).url(CoreApi.get_HIVPerson).addParam("page",page++).addParam("size",size)
+                .addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b2102",mKey).get()
                 .enqueue(new Callback<List<HIVPersonEntity>>() {
                     @Override

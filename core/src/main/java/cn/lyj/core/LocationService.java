@@ -14,6 +14,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -189,10 +190,11 @@ public class LocationService extends Service {
                             public void fail(final Response response) {
                                 if(!isShow){
                                     isShow = true;
+                                    Looper.prepare();
                                     new Handler().post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            MsgUtils.showSystemMDMessage(context, "温馨提示", response.getMsg(), "", new DialogInterface.OnClickListener() {
+                                            MsgUtils.showSystemMDMessage(context, "温馨提示", response.getMsg(), "知道了", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     dialog.dismiss();
@@ -201,6 +203,7 @@ public class LocationService extends Service {
                                             },null,null);
                                         }
                                     });
+                                    Looper.loop();
                                 }
                                 Logger.e("定位","fail add grid map point");
                             }
@@ -211,7 +214,7 @@ public class LocationService extends Service {
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {
-                            MsgUtils.showSystemMDMessage(context, "温馨提示", "请检查定位功能是否已启动以及网络情况!", "", new DialogInterface.OnClickListener() {
+                            MsgUtils.showSystemMDMessage(context, "温馨提示", "请检查定位功能是否已启动以及网络情况!", "知道了", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();

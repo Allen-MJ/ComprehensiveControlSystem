@@ -172,8 +172,8 @@ public class HousePersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi._core_1)
+        Https.with(this).url(CoreApi._core_1).addParam("page",page++).addParam("size",size)
+                .addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1202",mKey).get()
                 .enqueue(new Callback<List<HousePerson>>() {
                     @Override

@@ -191,8 +191,8 @@ public class ZsZhPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_ZszhPerson)
+        Https.with(this).url(CoreApi.get_ZszhPerson).addParam("page",page++).addParam("size",size)
+                .addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1902",mKey).get()
                 .enqueue(new Callback<List<ZsZhPersonEntity>>() {
                     @Override

@@ -59,6 +59,14 @@ public class CoreApi {
     public static final String RentHouseUpdate = "/api/tb16";
     public static final String RentHouseDelete = "/api/tb16/appDel";
     /**
+     * 根据网格ID查询小区
+     */
+    public static final String FindCidsByGid = "/api/buildinfo/findCidsByGid";
+    /**
+     * 根据小区ID查询楼栋
+     */
+    public static final String FindBidsByCid = "/api/houseinfo/findBidsByCid";
+    /**
      *
      *
      */

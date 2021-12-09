@@ -79,11 +79,17 @@ public class HomeActivity extends AllenBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        boolean isWgUser = shared.getBoolean(Constants.UserWgUser,false);
         Glide.with(this)
                 .load(Constants.url + shared.getString(Constants.UserPhoto, ""))
                 .error(R.drawable.default_photo).placeholder(R.drawable.default_photo)
                 .into(userPhoto);
-        isXl = shared.getBoolean(Constants.UserMap, false);
+        isXl = isWgUser?shared.getBoolean(Constants.UserMap, false):false;
+        if(isWgUser){
+            xlBt.setVisibility(View.VISIBLE);
+        }else{
+            xlBt.setVisibility(View.GONE);
+        }
         xlBt.setImageResource(isXl ? R.drawable.lamp_green : R.drawable.lamp_red);
         notice();
         if(isXl){

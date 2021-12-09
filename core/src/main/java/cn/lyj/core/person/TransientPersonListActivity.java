@@ -173,7 +173,7 @@ public class TransientPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url(CoreApi.TranPersonQuery)
+        Https.with(this).url(CoreApi.TranPersonQuery).addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<TranPerson>>() {
                     @Override

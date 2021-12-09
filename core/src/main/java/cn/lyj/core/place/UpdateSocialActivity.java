@@ -299,6 +299,7 @@ public class UpdateSocialActivity extends AllenBaseActivity {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.social_qyhy) {
+
         } else if (id == R.id.social_clnd) {
         } else if (id == R.id.social_pzrq) {
         } else if (id == R.id.social_shzzlx) {

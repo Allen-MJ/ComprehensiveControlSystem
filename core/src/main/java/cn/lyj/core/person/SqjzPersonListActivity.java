@@ -192,8 +192,8 @@ public class SqjzPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_SqjzPerson)
+        Https.with(this).url(CoreApi.get_SqjzPerson).addParam("page",page++).addParam("size",size)
+                .addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1802",mKey).get()
                 .enqueue(new Callback<List<SqjzPersonEntity>>() {
                     @Override

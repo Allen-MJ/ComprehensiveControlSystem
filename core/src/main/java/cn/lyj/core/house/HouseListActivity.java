@@ -175,7 +175,8 @@ public class HouseListActivity extends AllenBaseActivity {
 
     private void loadData(){
         Https.with(this).url(CoreApi.House)
-                .addParam("huhao",mKey).addParam("address",mKey).addParam("page",page++).addParam("size",size).get()
+                .addParam("huhao",mKey).addParam("address",mKey).addParam("orgNo",shared.getString(Constants.UserUnitsId,""))
+                .addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<House>>() {
                     @Override
                     public void success(List<House> data) {

@@ -152,6 +152,8 @@ public class LoginActivity extends AllenIMBaseActivity {
                         List<Role> roles = data.getUser().getUser().getRoles();
                         shared.edit().putString(Constants.UserToken,data.getToken())
                                 .putString(Constants.UserUnitsName,data.getUser().getUser().getOrg().getOrgFullName())
+                                .putString(Constants.UserUnitsId,data.getUser().getUser().getOrg().getOrgId())
+                                .putString(Constants.UserUnitsNO,data.getUser().getUser().getOrg().getOrgNo())
                                 .putString(Constants.UserPhone,data.getUser().getUser().getPhone())
                                 .putString(Constants.UserId,data.getUser().getUser().getId())
                                 .putString(Constants.UserPhoto,data.getUser().getUser().getAvatarPath())
@@ -161,7 +163,9 @@ public class LoginActivity extends AllenIMBaseActivity {
                                 .putString(Constants.UserGender,data.getUser().getUser().getGender())
                                 .putString(Constants.UserNickName,data.getUser().getUser().getNickName())
                                 .putString(Constants.UserGrage,data.getUser().getUser().getGrade())
-                                .putString(Constants.UserRoleName,new LoginVerify(roles).getRoleNames()).apply();
+                                .putString(Constants.UserRoleName,new LoginVerify(roles).getRoleNames())
+                                .putBoolean(Constants.UserWgUser,new LoginVerify(roles).isWgUser())
+                                .apply();
                         if(isToken){
                             setResult(RESULT_OK,getIntent());
                             finish();

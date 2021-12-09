@@ -153,7 +153,7 @@ public class CzPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url(CoreApi.get_CzPerson)
+        Https.with(this).url(CoreApi.get_CzPerson).addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("bcz02",mKey).addParam("page",page++)
                 .addParam("size",size).get()
                 .enqueue(new Callback<List<CzPersonEntity>>() {

@@ -191,7 +191,7 @@ public class JwPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        Https.with(this).url(CoreApi.get_JwPerson)
+        Https.with(this).url(CoreApi.get_JwPerson).addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1502",mKey).addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<JwPersonEntity>>() {
                     @Override

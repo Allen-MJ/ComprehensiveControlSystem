@@ -47,6 +47,8 @@ public class Constants {
 	public static final String UserPsw = "_User_Psw";
 	public static final String UserId = "_User_Id";
 
+	public static final String UserUnitsId = "_User_Units_ID";//用户id
+	public static final String UserUnitsNO = "_User_Units_NO";//用户No
 	public static final String UserUnitsName = "_User_Units_Name";//用户单位
 	public static final String UserName = "_User_Name";//用户名
 	public static final String UserPhoto = "_User_Photo";
@@ -56,6 +58,8 @@ public class Constants {
 	public static final String UserNickName = "_User_nickName";//昵称
 	public static final String UserGrage = "_User_Grage";//用户性质
 	public static final String UserRoleName = "_User_role_name";//用户角色
+
+	public static final String UserWgUser = "_User_Wg_User";//是否网格员标签
 
 	public static final String UserMap = "_User_Map";//地图巡逻
 

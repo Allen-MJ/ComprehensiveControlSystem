@@ -101,18 +101,10 @@
             app:verTextColor="@color/text_gray_color"
             app:verPadding="@dimen/frame_four_distance"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
-    <!--<allen.frame.widget.MarqueeView
-        android:id="@+id/notice"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:textColor="@color/text_gray_color"
-        android:textSize="@dimen/frame_text_smaller_size"
-        android:padding="@dimen/frame_four_distance"
-        android:drawableStart="@drawable/ic_alen_notice"
-        android:gravity="center_vertical"
-        android:drawablePadding="@dimen/frame_four_distance"
-        android:background="@color/gray_line_color"/>-->
+        android:layout_height="@dimen/frame_one_distance"
+        android:background="@color/gray_line_color"/>
     <allen.frame.widget.ContrlScrollViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"

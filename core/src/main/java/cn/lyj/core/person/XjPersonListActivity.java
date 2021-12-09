@@ -192,8 +192,8 @@ public class XjPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_FxjPerson)
+        Https.with(this).url(CoreApi.get_FxjPerson).addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
+                .addParam("page",page++).addParam("size",size)
                 .addParam("name",mKey).get()
                 .enqueue(new Callback<List<XjPersonEntity>>() {
                     @Override

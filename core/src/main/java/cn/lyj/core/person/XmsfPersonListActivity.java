@@ -192,8 +192,8 @@ public class XmsfPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_XmsfPerson)
+        Https.with(this).url(CoreApi.get_XmsfPerson).addParam("page",page++).addParam("size",size)
+                .addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
                 .addParam("b1702",mKey).get()
                 .enqueue(new Callback<List<XmsfPersonEntity>>() {
                     @Override

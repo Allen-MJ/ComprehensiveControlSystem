@@ -191,9 +191,8 @@ public class DrugPersonListActivity extends AllenBaseActivity {
     }
 
     private void loadData(){
-        page++;
-        Https.with(this).url(CoreApi.get_DrugPerson)
-                .addParam("b2002",mKey).get()
+        Https.with(this).url(CoreApi.get_DrugPerson).addParam("orgNo",shared.getString(Constants.UserUnitsNO,""))
+                .addParam("page",page++).addParam("size",size).addParam("b2002",mKey).get()
                 .enqueue(new Callback<List<DrugEntity>>() {
                     @Override
                     public void success(List<DrugEntity> data) {

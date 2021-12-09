@@ -230,7 +230,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                 });
     }
     private void loadData(){
-        Https.with(this).url(CoreApi._core_13)
+        Https.with(this).url(CoreApi._core_13).addParam("page",page++).addParam("size",size)
                 .addParam("b2302",mKey).get()
                 .enqueue(new Callback<List<UnSocialPlaceEntity>>() {
                     @Override
@@ -243,7 +243,7 @@ public class UnSocialPlaceListActivity extends AllenBaseActivity {
                     public void token() {
                         sublist = new ArrayList<>();
                         showData();
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        actHelper.tokenErro2Login(UnSocialPlaceListActivity.this);
                     }
 
                     @Override

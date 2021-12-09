@@ -174,7 +174,8 @@ public class RentHouseListActivity extends AllenBaseActivity {
 
     private void loadData(){
         Https.with(this).url(CoreApi.RentHouse)
-                .addParam("b1202",mKey).addParam("page",page++).addParam("size",size).get()
+                .addParam("b1202",mKey).addParam("orgNo",shared.getString(Constants.UserUnitsId,""))
+                .addParam("page",page++).addParam("size",size).get()
                 .enqueue(new Callback<List<RentHouse>>() {
                     @Override
                     public void success(List<RentHouse> data) {
