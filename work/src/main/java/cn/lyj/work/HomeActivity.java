@@ -17,6 +17,7 @@ import allen.frame.adapter.FragmentAdapter;
 import allen.frame.entry.Response;
 import allen.frame.net.Callback;
 import allen.frame.net.Https;
+import allen.frame.tools.CheckUtils;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
 import allen.frame.tools.PermissionListener;
@@ -85,6 +86,19 @@ public class HomeActivity extends AllenBaseActivity {
         isXl = shared.getBoolean(Constants.UserMap, false);
         xlBt.setImageResource(isXl ? R.drawable.lamp_green : R.drawable.lamp_red);
         notice();
+        if(isXl){
+            if(!CheckUtils.isServiceRunning("cn.lyj.core.LocationService",context)){
+                Intent locationIntent = new Intent(HomeActivity.this, LocationService.class);
+                //开启前台服务
+                startService(locationIntent);
+            }
+        }else{
+            if(CheckUtils.isServiceRunning("cn.lyj.core.LocationService",context)){
+                Intent locationIntent = new Intent(HomeActivity.this, LocationService.class);
+                //开启前台服务
+                stopService(locationIntent);
+            }
+        }
     }
 
     @Override
@@ -141,16 +155,22 @@ public class HomeActivity extends AllenBaseActivity {
             requestRunPermisssion(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 10, new PermissionListener() {
                 @Override
                 public void onGranted(int requestCode) {
-                    Intent locationIntent = new Intent(HomeActivity.this, LocationService.class);
                     isXl = shared.getBoolean(Constants.UserMap, false);
                     shared.edit().putBoolean(Constants.UserMap, !isXl).apply();
-                    if (isXl) {
-                        stopService(locationIntent);
-                    } else {
-                        //开启前台服务
-                        startService(locationIntent);
-                    }
                     xlBt.setImageResource(!isXl ? R.drawable.lamp_green : R.drawable.lamp_red);
+                    if(isXl){
+                        if(!CheckUtils.isServiceRunning("cn.lyj.core.LocationService",context)){
+                            Intent locationIntent = new Intent(HomeActivity.this, LocationService.class);
+                            //开启前台服务
+                            stopService(locationIntent);
+                        }
+                    }else{
+                        if(CheckUtils.isServiceRunning("cn.lyj.core.LocationService",context)){
+                            Intent locationIntent = new Intent(HomeActivity.this, LocationService.class);
+                            //开启前台服务
+                            startService(locationIntent);
+                        }
+                    }
                 }
 
                 @Override
