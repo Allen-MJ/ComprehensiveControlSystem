@@ -161,7 +161,8 @@
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
                     android:singleLine="true"
-                    android:background="@color/transparent" />
+                    android:background="@color/transparent"
+                    android:maxLength="18"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <View
                 android:layout_width="match_parent"
@@ -1055,7 +1056,8 @@
                     android:textColor="@color/text_black_color"
                     style="@style/CoreNormal8Style"
                     android:gravity="start|center_vertical"
-                    android:background="@color/transparent"/>
+                    android:background="@color/transparent"
+                    android:maxLength="10"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/commit_bt"
