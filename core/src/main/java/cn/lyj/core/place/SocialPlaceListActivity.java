@@ -118,10 +118,10 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
                         MsgUtils.showMDMessage(context, "确定删除吗？", "确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
                                 String id=entity.getB2400();
                                 String[] ids=new String[]{id};
                                 delete(ids);
-                                dialog.dismiss();
                             }
                         }, "取消", new DialogInterface.OnClickListener() {
                             @Override
@@ -202,6 +202,7 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
        });
     }
     private void delete(String[] ids){
+        showProgressDialog("");
         Https.with(this).url(CoreApi._core_12)
                 .addJsons(new Gson().toJson(ids)).delete()
                 .enqueue(new Callback<List<SocialPlaceEntity>>() {
@@ -216,7 +217,8 @@ public class SocialPlaceListActivity extends AllenBaseActivity {
 
                     @Override
                     public void token() {
-                        MsgUtils.showShortToast(context,"账号登录过期,请重新登录!");
+                        dismissProgressDialog();
+                        actHelper.tokenErro2Login(SocialPlaceListActivity.this);
                     }
 
                     @Override
