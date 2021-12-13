@@ -324,7 +324,7 @@ public class UpdateHousePersonActivity extends AllenBaseActivity {
             MsgUtils.showMDMessage(context, "请选择出生日期");
             return;
         }
-        String jg = housePersonIdnumber.getText().toString().trim();
+        String jg = housePersonJg.getText().toString().trim();
         if (StringUtils.empty(jg)) {
             MsgUtils.showMDMessage(context, "请输入籍贯");
             return;
