@@ -108,7 +108,7 @@ public class LocationService extends Service {
         //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
         mLocationOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         //设置定位间隔,单位毫秒,默认为2000ms
-        mLocationOption.setScanSpan(60000);
+        mLocationOption.setScanSpan(shared.getInt(Constants.UserMapRate,6)*1000);
         mLocationOption.setIsNeedAddress(false);
         mLocationOption.setCoorType("bd09ll");
         mLocationOption.setOpenGps(true);

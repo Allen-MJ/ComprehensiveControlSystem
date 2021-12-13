@@ -63,6 +63,8 @@ public class Constants {
 
 	public static final String UserMap = "_User_Map";//地图巡逻
 
+	public static final String UserMapRate = "_User_Map_Rate";//地图巡逻上传频率
+
 
 	public static final String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/NqHjZQTA/NuOeAalhgb20wSoLe8NDNSYGbaOL+wu8s3X++BUezRiBiHdfvp55LNCC2Ua422Bu1UnZgwolcWhKg3ZFTLH47eX5adfrV5R/IpGZxh6ZebsioJGTeCQKq6ZB08jHdq6RBv7Fe0Q2nmW7P2hGblGSHuevMjaJ1rPFwIDAQAB";
 
