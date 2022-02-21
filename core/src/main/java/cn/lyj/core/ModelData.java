@@ -193,6 +193,22 @@ public class ModelData {
         items2.add(item22);
         item2.setList(items2);
         list.add(item2);
+
+        Model item3 = new Model();
+        item3.setName("网格考核");
+        List<Model> items3 = new ArrayList<>();
+        Model item31 = new Model();
+        item31.setName("我的收文");
+        item31.setId("我的收文");
+        item31.setResId(getResId("我的收文"));
+        items3.add(item31);
+        Model item32 = new Model();
+        item32.setName("我的发文");
+        item32.setId("我的发文");
+        item32.setResId(getResId("我的发文"));
+        items3.add(item32);
+        item3.setList(items3);
+        list.add(item3);
         return list;
     }
 

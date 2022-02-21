@@ -5,5 +5,6 @@
     <application>
         <activity android:name=".notice.SystemNoticeActivity" />
         <activity android:name=".notice.SystemNoticeInfoActiivty" />
+        <activity android:name=".info.UserInfoActivity" />
     </application>
 </manifest>
