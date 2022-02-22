@@ -72,6 +72,9 @@
         <activity android:name=".person.UpdateCzPersonActivity" />
         <activity android:name=".person.UpdateJwPersonActivity" />
         <activity android:name=".chart.EventMonthActivity" />
+        <activity android:name=".kaohe.BmKhListActivity" />
+        <activity android:name=".kaohe.AppraiseListActivity" />
+        <activity android:name=".kaohe.AppraiseInfoActivity" />
 
         <service android:name=".LocationService" />
     </application>

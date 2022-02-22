@@ -224,4 +224,20 @@ public class CoreApi {
      * 系统通知
      */
     public static final String systemNotice = "/api/systemNotice/app";
+    /**
+     *查询部门绩效考核
+     */
+    public static final String bmkh = "/api/submitted/kpiApp";
+    /**
+     *查询考核任务完成率（完成率情况）
+     */
+    public static final String finishrate = "/api/gridExamine/app/finishrate";
+    /**
+     *获取我的考核（考核内容）
+     */
+    public static final String mykh = "/api/gridExamine/app/my";
+    /**
+     * 完成考核
+     */
+    public static final String finishkh = "/api/gridExamine/app/fe";
 }

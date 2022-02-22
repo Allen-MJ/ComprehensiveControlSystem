@@ -213,4 +213,19 @@
     <string name="hiv_bfphone">帮扶人联系方式:</string>
     <string name="hiv_szqk">收治情况:</string>
     <string name="hiv_szjg">收治机构名称:</string>
+
+    <string name="kaohe_type">考核类型:</string>
+    <string name="kaohe_date">考核日期:</string>
+    <string name="kaohe_finish">完成日期:</string>
+    <string name="kaohe_dw">考核单位:</string>
+    <string name="kaohe_basic">基本信息</string>
+    <string name="kaohe_rule">考核规则</string>
+    <string name="kaohe_relation">考核关系</string>
+    <string name="kaohe_title">任务标题:</string>
+    <string name="kaohe_creat">创建日期:</string>
+    <string name="kaohe_update">更新日期:</string>
+    <string name="kaohe_fb">发布单位:</string>
+    <string name="kaohe_score">考核分数:</string>
+    <string name="kaohe_content">规则内容:</string>
+    <string name="kaohe_finish_bt">完成</string>
 </resources>

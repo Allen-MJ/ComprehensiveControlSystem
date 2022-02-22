@@ -13,6 +13,7 @@ public class Units implements Serializable {
     private String label;
     private int subCount;
     private String orgType;
+    private String genericName;
 
     public String getOrgId() {
         return orgId;
@@ -92,5 +93,13 @@ public class Units implements Serializable {
 
     public void setOrgType(String orgType) {
         this.orgType = orgType;
+    }
+
+    public String getGenericName() {
+        return genericName;
+    }
+
+    public void setGenericName(String genericName) {
+        this.genericName = genericName;
     }
 }
