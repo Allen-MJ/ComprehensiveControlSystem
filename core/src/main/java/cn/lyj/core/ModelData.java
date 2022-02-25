@@ -20,6 +20,8 @@ import cn.lyj.core.grid.GridListActivity;
 import cn.lyj.core.grid.GridmanagerListActivity;
 import cn.lyj.core.house.HouseListActivity;
 import cn.lyj.core.house.RentHouseListActivity;
+import cn.lyj.core.kaohe.AppraiseListActivity;
+import cn.lyj.core.kaohe.BmKhListActivity;
 import cn.lyj.core.log.LogListActivity;
 import cn.lyj.core.person.CzPersonListActivity;
 import cn.lyj.core.person.DrugPersonListActivity;
@@ -35,6 +37,7 @@ import cn.lyj.core.person.ZsZhPersonListActivity;
 import cn.lyj.core.place.SocialPlaceListActivity;
 import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
+import cn.lyj.core.vediocontrol.VControlListActivity;
 import cn.lyj.core.word.ReceivListActivity;
 import cn.lyj.core.word.SendListActivity;
 
@@ -205,13 +208,30 @@ public class ModelData {
             item31.setResId(getResId("部门考核查询"));
             items3.add(item31);
             Model item32 = new Model();
-            item32.setName("我的发文");
-            item32.setId("我的发文");
-            item32.setResId(getResId("我的发文"));
+            item32.setName("我的考核");
+            item32.setId("我的考核");
+            item32.setResId(getResId("我的考核"));
             items3.add(item32);
             item3.setList(items3);
             list.add(item3);
         }
+
+        Model item4 = new Model();
+        item4.setName("视频监控");
+        List<Model> items4 = new ArrayList<>();
+        Model item41 = new Model();
+        item41.setName("视频监控点位");
+        item41.setId("视频监控点位");
+        item41.setResId(getResId("视频监控点位"));
+        items4.add(item41);
+        /*Model item42 = new Model();
+        item42.setName("申请权限");
+        item42.setId("申请权限");
+        item42.setResId(getResId("申请权限"));
+        items4.add(item42);*/
+        item4.setList(items4);
+        list.add(item4);
+
         return list;
     }
 
@@ -546,6 +566,15 @@ public class ModelData {
                 break;
             case "矛盾纠纷排查调处以调解方式":
                 context.startActivity(new Intent(context, EventModeActivity.class).putExtra(Constants.ObjectFirst,model));
+                break;
+            case "部门考核查询":
+                context.startActivity(new Intent(context, BmKhListActivity.class));
+                break;
+            case "我的考核":
+                context.startActivity(new Intent(context, AppraiseListActivity.class));
+                break;
+            case "视频监控点位":
+                context.startActivity(new Intent(context, VControlListActivity.class));
                 break;
             default:
                 context.startActivity(new Intent(context, ChartActivity.class).putExtra(Constants.ObjectFirst,model));

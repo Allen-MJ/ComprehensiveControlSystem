@@ -240,4 +240,6 @@ public class CoreApi {
      * 完成考核
      */
     public static final String finishkh = "/api/gridExamine/app/fe";
+
+    public static final String queryVcontrol = "/api/InodeAuth/queryAllOfApp";
 }
