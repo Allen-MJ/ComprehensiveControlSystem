@@ -37,6 +37,7 @@ import cn.lyj.core.person.ZsZhPersonListActivity;
 import cn.lyj.core.place.SocialPlaceListActivity;
 import cn.lyj.core.place.UnSocialPlaceListActivity;
 import cn.lyj.core.task.MyTaskListActivity;
+import cn.lyj.core.vediocontrol.NoVControlListActivity;
 import cn.lyj.core.vediocontrol.VControlListActivity;
 import cn.lyj.core.word.ReceivListActivity;
 import cn.lyj.core.word.SendListActivity;
@@ -224,11 +225,11 @@ public class ModelData {
         item41.setId("视频监控点位");
         item41.setResId(getResId("视频监控点位"));
         items4.add(item41);
-        /*Model item42 = new Model();
+        Model item42 = new Model();
         item42.setName("申请权限");
         item42.setId("申请权限");
         item42.setResId(getResId("申请权限"));
-        items4.add(item42);*/
+        items4.add(item42);
         item4.setList(items4);
         list.add(item4);
 
@@ -575,6 +576,9 @@ public class ModelData {
                 break;
             case "视频监控点位":
                 context.startActivity(new Intent(context, VControlListActivity.class));
+                break;
+            case "申请权限":
+                context.startActivity(new Intent(context, NoVControlListActivity.class));
                 break;
             default:
                 context.startActivity(new Intent(context, ChartActivity.class).putExtra(Constants.ObjectFirst,model));

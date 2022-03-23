@@ -76,6 +76,7 @@
         <activity android:name=".kaohe.AppraiseListActivity" />
         <activity android:name=".kaohe.AppraiseInfoActivity" />
         <activity android:name=".vediocontrol.VControlListActivity" />
+        <activity android:name=".vediocontrol.NoVControlListActivity" />
 
         <service android:name=".LocationService" />
     </application>

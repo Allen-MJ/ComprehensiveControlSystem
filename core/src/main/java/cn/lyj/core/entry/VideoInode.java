@@ -6,6 +6,15 @@ public class VideoInode implements Serializable {
     private double inodeLat;
     private double inodeLng;
     private String inodeName;
+    private String inodeId;
+
+    public String getInodeId() {
+        return inodeId;
+    }
+
+    public void setInodeId(String inodeId) {
+        this.inodeId = inodeId;
+    }
 
     public double getInodeLat() {
         return inodeLat;

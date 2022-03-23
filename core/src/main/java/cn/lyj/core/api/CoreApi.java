@@ -240,6 +240,16 @@ public class CoreApi {
      * 完成考核
      */
     public static final String finishkh = "/api/gridExamine/app/fe";
-
+    /**
+     * 不分页查询视频监控点位管理
+     */
     public static final String queryVcontrol = "/api/InodeAuth/queryAllOfApp";
+    /**
+     * /api/InodeAuth/queryNoAuthListOfApp
+     */
+    public static final String queryNoVcontrol = "/api/InodeAuth/queryNoAuthListOfApp";
+    /**
+     * 新增监控点位权限申请
+     */
+    public static final String requestNoVcontrol = "/api/InodeAuth";
 }
