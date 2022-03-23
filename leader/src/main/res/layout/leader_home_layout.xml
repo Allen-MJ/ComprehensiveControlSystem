@@ -18,29 +18,19 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                <allen.frame.widget.SearchView
+                    android:id="@+id/search"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    android:minHeight="?attr/actionBarSize"
-                    android:layout_alignParentTop="true"
-                    app:contentInsetEnd="0dp"
-                    app:contentInsetStart="0dp"
-                    app:titleTextColor="@color/text_white_color"
-                    app:titleTextAppearance="@style/Toolbar.TitleText"
-                    app:popupTheme="@style/OverflowMenuStyle"
-                    app:navigationIcon="@mipmap/ic_logo_back">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:layout_gravity="center"
-                        style="@style/Toolbar.TitleText"
-                        android:gravity="center"
-                        />
-                </androidx.appcompat.widget.Toolbar>
+                    android:layout_height="wrap_content"
+                    app:inputTextSize="@dimen/frame_text_normal_size"
+                    app:inputPadding="@dimen/frame_eight_distance"
+                    app:inputHint="@string/tip_search_hint"
+                    app:searchIcon="@mipmap/ic_search"
+                    app:searchBackground="@drawable/frame_gray_bg"
+                    android:layout_marginTop="@dimen/frame_four_distance"
+                    android:layout_marginStart="@dimen/frame_90_distance"
+                    android:layout_marginEnd="@dimen/frame_90_distance"
+                    android:layout_alignParentTop="true"/>
                 <allen.frame.widget.CircleImageView
                     android:id="@+id/user_photo"
                     android:layout_width="@dimen/frame_60_distance"
@@ -60,8 +50,7 @@
                     style="@style/CoreMiddle8Style"
                     android:textColor="@color/text_white_color"
                     android:text="张三"
-                    android:layout_marginTop="@dimen/frame_edge_distance"
-                    android:layout_alignParentTop="true"
+                    android:layout_below="@id/search"
                     android:layout_toEndOf="@id/user_photo"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/user_grade"

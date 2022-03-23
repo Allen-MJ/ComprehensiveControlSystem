@@ -38,8 +38,6 @@ public class NoVControlListActivity extends AllenBaseActivity {
     Toolbar toolbar;
     @BindView(R2.id.grid_map)
     MapView gridMap;
-    @BindView(R2.id.search)
-    SearchView search;
     private BaiduMap mBaiduMap;
 
     @Override
@@ -49,7 +47,7 @@ public class NoVControlListActivity extends AllenBaseActivity {
 
     @Override
     protected int getLayoutResID() {
-        return R.layout.core_vedio_control_show;
+        return R.layout.core_vedio_nocontrol_show;
     }
 
     @Override
@@ -96,12 +94,6 @@ public class NoVControlListActivity extends AllenBaseActivity {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-        search.setOnSerchListenner(new SearchView.onSerchListenner() {
-            @Override
-            public void onSerchEvent(String key) {
-                loadData(key);
             }
         });
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {

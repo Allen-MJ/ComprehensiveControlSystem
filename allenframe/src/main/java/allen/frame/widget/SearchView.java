@@ -97,6 +97,14 @@ public class SearchView extends LinearLayoutCompat {
         return input.getText();
     }
 
+    public AppCompatEditText getEditText(){
+        return input;
+    }
+
+    public void setText(String text){
+        input.setText(text);
+    }
+
     private onSerchListenner onClearnListenner = null;
     public void setOnSerchListenner(onSerchListenner onClearnListenner) {
         this.onClearnListenner = onClearnListenner;

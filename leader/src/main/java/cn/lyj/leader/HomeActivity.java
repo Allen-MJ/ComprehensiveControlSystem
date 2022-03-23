@@ -3,7 +3,6 @@ package cn.lyj.leader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,26 +17,24 @@ import allen.frame.net.Callback;
 import allen.frame.net.Https;
 import allen.frame.tools.Constants;
 import allen.frame.tools.MsgUtils;
+import allen.frame.tools.StringUtils;
 import allen.frame.widget.CircleImageView;
 import allen.frame.widget.ContrlScrollViewPager;
-import allen.frame.widget.MarqueeView;
+import allen.frame.widget.SearchView;
 import allen.frame.widget.VerticalTextview;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import cn.lyj.core.SearchListActivity;
 import cn.lyj.core.api.CoreApi;
 import cn.lyj.core.entry.SystemNotice;
 import cn.lyj.user.notice.SystemNoticeActivity;
 
 public class HomeActivity extends AllenBaseActivity {
 
-    @BindView(R2.id.toolbar)
-    Toolbar toolbar;
     @BindView(R2.id.user_photo)
     CircleImageView userPhoto;
     @BindView(R2.id.user_name)
@@ -52,6 +49,8 @@ public class HomeActivity extends AllenBaseActivity {
     BottomNavigationView bottom;
     @BindView(R2.id.notice)
     VerticalTextview notice;
+    @BindView(R2.id.search)
+    SearchView search;
     private FragmentAdapter adapter;
     private List<Fragment> list;
 
@@ -67,7 +66,6 @@ public class HomeActivity extends AllenBaseActivity {
 
     @Override
     protected void initBar() {
-        setToolbarTitle(toolbar, "", false);
         list = new ArrayList<>();
         list.add(ModelFragment.init(3));
         list.add(ModelFragment.init(0));
@@ -129,21 +127,31 @@ public class HomeActivity extends AllenBaseActivity {
                 startActivity(new Intent(context, SystemNoticeActivity.class));
             }
         });
+        search.setOnSerchListenner(new SearchView.onSerchListenner() {
+            @Override
+            public void onSerchEvent(String key) {
+                if(StringUtils.notEmpty(key)){
+                    startActivity(new Intent(context,SearchListActivity.class).putExtra(Constants.Key_1,key));
+                }else {
+                    MsgUtils.showMDMessage(context,"请输入关键字查询!");
+                }
+            }
+        });
     }
 
-    private void notice(){
-        Https.with(this).url(CoreApi.systemNotice).addParam("page",0).addParam("size",10).get()
+    private void notice() {
+        Https.with(this).url(CoreApi.systemNotice).addParam("page", 0).addParam("size", 10).get()
                 .enqueue(new Callback<List<SystemNotice>>() {
                     @Override
                     public void success(List<SystemNotice> data) {
-                        if(data!=null&&data.size()>0){
+                        if (data != null && data.size() > 0) {
                             ArrayList<String> texts = new ArrayList<>();
-                            for(SystemNotice entry:data){
+                            for (SystemNotice entry : data) {
                                 texts.add(entry.getNoticeTitle());
                             }
                             notice.setTextList(texts);
                             notice.startAutoScroll();
-                        }else{
+                        } else {
                             ArrayList<String> texts = new ArrayList<>();
                             texts.add("暂无通知!");
                             notice.setTextList(texts);
@@ -153,9 +161,15 @@ public class HomeActivity extends AllenBaseActivity {
 
                     @Override
                     public void fail(Response response) {
-                        MsgUtils.showShortToast(context,response.getMsg());
+                        MsgUtils.showShortToast(context, response.getMsg());
                     }
                 });
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

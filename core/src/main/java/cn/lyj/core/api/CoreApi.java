@@ -252,4 +252,8 @@ public class CoreApi {
      * 新增监控点位权限申请
      */
     public static final String requestNoVcontrol = "/api/InodeAuth";
+    /**
+     * 统一搜索
+     */
+    public static final String search = "/api/search";
 }
